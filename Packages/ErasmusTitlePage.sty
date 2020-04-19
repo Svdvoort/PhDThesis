@@ -1,0 +1,224 @@
+\ProvidesPackage{ErasmusTitlePage}
+\RequirePackage{graphicx}
+\RequirePackage[calc, timesep={.}]{datetime2}
+\RequirePackage{xparse}
+
+\DeclareOption{Dutch}{\def\@language{0}}
+\DeclareOption{English}{\def\@language{1}}
+
+\ExecuteOptions{Dutch}
+\ProcessOptions\relax
+
+
+\newcommand*{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand*{\dutchtitle}[1]{\def\@dutchtitle{#1}}
+\newcommand*{\dutchsubtitle}[1]{\def\@dutchsubtitle{#1}}
+\newcommand*{\shortauthor}[1]{\def\@shortauthor{#1}}
+\newcommand*{\rectormagnificus}[1]{\def\@rectormagnificus{#1}}
+\newcommand*{\defensedate}[3]{\DTMsavedate{defensedate}{#1-#2-#3}}
+\newcommand*{\defensetime}[2]{\def\@defensehour{#1} \def\@defenseminute{#2}}
+\newcommand*{\birthcity}[1]{\def\@birthcity{#1}}
+\newcommand*{\birthcountry}[1]{\def\@birthcountry{#1}}
+\newcommand*{\isbn}[1]{\def\@isbn{#1}}
+\newcommand*{\firstpromoter}[1]{\def\@firstpromoter{#1}}
+\newcommand*{\secondpromoter}[1]{\def\@secondpromoter{#1}}
+\newcommand*{\thirdpromoter}[1]{\def\@thirdpromoter{#1}}
+\newcommand*{\fourthpromoter}[1]{\def\@fourthpromoter{#1}}
+\newcommand*{\firstcopromoter}[1]{\def\@firstcopromoter{#1}}
+\newcommand*{\secondcopromoter}[1]{\def\@secondcopromoter{#1}}
+\newcommand*{\thirdcopromoter}[1]{\def\@thirdcopromoter{#1}}
+\newcommand*{\fourthcopromoter}[1]{\def\@fourthcopromoter{#1}}
+\newcommand*{\firstothermember}[1]{\def\@firstothermember{#1}}
+\newcommand*{\secondothermember}[1]{\def\@secondothermember{#1}}
+\newcommand*{\thirdothermember}[1]{\def\@thirdothermember{#1}}
+\newcommand*{\fourthothermember}[1]{\def\@fourthothermember{#1}}
+
+
+\newcommand*{\getdutchmonth}[1]{
+\ifcase#1\or
+januari
+\or
+februari
+\or
+maart
+\or
+april
+\or
+mei
+\or
+juni
+\or
+juli
+\or
+augustus
+\or
+september
+\or
+oktober
+\or
+november
+\or
+december
+\fi
+}
+
+\newcommand*{\getdutchday}[1]{
+\ifcase#1
+Maandag
+\or
+Dinsdag
+\or
+Woensdag
+\or
+Donderdag
+\or
+Vrijdag
+\or
+Zaterdag
+\or
+Zondag
+\fi
+}
+
+
+\renewcommand*{\maketitle}{
+\begin{titlingpage}
+    \centering
+    {\HUGE\textbf{\@title}\par}
+    \vspace{1em}
+    \ifx \@subtitle \undefined
+    \else
+    {\Huge\textbf{\@subtitle}\par}
+    \fi
+    \vfill
+    \ifx \@shortauthor \undefined
+    {\Large\textbf{\@author}\par}
+    \else
+    {\Large\textbf{\@shortauthor}\par}
+    \fi
+    \vspace{6em}
+\end{titlingpage}}
+
+\newcommand*{\makethesispage}{
+\begin{titlingpage}
+    \centering
+    {\HUGE\textbf{\@title}\par}
+    \ifx \@subtitle \undefined
+    \else
+    \vspace{1em}
+    {\Huge\textbf{\@subtitle}\par}
+    \fi
+    \vspace{3em}
+    {\LARGE{\@dutchtitle}\par}
+    \ifx \@dutchsubtitle \undefined
+    \else
+    \vspace{1em}
+    {\Large{\@dutchsubtitle}\par}
+    \fi
+    \vspace{3em}
+    \ifcase\@language
+    {\LARGE\textbf{PROEFSCHRIFT}\par}
+    \or
+    {\LARGE\textbf{THESIS}\par}
+    \fi
+
+
+    \vspace{3em}
+    {\Large
+    ter verkrijging van de graad van doctor aan de\\
+    Erasmus Universiteit Rotterdam\\
+    op gezeg van de \\
+    rector magnificus\par
+    }
+    \vspace{1.5em}
+    {\Large{\@rectormagnificus}\par}
+    \vspace{1.5em}
+    {\Large
+    en volgens besluit van het College voor Promoties.\\
+    De openbare verdediging zal plaatsvinden op\\
+
+    \getdutchday{\DTMfetchdow{defensedate}}\DTMfetchday{defensedate}\getdutchmonth{\DTMfetchmonth{defensedate}}\DTMfetchyear{defensedate} om {\@defensehour}.{\@defenseminute} uur\par
+    }
+    \vfill
+    {\Large door\par}
+    \vspace{1.5em}
+    {\Large\textbf{\@author}\par}
+    {\large{geboren te \@birthcity, \@birthcountry}}
+    \vspace{6em}
+\end{titlingpage}}
+
+\newcommand*{\makecopyrightpage}{
+\begin{titlingpage}
+\raggedright
+\vfill
+\textbf{Acknowledgements}:\par
+\textbf{ISBN}: \@isbn \par
+\vfill
+\textbf{\copyright~\@author, \DTMfetchyear{defensedate}}\par
+For all articles published, the copyright has been transferred to the respective publisher.
+No part of this thesis may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without written permission from the author or, when appropiate, from the publisher.
+\end{titlingpage}
+}
+
+\newcommand*{\makecommitteepage}{
+\begin{titlingpage}
+\raggedright
+{\large\textbf{PROMOTIECOMISSIE}\par}
+\vspace{1em}
+{
+\begin{tabbing}
+\=Promotoren\hspace{3em}\=\@firstpromoter\\
+\ifx \@secondpromoter \undefined
+\else
+\>\>\@secondpromoter\\
+\fi
+\ifx \@thirdpromoter \undefined
+\else
+\>\>\@thirdpromoter\\
+\fi
+\ifx \@fourthpromoter \undefined
+\else
+\>\>\@fourthpromoter\\
+\fi
+\vspace{1em}
+
+\ifx \@firstothermember \undefined
+\else
+\>Overige leden \>\@firstothermember\\
+\fi
+\ifx \@secondothermember \undefined
+\else
+\>\>\@secondothermember\\
+\fi
+\ifx \@thirdothermember \undefined
+\else
+\>\>\@thirdothermember\\
+\fi
+\ifx \@fourthothermember \undefined
+\else
+\>\>\@fourthothermember\\
+\fi
+\ifx \@firstothermember \undefined
+\else
+\vspace{1em}
+\fi
+
+\ifx \@firstcopromoter \undefined
+\else
+\>Co{-}promotoren \>\@firstcopromoter\\
+\fi
+\ifx \@secondcopromoter \undefined
+\else
+\>\>\@secondcopromoter\\
+\fi
+\ifx \@thirdcopromoter \undefined
+\else
+\>\>\@thirdcopromoter\\
+\fi
+\ifx \@fourthcopromoter \undefined
+\else
+\>\>\@fourthcopromoter\\
+\fi
+
+\end{tabbing}}
+\end{titlingpage}}

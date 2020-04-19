@@ -1,0 +1,30 @@
+\chapter{Publications}
+% Nature style
+\defbibenvironment{mypubs}
+ {\list
+     {}
+     {\setlength{\leftmargin}{\bibhang}%
+      % \setlength{\itemindent}{-\leftmargin}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}}
+  {\endlist}
+  {\item}
+
+\defbibfilter{conference_papers}{
+    type=inproceedings and
+    keyword=paper
+}
+
+\defbibfilter{conference_abstracts}{
+    type=inproceedings and
+    keyword=abstract
+}
+
+\begin{refsection}[mypublications]
+\nocite{*}
+\printbibliography[omitnumbers=true,title={Journal Papers},env=mypubs,type=article,heading=subbibliography]
+\printbibliography[omitnumbers=true,title={Book Chapters},env=mypubs,type=inbook,heading=subbibliography]
+\printbibliography[omitnumbers=true,title={Conference Papers},env=mypubs,filter=conference_papers,heading=subbibliography]
+\printbibliography[omitnumbers=true,title={Conference Abstracts},env=mypubs,filter=conference_abstracts,heading=subbibliography]
+
+\end{refsection}

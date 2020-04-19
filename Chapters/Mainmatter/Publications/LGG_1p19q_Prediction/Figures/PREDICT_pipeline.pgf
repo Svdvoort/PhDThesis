@@ -1,0 +1,47 @@
+\begin{tikzpicture}
+    \node[inner sep=0pt] (T1slice) at (0,0)
+    {\includegraphics[scale=0.1]{T1.png}};
+    \node[inner sep=0pt, below of=T1slice,yshift=-2.5cm] (T2slice)
+    {\includegraphics[scale=0.1]{T2.png}};
+    \node[draw=black, fit=(T1slice) (T2slice)](Images) {};
+    \node[above of=Images, yshift=3.4cm, xshift=0cm, text width=4cm, align=center] (imgtext) {\huge Multiparametric \\Imaging};
+
+
+    \node[inner sep=0pt, right of=T2slice, xshift=5cm,yshift=3.35cm] (Intens)
+    {\includegraphics[scale=0.1]{intensity_hist.pdf}};
+    \node[above of=Intens,yshift=1.5cm,xshift=1cm]{\Large Intensity};
+    \node[inner sep=0pt, right of=Intens, xshift=4cm, yshift=-0.5cm] (Convexity)
+    % {\centering \subimport{}{Convexity.pgf}};
+    {\includegraphics[scale=0.2]{Convexity.pdf}};
+    \node[inner sep=0pt, below of=Convexity, yshift= -1cm] (CVAR)
+    {\includegraphics[scale=0.2]{CVAR.pdf}};
+    \node[above of=Convexity,yshift=2cm,xshift=-0.75cm](ShapeText){\Large Shape};
+
+    \node[inner sep=0pt, below of=Intens, xshift=1.3cm, yshift= -3cm] (LBP_small)
+    {\includegraphics[scale=0.27]{LBP_color.eps}};
+    \node[above of=LBP_small, yshift=1cm, xshift=0cm] (LBPtext) {\Large Local binary patterns};
+
+
+
+    \node[draw=black, fit=(Intens) (ShapeText) (LBP_small)](Features) {};
+    \node[above of=Features, yshift=3.95cm] {\huge Image features};
+
+    \node[inner sep=0pt, right of=Features, xshift=6.5cm,yshift=0cm] (SVM)
+    {\centering \subimport{}{SVM.pgf}};
+    \node[draw=black, fit=(SVM)](Classifiers) {};
+
+    \node[above of=Classifiers, yshift=2.3cm, text width=4cm, align=center] {\huge Machine learning};
+
+    \node[inner sep=0pt, right of=Classifiers, xshift=5cm,yshift=2.35cm] (survival)
+    {\includegraphics[scale=0.33, clip, trim={0cm 0cm 1cm 0cm}]{ROC.eps}};
+    \node[inner sep=0pt, below of=survival, xshift=0.3cm, yshift=-3cm] (classification)
+    {\includegraphics[scale=0.55,clip,trim={3cm 18cm 8cm 0cm}]{Classification_tree.pdf}};
+
+
+    \node[draw=black, fit=(survival) (classification)](Prediction) {};
+    \node[above of=Prediction, yshift=4.5cm] {\huge Prediction};
+
+    \filldraw[gray] (Images.north east) -- (Features.west) -- (Images.south east);
+    \filldraw[gray] (Features.north east) -- (Classifiers.west) -- (Features.south east);
+    \filldraw[gray] (Classifiers.north east) -- (Prediction.west) -- (Classifiers.south east);
+\end{tikzpicture}

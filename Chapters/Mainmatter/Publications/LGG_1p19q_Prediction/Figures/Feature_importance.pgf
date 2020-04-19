@@ -1,0 +1,634 @@
+\begin{tikzpicture}[
+    /pgfplots/ybar legend/.style={
+    /pgfplots/legend image code/.code={%
+       \draw[##1,/tikz/.cd,yshift=-0.25em]
+        (0cm,0cm) rectangle (3pt,0.8em);},
+   }
+    ]
+
+% \definecolor{color0}{rgb}{0.816,0.588,0.839}
+% \definecolor{color1}{rgb}{1,0.388,0.380}
+% \definecolor{color2}{rgb}{1,0.788,0.4}
+% \definecolor{color3}{rgb}{0.4,0.611,1}
+% \definecolor{color4}{rgb}{0.4,1,0.788}
+% \definecolor{color5}{rgb}{0.737,0.313,0.352}
+% \definecolor{color6}{rgb}{0.314,0.737,0.698}
+% \definecolor{color7}{rgb}{0.698,0.313,0.737}
+% \definecolor{color8}{rgb}{0.352,0.737,0.313}
+
+\begin{axis}[
+legend cell align={left},
+legend style={fill opacity=1, draw opacity=1, text opacity=1, at={(1,0.5)}, anchor=west, draw=none, fill=none, font=\Large},
+minor xtick={},
+minor ytick={},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xlabel={\LARGE\textbf{Total Sobol index}},
+xmin=0, xmax=0.15,
+xtick style={color=black},
+% xtick={0,0.02,0.04,0.06,0.08,0.1,0.12,0.14},
+% xticklabels={0,0.02,0.04,0.06,0.08,0.1,0.12,0.14},
+xtick={0,0.05,0.10, 0.15},
+xticklabels={0,0.05,0.10, 0.15},
+% xticklabel style={font=\small},
+y dir=reverse,
+y grid style={white!69.0196078431373!black},
+ylabel={\huge\textbf{Feature}},
+ymin=-0.5, ymax=42.5,
+ytick style={draw=none},
+ytick={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42},
+yticklabels={Age,Gender,Anterior/Posterior position,Left/Right position,Inferior/Superior position,Compactness,Convexity,Circular variance,Elliptic variance,Ratio of principle axis,Radial distance,Roughness,Solidity,Volume,Energy,Kurtosis,Max,Mean,Median,Min,Peak,Range,Skewness,Standard deviation,Quartile range,LBP R1P8 kurtosis,LBP R3P24 kurtosis,LBP R5P24 kurtosis,LBP R1P8 mean,LBP R3P24 mean,LBP R5P24 mean,LBP R1P8 median,LBP R3P24 median,LBP R5P24 median,LBP R1P8 peak,LBP R3P24 peak,LBP R5P24 peak,LBP R1P8 skew,LBP R3P24 skew,LBP R5P24 skew,LBP R1P8 std,LBP R3P24 std,LBP R5P24 std}
+]
+\draw[draw=none,fill=color0,line width=1pt] (axis cs:0,-0.4) rectangle (axis cs:0.02182,0.4);
+\addlegendimage{ybar,ybar legend,draw=color0,fill=color0,line width=3pt,scale=1.5};
+\addlegendentry{Demographics}
+
+\draw[draw=none,fill=color0,line width=1pt] (axis cs:0,0.6) rectangle (axis cs:0.025548,1.4);
+\draw[draw=none,fill=color1,line width=1pt] (axis cs:0,1.6) rectangle (axis cs:0.013248,2.4);
+\addlegendimage{ybar,ybar legend,draw=color1,fill=color1,line width=3pt};
+\addlegendentry{Location}
+
+\draw[draw=none,fill=color1,line width=1pt] (axis cs:0,2.6) rectangle (axis cs:0.020048,3.4);
+\draw[draw=none,fill=color1,line width=1pt] (axis cs:0,3.6) rectangle (axis cs:0.12379,4.4);
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,4.6) rectangle (axis cs:0.007556,5);
+\addlegendimage{ybar,ybar legend,draw=color2,fill=color2,line width=3pt};
+\addlegendentry{Shape (average)}
+
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,5) rectangle (axis cs:0.015243,5.4);
+\addlegendimage{ybar,ybar legend,draw=color3,fill=color3,line width=3pt};
+\addlegendentry{Shape (std)}
+
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,5.6) rectangle (axis cs:0.021046,6);
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,6) rectangle (axis cs:0.0067648,6.4);
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,6.6) rectangle (axis cs:0.027323,7);
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,7) rectangle (axis cs:0.010401,7.4);
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,7.6) rectangle (axis cs:0.014133,8);
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,8) rectangle (axis cs:0.011143,8.4);
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,8.6) rectangle (axis cs:0.0070412,9);
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,9) rectangle (axis cs:0.013109,9.4);
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,9.6) rectangle (axis cs:0.0059398,10);
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,10) rectangle (axis cs:0.0055802,10.4);
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,10.6) rectangle (axis cs:0.0090634,11);
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,11) rectangle (axis cs:0.011835,11.4);
+\draw[draw=none,fill=color2,line width=1pt] (axis cs:0,11.6) rectangle (axis cs:0.0073997,12);
+\draw[draw=none,fill=color3,line width=1pt] (axis cs:0,12) rectangle (axis cs:0.0048173,12.4);
+\draw[draw=none,fill=color4,line width=1pt] (axis cs:0,12.6) rectangle (axis cs:0.0049846,13.4);
+\addlegendimage{ybar,ybar legend,draw=color4,fill=color4,line width=3pt};
+\addlegendentry{Shape}
+
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,13.6) rectangle (axis cs:0.0096538,14);
+\addlegendimage{ybar,ybar legend,draw=color5,fill=color5,line width=3pt};
+\addlegendentry{\gls{T1C} intensity}
+
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,14) rectangle (axis cs:0.0038547,14.4);
+\addlegendimage{ybar,ybar legend,draw=color6,fill=color6,line width=3pt};
+\addlegendentry{\gls{T2} intensity}
+
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,14.6) rectangle (axis cs:0.0072369,15);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,15) rectangle (axis cs:0.005303,15.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,15.6) rectangle (axis cs:0.0091555,16);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,16) rectangle (axis cs:0.010805,16.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,16.6) rectangle (axis cs:0.010365,17);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,17) rectangle (axis cs:0.015005,17.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,17.6) rectangle (axis cs:0.009789,18);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,18) rectangle (axis cs:0.022794,18.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,18.6) rectangle (axis cs:0.005895,19);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,19) rectangle (axis cs:0.012968,19.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,19.6) rectangle (axis cs:0.0039341,20);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,20) rectangle (axis cs:0.0053636,20.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,20.6) rectangle (axis cs:0.0086277,21);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,21) rectangle (axis cs:0.024686,21.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,21.6) rectangle (axis cs:0.01132,22);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,22) rectangle (axis cs:0.098366,22.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,22.6) rectangle (axis cs:0.017153,23);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,23) rectangle (axis cs:0.0059437,23.4);
+\draw[draw=none,fill=color5,line width=1pt] (axis cs:0,23.6) rectangle (axis cs:0.047657,24);
+\draw[draw=none,fill=color6,line width=1pt] (axis cs:0,24) rectangle (axis cs:0.01619,24.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,24.6) rectangle (axis cs:0.0048068,25);
+\addlegendimage{ybar,ybar legend,draw=color7,fill=color7,line width=3pt};
+\addlegendentry{\gls{T1C} texture}
+
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,25) rectangle (axis cs:0.0076506,25.4);
+\addlegendimage{ybar,ybar legend,draw=color8,fill=color8,line width=3pt};
+\addlegendentry{\gls{T2} texture}
+
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,25.6) rectangle (axis cs:0.0052537,26);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,26) rectangle (axis cs:0.0074423,26.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,26.6) rectangle (axis cs:0.006949,27);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,27) rectangle (axis cs:0.0061941,27.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,27.6) rectangle (axis cs:0.017991,28);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,28) rectangle (axis cs:0.019989,28.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,28.6) rectangle (axis cs:0.004255,29);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,29) rectangle (axis cs:0.0055743,29.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,29.6) rectangle (axis cs:0.0050741,30);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,30) rectangle (axis cs:0.0044977,30.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,30.6) rectangle (axis cs:0.0086713,31);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,31) rectangle (axis cs:0.0049909,31.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,31.6) rectangle (axis cs:0.0049787,32);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,32) rectangle (axis cs:0.0059981,32.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,32.6) rectangle (axis cs:0.0055807,33);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,33) rectangle (axis cs:0.059594,33.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,33.6) rectangle (axis cs:0.002326,34);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,34) rectangle (axis cs:0.0019547,34.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,34.6) rectangle (axis cs:0.010077,35);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,35) rectangle (axis cs:0.0095836,35.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,35.6) rectangle (axis cs:0.014157,36);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,36) rectangle (axis cs:0.0096633,36.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,36.6) rectangle (axis cs:0.006623,37);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,37) rectangle (axis cs:0.0099243,37.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,37.6) rectangle (axis cs:0.0044755,38);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,38) rectangle (axis cs:0.005249,38.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,38.6) rectangle (axis cs:0.0062709,39);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,39) rectangle (axis cs:0.0079406,39.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,39.6) rectangle (axis cs:0.0056599,40);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,40) rectangle (axis cs:0.0091365,40.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,40.6) rectangle (axis cs:0.010987,41);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,41) rectangle (axis cs:0.010731,41.4);
+\draw[draw=none,fill=color7,line width=1pt] (axis cs:0,41.6) rectangle (axis cs:0.010129,42);
+\draw[draw=none,fill=color8,line width=1pt] (axis cs:0,42) rectangle (axis cs:0.088256,42.4);
+
+% \pgfplotsset{every axis/.style={font=\bfseries}}
+\draw (axis cs:0.02182,0) node[,
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.022};
+\draw (axis cs:0.025548,1) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.026};
+\draw (axis cs:0.013248,2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.013};
+\draw (axis cs:0.020048,3) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.020};
+\draw (axis cs:0.12379,4) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.124};
+\draw (axis cs:0.007556,4.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.008};
+\draw (axis cs:0.015243,5.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.015};
+\draw (axis cs:0.021046,5.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.021};
+\draw (axis cs:0.0067648,6.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.007};
+\draw (axis cs:0.027323,6.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.027};
+\draw (axis cs:0.010401,7.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.014133,7.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.014};
+\draw (axis cs:0.011143,8.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.011};
+\draw (axis cs:0.0070412,8.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.007};
+\draw (axis cs:0.013109,9.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.013};
+\draw (axis cs:0.0059398,9.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.0055802,10.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.0090634,10.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.009};
+\draw (axis cs:0.011835,11.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.012};
+\draw (axis cs:0.0073997,11.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.007};
+\draw (axis cs:0.0048173,12.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0049846,13) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0096538,13.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.0038547,14.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.004};
+\draw (axis cs:0.0072369,14.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.007};
+\draw (axis cs:0.005303,15.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0091555,15.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.009};
+\draw (axis cs:0.010805,16.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.011};
+\draw (axis cs:0.010365,16.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.015005,17.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.015};
+\draw (axis cs:0.009789,17.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.022794,18.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.023};
+\draw (axis cs:0.005895,18.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.012968,19.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.013};
+\draw (axis cs:0.0039341,19.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.004};
+\draw (axis cs:0.0053636,20.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0086277,20.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.009};
+\draw (axis cs:0.024686,21.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.025};
+\draw (axis cs:0.01132,21.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.011};
+\draw (axis cs:0.098366,22.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.098};
+\draw (axis cs:0.017153,22.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.017};
+\draw (axis cs:0.0059437,23.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.047657,23.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.048};
+\draw (axis cs:0.01619,24.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.016};
+\draw (axis cs:0.0048068,24.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0076506,25.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.008};
+\draw (axis cs:0.0052537,25.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0074423,26.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.007};
+\draw (axis cs:0.006949,26.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.007};
+\draw (axis cs:0.0061941,27.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.017991,27.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.018};
+\draw (axis cs:0.019989,28.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.020};
+\draw (axis cs:0.004255,28.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.004};
+\draw (axis cs:0.0055743,29.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.0050741,29.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0044977,30.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.004};
+\draw (axis cs:0.0086713,30.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.009};
+\draw (axis cs:0.0049909,31.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0049787,31.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0059981,32.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.0055807,32.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.059594,33.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.060};
+\draw (axis cs:0.002326,33.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.002};
+\draw (axis cs:0.0019547,34.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.002};
+\draw (axis cs:0.010077,34.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.0095836,35.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.014157,35.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.014};
+\draw (axis cs:0.0096633,36.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.006623,36.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.007};
+\draw (axis cs:0.0099243,37.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.0044755,37.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.004};
+\draw (axis cs:0.005249,38.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.005};
+\draw (axis cs:0.0062709,38.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.0079406,39.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.008};
+\draw (axis cs:0.0056599,39.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.006};
+\draw (axis cs:0.0091365,40.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.009};
+\draw (axis cs:0.010987,40.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.011};
+\draw (axis cs:0.010731,41.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.011};
+\draw (axis cs:0.010129,41.8) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.010};
+\draw (axis cs:0.088256,42.2) node[
+  scale=0.65,
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{0.088};
+\end{axis}
+
+\end{tikzpicture}

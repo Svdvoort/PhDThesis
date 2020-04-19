@@ -1,0 +1,41 @@
+\colorlet{color_pos}{color2!100!}
+\colorlet{color_neg}{color7!100!}
+
+
+    \begin{tikzpicture}[
+        pos_class/.style={diamond, fill=color_pos, minimum width=13pt, minimum height=13pt, draw=none},
+        neg_class/.style={circle, fill=color_neg, minimum width=13pt, minimum height=13pt, draw=none}
+        ]
+
+	% Draw the square
+	\node[fit={(-3,-3) (3,3)},inner sep=0pt,draw=black, thick](Axes){};
+
+
+
+	% Markers
+	\node[pos_class] at (0.5, 0.75) (pos_limiter) {};
+	\node[pos_class] at (0.75, 2.5) (D) {};
+	\node[pos_class] at (1.25, 1.25) (D) {};
+	\node[pos_class] at (1.75, 0.2) (D) {};
+	\node[pos_class] at (2.75, 2.2) (D) {};
+
+	\node[neg_class] at (-0.5, -2.1) (C) {};
+	\node[neg_class] at (-1, -1.5) (C) {};
+
+	\node[neg_class] at (-0.5, -0.75) (neg_limiter) {};
+	\node[neg_class] at (-2.1, -0.3) (C) {};
+	\node[neg_class] at (-2.4, -1.9) (C) {};
+
+	% Separators
+	\draw (-3,3) -- (3, -3);
+	\draw[dashed] (-1.75,3) -- (3, -1.75);
+	\draw[dashed] (-3,1.75) -- (1.75, -3);
+	\node[circle] at (pos_limiter) {};
+	% \draw[red, thick] at (neg_limiter) circle [radius=0.3];
+
+	% Text
+%	\node at (0.5 + 1.5, 0.75) () {$\omega^T x_i + b \geq +1$};
+%	\node at (-0.5 + 1.5, -0.75) () {$\omega^T x_i + b \leq -1$};
+%	\node at (1.5 + 1.5, -1.5) () {$\omega^T x_i + b = 0$};
+
+	\end{tikzpicture}

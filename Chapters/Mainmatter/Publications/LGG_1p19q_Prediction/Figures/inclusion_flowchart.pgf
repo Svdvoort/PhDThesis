@@ -1,0 +1,81 @@
+\begin{tikzpicture}[auto,
+    block_center/.style ={rectangle, draw=black, very thick, fill=white,
+      text width=25em, text centered,
+      minimum height=4em},
+    algorithm_center/.style ={circle, draw=black, very thick, fill=white,
+    text width = 7em, text ragged, minimum height=1em, inner sep=3pt, text centered},
+    block_left/.style ={rectangle, draw=black, very thick, fill=white,
+      text width=25em, text ragged, minimum height=4em, inner sep=6pt},
+    exclusion_block_left/.style ={rectangle, draw=black, very thick, fill=white,
+    text width=18em, text ragged, minimum height=4em, inner sep=6pt},
+    block_test/.style ={rectangle, draw=black, thick, fill=white,
+    text width=10em, text ragged, minimum height=4em, inner sep=6pt},
+      line/.style ={draw, thick, -latex', shorten >=0pt}]
+
+     \node [block_left] (identified) {%
+     \begin{tabbing}
+      \textbf{424} \=Patients identified in EMC/HMC dataset after\\
+                   \>initial screening of presumed low grade glioma
+    \end{tabbing}};
+
+
+     \node [block_left, below=3cm of identified.center] (included) {\textbf{284} Patients included as training dataset};
+     \node [exclusion_block_left, below right=.2cm and 5cm of identified.center] (excluded) {%
+     \begin{tabbing}
+      \textbf{140} \=Patients excluded\\
+      \\
+      \textbf{22} \>1p/19q co-deletion status unknown\\
+      \textbf{46} \>No pre-operative \gls{T1C} or \gls{T2} scan\\
+      \textbf{58} \>Enhancement\\
+      \textbf{14} \>Insufficient imaging quality\\
+    \end{tabbing}
+     };
+
+
+    \node [algorithm_center, below=3 cm of included] (ml_algorithm) {Machine\\ Learning\\ Algorithm};
+
+
+    \node [block_test, right=4cm of ml_algorithm.center] (test_included) {%
+    \begin{tabbing}
+    \textbf{129} \=Patients included\\
+                 \>as external\\
+                 \>validation set
+    \end{tabbing}
+    };
+    \node [block_test, above=1cm of test_included] (test_screened) {%
+    \begin{tabbing}
+    \textbf{159} \=Patients screened\\
+                 \>from the TCIA\\
+                 \>dataset
+    \end{tabbing}
+    };
+    \node [block_test, above right=0cm and 3cm of test_included.center] (test_excluded){%
+        \begin{tabbing}
+         \textbf{30} \=Patients excluded\\
+         \\
+         \textbf{18} \>Enhancement\\
+         \textbf{7}  \>Post-biopsy scan\\
+         \textbf{3}  \>No \cgls{T1C} scan\\
+         \textbf{2}  \>Paediatric cases\\
+       \end{tabbing}
+    };
+
+    \node[draw,inner sep=2mm, dashed, label=below:External validation,fit=(test_included) (test_excluded) (test_screened)] {};
+
+    \node[block_center, below=1cm of ml_algorithm] (metrics) {\textbf{Outcome: predictive performance}\\
+    Accuracy, AUC, Sensitivity, Specificity};
+
+    \begin{scope}[every path/.style=line]
+        % paths for enrollemnt rows
+        \path (identified)   -- (included);
+        \path (identified)   |- (excluded);
+        \path (included) -- (ml_algorithm);
+
+        \path (test_screened) -- (test_included);
+        \path (test_screened) |- (test_excluded);
+        \path (test_included) -- (ml_algorithm);
+
+        \path (ml_algorithm) -- (metrics);
+    \end{scope}
+
+  \end{tikzpicture}

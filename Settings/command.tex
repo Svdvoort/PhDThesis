@@ -1,0 +1,32 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% Commands
+%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\acrcaption}[1]{\acrshort{#1}: \acrlong{#1}}
+\newcommand{\toolbox}{\fontfamily{pcr}\selectfont}
+\newcommand{\per}[1]{\SI{#1}{\percent}}
+
+\newcommand{\meanconf}[3]{\num{#1} (\numrange{#2}{#3})}
+\newcommand{\meanp}[2]{\num{#1} (\num{#2})}
+\newcommand{\mpnumrange}[2]{\numrange[parse-numbers=false]{\num[parse-numbers=true]{#1}}{\num[parse-numbers=true]{#2}}}
+\newcommand{\pvalue}[1]{P\num{#1}}
+\newcommand{\numbersamples}[1]{N\num{#1}}
+\newcommand{\IQR}[2]{\num{#1} [\num{#2}]}
+
+\newcommand{\NA}{N/A}
+
+
+\NewDocumentCommand{\citeauthorref}{ O{} O{} m }{\citeauthor*[#1][#2]{#3}~\cite{#3}}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\newcommand{\publishedas}[1]{
+\begin{refsection}[mypublications]
+\noindent
+\blfootnote{\fullcite[Published as: ][]{#1}}
+\end{refsection}
+}

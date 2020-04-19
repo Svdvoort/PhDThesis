@@ -1,0 +1,152 @@
+\makeatletter
+\newcommand*\chset{\pgfqkeys{/ch}}
+\chset{name/.initial=chp, total/.initial=4, outer macro/.initial=\outerPoints,
+	inner macro/.initial=\innerPoints,
+	@prepare coordinates/.code={\advance\pgfutil@tempcnta1
+		\pgfcoordinate{ConvexHullPoint-\the\pgfutil@tempcnta}
+		{\tikz@scan@one@point\pgfutil@firstofone#1\relax}},
+	coordinates/.code={\pgfutil@tempcnta=0
+		\pgfkeysalso{
+			/ch/@prepare coordinates/.list={#1},
+			/ch/name=ConvexHullPoint,
+			/ch/total/.expanded=\the\pgfutil@tempcnta}}}
+\newcommand*\chvof[1]{\pgfkeysvalueof{/ch/#1}}
+\newcommand*\CH[1][]{%
+	\begingroup\chset{#1}%
+	%% Get the lowest left point
+	% \CH@Ai stores ID, \CH@Axy stores x, y, \CH@Apoint expands to PGF-point
+	\def\CH@Ai{0}\pgf@ya=16000pt \pgf@xa=16000pt
+	\pgfmathloop
+	\pgf@process{\pgfpointanchor{\chvof{name}-\pgfmathcounter}{center}}%
+	\ifdim\pgf@y<\pgf@ya
+	\let\CH@Ai\pgfmathcounter \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+	\else
+	\ifdim\pgf@y=\pgf@ya
+	\ifdim\pgf@x<\pgf@xa
+	\let\CH@Ai\pgfmathcounter \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+	\fi
+	\fi
+	\fi
+	\ifnum\pgfmathcounter<\chvof{total}\relax
+	\repeatpgfmathloop
+	\edef\CH@Axy{{\the\pgf@xa}{\the\pgf@ya}}%
+	\edef\CH@Apoint{\noexpand\pgfqpoint\CH@Axy}%
+	%% Build list of points sorted after angle from lowest left point
+	% \CH@list will contain stack of (ID, angle, x, y) in TeX groups
+	\let\CH@list\pgfutil@empty
+	\pgfmathloop
+	\ifnum\pgfmathcounter=\CH@Ai\else
+	\pgfextract@process\CH@p{\pgfpointanchor{\chvof{name}-\pgfmathcounter}{center}}
+	\edef\pgf@tempa{{\the\pgf@x}{\the\pgf@y}}%
+	\pgfmathanglebetweenpoints{\CH@Apoint}{\CH@p}%
+	\edef\CH@element{{\pgfmathcounter}{\pgfmathresult}}%
+	\let\CH@angle\pgfmathresult
+	\edef\CH@element{\CH@element\pgf@tempa}%
+	\ifx\CH@list\pgfutil@empty
+	\let\CH@list\CH@element
+	\else
+	\let\CH@lista\pgfutil@empty
+	\expandafter\CH@sortin\CH@list\@@{}{}{}%
+	\let\CH@list\CH@lista
+	\fi
+	\fi
+	\ifnum\pgfmathcounter<\chvof{total}\relax
+	\repeatpgfmathloop
+	%% Drop points on the inner side.
+	% This tests if point[i] is on the right of line through point[i-1] and point[i+1]
+	% \CH@listb will contain list of outer points (reverse stack)
+	% \CH@listc will contain list of inner points
+	\edef\CH@listb{{\CH@Ai}{}\CH@Axy}%
+	\let\CH@listc\pgfutil@gobble
+	\expandafter\CH@store\CH@list\CH@stop\CH@Ti\CH@Txy\CH@list
+	\pgfmathloop
+	\expandafter\CH@store\CH@list\CH@stop\CH@Bi\CH@Bxy\CH@list
+	\edef\pgf@marshall{\noexpand\CHtestforLeftOrRight\CH@Axy\CH@Bxy\CH@Txy}%
+	\pgf@marshall
+	%      \errmessage{\CH@Ai, \CH@Ti, \CH@Bi; \pgfmathresult; \CH@Axy, \CH@Txy, \CH@Bxy}%
+	\ifnum\pgfmathresult=-1 % to the right
+	% woho, add point[i] to the outer list and push everything one down
+	\edef\CH@listb{{\CH@Ti}{}\CH@Txy\CH@listb}%
+	\let\CH@Ai\CH@Ti
+	\let\CH@Axy\CH@Txy
+	\let\CH@Ti\CH@Bi
+	\let\CH@Txy\CH@Bxy
+	\else % otherwise
+	% ugh, insert point[i+1] back into the source list
+	% so that it will be point[i+1] in the next iteration and push everything one up
+	\edef\CH@listc{\CH@listc,\CH@Ti}%
+	\edef\CH@list{{\CH@Bi}{}\CH@Bxy\CH@list}%
+	\expandafter\CH@testforfirst\CH@listb\CH@stop\CH@Ti\CH@listb
+	\expandafter\CH@store\CH@listb\CH@stop\CH@Ti\CH@Txy\CH@listb
+	\expandafter\CH@store\CH@listb\CH@stop\CH@Ai\CH@Axy\CH@listb
+	\edef\CH@listb{{\CH@Ai}{}\CH@Axy\CH@listb}%
+	\fi
+	\ifx\CH@list\pgfutil@empty % Before we finish, add the last entry
+	\edef\CH@listb{{\CH@Bi}{}\CH@Bxy\CH@listb}%
+	\else
+	\repeatpgfmathloop
+	%% Alright lets pull only the IDs from \CH@listb and add to "outer" in reverse order
+	\pgfkeysgetvalue{/ch/outer macro}\CH@outer \pgfkeysgetvalue{/ch/inner macro}\CH@inner
+	\expandafter\let\CH@outer\pgfutil@empty
+	\pgfmathloop
+	\expandafter\CH@store\CH@listb\CH@stop\CH@Ai\CH@Axy\CH@listb
+	\expandafter\ifx\CH@outer\pgfutil@empty
+	\expandafter\edef\CH@outer{\CH@Ai}%
+	\else\expandafter\edef\CH@outer{\CH@Ai,\CH@outer}\fi
+	\ifx\CH@listb\pgfutil@empty\else
+	\repeatpgfmathloop
+	% get "outer" and \CH@listc (in the form of "inner") outside the group
+	\ifx\CH@listc\pgfutil@gobble\let\CH@listc\pgfutil@empty\fi
+	\xdef\pgf@marshall{\def\expandafter\noexpand\CH@outer{\CH@outer}%
+		\def\expandafter\noexpand\CH@inner{\CH@listc}}%
+	\endgroup
+	\pgf@marshall}
+\newcommand*\CH@sortin[4]{%
+	\ifx\@@#1%
+	\edef\CH@lista{\CH@lista\CH@element}%
+	\expandafter\pgfutil@gobble
+	\else
+	\expandafter\pgfutil@firstofone
+	\fi{%
+		\ifdim#2pt<\CH@angle pt
+		\edef\CH@lista{\CH@lista{#1}{#2}{#3}{#4}}\expandafter\CH@sortin
+		\else
+		\edef\CH@lista{\CH@lista\CH@element{#1}{#2}{#3}{#4}}\expandafter\CH@addLeftover
+		\fi}}
+\newcommand*\CHtestforLeftOrRight[6]{%
+	\begingroup
+	\dimen6=#6 \advance\dimen6-#2 % (#6-#2)
+	\dimen3=#3 \advance\dimen3-#1 % (#3-#1)
+	\dimen5=#5 \advance\dimen5-#1 % (#5-#1)
+	\dimen4=#4 \advance\dimen4-#2 % (#4-#2)
+	% numbers too big, scale everything down
+	\dimen6=.1\dimen6 \dimen3=.1\dimen3
+	\dimen5=.1\dimen5 \dimen4=-.1\dimen4
+	\pgf@x=\pgf@sys@tonumber{\dimen5}\dimen4        % - (#5-#1)(#4-#2)
+	\advance\pgf@x\pgf@sys@tonumber{\dimen3}\dimen6 % add (#3-#1)(#6-#2)
+	\pgfmath@returnone\pgf@x\endgroup
+	%  \pgfmathparse{(#3-#1)(#6-#2)-(#5-#1)(#4-#2)}%
+	\ifdim\pgfmathresult pt<0pt \def\pgfmathresult{-1}%
+	\else\ifdim\pgfmathresult pt>0pt \def\pgfmathresult{1}%
+	\else\def\pgfmathresult{0}\fi\fi}
+\def\CH@addLeftover#1\@@#2#3#4{\edef\CH@lista{\CH@lista#1}}
+\def\CH@store#1#2#3#4#5\CH@stop#6#7#8{\edef#6{#1}\edef#7{{#3}{#4}}\edef#8{#5}}
+\def\CH@testforfirst#1#2#3#4#5\CH@stop#6#7{\ifnum#1=#6 \edef#7{#5}\fi}
+
+\makeatother
+
+\def\pointslist{(-2.5,-0.5) (-3.5,0) (-2.5,0.5) (-3,1) (-2,1.5) (-2,3) (-1,2.5) (1,4.5) (2.5,3) (3,-2) (0.5,-1.5) (-2,-2.5) (-1.5,-1) (-2.5,-1.5) (-2.5,-0.5)}
+
+
+% Convexity
+ \begin{tikzpicture}
+     \draw [blue] plot[smooth, tension=.4] coordinates {\pointslist};
+     \CH[coordinates={(-2.5,-0.5), (-3.5,0), (-2.5,0.5), (-3,1), (-2,1.5), (-2,3), (-1,2.5), (1,4.5), (2.5,3), (3,-2), (0.5,-1.5), (-2,-2.5), (-1.5,-1), (-2.5,-1.5), (-2.5,-0.5))}]
+     \draw [black] plot[samples at=\outerPoints,smooth, tension=0.8] (ConvexHullPoint-\x) --cycle;
+   %   \node at (5,-5) {$\frac{a}{b}$};
+
+    %\draw[double, line width = 1mm, -{>[scale=0.5]}] (4,1) -- (4.7,1);
+    %\draw [red] (5, 1) -- (6, 1);
+    %\node at (6.1, 1) {/};
+    %\draw [black!60!green] (6.2, 1) -- (7.2, 1);
+ \end{tikzpicture}

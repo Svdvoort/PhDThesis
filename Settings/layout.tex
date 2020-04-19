@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% Defined environments
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{ChapterAbstract}
+{
+% We reset all used abbreviations
+\glsresetall
+\vspace*{\fill}
+\begin{adjustwidth}{2cm}{2cm}
+% Add 'Abstract' as title
+\begin{center}
+\textbf{Abstract}
+\end{center}
+\vspace{2em}
+% To italics and footnotesize
+\itshape\small
+}
+{
+\end{adjustwidth}
+\vspace{\fill}
+% Afterwards we once again reset all abbreviations before using them in the text
+\glsresetall
+\clearpage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Chapter page layout
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\titleformat{\chapter}[display]
+{
+\if@mainmatter
+    % This is for chapter layout in mainmatter
+    \vfill
+\fi
+}
+{
+\if@mainmatter
+    % This is for chapter layout in mainmatter
+    \LARGE\MakeUppercase{\chaptertitlename}~\thechapter
+\fi
+}
+{
+\if@mainmatter
+    % This is for chapter layout in mainmatter
+    5pt
+\else
+    % This is for chapter layout in front and back matter
+    1pt
+\fi
+}
+{
+\if@mainmatter
+    % This is for chapter layout in mainmatter
+    \Huge
+\else
+    % This is for chapter layout in front and back matter
+    \Huge\bfseries
+\fi
+}
+[
+\if@mainmatter
+    % This is for chapter layout in mainmatter
+    \vfill\newpage
+\fi
+]
+\makeatother
+\assignpagestyle{\chapter}{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Section layouts
+%%%%%%%%%%%%%%%%%%%%%%%
+% To also number subsections
+\setsecnumdepth{subsection}
+\settocdepth{section}
+
+% Sub appendices get a specific figure and table count
+\AtBeginEnvironment{subappendices}{%
+\section*{Appendix}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+}
+
+\AtEndEnvironment{subappendices}{%
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ensure that bibliography not in table of contents unless specifically requested
+\nobibintoc
+
+
+% Bold your own name in the bibliography of publications
+\AtEveryBibitem{
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+\AtEveryBibitem{
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+\AtEveryBibitem{
+\renewcommand*{\mkbibnameprefix}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+\AtEveryBibitem{
+\renewcommand*{\mkbibnamesuffix}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+\AtEveryCite{
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+\AtEveryCite{
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+\AtEveryCite{
+\renewcommand*{\mkbibnameprefix}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+\AtEveryCite{
+\renewcommand*{\mkbibnamesuffix}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+}
+
+% We remove URL from the bib, unless it is misc
+\DeclareStyleSourcemap{
+  \maps[datatype=bibtex, overwrite=true]{
+    \map{
+      \step[fieldsource=url, final]
+      \step[typesource=misc, typetarget=online]
+    }
+  }
+}
+
+% We do not want the day in the date of a publication
+\AtEveryBibitem{\clearfield{day}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% OTHER
+%%%%%%%%%%%%%%%%%%%%%%%
+
+% Make sure that all are numbers are formatted the same
+\sisetup{
+  exponent-product=\ensuremath{\cdot},
+  group-separator={,},
+  output-decimal-marker = {.},
+  range-phrase = --,
+  output-product=\cdot,
+  detect-all = true
+}
+\DeclareSIUnit{\nof}{\#~of}
+
+\makeatletter
+\DeclareCaptionTextFormat{periodcheck}{#1\@addpunct{.}}
+\makeatother
+
+
+% We set up the captions
+\captionsetup{%
+format=hang,
+textformat=periodcheck,
+font={it},
+labelfont={bf},
+width=0.9\textwidth
+}

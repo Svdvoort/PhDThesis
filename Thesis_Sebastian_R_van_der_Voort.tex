@@ -1,0 +1,96 @@
+\RequirePackage[l2tabu,orthodox]{nag}
+% Above package will warn us if we us any
+
+\documentclass[9pt,twoside,openright]{memoir}
+
+
+\usepackage{./Packages/thesis}
+\usepackage[English]{./Packages/ErasmusTitlePage}
+
+\addbibresource{Bibliographies/bibliography.bib}
+\addbibresource{Bibliographies/LGG_1p19q_prediction.bib}
+\addsectionbib[label=mypublications]{Bibliographies/self.bib}
+
+\subimport{Settings/}{color_definitions.tex}
+\subimport{Settings/}{title_page.tex}
+\subimport{Settings/}{tikz_pgf.tex}
+\subimport{Settings/}{layout.tex}
+\subimport{Settings/}{glossary_items.tex}
+\subimport{Settings/}{acronyms.tex}
+\subimport{Settings/}{command.tex}
+\subimport{Settings/}{table.tex}
+
+
+\begin{document}
+
+\begingroup
+\let\cleardoublepage\clearpage
+\maketitle
+\makecopyrightpage
+% These will be included once the date and committee is known
+% But you can give it a try for yousrelf!
+% \makethesispage
+% \makecommitteepage
+\endgroup
+
+% To force that there are emtpy pages after the titling pages
+
+\frontmatter
+\null
+\cleardoublepage
+
+\tableofcontents*
+
+\mainmatter
+%Introduction
+\subimport{Chapters/Mainmatter/General/Introduction/}{Introduction.tex}
+\cleardoublepage
+
+
+%Radiomics book chapter
+\IfFileExists{./PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/Radiomics/Radiomics.tex}{
+\subimport{PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/Radiomics/}{Radiomics.tex}}
+{\subimport{Chapters/Mainmatter/Publications/Radiomics/}{Radiomics.tex}}
+\cleardoublepage
+
+%LGG Location chapter
+\subimport{Chapters/Mainmatter/Publications/LGG_location/}{LGG_location.tex}
+\cleardoublepage
+
+% 1p19q prediction chapter
+\subimport{Chapters/Mainmatter/Publications/LGG_1p19q_Prediction/}{Prediction_1p19q.tex}
+\cleardoublepage
+
+% Additional chapters will be placed here
+
+% Conclusion chapter
+\subimport{Chapters/Mainmatter/General/Discussion/}{Discussion.tex}
+\cleardoublepage
+
+%Start of backmatter
+\backmatter
+
+% Thesis summary
+\subimport{Chapters/Backmatter/Summary/}{Summary.tex}
+\cleardoublepage
+
+% Curriculum Vitae
+\subimport{Chapters/Backmatter/CV/}{CV.tex}
+\cleardoublepage
+
+% Publications
+\subimport{Chapters/Backmatter/Publications/}{Publications.tex}
+\cleardoublepage
+
+% Portfolio
+\subimport{Chapters/Backmatter/Portfolio/}{Portfolio.tex}
+\cleardoublepage
+
+% Acronym list
+\printglossaries
+\cleardoublepage
+
+% Bibliography
+\printbibliography[heading=bibintoc]
+
+\end{document}

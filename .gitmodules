@@ -1,0 +1,3 @@
+[submodule "PhDThesis_copyrighted_materials"]
+	path = PhDThesis_copyrighted_materials
+	url = git@github.com:Svdvoort/PhDThesis_copyrighted_materials.git

@@ -1,0 +1,98 @@
+\ProvidesPackage{thesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Ease of use packages %
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{import}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Math packages
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{eqparbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Graphic packages
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{standalone}
+% \usepackage[table]{color}
+% \usepackage{colortbl}
+\usepackage{tikzscale}
+% \usepackage{subfig}
+\usepackage{xcolor}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Tables
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{multirow}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% bibliography
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[style=ieee, citestyle=numeric, backend=biber, bibencoding=utf8, defernumbers=true, url=false, isbn=false]{biblatex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Layout packages
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[capitalise, noabbrev]{cleveref}
+\usepackage[paperwidth=170mm, paperheight=240mm, inner=20mm, outer=20mm, top=25mm, bottom=20mm]{geometry}
+\usepackage{changepage}
+\usepackage[figuresright]{rotating}
+% this package is necessary for certain quotes in bibliography
+\usepackage{textcomp}
+\usepackage{titlesec}
+% Arbitrary font sizes
+\usepackage{lmodern}
+% Proper font encoding
+\usepackage[T1]{fontenc}
+% Slightly adjust some spacings to prevent overfull hbox
+\usepackage{microtype}
+% Make sure we have consistent quotations everywhere
+\usepackage{dirtytalk}
+% Automatically format numbers
+\usepackage{siunitx}
+% Control look of figure and table captions
+\usepackage{caption}
+\usepackage{subcaption}
+% For 1st, 2nd etc notation
+\usepackage[super]{nth}
+% Make sure figure/table never goes up a page
+\usepackage{float}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Appendices
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{appendix}
+\usepackage{chngcntr}
+\usepackage{etoolbox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Glossary & Acronyms
+%%%%%%%%%%%%%%%%%%%%%%%
+% We need this to not cause warnings form combination of memoir class and
+% Glossary package
+\let\printglossary\relax
+\let\theglossary\relax
+\let\endtheglossary\relax
+
+\usepackage[acronym,toc,section=chapter]{glossaries}
+\makeglossaries
+\glsenableentrycount
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Set some acronyms for internal use.
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{acronym}

@@ -1,0 +1,42 @@
+% \documentclass{minimal}
+% \usepackage{tikz}
+% \usetikzlibrary{shapes.gates.logic.US,trees,positioning,arrows}
+% \begin{document}
+\begin{tikzpicture}[
+% Label style
+    label distance=3mm,
+    every label/.style={blue},
+% Event style
+    event/.style={rectangle,thick,draw,fill=yellow!20,text width=3cm,
+		text centered,font=\fontsize{15}{12}\selectfont,anchor=north},
+    gprog/.style={rectangle,thick,draw,fill=green!20,text width=3cm,
+		text centered,font=\fontsize{15}{12}\selectfont,anchor=north},
+    bprog/.style={rectangle,thick,draw,fill=red!20,text width=3cm,
+		text centered,font=\fontsize{15}{12}\selectfont,anchor=north},
+    mprog/.style={rectangle,thick,draw,fill=orange!20,text width=3cm,
+        text centered,font=\fontsize{15}{12}\selectfont,anchor=north},
+% Children and edges style
+    edge from parent/.style={very thick,draw=black!70},
+    edge from parent path={(\tikzparentnode.south) -- ++(0,-1.05cm)
+			-| (\tikzchildnode.north)},
+    level 1/.style={sibling distance=6cm,level distance=1.4cm,
+			growth parent anchor=south,nodes=event},
+    level 2/.style={sibling distance=4cm},
+    level 3/.style={sibling distance=3cm},
+    level 4/.style={sibling distance=3cm}
+
+    ]
+
+
+    \node (IDH) [event] {Low Grade Glioma}
+         % child{node (IDHmut) {IDH 1/2 mutation}
+            child{node (1p19qdel) {1p/19q co-deleted}
+                child{node [gprog] (goodprog) {Good prognosis}}}
+            child{node (1p19qnon) {1p/19q\\ intact}
+                child{node [bprog] (badrog) {Bad prognosis}}};
+            % }
+         % child{node (IDHw) {IDH wildtype}
+         %    child{node [bprog,yshift=-3cm] (badprog) {Bad \\prognosis}}}
+
+\end{tikzpicture}
+% \end{document}
