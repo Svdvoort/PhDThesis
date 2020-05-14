@@ -1,0 +1,288 @@
+% Following magic comments allow for compilation of root file
+% !TEX root = ../../../../temp_manuscript.tex
+\chapter[Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblastoma With vs. Without MGMT Promoter Methylation][MGMT topographical mapping]{Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblastoma With vs. Without MGMT Promoter Methylation
+}\label{HGGLocation}
+
+
+\begin{ChapterAbstract}
+    \textbf{Introduction:} \cgls{MGMT} promoter methylation and \cgls{IDH} mutation status are important prognostic factors for patients with glioblastoma.
+    There are conflicting reports about a differential topographical distribution of glioblastoma with vs. without \cgls{MGMT} promoter methylation, possibly caused by molecular heterogeneity in glioblastoma populations.
+    We initiated this study to re-evaluate the topographical distribution of glioblastoma with vs. without \cgls{MGMT} promoter methylation in light of the updated \cgls{WHO} 2016 classification.
+
+    \textbf{Methods:} Preoperative \acrlong{T2}/\acrlong{FLAIR} and \acrlong{T1C} \acrlong{MRI} scans of patients aged 18 year or older with \cgls{IDH} wildtype glioblastoma were collected.
+    Tumors were semi-automatically segmented, and the topographical distribution between glioblastoma with vs. without \cgls{MGMT} promoter methylation was visualized using frequency heatmaps.
+    Then, voxel-wise differences were analyzed using permutation testing with Threshold Free Cluster Enhancement.
+
+    \textbf{Results:} Four hundred thirty-six \cgls{IDH} wildtype glioblastoma patients were included; 211 with and 225 without \cgls{MGMT} promoter methylation.
+    Visual examination suggested that when compared with \cgls{MGMT} unmethylated glioblastoma, \cgls{MGMT} methylated glioblastoma were more frequently located near bifrontal and left occipital periventricular area and less frequently near the right occipital periventricular area.
+    Statistical analyses, however, showed no significant difference in topographical distribution between \cgls{MGMT} methylated vs. \cgls{MGMT} unmethylated glioblastoma.
+
+    \textbf{Conclusions:} This study re-evaluated the topographical distribution of \cgls{MGMT} promoter methylation in 436 newly diagnosed \cgls{IDH} wildtype glioblastoma, which is the largest homogenous \cgls{IDH} wildtype glioblastoma population to date.
+    There was no statistically significant difference in anatomical localization between \cgls{MGMT} methylated vs. unmethylated \cgls{IDH} wildtype glioblastoma.
+    \publishedas{incekara2020topographicalmaping}
+\end{ChapterAbstract}
+
+\section{Introduction}
+
+Patients with glioblastoma have a poor prognosis with a median overall survival of 15 months, despite standard of care consisting of safe, and maximal surgical resection followed by chemo and/or radiotherapy \autocite{stupp2005radiotherapy}.
+This prognosis varies based on factors such as age, Karnofsky Performance Status, extent of resection, and molecular markers, in particular \cgls{IDH} mutation and \cgls{MGMT} promoter methylation status \autocite{gessler2018surgery}.
+
+\cgls{MGMT} is a DNA repair enzyme, which is expressed by the \cgls{MGMT} gene located on chromosome 10q26.
+Promoter methylation of this gene reduces \cgls{MGMT} protein expression and consequently decreases DNA repair and increases alkylating chemotherapy induced tumor death.
+Therefore, patients with \cgls{MGMT} methylated glioblastoma are more sensitive to neo-adjuvant temozolomide than those without MGMT methylated glioblastoma.
+\cgls{MGMT} is methylated in around \per{50} of patients with newly diagnosed glioblastoma \autocite{hegi2005MGMT}.
+
+There are conflicting results in the published literature on a possible differential topographical distribution of glioblastoma with vs. without \cgls{MGMT} promoter methylation \autocite{smits2017imaging}.
+\citeauthorref{ellingson2012anatomic} suggested that when compared with those without \cgls{MGMT} promoter methylation, glioblastoma with methylation are more frequently located in the left temporal lobe and less frequently in the right temporal lobe \autocite{ellingson2012anatomic}.
+However, other studies found the reverse lateralization pattern \autocite{wang2014anatomical} or did not find any lateralization at all \autocite{carillo2012relationship, eoli2007methylation, han2018structural}.
+These conflicting results could be ascribed to heterogeneity of molecular subtypes of glioblastoma in the studied populations, for instance when \cgls{IDH} wildtype glioblastoma are mixed with the genetically, and prognostically distinct \cgls{IDH} mutated glioblastoma, or to variation in statistical methods that were used across studies.
+Therefore, the question whether glioblastoma with vs. without \cgls{MGMT} promoter methylation have a different anatomical localization remains unanswered.
+In light of the updated \cgls{WHO} 2016 classification \autocite{louis20162016}, a molecularly homogenous glioblastoma population must be used to re-evaluate the topographical distribution of \cgls{MGMT} methylated vs. unmethylated glioblastoma.
+
+Therefore, we have initiated this study to re-evaluate the topographical distribution of glioblastoma with and vs. without \cgls{MGMT} promoter methylation in the largest homogenous \cgls{IDH} wildtype glioblastoma population to date.
+
+\section{Methods}
+\subsection{Patient inclusion}
+
+All consecutive patients aged 18 years or older newly diagnosed with a contrast-enhancing and histopathologically confirmed glioblastoma \gls{IDH} wildtype who underwent tumor resection or biopsy between January 2011 and May 2018 at the Erasmus MC, University Medical Center Rotterdam, or Haaglanden MC were retrospectively included in this study.
+Patients were eligible if preoperative \gls{T2}/\gls{FLAIR} and \gls{T1C} \gls{MRI} scans as well as molecular data on \gls{IDH} mutation and \gls{MGMT} methylation status were available.
+Recurrent glioblastoma or confirmed \gls{IDH} mutated glioblastoma were excluded.
+The study design was approved by the Medical Ethical Committee of Erasmus MC and Haaglanden MC.
+The study was performed in accordance with the 1964 Helsinki Declaration and its later amendments or comparable ethical standards.
+
+\subsection{Image acquisition, tumor segmentation, and registration}
+From clinical preoperative \gls{MRI} scans, which were obtained according to clinical brain tumor protocols on either a 1.5T or 3.0T scanner, \gls{T2}/\gls{FLAIR} and \gls{T1C} images were collected.
+For glioblastoma segmentation, we first imported both the \gls{T1C} and \gls{T2}/\gls{FLAIR} scans into BrainLab (BrainLab, Feldkirchen, Germany, version 2.1.0.15).
+We semi-automatically segmented all tumor-related contrast-enhancement (including the central necrotic part, if present) using the SmartBrush tool in Brainlab Elements and manually adapted the segmentation if needed.
+We then used the \gls{T2}/\gls{FLAIR} scan to semi-automatically segment all tumor-related non-enhancing hyperintense abnormalities (extra-lesional hemorrhage was excluded).
+
+All tumor segmentations were then registered to the \gls{MNI} International Consortium for Brain Mapping 152 non-linear, symmetric atlas 2009a \autocite{fonov2011unbiased, fonov2009unbiased}.
+The \gls{T1C} scans were registered to the \gls{T1} atlas and the \gls{T2}/\gls{FLAIR} scans to the \gls{T2} atlas.
+Registration was done using SimpleElastix (version 72b7e81), based on a mutual information metric using an affine registration \autocite{marstal2016simpleelastix}.
+The resulting transformation parameters were used to transform the 3D segmentations to the atlas space.
+Registration results were visually checked to ensure that for all cases, the registered masks lay entirely within the brain mask of the atlas.
+No adjustments were made to the initial registration settings for individual patients.
+We created voxel-wise frequency maps for all glioblastoma combined, and frequency difference maps of glioblastoma with vs. without \gls{MGMT} promoter methylation.
+
+\subsection{Molecular analysis}
+
+Tumor tissue samples were obtained from patients through surgical resection or biopsy.
+Histopathological examination was performed by neuropathologists.
+DNA was extracted from microdissected FFPE tissue fragments by proteinase K digestion for 16 h at \SI{56}{\celsius} in the presence of \per{5} Chelex 100 resin and used after inactivation of proteinase K and removal of cell debris and the Chelex resin.
+\gls{IDH} mutational analysis was assessed with Sanger sequencing and targeted \gls{NGS} analysis.
+Sanger sequencing of PCR-amplified fragments from \gls{IDH}1 and \gls{IDH}2 mutational hot spots was essentially performed as previously described \autocite{vandenbent2013interlaboratory}.
+M13-tailed primers for PCR amplification of IDH1 codon 132 were forward 5'-TCTTCAGAGAAGCCATTAT-3' and reverse 5'-GCAAAATCACATTATTGCCAAC-3', for IDH2 codon 140, forward 5'-GGCTGCAGTGGGACCACTAT-3' and reverse 5'-TTGGTCCAGCCAGGGACTAG-3', and for IDH2 codon 172, forward 5'-ACATCCTGGGGGGGACTGTC-3' and reverse 5'-GACAAGAGGATGGCTAGGCG-3'.
+The M13-tail for the forward primers was: 5'-TGTAAAACGACGGCCAGT-3' and for the reverse primers: 5'-CAGGAAACAGCTATGACC-3'.
+After initial denaturation at \SI{95}{\celsius} for 3 min, 35 cycles of \SI{95}{\celsius} for 15 s, \SI{60}{\celsius} for 15 s, and \SI{72}{\celsius} for 15 s were performed, followed by 7 min at \SI{72}{\celsius}.
+Subsequent sequence analyses of the PCR products was carried out with M13 forward and reverse primers on a 3730 XL Genetic Analyzer (Applied Biosystems, Foster City, CA, USA).
+
+Targeted \gls{NGS} was performed by semiconductor sequencing with the Ion Torrent platform using supplier's materials and protocols (Thermo Fisher Scientific) with a dedicated panel for detection of glioma-specific aberrations, including \gls{IDH}1 and \gls{IDH}2 hot spot mutations essentially as previously described \autocite{dubbink2015molecular}.
+Library and template preparations were performed consecutively with the AmpliSeq Library Kit 2.0-384 LV and the Ion PGM Template OT2 200 kit.
+Sequencing was performed with the Ion PGM Sequencing 200 Kit v2 on an 318v2 chip with the PGM system.
+Data were analyzed with the Torrent variant caller (Thermo Fisher Scientific), and variants were annotated in a local Galaxy pipeline using ANNOVAR.
+Data were collected during several years using different glioma panels.
+Sequenced areas of \gls{IDH}1 codon 132 and \gls{IDH}2 codons 140 and 172 are given in the supplementary data of \citeauthorref{dubbink2015molecular}.
+
+\gls{MGMT} promoter methylation status was assessed by methylation-specific PCR essentially as described by \citeauthorref{esteller2000inactivation}.
+Bisulfite conversion and subsequent purification are performed with the EZ DNA Methylation-Lightning Kit (Zymo Research) according to the supplier's protocol.
+Methylation-specific PCR was performed with primers specific for either methylated or the modified unmethylated DNA.
+Converted primer sequences for unmethylated DNA were forward 5'-TTTGTGTTTTGATGTTTGTAGGTTTTTGT-3' and reverse 5'-AACTCCACACTCTTCCAAAAACAAAACA-3', and for the methylated reaction, forward 5'-TTTCGACGTTCGTAGGTTTTCGC-3' and reverse 5'-GCACTCTTCCGAAAACGAAACG-3'.
+PCR was performed after initial denaturation at \SI{96}{\celsius} for \SI{5}{\minute}, 40 cycles of \SI{92}{\celsius} for \SI{45}{\second}, \SI{59} for \SI{65}{\second}, and \SI{72}{\celsius} for \SI{45}{\second}, followed by \SI{7}{\minute} min at \SI{72}{\celsius}.
+Five microliters of each \SI{15}{\micro\liter} methylation-specific PCR product was loaded onto a \per{1.5} agarose gel stained with GelRed (Biotium) and examined under ultraviolet illumination.
+SW48 cell line DNA and tonsil DNA was used as a positive control for methylated and unmethylated alleles of \gls{MGMT}, respectively.
+Controls without DNA were used for each set of methylation-specific PCR assays.
+
+\subsection{Statistical analysis}
+We first tested the differences between preoperative enhancing and non-enhancing tumor volumes as well as their ratio with the Kruskal-Wallis test.
+We mapped the anatomical localization of all \gls{MGMT} methylated and unmethylated glioblastoma by iterating over all voxels in the \gls{MNI} atlas and counting the number of tumor frequencies for each group in each voxel.
+To test for differences in spatial distribution between glioblastoma with vs. without \gls{MGMT} promoter methylation, we assessed the cluster-wise significance at the voxel-level between distributions, using permutation testing with Threshold Free Cluster Enhancement \autocite{smith2009threshold} in the software package \say{FSL Randomise} (version 5.0.9, using 10,000 permutations) \autocite{winkler2014permutation}.
+We also performed the same analysis with correction for age as a potential confounder by determining age for each patient at the time of the \gls{MRI} scan.
+We then calculated the difference between each patient's age and the average age of all patients included in the study, which was added to the experimental setup for FSL Randomise.
+Threshold Free Cluster Enhancement corrects p-values for the family-wise error in testing multiple voxels, considering a corrected \pvalue{< 0.05} as statistically significant.
+
+
+\section{Results}
+
+
+In total, 769 patients with newly diagnosed, contrast enhancing glioblastoma were screened, of whom we excluded 333 patients: 22 were excluded due to \gls{IDH} mutation and 311 were excluded due to insufficient or missing molecular data on \gls{IDH} mutation or \gls{MGMT} methylation status.
+Final analysis included 436 patients with \gls{IDH} wildtype glioblastoma (see flowchart, \cref{fig:HGG_location_flowchart}); 211 with and 225 without \gls{MGMT} promoter methylation.
+Three hundred forty patients had undergone a surgical tumor resection and 96 a diagnostic biopsy.
+In all patients, preoperative \gls{T1C} \gls{MRI} scans were available; in 90 patients, \gls{FLAIR} scans, and in 346 patients \gls{T2} scans were available.
+When compared with \gls{MGMT} unmethylated glioblastoma, \gls{MGMT} methylated glioblastoma had a significantly higher ratio of non-enhancing vs. contrast-enhancing volume [2.09 (inter quartile range 2.6) and 2.5 (inter quartile range 3.3), \pvalue{=0.045}, respectively].
+Patient and tumor characteristics are further presented in \cref{tab:HGG_location_characteristics} and \cref{tab:HGG_location_tumor_characteristics}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth,height=0.5\textwidth]{Figures/Inclusion_flow_chart.png}
+
+    \caption{Flow diagram of the inclusion procedure}\label{fig:HGG_location_flowchart}
+\end{figure}
+
+\begin{table}
+    \sisetup{
+    table-number-alignment = center,
+    table-text-alignment = center,
+    table-figures-integer = 1,
+    table-figures-decimal = 4,
+    }
+\begin{tabular}{L{5cm} S[table-number-alignment=center-decimal-marker, table-format=4.0] S[table-number-alignment=center-decimal-marker, table-format=4.1]}
+    \toprule
+    & {\thead{N}} & {\thead{\si{\percent}}}\\
+    \midrule
+
+    All patients & 436 & 100\\
+
+    \textbf{Sex}\\
+    \hspace{1em}Male & 276 & 63.3\\
+    \hspace{1em}Female & 160 & 36.7\\
+
+    \textbf{Age (years)}\\
+    \hspace{1em}$\leq 65$ & 227 & 52.1\\
+    \hspace{1em}$> 65$  & 209 & 47.9\\
+    \hspace{1em}Mean (SD) & \multicolumn{2}{c}{61.5 (16.2)}\\
+
+    \textbf{\acrshort{KPS}}\\
+    \hspace{1em}$\leq 70$ & 142 & 32.6\\
+    \hspace{1em}$> 70$ & 294 & 67.4\\
+    \hspace{1em}Mean(SD) & \multicolumn{2}{c}{80 (12.5)}\\
+
+    \textbf{Preoperative \acrshort{MRI} scans}\\
+    \hspace{1em}\acrshort{T1C} & 436 & 100\\
+    \hspace{1em}\acrshort{T2} & 346 & 79.4\\
+    \hspace{1em}\acrshort{FLAIR} & 90 & 20.6\\
+
+    \textbf{Neurosurgical procedure}\\
+    \hspace{1em}Resection & 340 & 78.0\\
+    \hspace{1em}Biopsy & 97 & 22.0\\
+
+    \bottomrule
+\end{tabular}
+\caption{Patient and tumor characteristics. Abbreviations: \acrcaption{KPS}, \acrcaption{SD}, \acrcaption{T1C}, \acrcaption{T2}, \acrcaption{FLAIR}}\label{tab:HGG_location_characteristics}
+\end{table}
+
+\begin{table}
+    \sisetup{
+    table-number-alignment = center,
+    table-text-alignment = center,
+    table-figures-integer = 1,
+    table-figures-decimal = 4,
+    }
+\begin{tabular}{L{5cm} S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=0.3]}
+    \toprule
+    & \multicolumn{2}{c}{\thead{MGMT promoter}}\\
+    \cmidrule{2-3}
+    {Preoperative volume, median $cm^3$ (IQR)} & {Methylated 211 (\per{48.4})} & {Unmethylated 225 (\per{51.6})} & {p-value}\\
+    \midrule
+    % Need to fix this for the IQR
+    Contrast-enhancing & \IQR{30.1}{39.5} & \IQR{35}{45.8} & 0.130\\
+    Non-enhancing & \IQR{75.5}{105.0} & \IQR{65.5}{84.2} & 0.338\\
+    Non-enhancing/contrast-enhancing ratio & \IQR{2.5}{3.3} & \IQR{2.09}{2.6} & 0.045\\
+    \bottomrule
+\end{tabular}
+\caption{Tumor characteristics. Abbreviations: \acrcaption{IQR}}\label{tab:HGG_location_tumor_characteristics}
+\end{table}
+
+\subsection{Topographical mapping of 436 \acrshort{IDH} wildtype glioblastoma}
+
+For visual inspection, heatmaps based on \gls{T1C} and \gls{T2}/\gls{FLAIR} segmentations were created for all 436 patients (\cref{fig:HGG_location_heatmap,fig:HGG_location_heatmap_genetic}), as well as frequency difference maps between MGMT methylated vs. unmethylated glioblastoma (\cref{fig:HGG_location_frequency_map}).
+Visual inspection of maps in \cref{fig:HGG_location_heatmap} suggests that glioblastoma were most frequently located in the right temporal, insular, and parietal area, and near the periventricular area both frontally and occipitally.
+Visual inspection of \cref{fig:HGG_location_heatmap_genetic,fig:HGG_location_frequency_map} indicates that when compared with \gls{MGMT} unmethylated glioblastoma, methylated glioblastoma were more frequently located near bifrontal and left occipital periventricular area (up to \per{6.5} frequency difference) and less frequently near the right occipital periventricular area (up to \per{9.1} frequency difference).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Heatmap.png}
+
+    \caption{Heatmaps of all 436 \acrshort{IDH} wildtype glioblastoma.}\label{fig:HGG_location_heatmap}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Heatmap_MGMT_status.png}
+
+    \caption{Heatmaps of \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_heatmap_genetic}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Frequency_map.png}
+
+    \caption{Frequency difference maps between \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_frequency_map}
+\end{figure}
+
+To test whether this difference was statistically significant, voxel-wise analyses of both the \gls{T1C} and \gls{T2}/\gls{FLAIR} segmentation heatmaps were performed.
+Although statistical analysis of the \gls{T1C} scans marked a region near the right occipital periventricular area as a potentially discriminating area between \gls{MGMT} methylated vs. unmethylated glioblastoma, this difference was not statistically significant (\cref{fig:HGG_location_pvalue_map}, together with corresponding p-values).
+This figure in fact shows that not any statistically significantly discriminating brain area between \gls{MGMT} methylated and unmethylated glioblastoma could be found (\pvalue{< 0.05}).
+This result did not change after an additional analysis with correction for age as potential confounding factor.
+Scroll-through video clips for visual inspection of all topographic maps are publicly available as Supplementary Material.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Pvalue_map.png}
+
+    \caption{P-value maps of \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_pvalue_map}
+\end{figure}
+
+\section{Discussion}
+
+This study voxel-wise analyzed \gls{T1C} and \gls{T2}/\gls{FLAIR} heatmaps and showed that there was no statistically significant difference in anatomical localization between \gls{MGMT} methylated vs. unmethylated \gls{IDH} wildtype glioblastoma.
+
+The primary reason to initiate this study was to re-evaluate the anatomic localization of \gls{MGMT} methylated vs. unmethylated glioblastoma in light of the updated \gls{WHO} 2016 classification era following conflicting reports on this topic \autocite{smits2017imaging}.
+\citeauthorref{ellingson2013probabilistic} reported that glioblastoma with \gls{MGMT} methylation were lateralized to the left hemisphere (temporal lobe) and that those without were lateralized to the right hemisphere \autocite{ellingson2013probabilistic}, which was in line with their previous article in which they included a substantial portion of their previously studied glioblastoma population \autocite{ellingson2012anatomic}.
+However, in contrast to these findings, there are also studies that found the reverse pattern of hemispheric lateralization, in which glioblastoma with \gls{MGMT} methylation were located more frequently in the right hemisphere, while those without \gls{MGMT} methylation lateralized to the left hemisphere \autocite{wang2014anatomical}.
+Additionally, there are conflicting reports on lobar distribution, in which glioblastoma with \gls{MGMT} methylation were more frequently located in the parietal and occipital lobes, while those without were located more frequently in the temporal lobes \autocite{eoli2007methylation}.
+A recent study suggested after qualitative analyses that subventricular zones were more frequently spared with \gls{MGMT} methylated glioblastoma, but found no difference in hemispheric lateralization between glioblastoma with and without \gls{MGMT} promoter methylation \autocite{han2018structural}.
+Finally, there are also studies that report no differences in localization between glioblastoma with and without \gls{MGMT} methylation \autocite{carillo2012relationship, drabycz2010analysis} in concordance with the findings of our study.
+
+These conflicting results in the literature can potentially be ascribed to two methodological issues.
+First, inconsistencies may arise from variations in glioblastoma patient populations across studies, many of which were performed in the pre-\gls{WHO} 2016 classification era when the impact of molecular subtyping of glioblastoma according to \gls{IDH} mutation status was less of a consideration \autocite{louis20162016}.
+\citeauthorref{ellingson2013probabilistic} included a series of 507 de novo glioblastoma with mixed \gls{IDH} subtypes, including 366 \gls{IDH} wildtype, 34 \gls{IDH} mutated glioblastoma, and also 107 glioblastoma without data on \gls{IDH} mutation status.
+Moreover, the majority of the studies did not report the \gls{IDH} mutation status of included glioblastoma \autocite{ellingson2012anatomic,wang2014anatomical,eoli2007methylation,drabycz2010analysis}.
+
+Mixing molecular subtypes or not knowing \gls{IDH} mutation status of glioblastoma is undesirable when assessing topographical distribution of molecular subtypes \autocite{louis20162016}, since it is now known that \gls{IDH} mutated glioblastoma represent a distinct molecular subtype of glioblastoma from a distinct precursor lesion which have a predominantly frontal lobe involvement when compared with IDH wildtype glioblastoma \autocite{lai2011evidence}.
+This topographic link between \gls{IDH} mutation and \gls{MGMT} methylation was also suggested by \citeauthorref{ellingson2013probabilistic} demonstrating that \gls{IDH} mutated and \gls{MGMT} methylated glioblastoma were indeed more frequently localized in the frontal lobe.
+This has not only been demonstrated in glioblastoma but also in non-contrast enhancing low grade glioma in which \gls{IDH} mutated low grade glioma (both oligodendroglioma and astrocytoma) were more frequently located in the frontal lobes, while non-contrast enhancing IDH wildtype astrocytoma were more frequently located in the basal ganglia of the right hemisphere \autocite{chaichana2011factors}.
+This topographical link thus suggests \gls{IDH} mutation status as a (confounding) factor between \gls{MGMT} methylation status and localization.
+Therefore, studies must be conducted based on homogeneous tumor populations with respect to \gls{IDH} mutational status.
+This hypothesis was recently supported by Roux et al., who assessed a homogenous \gls{IDH} wildtype glioblastoma population (\numbersamples{= 392}) and found no difference in localization between glioblastoma with and without MGMT methylation, in line with our study \autocite{roux2019mri}.
+
+Second, the conflicting results in the literature may arise from different statistical methods that were used across studies.
+Studies often investigated the anatomic localization of glioblastoma with and without \gls{MGMT} promoter methylation with visual examination, qualitatively, without a statistical, voxel-wise quantitative analysis \autocite{carillo2012relationship,eoli2007methylation,han2018structural,drabycz2010analysis}.
+\citeauthorref{ellingson2013probabilistic} used frequency difference maps to demonstrate that \gls{MGMT} methylated glioblastoma were more frequently localized in the left temporal lobe.
+Using similar frequency difference maps, we also found topographical differences, which indicated that when compared with \gls{MGMT} unmethylated glioblastoma, \gls{MGMT} methylated glioblastoma were more frequently localized near bifrontal and right occipital periventricular area and less frequently near the right occipital periventricular area.
+However, we showed that these apparent differences did not survive rigorous statistical testing.
+Ellingson et al. report the use of \say{Analysis of Differential Involvement} for their statistical analysis, which is based on the Fisher exact test \autocite{ellingson2012anatomic}.
+We used \say{FSL randomise}, which is different from the Fisher exact test because it does not make any assumptions about the underlying distribution of the variables \autocite{winkler2014permutation}.
+Another methodological difference can be found in the correction for multiple comparisons.
+Ellingson et al. used random permutations based on Bullmore et al. instead of the more recently proposed and widely accepted method of doing random permutations employed in \say{FSL randomise} based on \citeauthorref{winkler2014permutation} and \citeauthorref{bullmore1999global}.
+Furthermore, the method by \citeauthorref{bullmore1999global} requires a user-defined threshold for clustering, which can impact the results substantially \autocite{bullmore1999global}.
+Instead, we used \say{Threshold Free Cluster Enhancement}, which does not require thresholding to determine the clusters, and which has been shown to have a higher sensitivity compared to other methods \autocite{smith2009threshold}.
+Our stringent methodology of rigorous statistical testing and applying new insights in glioblastoma molecular subtyping to a large studied patient population are the strengths of our study.
+
+\section{Limitations}
+
+The main limitation of this study is its retrospective design, which may have introduced selection and confounding biases.
+Selection bias may occur when patients who receive diagnostic biopsies are excluded from analysis, since these tumors are often large, multifocal, located deep within the basal ganglia, or crossing midline.
+This may skew the results on tumor localization of glioblastoma, which is our main outcome.
+We have therefore attempted to limit this bias first by consecutive inclusion of all glioblastoma patients operated upon between 2011 and 2018 in our cohort, including diagnostic biopsies.
+In addition, it is known that tumor localization is associated with \gls{IDH} mutation status, with \gls{IDH} mutated tumors located more frequently in the frontal lobes, as mentioned earlier \autocite{lai2011evidence}.
+Since \gls{IDH} mutation status is both associated with tumor localization and \gls{MGMT} methylation status, it may function as a confounding factor.
+We therefore have also attempted to limit this potential bias by excluding all \gls{IDH} mutated tumors.
+Another limitation is that we included patients from two medical centers from a period of over seven years.
+This introduced variation of \gls{MRI} scan protocols such as magnet strength, voxel size, and slice thickness, which consequently may have negatively influenced registration accuracy and anatomical localization.
+Such registration inaccuracies can however be considered minor relative to the size of the tumor, and it is therefore unlikely that our results were significantly impacted by scanner variations.
+Additionally, tumor volume assessment on these \gls{MRI} scans were performed by one observer without confirmation of a second, independent assessor.
+This may have introduced some degree of information bias.
+We have attempted to limit this bias during volumetric assessment by blinding the assessor for patients' clinical and molecular characteristics.
+Also, it is known that both the inter- and intraobserver agreement for preoperative tumor volumes in glioblastoma is relatively high, while small variations in segmentation will probably have only a very limited effect on determining gross tumor localization \autocite{kubben2010intraobserver}.
+Finally, it should be noted that the known intertest variability is a limitation of \gls{MGMT} analyses, as assays used in other studies may produce slightly different \gls{MGMT} methylation results \autocite{wick2014mgmt}.
+This may partially explain the variety in the proportion of \gls{MGMT} methylated tumors reported in literature.
+
+To conclude, in the largest homogenous \gls{IDH} wildtype glioblastoma population to date, we showed that visual appearance of differences could not be confirmed with rigorous voxel-wise statistical testing and thus that there is no statistical difference in anatomical localization between \gls{IDH} wildtype glioblastoma with vs. without \gls{MGMT} promoter methylation.
+
+
+
+
+
+
+
