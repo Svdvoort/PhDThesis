@@ -94,11 +94,11 @@
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%
 
-% Ensure that bibliography not in table of contents unless specifically requested
+% % Ensure that bibliography not in table of contents unless specifically requested
 \nobibintoc
 
 
-% Bold your own name in the bibliography of publications
+% % Bold your own name in the bibliography of publications
 \AtEveryBibitem{
 \renewcommand*{\mkbibnamegiven}[1]{%
   \ifitemannotation{highlight}
@@ -127,33 +127,25 @@
     {#1}}
 }
 
-\AtEveryCite{
 \renewcommand*{\mkbibnamegiven}[1]{%
   \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
-}
+    {\textbf{#1} }
+    {#1} }
 
-\AtEveryCite{
 \renewcommand*{\mkbibnamefamily}[1]{%
   \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
-}
+    {\textbf{#1} }
+    {#1} }
 
-\AtEveryCite{
 \renewcommand*{\mkbibnameprefix}[1]{%
   \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
-}
+    {\textbf{#1} }
+    {#1} }
 
-\AtEveryCite{
 \renewcommand*{\mkbibnamesuffix}[1]{%
   \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
-}
+    {\textbf{#1} }
+    {#1} }
 
 % We remove URL from the bib, unless it is misc
 \DeclareStyleSourcemap{
