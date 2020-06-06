@@ -6,7 +6,7 @@
 
 This repository contains the code for my PhD thesis, which I am currently completing at the Biomedical Imaging Group Rotterdam (BIGR) at the Erasmus Universty Medical Centre in Rotterdam, The Netherlands.
 
-The latest version of the manuscript, as well as all the old versions, can be found under [the 'releases' tab](https://github.com/Svdvoort/PhDThesis/releases).
+The latest version of the manuscript, as well as all the old versions, can be found under [the 'releases' tab](https://github.com/Svdvoort/PhDThesis/releases). Underneath the release you will find the 'assets' tab, where the compiled PDF can be found.
 
 The latex code contains some handy tricks to work with multiple files and bibliographies. Please take a look around and feel free to reuse latex code (not including copyright materials such as the manuscript texts) that you find useful.
 
