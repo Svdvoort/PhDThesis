@@ -1,3 +1,38 @@
+% Following magic comments allow for compilation of root file
+% !TEX root = ../../../../temp_manuscript.tex
+
 \chapter{Introduction}
 
-To be completed.
+When genetic changes occur during the production of new cells the cells can start to grow uncontrollably, this process is commonly known as cancer.
+These uncontrollable cells might then go on to form a single mass, a tumor.
+Tumors can originate from and occur almost everywhere in the human body, with one of the deadliest being brain tumors.
+Different subtypes of brain tumors are recognized, depending on their origin.
+In this thesis, we focus on glioma, a specific subtype of brain tumors which originate from the glial cells in the brain and the most often occurring brain tumor \autocite{leece2017indicence}.
+
+Although glioma have a low incidence, around \per{1.71} globally \autocite{leece2017indicence}, they are quite lethal with median survival of around 10 months \autocite{hess2004gliomaincidence}.
+Treatments such as surgery, radiotherapy and chemotherapy help to prolong the life expectancy of brain tumor patients, and in some cases remove the tumor.
+However, the severity and impact of a glioma differ from which with some patients dying within XX months, but others surviving up to XX years.
+
+
+\gls{MRI} uses the property of the water molecules of tissue to form an image, by manipulating these properties, different tissue characteristics can be imaged.
+These concept is often used in clinical care, mainly to distinguish healthy tissue from diseased tissue.
+Shortly after the first introduction of \gls{MRI}, it was proposed that the method could be used to identify tumors \autocite{damadian1971tumor}.
+After some improvements, the technique was first applied to the brain in 1980 \autocite{holland1980brain}, and in the same year MRI has first been used to investigate a possible tumor in the brain, shown in \cref{fig:intro_MR_first} \autocite{hawkes1980NMRbrain}.
+Since then quality of \gls{MRI} scans has vastly increased, and different \gls{MRI} techniques have been developed that image different tissue characteristics.
+\cref{fig:intro_MR_modern} shows a modern \gls{MR} image of a brain tumor.
+Here the tumor can clearly be seen in the patients brain, and therefore MRI is now the standard-of-care for brain tumor diagnosis and treatment decisions.
+
+\begin{figure}[hbt]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{First scan of a human glioma}\label{fig:intro_MR_first}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/T2_LGG.png}
+        \caption{Modern glioma scan}\label{fig:intro_MR_modern}
+    \end{subfigure}
+    \caption{\acrshort{MRI} scan of a glioma from 1980 and a recent \acrshort{MR} scan, showing the large improvement over time. On the modern scan the glioma can easily be identified}\label{fig:intro_MR_comparison}
+\end{figure}
