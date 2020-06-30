@@ -3,26 +3,29 @@
 
 \chapter{Introduction}
 
-When genetic changes occur during the production of new cells the cells can start to grow uncontrollably, this process is commonly known as cancer.
-These uncontrollable cells might then go on to form a single mass, a tumor.
-Tumors can originate from and occur almost everywhere in the human body, with one of the deadliest being brain tumors.
-Different subtypes of brain tumors are recognized, depending on their origin.
-In this thesis, we focus on glioma, a specific subtype of brain tumors which originate from the glial cells in the brain and the most often occurring brain tumor \autocite{leece2017indicence}.
+When genetic changes occur during the production of new cells, the cells might start growing uncontrollably, this uncontrollable growth of new cells is commonly known as cancer. When these cancerous cells clump together, the single mass that they form is called a tumour.
+Tumours can originate from and occur in almost every anatomical location, and the tumour location is not always the same as the location from which the cancerous cells originated.
+When the tumour appears in the same anatomical location as the anatomical origin of the cells, the tumour is called a primary tumour.
+Thus, primary brain tumours are tumours that are located in the brain and which are formed by cells that mutated from (healthy) brain cells.
+Primary brain tumours are initially classified by the type of cells from which the tumour originated.
+Thus many different categories of primary brain tumours exist, with gliomas being the most prevalent type \autocite{leece2017indicence}.
+Gliomas originate from glial cells, which play a supporting role in the central nervous system and are the most abundant cell type in the brain \autocite{jakel2017glial}.
 
-Although glioma have a low incidence compared to other cancers, around \per{1.71} globally \autocite{leece2017indicence}, they are quite lethal with median survival of around 10 months \autocite{hess2004gliomaincidence}.
-Historically glioma were categorized based solely on their histological appearance, and were assigned a grade (grade II, III or IV) to indicate the severity of the tumor.
-Grade II and grade III glioma are often grouped together and referred as \gls{LGG}, grade IV glioma are often referred to as \gls{HGG} or \gls{GBM}.
-However, recently it has been found that within these groups there exists large differences between the survival which can be explained by the genetic mutations present within the tumor \autocite{eckel2015gliomagroups}
-As as result the \gls{WHO} updated their categorization of glioma to also include these molecular features \cite{louis20162016}.
-Two of the most important genetic markers are the \gls{IDH} mutation and \acl{1p19qcotion} which now, in addition to the histological appearance, dictate the categorization of glioma as can be seen in \cref{fig:intro_glioma_categorization}.
+Although gliomas have a low incidence compared to other cancers, around \per{1.71} globally \autocite{leece2017indicence}, they are quite lethal with a median survival of around ten months \autocite{hess2004gliomaincidence}.
+Historically gliomas were categorized based solely on their histological appearance, the appearance of the tumour cells under a microscope, and were classified as astrocytoma, oligoastrocytoma, oligodendroglioma or glioblastoma depending on the type of glial cells that were visible in the tumour tissue. The gliomas were also assigned grade, grade II, III, or IV, to indicate the aggressiveness of the tumour.  Astrocytoma, oligoastrocytoma, and oligodendroglioma are often grade II or grade III glioma, whereas glioblastoma are often grade IV.
+
+Not only is this histological categorization and grading of the tumours very observer-dependent, it has also been found that within the different grades, but large differences between patient survival also exist. Grade III and grade IV glioma are often grouped and referred to as \gls{HGG}, whereas grade II glioma are referred to as \gls{LGG}. However, some grade III glioma show survival that is much more similar to grade II glioma than to grade IV glioma. It was found that this difference can be explained by the genetic mutations present within the tumour \autocite{eckel2015gliomagroups}.
+Therefore, in 2016 the \gls{WHO} updated their categorization of glioma to include these molecular features \cite{louis20162016} and depend less on the histology alone.
+This update has lead to better patient stratification and a more objective categorization of the glioma since the genetic analysis is less observer-dependent than the histological analysis. For the histological appearance, only the difference between glioblastoma and astrocytoma, oligoastrocytoma, and oligodendroglioma is now relevant. The difference between astrocytoma, oligoastrocytoma, and oligodendroglioma is now dictated by the genetic features of the tumour.
 
 \begin{figure}[hbt]
+    \resizebox{0.8\textwidth}{!}{\subimport{Figures/}{WHO_2016_flowchart.pgf}}
     \centering
-    \includegraphics[width=0.4\textwidth]{example-image-a}
     \caption{The WHO 2016 categorizaton of glioma.}\label{fig:intro_glioma_categorization}
 \end{figure}
 
-Within the \gls{LGG} three categories are now defined based on their molecular features:
+
+The two most important genetic markers are the \gls{IDH} mutation and \acl{1p19qcotion} which now, in addition to the histological appearance, dictate the categorization of glioma as can be seen in \cref{fig:intro_glioma_categorization}.  Within the grade II and grade III glioma, the following categories now exist:
 
 \begin{itemize}
     \item Diffuse astrocytoma, \gls{IDH} wildtype
@@ -30,7 +33,7 @@ Within the \gls{LGG} three categories are now defined based on their molecular f
     \item Oligodendroglioma,\gls{IDH} mutated and 1p/19q codeleted
 \end{itemize}
 
-No category exists for 1p/19q codeleted, \gls{IDH} wildtype glioma since it has been found that all 1p19q codeleted tumors are also IDH mutated \autocite{labussi20101p19qcodeletedIDH}.
+No category exists for 1p/19q codeleted, \gls{IDH} wildtype glioma since it has been found that all 1p19q codeleted tumors are also IDH mutated \autocite{labussi20101p19qcodeletedIDH}. The oligodendroglioma group has the best prognosis in these group, with the diffuse astrocytoma IDH wildtype showing the worst prognosis. Due to the aggressiveness off IDH wildtype astrocytoma, it is even suggested that these are actually misclassified glioblastoma.
 
 For the \gls{HGG}, the WHO 2016 guidelines do not provide a subclassification.
 However, it has been found that \gls{MGMT} methylation is an important molecular marker, where patients with \gls{MGMT} methylation survive longer \autocite{martinez2007MGMT, gessler2018MGMT}.

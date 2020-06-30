@@ -1,0 +1,92 @@
+\begin{tikzpicture}[auto,
+    text_block/.style ={rectangle, text centered},
+    accolade/.style={decorate,decoration={brace,amplitude=20pt}, -, >=latex, thick},
+    arrow_line/.style= {draw, ->, >=latex, thick, rounded corners=5pt},
+    split_line/.style = {draw, -, >=latex, thick, rounded corners=5pt},
+    ]
+
+    \node [text_block] (histology) {Histology};
+    \node [text_block, below = of histology] (IDH) {IDH status};
+    \node [text_block, below = of IDH] (1p19q) {1p/19q status};
+    \node [text_block, below = of 1p19q] (category) {Category};
+
+
+    \node [text_block, right = 1cm of histology] (astro) {Astrocytoma};
+    \node [text_block, right = 1cm of astro] (oliastro) {Oligoastrocytoma};
+    \node [text_block, right = 1cm of oliastro] (oligo) {Oligodenroglioma};
+    \node [text_block, right = 1cm of oligo] (gbm) {glioblastoma multiforme};
+
+    \draw [accolade] (astro.north west) -- (oligo.north east) node[midway, above, yshift=1cm] {Grade II/III};
+    \draw [accolade] (gbm.north west) -- (gbm.north east) node[midway, above, yshift=1cm] {Grade IV};
+
+    \coordinate (astro_oli_mid) at ($(astro)!0.5!(oliastro)$);
+    \coordinate (oliastro_oli_mid) at ($(oliastro)!0.85!(oligo)$);
+
+    \node [text_block] at (IDH -| astro_oli_mid) (IDH_mut) {IDH mutated};
+    \node [text_block] at (IDH -| oliastro_oli_mid) (IDH_wt) {IDH wildtype};
+
+    \node [text_block] at (1p19q -| astro) (1p19q_del) {1p/19q co-deleted};
+    \node [text_block] at (1p19q -| oliastro) (1p19q_intact) {1p/19q intact};
+
+    \coordinate (oligo_category) at (category -| 1p19q_del);
+    \coordinate (astro_mut_category) at (category -| 1p19q_intact);
+    \coordinate (astro_wt_category) at (category -| IDH_wt);
+
+    \node [text_block, text width = 3cm] at (oligo_category) (oligo_1p19q) {Oligodenroglioma\\IDH mutated\\1p/19q co-deleted};
+    \node [text_block, text width = 3cm] at (astro_mut_category) (astro_IDH) {Diffuse astrocytoma\\IDH mutatated};
+    \node [text_block, text width = 3cm] at (astro_wt_category) (astro_IDH_wt) {Diffuse astrocytoma\\IDH wildtype};
+
+
+%    \begin{scope}[on background layer]
+%    \node[fit=(histology)(astro)(oliastro)(oligo)(gbm), draw, minimum height=1cm, fill=color0, fill opacity=.8, text=white] {};
+%    \end{scope}
+
+    \coordinate (IDH_mid_north) at ($(IDH_mut.north)!0.5!(IDH_wt.north)$);
+    \coordinate (IDH_mid) at ($(IDH_mut)!0.5!(IDH_wt)$);
+    \coordinate (1p19q_mid_north) at ([yshift=0.55cm] $(1p19q_del.north)!0.5!(1p19q_intact.north)$);
+    \coordinate (category_north) at (oligo_1p19q.north);
+
+    \begin{scope}[every path/.style=split_line]
+        \path (astro.west) |- ([yshift=0.2cm] IDH_mid_north);
+        \path (oligo.east) |- ([yshift=0.2cm] IDH_mid_north);
+        \path ([yshift=0.2cm] IDH_mid_north) -- (IDH_mid);
+        \path (IDH_mut) -- (1p19q_mid_north);
+    \end{scope}
+
+    \begin{scope}[every path/.style=arrow_line]
+        \path (IDH_mid) -- (IDH_wt.west);
+        \path (IDH_mid) -- (IDH_mut.east);
+
+        \path (1p19q_mid_north) -| (1p19q_del);
+        \path (1p19q_mid_north) -| (1p19q_intact);
+
+        \path (IDH_wt) -- (category_north -| astro_wt_category);
+        \path (1p19q_del) -- (category_north -| oligo_category);
+        \path (1p19q_intact) -- (category_north -| astro_mut_category);
+    \end{scope}
+
+    % GBM
+    \node [text_block] at (gbm.west |- IDH) (GBM_idh_mut) {IDH mutated};
+    \node [text_block] at (gbm.east |- IDH) (GBM_idh_wt) {IDH wildtype};
+
+    % \coordinate (gbm_wt_category) at (category -| GBM_idh_wt);
+    % \coordinate (gbm_mut_category) at (category -| GBM_idh_mut);
+
+    \node [text_block, text width = 3cm] at (category -| GBM_idh_wt) (gbm_wt_category) {Glioblastoma\\IDH wildtype};
+    \node [text_block, text width = 3cm] at (category -| GBM_idh_mut) (gbm_mut_category) {Glioblastoma\\IDH mutated};
+
+
+    \coordinate (IDH_gbm_mid_north) at ($(GBM_idh_mut.north)!0.5!(GBM_idh_wt.north)$);
+
+    \begin{scope}[every path/.style=split_line]
+        \path (gbm) -- ([yshift=0.4cm] IDH_gbm_mid_north);
+    \end{scope}
+
+    \begin{scope}[every path/.style=arrow_line]
+        \path ([yshift=0.4cm] IDH_gbm_mid_north) -| (GBM_idh_mut);
+        \path ([yshift=0.4cm] IDH_gbm_mid_north) -| (GBM_idh_wt);
+        \path (GBM_idh_mut) -- (gbm_mut_category);
+        \path (GBM_idh_wt) -- (gbm_wt_category);
+    \end{scope}
+
+\end{tikzpicture}
