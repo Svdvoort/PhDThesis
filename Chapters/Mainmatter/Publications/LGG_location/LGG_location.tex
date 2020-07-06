@@ -1,3 +1,5 @@
+% !TEX root = ../../../../temp_manuscript.tex
+
 \chapter[Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups][LGG location molecular subgroups]{Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups}
 \label{chap:LGGLocation}
 
@@ -108,7 +110,7 @@ Twenty-two patients were excluded: 16 due to sequencing failure, 2 due to a preo
 Of the remaining 224 patients, 110 were \cgls{IDH} mutated astrocytomas, 92 were oligodendrogliomas, and 22 were \cgls{IDH} wild-type astrocytomas.
 Clinical characteristics of this cohort were consistent with \cgls{LGG} patient characteristics known from the literature and are shown in \cref{tab:LGG_location_characteristics}.
 
-\begin{table}
+\begin{table}[htbp]
 \footnotesize
 \centering
 \begin{tabular}{L{2.65cm} C{.65cm} C{.65cm} C{.65cm} C{.65cm} C{.65cm} C{.65cm} C{.65cm} C{.65cm}}
@@ -307,3 +309,30 @@ We need larger numbers to confirm that the spatial distribution of \cgls{IDH} wi
 However, a recent study showed that, in the context of glioblastoma, the frontal cortex is also significantly associated with the presence of \cgls{IDH} mutations \autocite{tejada2018voxel}.
 
 In conclusion, \cgls{WHO} 2016 low-grade glioma molecularly defined subgroups show both differences and similarities in spatial distribution, with \cgls{IDH}-mutated \cglspl{LGG} significantly more frequently located in the frontal lobes and \cgls{IDH} wild-type tumors more frequently in the basal ganglia of the right hemisphere.
+
+\newpage
+\begin{subappendices}
+    \section{Supplemental Figures}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\textwidth]{Figures/p_value_oligo_astro.png}
+        \caption{Results of the FSL Randomize test with 15000 permutations for statistical
+        differences in location distribution. The color of a voxel is correlated with
+        a p-value as indicated in the top-right color bar; (a) heatmap of unique
+        localisations for oligodendroglioma compared with IDH mutated astrocytomas (b) heatmap of unique localisations for IDH mutated astroctyomas
+        compared with oligodendrogliomas}\label{fig:LGG_location_oligo_astro_p_value}
+    \end{figure}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[height=\textheight]{Figures/heatmap_multi_parameter.png}
+        \caption{Spatial distribution heatmaps of presence of individual gene or copy number alterations in the context of oligodendroglioma}\label{fig:LGG_location_heatmap_multi_genetics}
+    \end{figure}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\textwidth]{Figures/p_value_9p.png}
+        \caption{Results of the FSL Randomize test showing unique localisations for loss of 9p in the context of oligodendroglioma}\label{fig:LGG_location_p_value_9p}
+    \end{figure}
+\end{subappendices}
