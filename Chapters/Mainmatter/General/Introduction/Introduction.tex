@@ -82,12 +82,22 @@ In some cases, especially for the 1p/19q co-deleted, IDH mutated oligodendroglio
 Since \gls{MRI} is already part of the standard clinical pathway for glioma patients, the question quickly arose whether it was possible to use the radiological imaging as a non-invasive alternative to identify the genetic features of the tumour.
 
 \section{Radiological analysis of glioma}
-\gls{MRI} uses the property of the water molecules of tissue to form an image, by manipulating these properties, different tissue characteristics can be imaged.
-These concept is often used in clinical care, mainly to distinguish healthy tissue from diseased tissue.
+
+\gls{MRI} is an imaging technique that uses the magnetic property of protons, one of three elementary particles that form an atom, to create an image.
+Although protons appear in all atoms, hydrogen atoms are of particular interest because they consist of a single proton and thus can easily be manipulated.
+Furthermore, a water molecule contain two hydrogen atoms and since the majority of the body consists of water hydrogen atoms (and thus protons) are abundant in the human body, especially in tissue.
+The magnetic properties of the protons arise from their \say{spin}, a quantum mechanical property that can be compared to a spinning top that spins around its own axis.
+Normally the spins of the protons are distributed randomly, which means that they cancel each other out and thus nothing can be measured.
+However, by applying an external magnetic field the spins can be forced to all point in the same direction.
+Once the spins are all aligned it is possible to excite the spins by applying a magnetic field in a different direction for a short time.
+Then measuring how long it takes for the spins to go back to their resting state can be used to create an image.
+By exciting the spins in different ways, it is possible to obtain different \say{image contrasts} that show different properties of the tissue.
+
+\gls{MRI} is routinely being used in clinical care, since it can be used to distinguish between healthy and diseased tissue.
 Shortly after the first introduction of \gls{MRI}, it was proposed that the method could be used to identify tumors \autocite{damadian1971tumor}.
-After some improvements, the technique was first applied to the brain in 1980 \autocite{holland1980brain}, and in the same year MRI has first been used to investigate a possible tumor in the brain, shown in \cref{fig:intro_MR_first} \autocite{hawkes1980NMRbrain}.
-Since then quality of \gls{MRI} scans has vastly increased, and different \gls{MRI} techniques have been developed that image different tissue characteristics.
-\cref{fig:intro_MR_modern} shows a modern \gls{MR} image of a brain tumor.
+After some improvements, the technique was first applied to the brain in 1980 \autocite{holland1980brain}, and in the same year MRI has first been used to investigate a possible tumor in the brain.
+Since then quality of \gls{MRI} scans has vastly increased, and different \gls{MRI} techniques have been developed that can image different tissue characteristics.
+\cref{fig:intro_MR_modern} shows some of the currently most popular imaging sequences, although many others exist.
 Here the tumor can clearly be seen in the patients brain, and therefore \gls{MRI} is now the standard-of-care for brain tumor diagnosis and treatment decisions.
 
 \begin{figure}[hbt]
@@ -106,22 +116,28 @@ Here the tumor can clearly be seen in the patients brain, and therefore \gls{MRI
 \end{figure}
 
 \gls{MRI} scans are already routinely being used to get a first indication of the aggressiveness of the tumor, mainly for the evaluation of the grade \autocite{upadhyay2011MRIevaluation}.
-In recent years it has been shown that the certain imaging features correlate with the status of the genetic markers of a tumor \autocite{patel2017mismatch, smits2016imaging}.
+With the increasing importance of genetic markers of the tumors, research has focused on identifying imaging features that correlate with the status of the genetic markers of a tumor \autocite{patel2017mismatch, smits2016imaging}.
 These imaging features that correlates with an underlying physiological aspect are called imaging biomarkers.
-The presence of these biomarkers has increased the interest for methods that can predict the genetic status of the tumor from the radiological images.
-However, although research shows the existence of certain imaging characteristics that correlate with the gentic status, the implementation of these methods in the clinical practice has still been limited.
-This is due to a number of reasons.
-Firstly, \gls{MRI} is a qualitative and not a quantitative measurement.
+The presence of these biomarkers is a promising non-invasive alternative to tumor biopsy and resection.
+However, the use of imaging biomarkers is not without problems.
+
+Firstly, \gls{MRI} is a qualitative and not a quantitative measurement, meaning that there is a large difference between scans of the same patient on different machines, and sometimes even on the same machine.
 This makes it hard to define a proper measurement value from an \gls{MR} scan, and thus to define a robust method that can easily be broadly applied.
 Secondly, most biomarkers are rather simple; looking at a single point in the tumor or only considering the 2D measurements of a tumor.
 Methods are kept simple so that they can easily be used by the clinician and do not require complicated, time-consuming measurement.
 However, this limits the amount of information that such a method can take into account, thus pressing on the performance of these methods.
-Lastly, the expertise of a clinician, the difference between \gls{MR} scans and the relatively poorly defined measurements cause a large inter- and intra-observer variability in the measurements.
+Because of these restrictions biomarkers to be used by clinical experts are often vaguely defined and are not objective.
+Thus, the proper measurement of these imaging biomarkers also relies on the expertise of the treating physician, causing a large inter- and intra-observer variability in the measurements.
 This makes it difficult to broadly apply a method, causes a drop in performance and results in the patient treatment being dependent on the treating physician.
 Thus, a method that would be more objective and consistent, that can take into account complex relationships of the image, while not being too complex and time-consuming for the clinician to use is needed.
 
 This demand was met by the field of machine learning.
-Machine learning leverages large amounts of data to find common patterns and uses these patterns to classify the data.
+Although the exact definition of \say{machine learning} differs from person to person, in general machine learning methods are methods that leverage (large amounts of data) to find common patterns and uses these patterns to classify the data.
+For example, one can make an algorithm and provide it with pictures of cats and dogs, from which the algorithm then has to learn which pictures are cats and which pictures are dogs.
+A lot of different machine learning methods exist, but one way of separating the methods is by whether they use human-defined features or determine features themselves.
+When a method uses human-defined features it is possible to feed it with imaging biomarkers that have been previously discovered.
+On the other hand some machine learning methods can learn relevant features directly from the raw data, allowing for possibly better features.
+
 Using a computational method removes (part of) the human element of measurements, it will be more consistent (when the same patient is presented multiple times it will give the same output), and depending on the method can take into account complex relationships in the data.
 Of course this comes at a price, mainly at the cost of interpretability.
 Since the method can find complex relationships, it might is then difficult to understand why a method made a certain decision.
