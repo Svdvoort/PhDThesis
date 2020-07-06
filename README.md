@@ -10,6 +10,8 @@ The latest version of the manuscript, as well as all the old versions, can be fo
 
 The latex code contains some handy tricks to work with multiple files and bibliographies. Please take a look around and feel free to reuse latex code (not including copyright materials such as the manuscript texts) that you find useful.
 
+The PDF is best viewed in Adobe Reader or on Okular >=1.10 with Poppler >=0.80.0 on linux systems to properly display the included animations.
+
 ## Automatic workflows
 
 Upon each push to the repository an automatic pipeline will start which lints and builds the latex files, checks the bibliography files and creates a new release. These actions are defined in ./github/workflows/main.yaml.
