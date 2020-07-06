@@ -11,6 +11,7 @@
 \addbibresource{Bibliographies/LGG_1p19q_prediction.bib}
 \addbibresource{Bibliographies/HGG_location.bib}
 \addbibresource{Bibliographies/introduction.bib}
+\addbibresource{Bibliographies/DDS.bib}
 \addsectionbib[label=mypublications]{Bibliographies/self.bib}
 
 \subimport{Settings/}{color_definitions.tex}
@@ -30,12 +31,12 @@
 \maketitle
 \makecopyrightpage
 % These will be included once the date and committee is known
-% But you can give it a try for yousrelf!
+% But you can give it a try for yourself!
 % \makethesispage
 % \makecommitteepage
 \endgroup
 
-% To force that there are emtpy pages after the titling pages
+% To force that there are empty pages after the titling pages
 
 \frontmatter
 \null
@@ -68,6 +69,8 @@
 \cleardoublepage
 
 % Additional chapters will be placed here
+\subimport{Chapters/Mainmatter/Publications/DeepDicomSort//}{DDS.tex}
+\cleardoublepage
 
 % Conclusion chapter
 \subimport{Chapters/Mainmatter/General/Discussion/}{Discussion.tex}

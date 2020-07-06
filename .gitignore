@@ -243,7 +243,7 @@ TSWLatexianTemp*
 
 # Ignore PDF files in main directories, to ensure no leakage of copyright material
 *.pdf
-# But not in the images subfolders
+# But not in the Figures subfolders
 !**/Figures/*.pdf
 
 # Also ignore the tex document used for testing

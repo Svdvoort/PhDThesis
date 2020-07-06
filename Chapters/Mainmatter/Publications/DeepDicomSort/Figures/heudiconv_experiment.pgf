@@ -1,0 +1,221 @@
+\begin{tikzpicture}[node distance=1.5cm,
+    collection_block/.style={font=\Large,rectangle, draw=collection_border,
+      very thick, fill=collection_fill,
+      text width=24em, text centered, minimum height=6em},
+    small_collection_block/.style={font=\Large,rectangle, draw=collection_border,
+    very thick, fill=collection_fill,
+    text width=15em, text centered, minimum height=6em},
+    action_block/.style={font=\Large\bfseries,rectangle, draw=action_border,
+    very thick, fill=action_fill,
+      text width=15em, text centered, minimum height=6em},
+    object_block/.style={font=\Large\bfseries,rectangle, draw=object_border,
+    very thick, fill=object_fill,
+      text width=15em, text centered, minimum height=6em},
+    bounding_box/.style={draw,inner sep=2mm, dashed},
+    line/.style= {draw, -},
+    line_label/.style= {font=\Large\bfseries, text width =1cm, text centered},
+    box_label/.style= {font=\huge\bfseries, text width = 9cm, text centered},
+    arrow_line/.style= {draw, ->, >=latex, very thick, line width=1mm},
+    circular_arrow/.style={draw, ->, line width=.5mm}]
+
+
+    \node [collection_block] (BTumorP) {
+    \textbf{\gls{BTP}}
+    \begin{tabbing}
+    Subjects: \hspace{3em}\=20 \\
+    Scans: \>160\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    Sites: \> 1
+    \end{tabbing}
+    };
+
+    \node[collection_block, right = 0.5cm of BTumorP] (IvyGAP) {
+    \textbf{\gls{IVY}}\\
+    \begin{tabbing}
+    Subjects: \hspace{3em}\=39 \\
+    Scans: \>4250\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    Sites: \> 1
+    \end{tabbing}
+    };
+
+    \node[collection_block, below = 0.5cm of BTumorP] (LGG1p19q) {
+    \textbf{\gls{LGG1p19q}}
+    \begin{tabbing}
+    Subjects: \hspace{3em}\=159 \\
+    Scans: \>330\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    Sites: \> 1
+    \end{tabbing}
+    };
+
+    \node[collection_block, below = 0.5cm of IvyGAP] (TCGA-GBM) {
+    \textbf{\gls{TCGAGBM}}
+    \begin{tabbing}
+    Subjects: \hspace{3em}\=259\\
+    Scans: \>4232\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    Sites: \> 8
+    \end{tabbing}
+    };
+
+    \coordinate (brain_train_mid_ver) at ($(TCGA-GBM)!0.5!(LGG1p19q)$);
+    \coordinate (brain_train_mid_hor) at (TCGA-GBM.south -| brain_train_mid_ver);
+
+    \node[collection_block, below = 0.5cm of brain_train_mid_hor] (TCGA-LGG) {
+    \textbf{\gls{TCGALGG}}
+    \begin{tabbing}
+    Subjects: \hspace{3em}\=199\\
+    Scans: \>2007\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    Sites: \> 5
+    \end{tabbing}
+    };
+
+    % \coordinate (brain_train_mid_LGG) at (TCGA-LGG.south -| brain_train_mid);
+
+    \node[collection_block, below=1.5cm of TCGA-LGG](TRAIN) {
+    \textbf{\Gls{BTtrain}}\\
+    \textbf{(\gls{HC} version)}
+    \begin{tabbing}
+    Subjects: \hspace{3em}\=676\\
+    Scans: \>10979\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    Sites: \> 13
+    \end{tabbing}
+    };
+
+    \node[bounding_box, fit= (BTumorP) (IvyGAP) (TCGA-LGG)] (BRAIN_TRAIN) {};
+
+    \begin{scope}[every path/.style=line]
+        \path (BRAIN_TRAIN.south west) -- (TRAIN.north west);
+        \path (BRAIN_TRAIN.south east) -- (TRAIN.north east);
+    \end{scope}
+
+
+    \node [action_block, below = of TRAIN] (run) {Run \gls{HC}};
+
+    \node [object_block, left = of run] (initial_heur) {Initial heuristic file};
+
+    \node [action_block, below = of run] (missclass) {Determine\\ misclassified \glspl{scan}};
+
+    \node [action_block, right = of missclass] (performance_improve) {Improved\\ performance?};
+
+    \node [action_block, above = of performance_improve] (settings_update) {Update heuristic\\ based on misclassified \glspl{scan}};
+
+    \node [object_block, right = 2.5cm of performance_improve] (optimal_settings) {Optimal heuristic file};
+
+    \node [action_block, above = of optimal_settings] (test_run) {Run \gls{HC}};
+
+    \node [object_block, right = of test_run] (metrics) {Reported metrics\\ (overall accuracy and per-class accuracy)};
+
+    \node [bounding_box, fit= (run) (missclass) (settings_update) (performance_improve)] (optimization) {};
+
+    \node[box_label, above right = 0cm and 1.5cm of optimization.north, anchor=south] (hp_text) {Heuristic optimization};
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%
+    % Testing
+    %%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node[collection_block, above = of test_run] (TEST) {
+        \textbf{Brain tumor test set}\\
+        \textbf{(\gls{HC} version)}
+        \begin{tabbing}
+        Subjects: \hspace{3em}\=178\\
+        Scans: \>2342\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        Sites: \> 7
+        \end{tabbing}
+    };
+
+    \node[collection_block, above = of TEST] (RIDERNEURO) {
+        \textbf{\gls{RIDER}}
+        \begin{tabbing}
+        Subjects: \hspace{3em}\=19\\
+        Scans: \>102\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        Sites: \> 1
+        \end{tabbing}
+    };
+
+    % \node[collection_block, above left = 0.5cm and 0.25cm of RIDERNEURO, anchor=south] (CPTAC-GBM) {
+    %     \textbf{\gls{CPTAC}}
+    %     \begin{tabbing}
+    %     Subjects: \hspace{3em}\=29\\
+    %     Scans: \>749\\
+    %     % Scanner models:\>XX
+    %     % Scanner manufacturers: \> XX
+    %     Sites: \> 4
+    %     \end{tabbing}
+    % };
+    %
+    % \node[collection_block, right = 0.5cm of CPTAC-GBM] (REMBRANDT) {
+    %     \textbf{\gls{REMBRANDT}}
+    %     \begin{tabbing}
+    %     Subjects: \hspace{3em}\=130\\
+    %     Scans: \>1491\\
+    %     % Scanner models:\>XX
+    %     % Scanner manufacturers: \> XX
+    %     Sites: \> 2
+    %     \end{tabbing}
+    % };
+
+
+    \node[collection_block, above = 0.5cm of RIDERNEURO] (REMBRANDT) {
+        \textbf{\gls{REMBRANDT}}
+        \begin{tabbing}
+        Subjects: \hspace{3em}\=130\\
+        Scans: \>1491\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        Sites: \> 2
+        \end{tabbing}
+    };
+
+
+
+    \node[collection_block, above = 0.5cm of REMBRANDT] (CPTAC-GBM) {
+        \textbf{\gls{CPTAC}}
+        \begin{tabbing}
+        Subjects: \hspace{3em}\=29\\
+        Scans: \>749\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        Sites: \> 4
+        \end{tabbing}
+    };
+
+
+    \node[bounding_box, fit=(CPTAC-GBM) (REMBRANDT) (RIDERNEURO)] (BTTestS) {};
+
+    \begin{scope}[every path/.style=line]
+        \path (BTTestS.south west) -- (TEST.north west);
+        \path (BTTestS.south east) -- (TEST.north east);
+    \end{scope}
+
+
+    \begin{scope}[every path/.style=arrow_line]
+        \path (TRAIN) -- (run);
+        \path (initial_heur) -- (run);
+        \path (run) -- (missclass);
+        \path (missclass) -- (performance_improve);
+        \path (performance_improve) -- node[line_label, right, midway] {No} (settings_update);
+        \path (performance_improve) -- node[line_label, above, midway] {Yes} (optimal_settings);
+        \path (settings_update) -- (run);
+
+        \path (optimal_settings) -- (test_run);
+        \path (test_run) -- (metrics);
+        \path (TEST) -- (test_run);
+    \end{scope}
+
+\end{tikzpicture}

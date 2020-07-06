@@ -1,0 +1,103 @@
+\def\blockwidth{14em}
+
+\begin{tikzpicture}[auto,
+    conv_block/.style ={rectangle, draw=convolution_border, very thick, fill=convolution,
+      text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+      align=center},
+    conv_layer/.style ={rectangle, draw=conv_layer_border, very thick, fill=conv_layer,
+    text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+    align=center},
+    pool_block/.style ={rectangle, draw=pooling_border, very thick, fill=pooling,
+    text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+    align=center},
+    input_block/.style ={rectangle, draw=input_border, very thick, fill=input,
+    text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+    align=center},
+    other_block/.style ={rectangle, draw=other_border, very thick, fill=other,
+    text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+    align=center},
+    dropout_block/.style ={rectangle, draw=dropout_border, very thick, fill=dropout,
+    text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+    align=center},
+    activation_block/.style ={rectangle, draw=activation_border, very thick, fill=activation,
+    text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+    align=center},
+    dense_block/.style ={rectangle, draw=dense_border, very thick, fill=dense,
+    text width=\blockwidth, text centered, minimum height=4em, font=\large\bfseries,
+    align=center},
+    line/.style= {draw, ->, >=latex, very thick, line width=1mm},
+    line_label/.style= {font=\large\bfseries, text width=1.8cm, text centered},
+    title_label/.style= {font=\LARGE\bfseries, text centered}
+ ]
+
+    \node(image) [input_block]{Input \\ Size: 256x256};
+
+    \node(conv2D1) [conv_block, below = 2cm of image] {32 filters 5x5 \\ Output size: 252x252};
+    \node(conv2D2) [conv_block, below = 0cm of conv2D1] {32 filters 5x5 \\ Output size: 248x248};
+    \node(pooling1) [pool_block, right = 0cm of conv2D2.south, anchor=north] {Pool size: 3x3 \\ Output size: 82x82};
+
+    \node(conv2D3) [conv_block, below = 0.2cm of pooling1] {64 filters 5x5 \\ Output size: 78x78};
+    \node(conv2D4) [conv_block, below = 0cm of conv2D3] {64 filters 5x5 \\ Output size: 74x74};
+    \node(pooling2) [pool_block, below = 0cm of conv2D4] {Pool size: 3x3 \\ Output size: 24x24};
+
+    \node(conv2D5) [conv_block, below = 0.2cm of pooling2] {64 filters 5x5 \\ Output size: 20x20};
+    \node(conv2D6) [conv_block, below = 0cm of conv2D5] {64 filters 5x5 \\ Output size: 16x16};
+    \node(pooling3) [pool_block, below = 0cm of conv2D6] {Pool size: 3x3 \\ Output size: 5x5\hphantom{11}};
+
+    \node(flatten) [other_block, below = 0.2cm  of pooling3] {Flatten};
+
+
+    \node(concat) [other_block, right = 1.5cm of conv2D2] {Concatenation};
+
+    \coordinate (half_input_conv) at ($(image)!0.4!(conv2D1)$);
+
+    \node(dropout_4D) [dropout_block] at (half_input_conv -| concat) {Dropout: 0.25};
+
+    \node(dropout1) [dropout_block, below = 0.2cm of concat] {Dropout: 0.4};
+    \node(dense1) [dense_block, below = 0.2cm of dropout1] {FC: 1024 units};
+
+    \node(act1) [activation_block, below = 0.2cm of dense1] {ReLU};
+
+    \node(dropout2) [dropout_block, below = 0.2cm of act1] {Dropout: 0.4};
+    \node(dense3) [dense_block, below = 0.2cm of dropout2] {FC: 8 units};
+    \node(softmax) [activation_block, below = 0.2cm of dense3] {Softmax};
+    \node(output) [input_block,right=1.5cm of flatten] {Predicted class};
+
+    \coordinate (columns_mid) at ($(flatten)!0.5!(output)$);
+    \coordinate (flatten_south) at ([shift={(0mm,-5mm)}] flatten.south);
+    \coordinate (concat_north) at ([shift={(0mm,7mm)}] concat.north);
+    \coordinate (concat_left) at ([shift={(-5mm,0mm)}] concat.north);
+    \coordinate (concat_right) at ([shift={(5mm,0mm)}] concat.north);
+    \coordinate (half_soft_predict) at ($(softmax)!0.5!(output)$);
+
+
+    \begin{scope}[every path/.style=line]
+        \path (image) -- (conv2D1);
+        \path (softmax) -- (output);
+        \path (flatten) -- (flatten_south) -- (columns_mid |- flatten_south) -- (columns_mid |- concat_north) -- node[line_label, above] (features) {Image\\features} (concat_north -| concat_left) -- (concat_left);
+        \path (image) -- (half_input_conv) --  node[line_label, above, midway] (label_4D) {4D label} (dropout_4D);
+        \path (dropout_4D) -- (concat);
+    \end{scope}
+
+    % Convlution block
+
+    \node(conv_block_expansion) [conv_block, right = 4 cm of half_soft_predict] {N filters YxY};
+
+
+    \node(batch_norm) [other_block, right=1cm of conv_block_expansion] {Batch\\ normalization};
+    \node(prelu) [activation_block, below=0cm of batch_norm] {Parametric ReLU};
+    \node(conv_layer) [conv_layer, above = 0cm of batch_norm] {N 2D convolutional\\ filters\\
+                                                                 kernel size Y by Y};
+    % \node(equal_sign) [title_label, above = 0.2cm of conv_layer] {=};
+
+    \draw [decorate, decoration={brace,amplitude=20pt, mirror}] (conv_layer.north west) -- (prelu.south west);
+
+    % Legend
+    \node(activation_explanation) [activation_block, above = 1.5cm of conv_block_expansion] {Activation layer};
+    \node(dense_explanation) [dense_block, above = 0.2cm of activation_explanation] {Fully-connected layer};
+    \node(dropout_explanation) [dropout_block, above = 0.2cm of dense_explanation] {Dropout layer};
+    \node(pool_explanation) [pool_block, above = 0.2cm of dropout_explanation] {Max-pooling layer};
+    \node(conv_explanation) [conv_block, above = 0.2cm of pool_explanation] {Convolutional block};
+
+    \node(legend_label) [title_label, above = 0.2cm of conv_explanation] {LEGEND};
+\end{tikzpicture}

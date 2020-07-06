@@ -36,6 +36,8 @@ The chaper ["Radiomics: Data mining using quantitative medical image features"](
 
 The chapter ["Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblastoma With vs. Without MGMT Promoter Methylation"](https://www.frontiersin.org/articles/10.3389/fonc.2020.00596/full) is distributed under the terms of the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)
 
+The chapter ["DeepDicomSort: An Automatic Sorting Algorithm for Brain Magnetic Resonance Imaging Data"](https://link.springer.com/article/10.1007%2Fs12021-020-09475-7) is distributed under the terms of the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)
+
 ## Work in progress
 
 This thesis is currently a work in progress, and thus will be updated over time.

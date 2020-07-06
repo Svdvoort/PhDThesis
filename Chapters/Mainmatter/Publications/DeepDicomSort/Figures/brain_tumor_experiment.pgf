@@ -1,0 +1,282 @@
+\begin{tikzpicture}[auto,
+    collection_block/.style={font=\Large,rectangle, draw=collection_border,
+      very thick, fill=collection_fill,
+      text width=24em, text centered, minimum height=6em},
+    small_collection_block/.style={font=\Large,rectangle, draw=collection_border,
+    very thick, fill=collection_fill,
+    text width=15em, text centered, minimum height=6em},
+    action_block/.style={font=\Large\bfseries,rectangle, draw=action_border,
+    very thick, fill=action_fill,
+      text width=15em, text centered, minimum height=6em},
+    object_block/.style={font=\Large\bfseries,rectangle, draw=object_border,
+    very thick, fill=object_fill,
+      text width=15em, text centered, minimum height=6em},
+    bounding_box/.style={draw,inner sep=2mm, dashed},
+    line/.style= {draw, -},
+    line_label/.style= {font=\Large, text width =3cm, text centered},
+    box_label/.style= {font=\fontsize{19pt}{12}\bfseries, text width = 10cm, text centered},
+    arrow_line/.style= {draw, ->, >=latex, very thick, line width=1mm},
+    circular_arrow/.style={draw, ->, line width=.5mm}]
+
+
+    \node [collection_block] (BTumorP) {\textbf{\gls{BTP}}
+    \begin{tabbing}
+    \Glspl{sub}: \hspace{3em}\=20 \\
+    \Glspl{scan}: \>160\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    \Glspl{site}: \> 1
+    \end{tabbing}
+    };
+
+    \node[collection_block, right = 0.5cm of BTumorP] (IvyGAP) {\textbf{\gls{IVY}}\\
+    \begin{tabbing}
+    \Glspl{sub}: \hspace{3em}\=39 \\
+    \Glspl{scan}: \>4250\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    \Glspl{site}: \> 1
+    \end{tabbing}
+    };
+
+    \node[collection_block, below = 0.5cm of BTumorP] (LGG1p19q) {\textbf{\gls{LGG1p19q}}
+    \begin{tabbing}
+    \Glspl{sub}: \hspace{3em}\=159 \\
+    \Glspl{scan}: \>330\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    \Glspl{site}: \> 1
+    \end{tabbing}
+    };
+
+    \node[collection_block, below = 0.5cm of IvyGAP] (TCGA-GBM) {\textbf{\gls{TCGAGBM}}
+    \begin{tabbing}
+    \Glspl{sub}: \hspace{3em}\=259\\
+    \Glspl{scan}: \>4232\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    \Glspl{site}: \> 8
+    \end{tabbing}
+    };
+
+    \node[collection_block, below = 0.5cm of LGG1p19q] (TCGA-LGG) {\textbf{\gls{TCGALGG}}
+    \begin{tabbing}
+    \Glspl{sub}: \hspace{3em}\=199\\
+    \Glspl{scan}: \>2007\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    \Glspl{site}: \> 5
+    \end{tabbing}
+    };
+
+    \node[collection_block, below = 0.5cm of TCGA-GBM] (USIGT) {\textbf{\gls{USIGT}}
+    \begin{tabbing}
+    \Glspl{sub}: \hspace{3em}\=43\\
+    \Glspl{scan}: \>86\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    \Glspl{site}: \> 1
+    \end{tabbing}
+    };
+
+    \coordinate (brain_train_mid) at ($(TCGA-LGG)!0.5!(USIGT)$);
+    \coordinate (brain_train_mid_LGG) at (TCGA-LGG.south -| brain_train_mid);
+
+    \node[collection_block, below=1.5cm of brain_train_mid_LGG](TRAIN) {\textbf{\Gls{BTtrain}}
+    \begin{tabbing}
+    \Glspl{sub}: \hspace{3em}\=719\\
+    \Glspl{scan}: \>11065\\
+    \Glspl{slice}: \>276625\\
+    % Scanner models:\>XX
+    % Scanner manufacturers: \> XX
+    \Glspl{site}: \> 15
+    \end{tabbing}
+    };
+
+
+    % Hyperparameter block
+
+    \node[action_block, below = 4cm of TRAIN] (val_split) {
+    Split into train \& validation set
+    };
+
+    \coordinate (val_split_train_position) at (val_split.south -| TCGA-LGG);
+    \coordinate (val_split_test_position) at (val_split.south -| USIGT);
+
+
+    \node[small_collection_block, below = 1cm of val_split_train_position] (parameters_train_col) {\textbf{Train set}
+    \begin{tabbing}
+        \Glspl{scan}: \=9405\\
+        \Glspl{slice}: \>235125
+    \end{tabbing}
+    };
+
+
+    \node[small_collection_block, below = 1cm of val_split_test_position] (parameters_val_col) {\textbf{Validation set}
+    \begin{tabbing}
+        \Glspl{scan}: \=1660\\
+        \Glspl{slice}: \>41500
+    \end{tabbing}
+    };
+
+    \node[action_block, below = 1cm of parameters_train_col] (val_training){
+        Train CNNs for different model parameters
+    };
+
+    \node[action_block, below = 1cm of parameters_val_col] (val_evaluation){
+        Evaluate\\ performance
+    };
+    %
+    % \node[object_block, below = 1cm of val_training] (parameter_settings) {
+    %     Set of model parameters\\
+    %     (e.g. CNN architecture, pre-processing settings)
+    % };
+
+    \node[action_block, right = 1cm of val_evaluation] (parameter_selection) {
+    Select optimal model parameters
+    };
+
+
+    \coordinate (brain_split_mid) at ($(TRAIN)!0.45!(val_split)$);
+
+    \node[object_block] at (brain_split_mid -| parameter_selection) (optimal_parameters) {
+        Optimal model parameters
+    };
+
+
+    \begin{scope}[every path/.style=arrow_line]
+        \path (parameters_train_col) -- (val_training);
+        \path (val_split) -| (parameters_train_col);
+        \path (val_split) -| (parameters_val_col);
+        \path (val_training) -- (val_evaluation);
+        \path (parameters_val_col) -- (val_evaluation);
+        \path (val_evaluation) -- (parameter_selection);
+        % \path (parameter_settings) -- (val_training);
+        % \path (parameter_settings) -| (parameter_selection);
+        \path (parameter_selection) -- (optimal_parameters);
+    \end{scope}
+
+    \node[bounding_box, fit=(val_split) (val_training) (parameter_selection)] (parameter_optimization) {};
+
+    \node[box_label, above right = 0cm and 2cm of parameter_optimization.north, anchor=south] (hp_text) {Model parameters selection};
+
+    %%%%%%%%%%%%%%%%%%%%%%%%
+    % Train the final CNN
+    %%%%%%%%%%%%%%%%%%%%%%%%
+    \node[action_block] at (TRAIN -| optimal_parameters) (train_final_CNN) {
+        Train CNN
+    };
+
+    \node[object_block, right = 1cm of train_final_CNN] (final_CNN) {
+        Trained model
+    };
+
+    \begin{scope}[every path/.style=arrow_line]
+        \path (TRAIN) -- (train_final_CNN);
+        \path (TRAIN) -- (val_split);
+        \path (optimal_parameters) -- (train_final_CNN);
+    \end{scope}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%
+    % Testing
+    %%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node[action_block, right = 1cm of final_CNN](test_CNN) {
+        Evaluate performance
+    };
+
+    \node[object_block, below = 1 cm of test_CNN] (final_metrics) {
+        Reported metrics\\
+        (overall accuracy and per-class accuracy)
+    };
+    %
+    \node[collection_block, above = 1cm of test_CNN] (TEST) {
+        \textbf{\Gls{BTtest}}
+        \begin{tabbing}
+        \Glspl{sub}: \hspace{3em}\=192\\
+        \Glspl{scan}: \>2369\\
+        \Glspl{slice}: \>59225\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        \Glspl{site}: \> 8
+        \end{tabbing}
+    };
+
+    \coordinate (BTTS_align) at (IvyGAP -| TEST);
+
+
+    \node[collection_block, left=0.25cm of BTTS_align] (BITE) {
+        \textbf{\gls{BITE}}
+        \begin{tabbing}
+        \Glspl{sub}: \hspace{3em}\=14\\
+        \Glspl{scan}: \>27\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        \Glspl{site}: \> 1
+        \end{tabbing}
+    };
+
+
+    \node[collection_block, below = 0.5cm of BITE] (REMBRANDT) {
+        \textbf{\gls{REMBRANDT}}
+        \begin{tabbing}
+        \Glspl{sub}: \hspace{3em}\=130\\
+        \Glspl{scan}: \>1491\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        \Glspl{site}: \> 2
+        \end{tabbing}
+    };
+
+    \node[collection_block, right = 0.5cm of REMBRANDT] (RIDERNEURO) {
+        \textbf{\gls{RIDER}}
+        \begin{tabbing}
+        \Glspl{sub}: \hspace{3em}\=19\\
+        \Glspl{scan}: \>102\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        \Glspl{site}: \> 1
+        \end{tabbing}
+    };
+
+
+    \node[collection_block, right = 0.5cm of BITE] (CPTAC-GBM) {
+        \textbf{\gls{CPTAC}}
+        \begin{tabbing}
+        \Glspl{sub}: \hspace{3em}\=29\\
+        \Glspl{scan}: \>749\\
+        % Scanner models:\>XX
+        % Scanner manufacturers: \> XX
+        \Glspl{site}: \> 4
+        \end{tabbing}
+    };
+
+
+
+
+    \node[bounding_box, fit=(CPTAC-GBM) (BITE) (REMBRANDT) (RIDERNEURO)] (BTTestS) {};
+
+
+
+
+
+
+    \node[bounding_box, fit=(BTumorP) (IvyGAP) (TCGA-LGG) (TCGA-GBM)] (BTTS) {};
+
+    \begin{scope}[every path/.style=line]
+        \path (BTTS.south east) -- (TRAIN.north east);
+        \path (BTTS.south west) -- (TRAIN.north west);
+        \path (BTTestS.south west) -- (TEST.north west);
+        \path (BTTestS.south east) -- (TEST.north east);
+    \end{scope}
+
+
+
+    \begin{scope}[every path/.style=arrow_line]
+        \path (train_final_CNN) -- (final_CNN);
+        \path (final_CNN) -- (test_CNN);
+        \path (TEST) -- (test_CNN);
+        \path (test_CNN) -- (final_metrics);
+    \end{scope}
+
+\end{tikzpicture}
