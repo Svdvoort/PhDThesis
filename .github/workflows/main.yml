@@ -41,6 +41,8 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
+          args:
+            -pdf -file-line-error -halt-on-error -interaction=nonstopmode -pool-size=10000000
           pre_compile: |
             tex_config=$(kpsewhich texmf.cnf)
             cat $tex_config
