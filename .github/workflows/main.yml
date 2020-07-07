@@ -42,10 +42,10 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           pre_compile: |
-            tex_config=/etc/texmf/web2c/texmf.cnf
+            tex_config=$(kpsewhich texmf.cnf)
             cat $tex_config
-            echo "main_memory=10000000" >> $tex_config
-            update-texmf
+            echo "main_memory=50000000" >> $tex_config
+            fmtutil-sys --all
             cat $tex_config
           root_file: Thesis_Sebastian_R_van_der_Voort.tex
       - name: Check log file
