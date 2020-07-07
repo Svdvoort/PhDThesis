@@ -41,12 +41,11 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          extra_system_packages: sudo
           pre_compile: |
             tex_config=$(kpsewhich texmf.cnf)
             cat $tex_config
-            sudo echo "main_memory=50000000" >> $tex_config
-            sudo fmtutil-sys --all
+            echo "main_memory=12435455" >> $tex_config
+            fmtutil-sys --all
             cat $tex_config
           root_file: Thesis_Sebastian_R_van_der_Voort.tex
       - name: Check log file
