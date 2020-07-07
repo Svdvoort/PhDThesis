@@ -31,6 +31,13 @@ jobs:
         with:
           name: bibliographies
           path: Bibliographies/
+      - name: Upgrade latex stack size
+        run: |
+          tex_config=$(kpsewhich texmf.cnf)
+          cat $tex_config
+          echo "main_memory=10000000" >> $tex_config
+          update-texmf
+          cat $tex_config
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@master
         with:
@@ -49,10 +56,6 @@ jobs:
       - name: Get current date/time
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d_%HH%MM')"
-      - name: Test with environment variables
-        run: echo $DATE
-        env:
-          DATE: ${{ steps.date.outputs.date }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
