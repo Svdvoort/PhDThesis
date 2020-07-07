@@ -41,6 +41,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
+          extra_system_packages: sudo
           pre_compile: |
             tex_config=$(kpsewhich texmf.cnf)
             cat $tex_config
