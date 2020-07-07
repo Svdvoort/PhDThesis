@@ -33,7 +33,7 @@ jobs:
           path: Bibliographies/
       - name: Upgrade latex stack size
         run: |
-          tex_config=$(kpsewhich texmf.cnf)
+          tex_config=/etc/texmf/web2c/texmf.cnf
           cat $tex_config
           echo "main_memory=10000000" >> $tex_config
           update-texmf
