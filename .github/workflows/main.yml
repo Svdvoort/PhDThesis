@@ -31,16 +31,22 @@ jobs:
         with:
           name: bibliographies
           path: Bibliographies/
-      - name: Upgrade latex stack size
-        run: |
-          tex_config=/etc/texmf/web2c/texmf.cnf
-          cat $tex_config
-          sudo echo "main_memory=10000000" >> $tex_config
-          sudo update-texmf
-          cat $tex_config
+      # - name: Upgrade latex stack size
+      #   run: |
+      #     tex_config=/etc/texmf/web2c/texmf.cnf
+      #     cat $tex_config
+      #     sudo echo "main_memory=10000000" >> $tex_config
+      #     sudo update-texmf
+      #     cat $tex_config
       - name: Compile LaTeX document
-        uses: dante-ev/latex-action@master
+        uses: xu-cheng/latex-action@v2
         with:
+          pre_compile: |
+            tex_config=/etc/texmf/web2c/texmf.cnf
+            cat $tex_config
+            echo "main_memory=10000000" >> $tex_config
+            update-texmf
+            cat $tex_config
           root_file: Thesis_Sebastian_R_van_der_Voort.tex
       - name: Check log file
         uses: actions/upload-artifact@v1
