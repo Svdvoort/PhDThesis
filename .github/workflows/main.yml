@@ -47,6 +47,7 @@ jobs:
             tex_config=$(kpsewhich texmf.cnf)
             cat $tex_config
             echo "main_memory=12435455" >> $tex_config
+            echo "pool_size=10000000" >> $tex_config
             fmtutil-sys --all
             cat $tex_config
           root_file: Thesis_Sebastian_R_van_der_Voort.tex
