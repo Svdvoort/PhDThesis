@@ -5,7 +5,7 @@
     split_line/.style = {draw, -, >=latex, thick, rounded corners=5pt},
     ]
 
-    \node [text_block] (histology) {Histology};
+    \node [text_block] (histology) {Histopathology};
     \node [text_block, below = of histology] (IDH) {IDH status};
     \node [text_block, below = of IDH] (1p19q) {1p/19q status};
     \node [text_block, below = of 1p19q] (category) {Category};
