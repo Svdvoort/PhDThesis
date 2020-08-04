@@ -24,6 +24,20 @@
 \clearpage
 }
 
+\newenvironment{ChapterAbstractNoTitle}
+{
+% We reset all used abbreviations
+\glsresetall
+\begin{adjustwidth}{2cm}{2cm}
+% Add 'Abstract' as title
+% To italics and footnotesize
+\itshape\small
+}
+{
+\end{adjustwidth}
+% Afterwards we once again reset all abbreviations before using them in the text
+\glsresetall
+}
 %%%%%%%%%%%%%%%%%%%%%%%
 % Chapter page layout
 %%%%%%%%%%%%%%%%%%%%%%%

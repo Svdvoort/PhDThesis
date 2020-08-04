@@ -1,92 +1,144 @@
 \begin{tikzpicture}[auto,
-    text_block/.style ={rectangle, text centered},
-    accolade/.style={decorate,decoration={brace,amplitude=20pt}, -, >=latex, thick},
-    arrow_line/.style= {draw, ->, >=latex, thick, rounded corners=5pt},
-    split_line/.style = {draw, -, >=latex, thick, rounded corners=5pt},
+    text_block/.style ={rectangle, text centered, font=\Huge},
+    left_category_block/.style ={rectangle, font=\Huge, text width=5.7cm},
+    accolade/.style={decorate,decoration={brace,amplitude=40pt}, -, >=latex, thick, line width=0.075cm},
+    arrow_line/.style= {draw, -{Latex[length=7mm, width=7mm]}, thick, rounded corners=5pt, line width=0.1cm},
+    split_line/.style = {draw, -, >=latex, thick, rounded corners=5pt, line width=0.1cm},
     ]
 
-    \node [text_block] (histology) {Histopathology};
-    \node [text_block, below = of histology] (IDH) {IDH status};
-    \node [text_block, below = of IDH] (1p19q) {1p/19q status};
-    \node [text_block, below = of 1p19q] (category) {Category};
+    % We define the different categories on the left
+    \node [left_category_block] (grade) {\textbf{Grade}};
+    \node [left_category_block, below = 2cm of grade] (histology) {\textbf{Histopathology\\Pre-WHO 2016}};
+    \node [left_category_block, below = 3.2cm of histology] (IDH) {\textbf{IDH status}};
+    \node [left_category_block, below = 2cm of IDH] (1p19q) {\textbf{1p/19q status}};
+    \node [left_category_block, below = 3cm of 1p19q] (category) {\textbf{WHO 2016\\Category}};
 
+    %%%%%%%%%%%%%%%
+    % Make the text labels for the histology
+    \node [text_block, right = 1cm of histology] (astro) {\Gls{astro}};
+    \node [text_block, right = 1cm of astro] (oliastro) {\Gls{oliastro}};
+    \node [text_block, right = 1cm of oliastro] (oligo) {\Gls{oli}};
+    \node [text_block, right = 2cm of oligo] (gbm) {\Acrlong{GBM}};
 
-    \node [text_block, right = 1cm of histology] (astro) {Astrocytoma};
-    \node [text_block, right = 1cm of astro] (oliastro) {Oligoastrocytoma};
-    \node [text_block, right = 1cm of oliastro] (oligo) {Oligodenroglioma};
-    \node [text_block, right = 1cm of oligo] (gbm) {glioblastoma multiforme};
+    %%%%%%%%%%%%%%%
+    % Make the text labels for the IDH status
 
-    \draw [accolade] (astro.north west) -- (oligo.north east) node[midway, above, yshift=1cm] {Grade II/III};
-    \draw [accolade] (gbm.north west) -- (gbm.north east) node[midway, above, yshift=1cm] {Grade IV};
-
+    % Define some coordinate to find the middle
     \coordinate (astro_oli_mid) at ($(astro)!0.5!(oliastro)$);
     \coordinate (oliastro_oli_mid) at ($(oliastro)!0.85!(oligo)$);
 
+    % These are for LGG
     \node [text_block] at (IDH -| astro_oli_mid) (IDH_mut) {IDH mutated};
     \node [text_block] at (IDH -| oliastro_oli_mid) (IDH_wt) {IDH wildtype};
 
-    \node [text_block] at (1p19q -| astro) (1p19q_del) {1p/19q co-deleted};
-    \node [text_block] at (1p19q -| oliastro) (1p19q_intact) {1p/19q intact};
+    % These are for HGG
+    \node [text_block] at ([xshift=0.3cm] gbm.west |- IDH) (GBM_idh_mut) {IDH mutated};
+    \node [text_block] at ([xshift=-0.3cm] gbm.east |- IDH) (GBM_idh_wt) {IDH wildtype};
 
-    \coordinate (oligo_category) at (category -| 1p19q_del);
-    \coordinate (astro_mut_category) at (category -| 1p19q_intact);
-    \coordinate (astro_wt_category) at (category -| IDH_wt);
+    %%%%%%%%%%%%%%%%%%
+    % Make text labels for 1p19q status
 
-    \node [text_block, text width = 3cm] at (oligo_category) (oligo_1p19q) {Oligodenroglioma\\IDH mutated\\1p/19q co-deleted};
-    \node [text_block, text width = 3cm] at (astro_mut_category) (astro_IDH) {Diffuse astrocytoma\\IDH mutatated};
-    \node [text_block, text width = 3cm] at (astro_wt_category) (astro_IDH_wt) {Diffuse astrocytoma\\IDH wildtype};
-
-
-%    \begin{scope}[on background layer]
-%    \node[fit=(histology)(astro)(oliastro)(oligo)(gbm), draw, minimum height=1cm, fill=color0, fill opacity=.8, text=white] {};
-%    \end{scope}
-
-    \coordinate (IDH_mid_north) at ($(IDH_mut.north)!0.5!(IDH_wt.north)$);
-    \coordinate (IDH_mid) at ($(IDH_mut)!0.5!(IDH_wt)$);
-    \coordinate (1p19q_mid_north) at ([yshift=0.55cm] $(1p19q_del.north)!0.5!(1p19q_intact.north)$);
-    \coordinate (category_north) at (oligo_1p19q.north);
-
-    \begin{scope}[every path/.style=split_line]
-        \path (astro.west) |- ([yshift=0.2cm] IDH_mid_north);
-        \path (oligo.east) |- ([yshift=0.2cm] IDH_mid_north);
-        \path ([yshift=0.2cm] IDH_mid_north) -- (IDH_mid);
-        \path (IDH_mut) -- (1p19q_mid_north);
-    \end{scope}
-
-    \begin{scope}[every path/.style=arrow_line]
-        \path (IDH_mid) -- (IDH_wt.west);
-        \path (IDH_mid) -- (IDH_mut.east);
-
-        \path (1p19q_mid_north) -| (1p19q_del);
-        \path (1p19q_mid_north) -| (1p19q_intact);
-
-        \path (IDH_wt) -- (category_north -| astro_wt_category);
-        \path (1p19q_del) -- (category_north -| oligo_category);
-        \path (1p19q_intact) -- (category_north -| astro_mut_category);
-    \end{scope}
-
-    % GBM
-    \node [text_block] at (gbm.west |- IDH) (GBM_idh_mut) {IDH mutated};
-    \node [text_block] at (gbm.east |- IDH) (GBM_idh_wt) {IDH wildtype};
-
-    % \coordinate (gbm_wt_category) at (category -| GBM_idh_wt);
-    % \coordinate (gbm_mut_category) at (category -| GBM_idh_mut);
-
-    \node [text_block, text width = 3cm] at (category -| GBM_idh_wt) (gbm_wt_category) {Glioblastoma\\IDH wildtype};
-    \node [text_block, text width = 3cm] at (category -| GBM_idh_mut) (gbm_mut_category) {Glioblastoma\\IDH mutated};
+    \node [text_block] at ([xshift=-0.2cm] 1p19q -| astro) (1p19q_del) {1p/19q co-deleted};
+    \node [text_block] at ([xshift=0.2cm] 1p19q -| oliastro) (1p19q_intact) {1p/19q intact};
 
 
+    %%%%%%%%%%%%%%%%%%
+    % Make text labels for final WHO 2016 categories
+
+    % LGG
+    \node [text_block, text width = 5.5cm] at (category -| 1p19q_del) (oligo_1p19q) {Oligodenroglioma\\IDH mutated\\1p/19q co-deleted};
+    \node [text_block, text width = 5.5cm] at (category -| 1p19q_intact) (astro_IDH) {Diffuse\\astrocytoma\\IDH mutatated};
+    \node [text_block, text width = 4cm] at (category -| IDH_wt) (astro_IDH_wt) {Diffuse astrocytoma\\IDH wildtype};
+
+    % HGG
+    \node [text_block, text width = 4cm] at (category -| GBM_idh_wt) (gbm_wt_category) {Glioblastoma\\IDH wildtype};
+    \node [text_block, text width = 4cm] at (category -| GBM_idh_mut) (gbm_mut_category) {Glioblastoma\\IDH mutated};
+
+    %%%%%%%%%%%%%%%%%%
+    % Text labels for grade
+
+    \draw [accolade] ([yshift=0.5cm] astro.north west) -- ([yshift=0.5cm] oligo.north east) node[midway, above, yshift=1cm] (grade_low_accolade) {};
+    \draw [accolade] ([yshift=0.5cm] gbm.north west) -- ([yshift=0.5cm] gbm.north east) node[midway, above, yshift=1cm] (grade_high_accolade) {};
+
+    \node [text_block, text width=7cm] at (grade_low_accolade |- grade) (grade_low) {Grade II \& III};
+    \node [text_block, text width=7cm] at (grade_high_accolade |- grade) (grade_high) {Grade IV};
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%
+    % Arrows from histology to IDH
+    % LGG
+    \coordinate (histology_lgg_mid) at ($(astro.north west)!0.5!(oligo.north east)$);
+    \coordinate (lgg_histology_south) at ([yshift=-0.2cm] oliastro.south);
+    \coordinate (idh_north) at ([yshift=1cm] $(IDH_mut.north)!0.5!(IDH_wt.north)$);
+    \coordinate (histo_idh_lgg_mid) at ($(histology_lgg_mid |- lgg_histology_south)!0.6!(histology_lgg_mid |- idh_north)$);
+    % HGG
     \coordinate (IDH_gbm_mid_north) at ($(GBM_idh_mut.north)!0.5!(GBM_idh_wt.north)$);
 
     \begin{scope}[every path/.style=split_line]
-        \path (gbm) -- ([yshift=0.4cm] IDH_gbm_mid_north);
+        % LGG
+        \path (astro.west |- lgg_histology_south) -- ([yshift=-0.2cm] astro.west |- lgg_histology_south) -- (histo_idh_lgg_mid) -- ([yshift=-0.2cm] oligo.east |- lgg_histology_south) -- (oligo.south east |- lgg_histology_south);
+        \path (histo_idh_lgg_mid) -- (histo_idh_lgg_mid |- idh_north);
+
+        % HGG
+        \path (gbm |- lgg_histology_south) -- (IDH_gbm_mid_north |- idh_north);
+        % \path ([yshift=0.4cm] IDH_gbm_mid_north) -| (GBM_idh_mut);
+        % \path ([yshift=0.4cm] IDH_gbm_mid_north) -| (GBM_idh_wt);
     \end{scope}
 
     \begin{scope}[every path/.style=arrow_line]
-        \path ([yshift=0.4cm] IDH_gbm_mid_north) -| (GBM_idh_mut);
-        \path ([yshift=0.4cm] IDH_gbm_mid_north) -| (GBM_idh_wt);
-        \path (GBM_idh_mut) -- (gbm_mut_category);
-        \path (GBM_idh_wt) -- (gbm_wt_category);
+        \path (histo_idh_lgg_mid |- idh_north) -| (IDH_wt);
+        \path (histo_idh_lgg_mid |- idh_north) -| (IDH_mut);
+
+        \path (IDH_gbm_mid_north |- idh_north) -| (GBM_idh_mut);
+        \path (IDH_gbm_mid_north |- idh_north) -| (GBM_idh_wt);
+    \end{scope}
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%
+    % Arrows from IDH to 1p19q
+    \coordinate (1p19q_mid_north) at ([yshift=1cm] $(1p19q_del.north)!0.5!(1p19q_intact.north)$);
+    \coordinate (idh_south) at ([yshift=-0.2cm] IDH_mut.south);
+
+    \begin{scope}[every path/.style=split_line]
+        \path (IDH_mut |- idh_south) -- (1p19q_mid_north);
+    \end{scope}
+
+    \begin{scope}[every path/.style=arrow_line]
+        \path (1p19q_mid_north) -| (1p19q_del);
+        \path (1p19q_mid_north) -| (1p19q_intact);
+    \end{scope}
+
+    %%%%%%%%%%%%%%%%%%%%%%
+    % Arrow from IDH/1p19q to final category
+
+    \coordinate (category_north) at ([yshift=0.3cm] oligo_1p19q.north);
+    \coordinate(1p19q_south) at ([yshift=-0.2cm] 1p19q_del.south);
+
+    \begin{scope}[every path/.style=arrow_line]
+        % LGG
+        \path (IDH_wt |- idh_south) -- (category_north -| astro_IDH_wt);
+        \path (1p19q_del |- 1p19q_south) -- (category_north -| oligo_1p19q);
+        \path (1p19q_intact |- 1p19q_south) -- (category_north -| astro_IDH);
+
+        % HGG
+        \path (GBM_idh_mut |- idh_south) -- (category_north -| gbm_mut_category);
+        \path (GBM_idh_wt |- idh_south) -- (category_north -| gbm_wt_category);
+
+    \end{scope}
+
+    %%%%%%%%%%%%%%%%%%%%%%%
+    % Make coloured banners for the different categories
+
+
+    \coordinate (leftmost_point) at (histology.west);
+    \coordinate (rightmost_point) at (gbm_wt_category.east);
+    \begin{scope}[on background layer]
+        \node[fit=(grade)(grade_low)(grade_high)(leftmost_point |- grade)(rightmost_point |- grade), minimum height=1cm, fill=color0, fill opacity=.8, text=white] {};
+        \node[fit=(histology)(gbm)(leftmost_point |- histology)(rightmost_point |- histology), minimum height=1cm, fill=color2, fill opacity=.8, text=white] {};
+        \node[fit=(IDH)(GBM_idh_wt)(leftmost_point |- IDH)(rightmost_point |- IDH), minimum height=1cm, fill=color4, fill opacity=.8, text=white] {};
+        \node[fit=(1p19q)(1p19q_intact.east)(leftmost_point |- 1p19q), minimum height=1cm, fill=color5, fill opacity=.8, text=white] {};
+        \node[fit=(category)(oligo_1p19q)(astro_IDH)(astro_IDH_wt)(gbm_wt_category)(gbm_mut_category)(leftmost_point |- category)(rightmost_point |- category), minimum height=1cm, fill=color6, fill opacity=.8, text=white] {};
     \end{scope}
 
 \end{tikzpicture}
