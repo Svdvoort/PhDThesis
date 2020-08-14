@@ -1,3 +1,148 @@
+% Following magic comments allow for compilation of root file
+% !TEX root = ../../../../temp_manuscript.tex
+
 \chapter{Discussion}\label{chap:discussion}
 
-To be completed
+In this thesis, I showed the potential of automated image analysis of glioma for several different tasks.
+Most prominently, I developed machine learning methods that predict the genetic status of glioma from preoperative \gls{MRI} scans (\cref{chap:LGG1p19q,chap:prognosais}).
+I also used computational methods to evaluate potential observer-independent imaging markers (\cref{chap:HGGLocation,chap:LGGLocation}), developed machine learning methods to help with the initial stages of research (\cref{chap:DDS}), and the segmentation of glioma (\cref{chap:prognosais}).
+In this chapter, I discuss the main findings of this thesis, highlight my contributions, and provide an outlook on the future clinical impact of these methods and potential future research directions.
+
+\section{Radiomics performance benchmarks}
+
+An important barrier for clinical acceptance of radiomics methods is their predictive performance.
+In \cref{chap:LGG1p19q,chap:prognosais}, I developed two machine learning methods that predict the genetic features of glioma.
+Although these methods successfully predicted the genetic features, their performance was considered insufficient for clinical use.
+However, there is no generally accepted threshold for sufficient clinical performance, which makes it hard to determine what the main focus of performance improvement should be.
+For example, it is possible to try and improve the overall performance, but in some cases it might be more interesting to improve the performance in specific subgroups.
+
+The observer-independency and speed of machine learning methods make it easy to measure their performance on different datasets.
+However, the ease of performance measurement and abudance of reported achieved performances has led to (perhaps unrealistically) high expectations of these methods.
+First of all, the performance of radiomics methods is always compared to a golden standard that is derived through some other method (e.g. through the analysis of a biopsy sample in the case of genetic features).
+The machine learning methods will never (directly) outperform these golden standard methods; in that sense, the performance will never be acceptable, since the currently available method is already better.
+Of course, the radiomics methods have a different starting point from which they try to derive the same information (e.g. a scan instead of a tumor sample to predict the genetic features).
+Thus, the radiomics methods might need to be compared against a different benchmark than always being compared to the ground truth.
+For example, in \cref{chap:LGG1p19q}, we did not reach perfect performance compared to the ground truth obtained from tumor tissue analysis.
+However, when we compared our method with clinical experts, who used the same data as was available to the algorithm, we found that our algorithm was actually able to outperform some of them.
+Thus, based on this benchmark, the performance might already be acceptable for clinical use, since it can improve over the current situation.
+
+The advantage of radiomics methods is that they can provide the information earlier in the treatment trajectory than the gold standard method, and often do so based on data that is easier to obtain (a scan vs a tumor sample).
+However, not all institutes, have the resources required to use the golden standard methods, especially in underprivileged countries \autocite{santosh2019india}.
+With the addition of more genetic features in the glioma categorization, the price of the equipment needed to analyze these features also increases, and even for privileged institutes that have access to the required equipment it might not be cost-effective to analyze all \glspl{tumor}\autocite{malzkorn2016practical,dewitt2017costIDH}.
+This makes these golden standard methods, although preferable for their accuracy, infeasible as the de facto standard everywhere.
+In these cases, radiomics methods can be a cheap and easy-to-use solution, which, although having suboptimal performance, can still improve over the current situation.
+This also means that the benchmark with which the radiomics methods are compared could differ between institutes.
+For example, the experts with which we compared our method in \cref{chap:LGG1p19q} were highly specialized in glioma and came from an institute specialized in glioma.
+Thus, it is likely that not all institutes have acces to the same lever of expertise, which lowers the bar for clinically acceptable performance of radiomics methods, and the performance that some of the current methods achieve might already improve the patient treatment.
+
+Therefore, there might also need to be a shift in the way radiomics is positioned.
+Currently, it is often presented as a method that can replace a certain (currently used) golden standard method or even replace clinical experts.
+Although this might become a reality in the long run in the long run, at the moment this seems rather unlikely.
+Perhaps radiomics is better viewed as a way to democratize clinical expertise.
+The methods can be developed using the latest insights and expertise at privileged institutes, and this knowledge can then be distributed to institutes that normally would not have access to it.
+
+
+\section{Uncertainty in the ground truth}
+
+An important aspect for all machine learning methods is the uncertainty in the ground truth, in which we distinguish two categories of uncertainty.
+The first category is an imperfect, but observer-independent ground truth method, the other category is an observer-dependency in the ground truth.
+
+The genetic analysis of tumor tissue is imperfect (and also contains some observer dependency, although this could be eliminated).
+For example, when comparing multiple methods to determine the \gls{IDH} status of \gls{tumor} tissue, these methods are also not always in agreement \autocite{pyo2016concordance}.
+As a result of this uncertainty in the golden standard, the ground truth used to train and evaluate machine learning methods might contains errors.
+Of course, in these cases it is still unknown what the \say{true} ground truth is, since there is no way too \per{100} accurately determine it, making it impossible to gain a true feeling for the uncertainty in the ground truth.
+The uncertainty can be larger for some ground truths than for others, for example the accuracy for the analysis of the \gls{MGMT} status is quite low \autocite{wang2017mgmt}.
+The uncertainty for a specific output is important to take into account during the development of a machine learning model, since it might not actually possible to properly train a model if the uncertainty in the ground truth is too large.
+
+Another aspect is the observer-dependency of some ground truths.
+For example, in the case of tumor segmentation it is not possible to determine a \say{true} ground truth, it will always depend on the observer that made it.
+In cases where the ground truth is observer-dependent, striving for the best performing algorithm might be unrealistic, since the ground truth could be less accurate than the predictions.
+For example, when comparing segmentation from multiple observers, a whole \gls{tumor} mean DICE score of 0.85 was found, which is very close our DICE score of 0.84 achieved in \cref{chap:prognosais}.
+Therefore, it might be hard to improve the performance further, especially if ground truth segmentation of multiple observers have been used.
+In this case, automated methods can be very helpful, as they can homogenize the \gls{tumor} segmentations.
+However, how what a segmentation contains is based on preferences, thus multiple methods might need to be trained to achieve the same goal of \gls{tumor} segmentation for different institutes.
+
+
+\subsection{Interpretability of machine learning methods}
+
+Another important barrier for the acceptance of machine learning methods is their lack of interpretability.
+Deep learning methods especially are considered black boxes since there is no explicit knowledge on what imaging features these methods base their prediction on.
+Thus, it is hard to trust the predictions of these methods, especially when considering that the patient and clinical experts might want an explanation as to why a certain treatment decision is made.
+
+In \cref{chap:LGG1p19q,chap:prognosais,chap:DDS} we  tried to provide some insight into the machine learning methods.
+In \cref{chap:prognosais,chap:DDS} we did so by showing attention maps and convolution filter outputs, and in \cref{chap:LGG1p19q} we looked at the relative importance of different features.
+Although in this way we can provide some insight into the machine learning methods, this is only very globally and lacks an explanation as to why certain imaging features are used in the prediction.
+Although a lot of research is focusing on methods that can provide additional insight into these methods, the question remains whether human-interpretable explanations of machine learning methods will be available in the near future [REFS].
+This creates distrust for these algorithms, since even if it can be shown that an algorithm is looking at the correct part of the scan (i.e. in the tumor and not somewhere outside the brain), the algorithm might consider it for the wrong reasons.
+It is easy to attach our own explanation to these methods if we see them focusing on particular parts, but this can easily lead to misinterpretations.
+A method that can explain why a deep learning network looks at a specific part of a scan would not only create more trust in the algorithms, as the predictions can now be verified, it can also help to develop new and better ones.
+If a sample is wrongly predicted, but the algorithm can explain why it looked at certain parts, it might be possible to redesign the method to make sure that the method looks at the correct parts of the scans.
+
+\subsection{Deep learning models}
+
+An important technical limitation that deep learning methods face is the limited amount of memory available on GPUs, which constrains the size of deep learning models.
+In \cref{chap:prognosais}, I developed a method that can fit a large model, while also using the full 3D scan as an input.
+However, this model pushed the limits of the GPU memory, and the model could not be larger on the GPU available for this research.
+On the one hand this limitation leads to a critical evaluation of what is essential in the model, cutting out the superfluous parts.
+On the other hand, larger models might improve the performance of deep learning methods.
+
+Larger models do not always have to contain merely more filters than their smaller counterparts, since more filters do not always lead to better results [REFS].
+However, models can be extended in other ways, for example some models use the scan at different resolutions, thereby trying to force the model to learn features that are relevant at different scales [REFS].
+
+Another interesting approach would be to keep the different scan modalities separate during the convolutions.
+Currently, the first convolutional layer combines the different modalities into feature maps.
+However, keeping the modalities separate deeper into the model may lead to different features being learned.
+Of course, one can then also make different paths in the models for different combinations of modalities, where each path learn specific features.
+However, this will significantly increase the amount of memory required to train these models.
+A schematic of such a model is shown in FIG. This model contains XXX parameters, XXX as much as the model presented in \cref{chap:prognosais}.
+
+The amount of GPU memory has been increasing, and in the past four years the amount of memory at the same pricepoint has doubled.
+Furthermore, new innovations such as half-precision training and parallel training allow for bigger models to be trained using the same amount of memory.
+The optimization of current models and methods to make use of these new features can already lead to the use of new model types, although the impact of larger models remains to be seen.
+This advance in hardware raises an important ethical question.
+If the best performing models only run on the newest (most expensive) GPUs, this would be a big obstacle in research and in the clinical applicability of these methods.
+
+\section{Imaging}
+
+One of the big challenges for radiomics that use \gls{MRI} scans at the moment is the qualitative nature of \gls{MRI} scans, which does not allow for objective biomarkers.
+In recent years quantitative \gls{MRI} has gained in popularity, where using new \gls{MR} sequences allows for the measurement of the true tissue values.
+This means that voxel values in these quantitative \gls{MRI} scans now have a meaning, and that the same patient scanned on different scanners should result in the same scan.
+This makes the development of new imaging biomarkers and automated methods easier, as they can now use the absolute voxel intensity.
+
+Another important development is the development of new \gls{MRI} sequences.
+For example, \gls{DWI} and \gls{PWI} sequences which provide physiological information in addition to the structural information provided by sequences such as \gls{T1} and \gls{T2} used in this thesis.
+It has been shown that adding these sequences in radiomics methods provides additional information, and leads to a better performance [REFS].
+We did not include these sequences in the research in this thesis, as they were not as present four years ago as they are now, thus not enough data was available.
+New \gls{MRI} sequences are constantly being developed, for example CEST, which provides additional physiological data not present in \gls{PWI} and \gls{DWI}.
+However, radiomics will always lack behind in making use of these scans, since a database first needs to be build up with sufficient patients for which these scans are available.
+
+\section{Genetics}
+
+In \ref{chap:HGGlocation} we saw that we could find no relationship between the \gls{MGMT} status of a tumor and the location of the tumor within the brain.
+Then, in \cref{chap:prognosais}, we also attempted to predict the \gls{MGMT} status from \gls{MRI} scans, now using a deep learning network, where we did not find a relationship with the \gls{MGMT} status either.
+A recent study by \citeauthor{mikkelsen2020mgmt} also could not find a relationship between the \gls{MGMT} status and radiomics features.
+In literature, the number of studies that successfully predicted the MGMT methylation status is limited, especially in comparison with the prediction of other genetic statuses.
+Studies that did manage to find a correlation might be biased by predicting the IDH status instead.
+Therefore, an important questions remains whether the imaging features can determine the MGMT status.
+
+An important development in the field of genomics is the commodity of more advanced genetic analysis machines.
+With the introduction of next generation sequencing the results from the genetic analysis become more reliable, which allows for a better training of the models, and also allow for more genes to be analyzed.
+In this way, more genes can be discovered that correlate with the aggressiveness of the tumor, and in the future the categorization will most likely be entirely depend on molecular features and not on histological features.
+However, this introduces problems for machine learning methods, as they can never keep up.
+If a new gene is discovered that is relevant for glioma, first a database needs to be build up that contains information on this gene.
+Therefore, machine learning methods will also keep lacking behind in a sense.
+
+\section{Contributions}
+
+\section{Clinical impact}
+
+\section{Future perspective}
+
+\begin{itemize}
+    \item voxelwise radiomics
+    \item uncertainty
+    \item explainable AI
+    \item transfer learning for quantitaive MRI
+    \item prognosais for new genetics
+    \item machine learning can be better because of groudn truth
+\end{itemize}
