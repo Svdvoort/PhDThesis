@@ -46,7 +46,7 @@
     % Make text labels for final WHO 2016 categories
 
     % LGG
-    \node [text_block, text width = 5.5cm] at (category -| 1p19q_del) (oligo_1p19q) {Oligodenroglioma\\IDH mutated\\1p/19q co-deleted};
+    \node [text_block, text width = 5.5cm] at (category -| 1p19q_del) (oligo_1p19q) {Oligodendroglioma\\IDH mutated\\1p/19q co-deleted};
     \node [text_block, text width = 5.5cm] at (category -| 1p19q_intact) (astro_IDH) {Diffuse\\astrocytoma\\IDH mutatated};
     \node [text_block, text width = 4cm] at (category -| IDH_wt) (astro_IDH_wt) {Diffuse astrocytoma\\IDH wildtype};
 
