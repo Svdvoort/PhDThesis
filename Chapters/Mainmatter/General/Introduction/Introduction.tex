@@ -184,21 +184,18 @@ Thirdly, partly due to the previous point, the imaging markers are often vaguely
 Instead of defining a quantitative imaging marker, qualitative imaging markers are used based on the interpretation of the visual appearance of the \gls{tumor}.
 For example, a score can be assigned to how aggressive the \gls{tumor} looks.
 This leads to imaging markers that are, similar to the typing and grading that was done before, observer-dependent.
-Lastly, only a limited set of imaging markers is extracted and used for the correlation with the clinical outcome.
-The method to correlate the imaging markers with the clinical outcome has to be straightforward to make it viable for the clinical experts to use.
 Thus, although some promising imaging markers have been found, there is a need for new imaging markers and new methods that can include more information from the \gls{MRI} scan, are more objective, more consistent and, most importantly, do not put an additional burden on clinicians.
 
 This need for new imaging markers has caused a rise in popularity of automated methods, most notably machine learning methods.
 Machine learning methods can be used to relate the scan of a patient with a clinical outcome, where the clinical outcome of interest can range from the prediction of the genetic features, a field which is commonly known as radiomics \autocite{lambin2012radiomics}, to the automatic outlining of a \gls{tumor} on a scan.
-\cref{fig:intro_example_ml} exemplifies the use of machine learning methods in the clinic.
+\cref{fig:intro_example_ml} shows some potential applications of machine learning methods in the clinic.
 The main advantage of machine learning methods is that they do not require that the relationship between the imaging marker and the clinical outcome is known, instead these methods can learn this relationship by themselves.
 Thus, they can be very versatile tools which can be used with known imaging markers, in which case they can find new relationships with the clinical outcome.
 They can also be used in cases where no known imaging markers exist, in this case the scans themselves can directly be used as an input, allowing the algorithm to find new imaging markers by itself.
 This second approach, where the algorithm figures out the imaging markers by itself, is a subfield of machine learning called deep learning.
 Machine learning and deep learning have had quite an impact in medical imaging research, where the potential of a methods that can be used to relate imaging markers to clinical outcomes in new ways and discover previously unknown imaging markers was quickly realized \autocite{june2017deep, gillies2016radiomics}
 Furthermore, by using automated methods, more comprehensive, observer-independent imaging markers can be developed.
-TODO: improve this sentence below
-By utilizing these strengths of automated methods in areas where the current visual analysis methods are lacking, these methods can provide more and better information while allowing the clinical experts to focus on their areas of strength.
+Utilizing these strengths of automated methods provides clinical experts with more and better information than the current visual analysis, better supporting them in their decision making.
 
 \begin{figure}
 \includegraphics[width=\textwidth]{example-image-a}
@@ -216,12 +213,8 @@ In this thesis, I am addressing the problems related to the clinical use of \acr
 \item Provide clinically relevant information of \gls{glioma} that is normally obtained from invasive procedures in a non-invasive way using \gls{MRI} scans, leveraging imaging markers that can not be analyzed by the human eye
 \end{enumerate}
 
-TODO: improve the section below, focus on transition from 'high' level to the sudden introduction of chapters. But keep a strong 'end' sentence before.
-
-By focusing on these three goals, this thesis bridges the gap from the latest research on biomedical image analysis to the clinical applicability, and contributes to the next big step in healthcare: developing treatments that are tailored to each individual patient.
-To achieve these goals, I focus on the use of automated methods, most prominently on machine learning and deep learning methods, exploring the potential of these methods to improve the image analysis of glioma.
-
-I explore the potential of these methods for different applications, and the structure of this thesis highlights the different focus areas:
+To achieve these goals, I focus on the use of automated methods, most prominently on machine learning and deep learning methods.
+This thesis presents different applications of these automated methods for the improved image analysis of glioma and is structured as follows:
 
 \begin{description}
     \item[\cref{chap:radiomics}] provides an in-depth introduction of machine learning methods for medical image analysis, introduces common terminology, and discusses some of the issues that can be encountered in machine learning research.
