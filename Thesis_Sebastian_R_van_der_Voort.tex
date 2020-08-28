@@ -13,6 +13,7 @@
 \addbibresource{Bibliographies/introduction.bib}
 \addbibresource{Bibliographies/discussion.bib}
 \addbibresource{Bibliographies/DDS.bib}
+\addbibresource{Bibliographies/prognosais.bib}
 \addsectionbib[label=mypublications]{Bibliographies/self.bib}
 
 \subimport{Settings/}{color_definitions.tex}
@@ -69,12 +70,14 @@
 \subimport{Chapters/Mainmatter/Publications/LGG_1p19q_Prediction/}{Prediction_1p19q.tex}
 \cleardoublepage
 
-% Additional chapters will be placed here
+% DeepDicomSort chapter
 \subimport{Chapters/Mainmatter/Publications/DeepDicomSort/}{DDS.tex}
 \cleardoublepage
 
-
-\subimport{Chapters/Mainmatter/Publications/PrognosAIs/}{prognosais.tex}
+% PrognosAIS chapter
+\IfFileExists{./PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/Prognosais/prognosais.tex}{
+\subimport{PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/Prognosais/}{prognosais.tex}}
+{\subimport{Chapters/Mainmatter/Publications/Prognosais/}{prognosais.tex}}
 \cleardoublepage
 
 % Conclusion chapter
