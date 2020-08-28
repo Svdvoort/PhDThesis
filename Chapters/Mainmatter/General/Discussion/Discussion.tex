@@ -4,95 +4,108 @@
 \chapter{Discussion}\label{chap:discussion}
 \begin{ChapterAbstractNoTitle}
 \end{ChapterAbstractNoTitle}
-In this thesis, I showed the potential of automated methods for the image analysis of glioma in several different ways.
+In this thesis, I showed the potential of automated methods for the image analysis of glioma in several different applications.
 Most prominently, I developed machine learning methods that predict the genetic status of glioma from preoperative \gls{MRI} scans (\cref{chap:LGG1p19q,chap:prognosais}).
-I also used computational methods to evaluate potential observer-independent imaging markers (\cref{chap:HGGLocation,chap:LGGLocation}), developed machine learning methods to help with the initial stages of research (\cref{chap:DDS}), and the segmentation of glioma (\cref{chap:prognosais}).
-In this chapter, I discuss the main findings and contributions of this thesis (\cref{sec:discussion_main_findings}), discuss the the clinical and technical opportunities and challenges of radiomics (\cref{sec:discussion_clinical,sec:discussion_technical}), provide an outlook on the future clinical impact of these methods and potential future research directions (\cref{sec:discussion_future}), and end with a general conclusion (\cref{sec:discussion_conclusion}).
+I also used computational methods to evaluate potential observer-independent imaging markers (\cref{chap:HGGLocation,chap:LGGLocation}), and developed machine learning methods to help with the initial stages of research (\cref{chap:DDS}) and the segmentation of glioma (\cref{chap:prognosais}).
+In this final chapter, I discuss the main findings and contributions of this thesis (\cref{sec:discussion_main_findings}), discuss the the clinical and technical opportunities and challenges of automated image analysis methods (\cref{sec:discussion_clinical,sec:discussion_technical}), provide an outlook on the future clinical impact of these methods and potential future research directions (\cref{sec:discussion_future}), and end with a general conclusion (\cref{sec:discussion_conclusion}).
 
-\section{Main findings \& contributions}\label{sec:discussion_main_findings}
+\section{Main findings and contributions}\label{sec:discussion_main_findings}
 
 \subsection{Summary of findings}
 
-In \cref{chap:HGGLocation,chap:LGGLocation} I looked at the relation between the location of \gls{glioma} and their genetic status.
+In \cref{chap:HGGLocation,chap:LGGLocation} I looked at the relation between the location and genetic features of \gls{glioma}.
 In \cref{chap:LGGLocation} I found that \gls{IDH}-mutated \gls{LGG} are more frequently located in the frontal lobes and \gls{IDH} wildtype \gls{LGG} are more frequently located in the basal ganglia of the right hemipshere.
-In \cref{chap:HGGLocation} I found that there was no difference in localization between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{IDH} wildtype glioablastoma.
+In \cref{chap:HGGLocation} I found that there was no difference in localization between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{IDH} wildtype glioblastoma.
 
 
 In \cref{chap:LGG1p19q} I developed a radiomics method that predicts the 1p/19q status of presumed \gls{LGG} using pre-operative \gls{T1C} and \gls{T2} scans.
-This method was able to non-invasively predict the 1p/19q status, outperforming the clinical experts that performed the same task in terms of accuracy.
+This method was able to non-invasively predict the 1p/19q status, outperforming four clinical experts that performed the same task in terms of accuracy.
 
-In \cref{chap:DDS} I developed a method that can automatically recognize and sort brain \gls{MRI} scans.
-This method could sort the scans with a near-perfect accuracy, and even generalized to brain scans of patients without a \gls{tumor}.
+In \cref{chap:DDS} I developed a method that can automatically recognize the contrast type of brain \gls{MRI} scans.
+The method can then sort the cans based on the predicted contrast type.
+This method achieved a near-perfect accuracy, and even generalized to brain scans of patients without a \gls{tumor}.
 
-Finally, in \cref{chap:prognosais} I developed a method that was able to predict the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while simultaneously providing an automatic segmentation of the \gls{tumor}.
-I showed that this method was able to perform all of these tasks with good performance, worked for all subtypes of glioma, and generalized well to a different patient population.
+Finally, in \cref{chap:prognosais} I developed a method that predicted the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while simultaneously providing an automatic segmentation of the \gls{tumor}.
+I showed that this method was able to perform all of these tasks with a good performance, worked for all subtypes of glioma, and generalized well to a different patient population.
 
 
 \subsection{Clinical and research impact}
 
 The results from \cref{chap:LGGLocation,chap:HGGLocation} are the most straightforward to directly implement in the clinic.
-The localization features that were found in those chapters for the different genetic groups (or in the case of the \gls{MGMT} status, the lack of such features), are easily to evaluate and do not require additional methods or expertise.
+The localization features that were found in those chapters for the different genetic groups (or in the case of the \gls{MGMT} status, the lack of such features), are easy to evaluate and do not require additional methods or expertise to be implemented in the clinical workflow.
 This shows the importance of doing research on these relatively simple imaging markers, as they can (in the short term) be the most impactful.
 
-The radiomics research in \cref{chap:LGG1p19q,chap:prognosais} shows promising results, and constitutes an important step for bringing radiomics methods closer to the clinic.
-In both cases an independent test set was used to validate the results of the studies, something that, although often suggested, is still not commonplace in (glioma) radiomics research [REFS].
-In this way, these studies give a realistic, albeit perhaps less exciting, view on the promise of radiomics in the clinic.
+The radiomics research in \cref{chap:LGG1p19q,chap:prognosais} shows promising results, and constitutes an important step in bringing radiomics methods closer to the clinic.
+In both cases an independent test set was used to validate the results of the studies, something that, although often suggested, is still not commonplace in (glioma) radiomics research \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
 
-In \cref{chap:LGG1p19q} there was a focus on the explainability of the algorithm; by showing the relative feature importance and showing what the algorithm considered to be the best examples of the different categories, we were able to provide some insight into the method.
-Furthermore, the feature importance and examples matched with imaging features that were already known in the literature, thus providing some trust in our method.
+In \cref{chap:LGG1p19q} there was a focus on the explainability of the algorithm; by showing the relative feature importance and examples of what the algorithm considered to as the most scans of the different classes, we were able to provide some insight into the method.
+Furthermore, the feature importance and representative examples matched with imaging features that were previously described in the literature, further validating that our method was able to recognize the relevant imaging features.
 
 The scan sorting method presented in \cref{chap:DDS} was developed with a research application in mind.
 At the moment, the method is already finding its way into research as it is being used to reduce the time needed to prepare new datasets for research on automated analysis methods.
-Although the clinical impact may currently be limited, the introduction of automated methods in the clinic might change this.
-These automated methods will make us of specific scan types, and our method can be used as a first step in this pipeline, to automatically identify the required scan types.
+Although the clinical impact may currently be limited, since clinical applicability was not the goal of this research, the introduction of automated methods in the clinic might change this.
+These automated methods make us of specific scan types, and our method can be used as a first step in such an automated pipeline, to identify the required scan types without the need for human interaction.
 
-\cref{chap:prognosais} is an important milestone for radiomics research, as it present one of the first multi-task radiomics approaches, which is especially pioneering by combining the segmentation task and genetic feature prediction task, which are often seen as separate challenges.
-Furthermore, the method was trained on the largest, most diverse glioma dataset to date, and I was able to develop the method such that it could use the full \gls{MRI} scans as an input.
-Thus, although the clinical impact might be limited at this moment, it pushed some important research boundaries, making it more likely that these methods can be embedded in the clinical workflow in the future.
+\cref{chap:prognosais} is an important milestone for radiomics research, as it present one of the first multi-task radiomics approaches.
+The method is especially pioneering as it combines the segmentation task and genetic feature prediction task, which are often considered separate challenges.
+Furthermore, the method was trained on the largest, most diverse glioma dataset to date, and could use the full 3D \gls{MRI} scan as the basis of its prediction.
+Thus, it pushed some important research boundaries, while the diverse data set and multiple clinically relevant prediction tasks make it more likely that this method can be embedded in the clinical workflow in the future.
 
 
 \subsection{Methodological contributions}
-In \cref{chap:LGG1p19q} I developed PREDICT, a toolbox that can extract imaging features from biomedical scans and use a machine learning method to correlate these imaging features with the clinical characteristics of a patient.
+In \cref{chap:LGG1p19q} I developed PREDICT, a toolbox that can extract imaging features from biomedical scans, and that can correlate these imaging features with the clinical characteristics of a patient using a machine learning method.
 This toolbox has been integrated into WORC, a generalized radiomics toolbox, which can extract a large number of imaging features and use multiple machine learning methods to find the best radiomics algorithm \autocite{mstarmans2020worc}.
 In this way, the threshold for the development of these algorithms is lowered, and new research can be more easily set up.
 These toolboxes are open source and available at \url{https://github.com/Svdvoort/PREDICT}, \url{https://github.com/Svdvoort/PREDICTFastr}, and \url{https://github.com/MStarmans91/WORC}.
+The trained model from \cref{chap:LGG1p19q} is available at \url{http://dx.doi.org/10.17632/rssf5nxxby}.
 
-In \cref{chap:DDS}, I developed \acrlong{DDS}, an algorithm that can be used to quickly sort an unstructured dataset, such that it can then be used by automatic methods.
+In \cref{chap:LGG1p19q} I used the OpenPC toolbox to determine the relative feature importance.
+OpenPC is a versatile toolbox for the construction and evaluation of polynomial chaos expansions, and is available at \url{https://github.com/Svdvoort/OpenPC}.
+
+In \cref{chap:DDS}, I developed \acrlong{DDS}, an algorithm that can be used to quickly sort an unstructured dataset.
 The code and trained model are publicly available at \url{https://github.com/Svdvoort/DeepDicomSort}, allowing other research to easily use this method in their own research.
 
 
 In \cref{chap:prognosais} I developed the PrognosAIs toolbox.
-The goal of this toolbox was to allow researchers to focus on designing new deep learning architectures and quickly setting up experiments, while ensuring that the computational resources were used as efficiently as possible
+The goal of this toolbox was to allow researchers to focus on designing new deep learning architectures and quickly setting up experiments, while ensuring that the available computational resources were used as efficiently as possible
 For example, PrognosAIs can automatically train deep learning networks on parallel GPUs, and tunes the training of the algorithm to the specific capabilities of the GPU to reduce the memory footprint.
 In this way, researchers do not have to focus on optimizing their code, instead focussing on the actual experiments.
+The PrognosAIs toolbox is available at \url{https://github.com/Svdvoort/PrognosAIs}, the methods and trained model developed in \cref{chap:prognosais} are available at \url{https://github.com/Svdvoort/PrognosAIs_glioma}.
+
+To train the models used in \cref{chap:DDS,chap:prognosais}, I made use of shared GPU resources.
+I set up an environment to allow the GPU resources to be shared among multiple users, and which ensures that experiments are repeatable by providing standardized software environments.
+The code to set up this environment is available at \url{https://github.com/Svdvoort/Radiomics-GPU-Server}.
 
 
 
-\section{How will radiomics find its way into the clinic?}\label{sec:discussion_clinical}
 
-Although radiomics methods, such as those presented in \cref{chap:LGG1p19q,chap:prognosais}, could (theoretically) be implemented in the clinic at this moment, radiomics methods are for the most part restricted to the research domain.
-In this section I discuss some of the barriers that radiomics methods still have to overcome before they can find widespread clinical acceptance of radiomics methods.
+\section{Automated image analysis: from research to clinic}\label{sec:discussion_clinical}
+
+Although the automated image analysis methods presented in this thesis can (theoretically) be implemented in the clinic at this moment, automated methods, and machine learning methods in particular, are for the most part still restricted to the research domain.
+In this section I discuss some of the hurdles that need to be overcome before automated image analysis methods can find widespread clinical acceptance.
 
 \subsection{What is the added value of radiomics?}\label{subsec:discussion_added_value_radiomics}
 
-Most radiomics methods have the same goal: the prediction of certain clinical characteristics based on biomedical images.
-However, the implementation of these methods in the clinical workflow is not always straightforward.
-This can be mainly attributed to the unclear potential of these methods to change the clinical workflow and improve the patient treatment.
-For example, the methods developed in \cref{chap:LGG1p19q,chap:prognosais} could be used to pre-operatively predict the histological and genetic features of glioma.
-However, when it is discovered that a patient has a brain \gls{tumor}, the tumor will be resected in a large majority of the cases as part of the standard clinical workflow [REFS].
-Thus, the genetic and histological features can be determined from this tissue.
-This analysis is more reliable than the radiomics methods, and since it is part of the standard treatment route, it is unlikely that radiomics methods will replace or change this workflow in most cases.
-How then do we fit radiomics methods into the clinical workflow, and what is the added value of radiomics methods?
+The goal of most radiomics methods is the same: the prediction of certain clinical characteristics based on biomedical images.
+Often, these are clinical characteristics that are currently obtained through some invasive procedure.
+The promise of radiomics is to provide the same information, without the need for an invasive procedure.
+For example, the methods developed in \cref{chap:LGG1p19q,chap:prognosais} can be used to pre-operatively predict the histological and genetic features of glioma.
+However, even if this information is available pre-operatively, this might not actually change the clinical workflow.
+For example, when it is discovered that a patient has a brain \gls{tumor}, the tumor will be resected in a large majority of the cases as part of the standard clinical workflow regardless of the genetic or histological features of the tumor[REFS].
+In this case, the radiomics method provides not benefit to the patient, as the procedure will still take place.
+Moreover, the genetic and histological features can be determined from the resected tissue using the current golden standard methods.
+What then is the role of radiomics methods in the clinical workflow, and what is the added value of radiomics methods?
 
-Although a majority of the patient will still undergo the traditional pathway of resection, there might be cases for which radiomics methods can be very useful.
-For example, if a \gls{tumor} is located at a location which makes it hard to operate on, and the patient shows no other symptoms, the risk of a biopsy might be too large compared to the benefits.
-Thus, radiomics methods may need to be optimized for these kinds of cases, to ensure that the performance is optimal.
+Firstly, although a majority of the patients will still undergo the traditional pathway of resection, there might be subset of cases for which radiomics methods can be very useful.
+For example, if a \gls{tumor} is located in an area of the brain that is associated with a high risk of complications in case of a biopsy or resection, a radiomics method can be used to predict the aggressiveness of the \gls{tumor}.
+If the \gls{tumor} is predicted to be low risk, and the patient does not currently experience any symptoms, it might be beneficial to delay the resection operation.
+If this is the intended use case of a radiomics method, the method needs to be optimized for these kinds of cases, to ensure an optimal benefit.
 
-Secondly, errors can be made in the biopsy of glioma, in which case a radiomics method can serve as a second opinion.
-A biopsy sample, which only presents a small part of the \gls{tumor}, could be taken from a region of the tumor that is less aggressive, giving a wrong representation for the \gls{tumor} as a whole.
-Radiomics methods can actually take into account the full \gls{tumor} from the \gls{MRI} scan, and might pick up on the more aggressive parts as well.
-Thus, the radiomics methods could be used as a second opinion.
-If there is an disagreement between the pathological analysis and the radiomics prediction, it might warrant a second look.
+Secondly, the genetic and histological analysis of \gls{tumor} tissue is not perfect and radiomics methods can server as an additional check.
+A biopsy sample, which only presents a small part of the \gls{tumor}, might not be representative of the \gls{tumor} as a whole.
+For example, the biopsy could be taken from a region of the tumor that is less aggressive, which then leads to an underestimation of the true aggressiveness of the \gls{tumor}.
+Using a radiomics method as a second opinion can give an extra sene of security when it is in agreement with the tissue analysis.
+A disagreement between the pathological analysis and the radiomics prediction might warrant a second look at that case, potentially reducing the amount of errors.
 
 Thirdly, radiomics methods might be an excellent opportunity to include  the latest glioma insights into clinical workflows in which the current standard-of-care cannot be used.
 For example, although genetic analysis is seen as the golden standard method which should be used in every clinical workflow of glioma patients, it is a luxury to have the required equipment and expertise.
@@ -101,11 +114,11 @@ With the addition of more genetic features in the glioma categorization, the pri
 This makes these golden standard methods, although preferable for their accuracy, infeasible as the de facto standard everywhere.
 In these cases, radiomics methods can be a cheap and easy-to-use solution, which, although not as accurate as the golden standard methods, can improve over the current situation in which there might be no or very limited information about the molecular and histological features.
 
-The radiomics predictions might also be reconsidered.
-For example, instead of predicting genetics, it might be more interesting to predict which parts of the \gls{tumor} are the most important to remove during the resection.
-This is information that is currently not available from a ground truth model, and thus provides truly new information.
-In the same way, methods could be developed that can help to determine the best course of treatment for a certain patient.
-Although these types of research will be faced with methodological challenges, right now the most important step it to reach a clinical consensus, to ensure that the field of radiomics is pushed in the right direction.
+Lastly, the clinical characteristics that radiomics predict can also be reconsidered.
+For example, instead of predicting genetic features, a radiomics method can be developed which can predict what parts of the \gls{tumor} are the most important to remove during the resection.
+Methods can also be developed that can predict the treatment that would have the biggest change of success for a certain patient.
+This kind of methods might fit better in the current clinical workflow, and can perhaps be a first step of introducing automated image analysis methods in the clinic.
+In this way, these methods can first prove themselves by conforming to the current clinical workflow, before taking the step to methods that will actually influence the clinical workflow.
 
 \subsection{How do we create realistic expectations for radiomics methods?}
 
