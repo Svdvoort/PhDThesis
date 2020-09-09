@@ -43,13 +43,13 @@ Furthermore, the feature importance and representative examples matched with ima
 
 The scan sorting method presented in \cref{chap:DDS} was developed with a research application in mind.
 At the moment, the method is already finding its way into research as it is being used to reduce the time needed to prepare new datasets for research on automated analysis methods.
-Although the clinical impact may currently be limited, since clinical applicability was not the goal of this research, the introduction of automated methods in the clinic might change this.
+Although the clinical impact may currently be limited, since clinical applicability was not the goal of this study, the introduction of automated methods in the clinic might change this.
 These automated methods make us of specific scan types, and our method can be used as the first step in such an automated pipeline to identify the required scan types without the need for human interaction.
 
 \cref{chap:prognosais} is an important milestone for radiomics research, as it presents one of the first multi-task radiomics approaches.
 The method is especially pioneering as it combines the segmentation task and genetic feature prediction task, which are often considered separate challenges.
 Furthermore, the method was trained on the largest, most diverse glioma dataset to date, and could use the full 3D \gls{MRI} scan as the basis of its prediction.
-Thus, it pushed some important research boundaries, while the diverse data set and multiple clinically relevant prediction tasks make it more likely that this method can be embedded in the clinical workflow in the future.
+Thus, it pushed some important research boundaries, while the diverse data set and multiple clinically relevant prediction tasks make it more likely that this method will be embedded in the clinical workflow in the future.
 
 
 \subsection{Methodological contributions}
@@ -63,11 +63,11 @@ In \cref{chap:LGG1p19q}, I used the OpenPC toolbox to determine the relative fea
 OpenPC is a versatile toolbox for the construction and evaluation of polynomial chaos expansions and is available at \url{https://github.com/Svdvoort/OpenPC}.
 
 In \cref{chap:DDS}, I developed \acrlong{DDS} an algorithm that can be used to sort an unstructured dataset quickly.
-The code and trained model are publicly available at \url{https://github.com/Svdvoort/DeepDicomSort}, allowing other researchers to use this method in their research easily.
+The code and trained model are publicly available at \url{https://github.com/Svdvoort/DeepDicomSort}, allowing other researchers to use this method in their research in a straightforward manner.
 
 
 In \cref{chap:prognosais} I developed the PrognosAIs toolbox.
-The goal of this toolbox was to allow researchers to focus on designing new deep learning architectures and quickly setting up experiments while ensuring that the available computational resources were used as efficiently as possible
+The goal of this toolbox was to allow researchers to focus on designing new deep learning architectures and quickly setting up experiments, while ensuring that the available computational resources were used as efficiently as possible.
 For example, PrognosAIs can automatically train deep learning networks on parallel GPUs and tunes the algorithm's training to the GPU's specific capabilities to reduce the memory footprint.
 The PrognosAIs toolbox is available at \url{https://github.com/Svdvoort/PrognosAIs}, the methods and trained model developed in \cref{chap:prognosais} are available at \url{https://github.com/Svdvoort/PrognosAIs_glioma}.
 
@@ -101,8 +101,8 @@ If the \gls{tumor} is predicted to be low risk, and the patient does not current
 If this is the intended use case of a radiomics method, the method needs to be optimized for these cases to ensure an optimal benefit.
 
 Secondly, the genetic and histological analysis of \gls{tumor} tissue is not perfect, and radiomics methods can serve as an additional check.
-A biopsy sample, which only presents a small part of the \gls{tumor}, might not represent the \gls{tumor} as a whole.
-For example, the biopsy could be taken from a region of the \gls{tumor} that is less aggressive, underestimating the real aggressiveness of the \gls{tumor}.
+A biopsy sample, which is only a small part of the \gls{tumor}, might not represent the \gls{tumor} as a whole.
+For example, the biopsy could be taken from a region of the \gls{tumor} that is less aggressive, underestimating the real aggressiveness of the \gls{tumor} \autocite{muragaki2008biopsy}.
 Using a radiomics method as a second opinion can give an extra sense of certainty when it agrees with the tissue analysis.
 A disagreement between the tissue analysis and the radiomics prediction might warrant a second look at that case, potentially reducing errors.
 
@@ -122,14 +122,14 @@ In this way, these methods can first prove themselves by conforming to the curre
 \subsection{How do we create realistic expectations for radiomics methods?}
 
 The rapid rise in popularity of radiomics methods can partially be attributed to early studies that promised near-perfect performances.
-However, as was quickly realized in subsequent studies, this near-perfect performance was not reached in the clinical setting.
+However, as was quickly realized in subsequent studies, this near-perfect performance was not reached in the clinical setting \autocite{gillies2016radiomics}.
 The high expectations of and consequent disappointment in radiomics methods have led to skepticism regarding their clinical applicability.
 This problem persists; the expectations for radiomics are still (perhaps unreasonably) high.
 How then, do we create realistic expectations for radiomics methods, showing their true potential without overselling it?
 
 A first factor that plays a role is the observer-independency and speed of machine learning methods, making it easy to measure their performance on different datasets.
-This ease of performance measurement and abundance of reported achieved performances has led to a very concrete overview of the performance.
-Such performance measurements are far harder to perform for the current gold standard method, and as a result, we often compare a very objective performance measurement with a golden standard method for which we might not know the real performance.
+This ease of performance measurement and abundance of reported achieved performances has led to a very concrete overview of the capabilities of radiomics methods.
+Such performance measurements are far harder to perform for the current gold standard method, and as a result, we often compare a very objective performance measurement of the radiomics method with a golden standard method for which we might not know the real performance.
 Although this problem cannot directly be solved, it is essential to keep in mind when evaluating the performance results of radiomics methods.
 
 Another key factor is the proper validation of radiomics methods.
@@ -149,7 +149,7 @@ It is also vital to include radiomics methods in prospective studies.
 At the moment, most studies use retrospective data, which is suboptimal.
 The retrospective data is often several years old, and since imaging protocols or clinical pathways may have changed during this time, this influences the performance of the radiomics methods in the current clinical standard.
 Prospective studies might also reveal new obstacles for implementing radiomics methods in the clinic, which were not considered in retrospective studies.
-Furthermore, a prospective study is the best way of showing the actual clinical performance of a method, since it comes the closest to how a radiomics method will be used in a clinical setting.
+Furthermore, a prospective study is the best way of showing the actual clinical performance of a method, since it comes closest to how a radiomics method will be used in a clinical setting.
 
 \subsection{When is radiomics performance sufficient?}\label{subsec:discussion_radiomics_performance}
 
@@ -160,31 +160,32 @@ For example, it might be possible to improve the overall performance, but in som
 Thus, before these methods are clinically accepted, we need to establish when the performance of a radiomics method is sufficient.
 
 The performance of radiomics methods is compared to a golden standard derived through some other method (e.g., through the analysis of a biopsy sample in the case of genetic features).
-Thus, the machine learning methods will never (directly) outperform these golden standard methods; at best, they can match them perfectly; in that sense, the performance will never be acceptable, since the currently available method is always better.
-Of course, the radiomics methods have a different starting point from which they try to derive the same information (e.g., a scan instead of a \gls{tumor} sample to predict the genetic features).
+Thus, the machine learning methods will never (directly) outperform these golden standard methods; at best, they can match them perfectly.
+In that sense, the performance will never be acceptable, since the currently available method is always better.
+Of course, the radiomics methods have a different starting point from which they try to derive the same information (e.g., a scan instead of a biopsy sample to predict the genetic features).
 Thus, comparing the radiomics methods' performance with the golden standard might be unfair, and a different benchmark needs to be used.
-For example, in \cref{chap:LGG1p19q}, we did not reach perfect performance compared to the ground truth obtained from \gls{tumor} tissue analysis.
+For example, in \cref{chap:LGG1p19q}, we did not reach perfect performance compared to the ground truth obtained from pathological analysis.
 However, when we compared our method with clinical experts, who used the same data as was available to the algorithm, we found that our algorithm could outperform some of them.
 Thus, based on this benchmark, the performance might already be acceptable for clinical use, since it can improve over a current, comparable situation.
 
 The performance that needs to be achieved to make a method clinically acceptable also depends on the intended use of the radiomics method.
 For example, the benchmark with which the radiomics methods are compared could differ between institutes.
-For example, the experts with which we compared our method in \cref{chap:LGG1p19q} were well-recognized experts in their field and came from an institute specialized in glioma.
+The experts with which we compared our method in \cref{chap:LGG1p19q} were well-recognized experts in their field and came from an institute specialized in glioma.
 Thus, it is likely that not all institutes have access to the same level of expertise.
-Thus, in other institutes, the performance might already improve over the current situation and might be clinically acceptable.
+Thus, in other institutes, the performance of the currently available radiomics methods might already improve over the current situation and might be clinically acceptable.
 
 \subsection{How do we increase trust in radiomics methods?}
 
 Another important barrier to the acceptance of machine learning methods is their lack of interpretability.
 In particular, deep learning methods are considered black boxes since there is no explicit knowledge about the imaging features that these methods use as a basis for their predictions.
-Thus, it is hard to trust these methods' predictions, especially when considering that the clinical experts and the patient might want an explanation as to why a certain treatment decision is made.
+Thus, it is hard to trust these methods' predictions, especially when considering that the clinical experts and the patient might want an explanation as to why a certain prediction is made.
 Even if a method shows perfect performance, clinical experts might not use it if they cannot verify the method's predictions.
 How then do we increase the trust in radiomics methods?
 
 An important step is the increased explainability of machine learning methods.
 In \cref{chap:LGG1p19q,chap:prognosais,chap:DDS} we  tried to provide some insight into the machine learning methods.
 In \cref{chap:LGG1p19q}, we looked at the relative importance of different features, and in \cref{chap:prognosais,chap:DDS}, we showed attention maps and convolution filter outputs.
-Although in this way, we can provide some insight into these methods, this is very high-level and lacks an explanation as to why certain imaging features are used in the prediction.
+Although in this way we can provide some insight into these methods, this is very high-level and lacks an explanation as to why certain imaging features are used in the prediction.
 Although much research focuses on methods that can provide additional insight into these methods, the question remains whether human-interpretable explanations of machine learning methods will be available in the near future \autocite{zhang2018interpretable}.
 This lack of an interpretable explanation creates distrust for these algorithms since, even if the algorithm considers the correct part of the scan (e.g., inside the \gls{tumor} and not somewhere outside the brain), the algorithm might consider it for the wrong reasons.
 It is easy to attach our own explanation to these methods if we see them focusing on particular parts, but since the methods might consider a specific part of the scan for different reasons than we expect, this can easily lead to misinterpretations.
@@ -204,10 +205,10 @@ For example, in this thesis, it was assumed that all scans were scans of glioma 
 However, this means that it should first be established whether a scan contains a glioma.
 Thus, it is important to consider: what assumptions are made, and how can we deal with these assumptions?
 
-Firstly, it is crucial to state what assumptions about the input data are made explicitly.
+Firstly, it is crucial to explicitly state what assumptions about the input data are made.
 For example, in \cref{chap:LGG1p19q}, we assumed that the scans were of presumed \gls{LGG}, based on the visual appearance of these glioma in the scan.
 This assumption adds an upstream analysis step, in which the visual appearance of the scans is evaluated by a clinical expert, which might cause errors in the input data.
-Moreover, it restricts these algorithms' applicability since clinical expertise is needed to interpret the scans.
+Moreover, it restricts the algorithm's applicability since clinical expertise is needed to interpret the scans.
 Therefore, in \cref{chap:prognosais}, we made no such assumptions; instead, we included all types of glioma.
 This generalization reduces the number of upstream steps, thereby reducing the potential for errors made in the evaluation of the data.
 
@@ -217,7 +218,7 @@ To make the pipelines fully automatic, machine learning algorithms can be develo
 
 It is also possible to expand the method presented in \cref{chap:prognosais} to include the prediction of non-glioma pathology.
 However, this means that the algorithms need to predict multiple, unrelated outputs.
-For example, one output can still be the \gls{IDH} mutation status, while another output is whether a scan shows a brain infarct (instead of a glioma), in which case the \gls{IDH} mutation is nonsensical.
+For example, one output can still be the \gls{IDH} mutation status, while another output can indicate the presence a brain infarct (instead of a glioma), in which case the \gls{IDH} mutation is nonsensical.
 While this is possible, it might be infeasible since adding additional prediction tasks also increases the model's size.
 Thus, the machine learning methods should be as generalizable as possible to reduce the amount of upstream analysis that needs to be done while ensuring that the model's predictions remain coherent.
 If the outputs are not coherent, the tasks should be split up into several models to create more resource-efficient models.
@@ -225,17 +226,17 @@ If the outputs are not coherent, the tasks should be split up into several model
 In this thesis, we assumed that the genetic and histological features of glioma were homogenous throughout the whole \gls{tumor}; this means that if a \gls{tumor} was considered, for example, \gls{IDH} wildtype, that the \gls{tumor} was assumed to be \gls{IDH} wildtype everywhere.
 However, it is known that genetic and histological features can show intra-\gls{tumor} heterogeneity \autocite{eder2014heterogeneity}.
 Thus, radiomics methods need to be developed that take into account this intra-\gls{tumor} heterogeneity.
-This type of radiomics, where a label is predicted for each voxel rather than for the whole \gls{tumor}, is known as voxel-wise radiomics.
+This type of radiomics, where a label is predicted for each voxel rather than for the whole \gls{tumor}, is known as voxel-wise radiomics \autocite{yogananda20201p19q}.
 An important barrier to the development of voxel-wise radiomics methods is the acquisition of ground truth data.
-\gls{tumor} tissue obtained through biopsy is often obtained from a single or limited amount of locations, thus not containing the information for the whole \gls{tumor}.
+\Gls{tumor} tissue obtained through biopsy is often obtained from a single or limited amount of locations, thus not containing the information for the whole \gls{tumor}.
 Although it is possible, albeit very resource-intensive, to analyze the whole \gls{tumor} after resection, the problem then becomes the linking of the tissue analysis to the exact location in the \gls{MRI} scan.
 This problem could partially be solved by setting up a prospective study where the biopsies' locations are determined by the predictions of the voxel-wise radiomics method.
 
 
-\section{The technical challenges of automated image analysis?}\label{sec:discussion_technical}
+\section{The technical challenges of automated image analysis}\label{sec:discussion_technical}
 Apart from the questions related to the clinical implementation of radiomics methods, there are also several technical challenges to overcome for radiomics and automated methods.
 
-\subsection{How can radiomics keep up with new clinical research?}
+\subsection{How can radiomics keep up with new clinical research?}\label{subsec:discussion_new_research}
 Radiomics methods are, at their core, statistical methods that rely on historical data to predict future events.
 In order to extract enough statistical information, a database of sufficient size is needed.
 Since the number of glioma patients is (luckily) relatively low, it often takes several years to accumulate a large enough database to use in machine learning research.
@@ -250,7 +251,7 @@ It is essential to distinguish between developments regarding the data used as a
 Biomedical images are often used as input for radiomics methods, thus research on new imaging sequences (see also \cref{sec:dicussion_new_imaging}) will have a considerable influence here.
 For the clinical features, new insights into the genetics that play a role in specific patient groups will influence the results (see also \cref{sec:discussion_new_genetics}).
 
-When new imaging sequences are developed, enough data first needs to be collected such that methods can be trained using this new data.
+When new imaging sequences are developed, sufficient data first needs to be collected such that methods can be trained using this new data.
 However, previously treated patients cannot be scanned again, as the \gls{tumor} has often already been removed.
 To minimize the amount of data needed to train methods using these new imaging sequences, future studies could use transfer learning.
 Transfer learning takes an already trained algorithm and uses the knowledge contained in that algorithm to make the training of a new algorithm on slightly different, but related, data easier \autocite{shin2016transfer}.
@@ -270,32 +271,31 @@ The correlations learned by the algorithm might then lead to a faster training c
 
 \subsection{How will radiomics methods deal with ground truth uncertainties?}
 
-As mentioned before, machine learning methods are statistical methods that learn from historical data.
+As mentioned in \cref{subsec:discussion_new_research}, machine learning methods are statistical methods that learn from historical data.
 However, this historical data can contain errors, causing the method to learn incorrect correlations.
 Since this uncertainty in the ground truth is unavoidable, how can we make sure radiomics methods can handle these uncertainties?
 
 There might be a true ground truth for certain output categories, but there might not be a method that can determine this ground truth with perfect accuracy.
-For example, although a \gls{tumor} tissue sample expresses certain genetic mutations, the genetic analysis of \gls{tumor} tissue is imperfect; thus, the genetic analysis results may misrepresent the actual ground truth.
+For example, the genetic analysis of \gls{tumor} tissue is imperfect; thus, the genetic analysis results may misrepresent the actual ground truth.
 For example, when comparing multiple methods to determine the \gls{IDH} status of \gls{tumor} tissue, these methods are not always in agreement \autocite{pyo2016concordance}.
 The uncertainty can be larger for some ground truths than for others.
 For example the accuracy for the determination of the \gls{MGMT} status is quite low \autocite{wang2017mgmt}.
 If there is a measure of uncertainty for a specific ground truth label, it might be beneficial to use \say{soft} labels during the training of an algorithm.
 Usually, labels are used that only indicate whether a specific genetic mutation is present or absent in a sample.
-Using soft labels (which are continuous instead of binary) will punish the algorithm less for samples with large uncertainty in the ground truth.
-In this way, the uncertainty can be taken into account during the training, and the algorithm is not forced to learn incorrect correlations.
+Using soft labels, which are continuous rather than of binary, will punish the algorithm less for samples with large uncertainty in the ground truth.
+In this way, the uncertainty can be taken into account during the training.
 
 In other cases, there might not be a true ground truth; instead, the label may be inherently observer-dependent.
-This inherent observer-dependency is present for \gls{tumor} segmentation, which will always depend on the observer that made it.
+This inherent observer-dependency is present for \gls{tumor} segmentation, which will always depend on the observer that created the segmentation.
 The observer-dependency makes it hard to define the best performing algorithm since the ground truth could be less accurate than the predictions.
-For example, when comparing segmentation from multiple observers a whole \gls{tumor} mean DICE score of 0.85 was found, which is very close to our DICE score of 0.84 achieved in \cref{chap:prognosais} \autocite{menze2015brats}.
-Therefore, it might be hard to improve the performance further, especially if ground truth segmentation of multiple observers are used to train the algorithm.
-In this way, automated methods are very helpful for \gls{tumor} segmentation, as they homogenize the \gls{tumor} segmentations.
-This problem is hard to solve since a segmentation might also be based on personal preference.
-However, segmentation based on a consensus of multiple experts can partially solve this problem, since these segmentations will be more consistent.
+For example, when comparing segmentation from multiple observers a mean whole \gls{tumor} DICE score of 0.85 was found, which is very close to our DICE score of 0.84 achieved in \cref{chap:prognosais} \autocite{menze2015brats}.
+Therefore, it might be hard to improve the performance further, especially if ground truth segmentations of several different observers are used to train the algorithm.
+This problem observer-dependency is hard to solve since a segmentation might also be based on personal preference.
+However, segmentation based on a consensus of multiple experts might partially solve this problem, since these segmentations will be more consistent.
 
 \section{The future of automated image analysis}\label{sec:discussion_future}
 
-The sections above have raised some important questions regarding the current state of radiomics and other automated analysis methods.
+The previous sections have raised some important questions regarding the current state of radiomics and other automated analysis methods.
 In this section, I present a look at the future and suggest potential future research directions.
 
 
@@ -303,7 +303,7 @@ In this section, I present a look at the future and suggest potential future res
 
 One of the main challenges for radiomics methods that use \gls{MRI} scans at the moment is the qualitative nature of \gls{MRI} scans, which does not allow for truly objective imaging markers.
 In recent years quantitative \gls{MRI} has gained in popularity, which uses new imaging sequences to measure the true tissue values.
-The voxel values in these quantitative \gls{MRI} scans have a meaning, rather than only the differences between voxel values (as is the case in the currently used \gls{MRI} scans), and that the same patient scanned on different scanners should result in the same scan.
+The voxel values in these quantitative \gls{MRI} scans have a meaning, rather than only the differences between voxel values as is the case in the currently used \gls{MRI} scans, and the same patient scanned on different scanners should result in the same scan.
 The quantitative nature of these scans makes the development of new imaging biomarkers and automated methods easier, as the absolute voxel intensity can now be used, and methods can more easily be shared between different institutes.
 However, quantitative \gls{MRI} sequences are still mainly a research application, not yet ingrained in the clinical routine.
 
@@ -316,11 +316,11 @@ More recent imaging sequences such as \gls{CEST} provide additional physiologica
 
 
 \subsection{What can improvements in genetics bring to radiomics?}\label{sec:discussion_new_genetics}
-Although the \gls{WHO} 2016 guidelines were an important step forward for explaining the differences in glioma, there is still a lot to discover about the mechanisms that drive the aggressiveness of glioma.
+Although the \gls{WHO} 2016 guidelines were an important step forward for explaining the differences in the survival glioma patients, there is still a lot to discover about the mechanisms that drive the aggressiveness of glioma.
 What developments will there be, and how can these developments benefit radiomics methods?
 
 An important development in the field of genomics is the commodity of more advanced genetic analysis machines.
-With the introduction of next-generation sequencing, the genetic analysis results become more reliable, partially solving the problem of ground truth uncertainty, and more genes can be analyzed.
+With the introduction of next-generation sequencing the genetic analysis results become more reliable, partially solving the problem of ground truth uncertainty, and more genes can be analyzed.
 In this way, new genes can be discovered that correlate with the aggressiveness of the \gls{tumor}, and in the future, the glioma categorization will most likely be solely dependent on genetic features.
 This shift to a genetics-based categorization is beneficial for radiomics methods, since histological analysis is highly observer-dependent, and although there is still some observer-dependency in the genetic analysis, it is much less than for the histological analysis.
 
@@ -331,12 +331,10 @@ To improve the performance of deep learning methods, it is vital to consider the
 Although most models are currently constrained by GPU memory size, this problem is quickly being resolved, paving the way for new types of models.
 
 One way to extend models is to use the scan at different resolutions, thereby forcing the model to learn relevant features at different scales \autocite{akkus20171p19q}.
-Instead of using the scans at different resolutions, it is also possible to create a model that contains different pathways for the different scan directions (axial, sagittal, coronal).
-
 Another interesting approach would be to keep the different scan modalities separate during the convolutions.
-Currently, the first convolutional layer combines the different modalities (e.g., \acrlong{T1} and \acrlong{T2}) into feature maps.
+Currently, the first convolutional layer combines the different modalities (e.g., \acrlong{T1} and \acrlong{T2} scans) into feature maps.
 However, keeping the modalities separate deeper into the model may lead to different features being learned.
-Of course, one can then also make different paths in the models for different combinations of modalities, where each path learn specific features.
+Of course, one can then also make different paths in the models for different combinations of modalities, where each path can learn specific features.
 However, this will significantly increase the amount of memory required to train these models.
 Thus, these models might be infeasible now, but the rapid improvements in GPU technology might see the developments of such methods within the next couple of years.
 
@@ -350,8 +348,8 @@ All of this data comes from clinical patients, which raises questions regarding 
 
 Currently, data is retrospectively collected once a research question is established.
 However, data collecting is time- and resource-consuming, and data can often be used in multiple studies.
-With the advance of automated tools such as CTP and XNAT, it has become easier to automatically collect data while ensuring patient privacy.
-Because of this data's value, it is essential to consider the automatic collection of data from new patients and make it available for research.
+With the advance of automated tools such as CTP and XNAT, it has become easier to automatically collect data while ensuring patient privacy \autocite{marcus2007xnat}.
+Because of this data's value, it is essential to consider the automatic collection of data from new patients, making it available for research.
 
 Once the data has been collected, the question of with whom to share this data becomes relevant.
 Of course, the data can easily be shared within the institute in which it has been collected.
@@ -359,11 +357,11 @@ However, sharing data between multiple institutes will result in larger and more
 
 The sharing of data is also related to more political considerations.
 Since both the Dutch healthcare system and the Dutch research infrastructure is primarily financed by taxpayer money, it could be argued that the data needs to be collected by and made available to all Dutch researchers.
-In this way, the data can improve the Dutch healthcare system, potentially reduce costs in the future, and an extensive database could quickly propel the Netherlands to be at the forefront of glioma image analysis research.
+In this way, the data can improve the Dutch healthcare system, potentially reducing costs in the future, and an extensive database could quickly propel the Netherlands to be at the forefront of glioma image analysis research.
 
 However, ultimately it is essential to create more public databases.
 The public sharing of databases allows all institutes, especially those which are not privileged enough to have access to this data themselves, to incorporate the latest research in the clinical practice, as discussed in \cref{subsec:discussion_added_value_radiomics}.
-Furthermore, this will create even larger and more diverse databases and allows for more reproducible research that can be verified on these publicly available datasets.
+Furthermore, this will create even larger and more diverse databases and allows for better reproducible research that can be verified on these publicly available datasets.
 
 
 
@@ -375,11 +373,10 @@ If enough data is used to train a model, the model could pick up on imaging feat
 For example, in \cref{chap:prognosais}, some patients were incorrectly predicted when considering the ground truth according to the \gls{WHO} 2016 guidelines, but were correctly predicted according to the newest cIMPACT-NOW guidelines (which is based on more genetic features) \autocite{lous2020impactnow}.
 In the newest guidelines, these glioma are categorized as more aggressive than according to the \gls{WHO} 2016 guidelines, which shows that our algorithm picked up on imaging features that represent this aggressiveness, as it predicted these glioma as more aggressive than expected.
 Thus, radiomics methods might provide more predictive value than just the prediction of the ground truth labels.
-How can we unlock the full potential of these radiomics methods?
 
-The prediction of the radiomics methods can be evaluated by linking the model's predictions with the patients' survival, which might show patients in different groups than expected from the ground truth.
+The prediction of the radiomics methods can be evaluated by linking the model's predictions with the patient survival, which might show patients in different groups than expected from the ground truth.
 However, if the model picked up on aggressiveness, the model might provide a better patient stratification than provided by the original ground truth.
-By correlating the predictions with survival, we can verify whether the radiomics methods provide better patient stratification, which might then be used in the clinic.
+By correlating the predictions with survival, we can verify whether the radiomics methods provide better patient stratification, and this new stratification might then be used in the clinic.
 
 \subsection{What else can automated methods contribute?}
 
@@ -405,7 +402,7 @@ Perhaps the most important question is what the future clinical application of r
 
 First of all, the view in which radiomics is usually presented: to obviate the need for invasive or complicated surgery.
 In the case of glioma, it seems unlikely that radiomics methods will completely replace biopsies or prevent surgeries.
-The majority of the \glspl{tumor} are removed quickly after discovery, and the benefits of a watch-and-wait approach are often a topic of discussion.
+The majority of the \glspl{tumor} are removed quickly after discovery, and the benefits of a watch-and-wait approach are often a topic of discussion \autocite{hayhurst2017management, wijnenga2017resection}.
 As discussed in \cref{subsec:discussion_added_value_radiomics}, in this context radiomics method might need to focus on subgroups of patients for which they can provide the most benefits.
 
 As mentioned above, radiomics can also be viewed as a way of democratizing the latest developments in glioma research.
