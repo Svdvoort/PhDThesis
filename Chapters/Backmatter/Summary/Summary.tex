@@ -1,3 +1,50 @@
-\chapter{Summary/Samenvatting}
+% Following magic comments allow for compilation of root file
+% !TEX root = ../../../temp_manuscript.tex
+\chapter{Summary}
+\begin{ChapterAbstractNoTitle}
+\end{ChapterAbstractNoTitle}
 
-To be completed
+In recent years, automated image analysis and machine learning methods quickly gained popularity in the medical imaging field.
+In tandem with the introduction of radiomics, where features are extracted from biomedical imaging data and correlated with disease characteristics, these methods have had a significant impact on biomedical imaging research and are slowly finding its way into the clinic.
+In this thesis, I developed several automated image analysis and machine learning methods to aid in the analysis of glioma \gls{MRI} scans.
+
+\textbf{\cref{chap:introduction}} introduces the current clinical understanding and management of glioma.
+It focusses on the role that a glioma's genetic features play in the aggressiveness and treatment response of the \gls{tumor}, and the importance of these genetic features in the clinical decision making.
+In this chapter, I also introduce the current role of biomedical imaging in the clinical management of glioma.
+
+In \textbf{\cref{chap:radiomics}}, I provide a general introduction to automated image analysis and machine learning methods.
+I explain the methodology underlying several machine learning techniques and discuss the importance and potential pitfalls of setting up an adequately executed radiomics study.
+The chapter also discusses infrastructure resources that researchers can use to efficiently carry out radiomics experiments.
+
+In \textbf{\cref{chap:LGGLocation}}, I used MRI data from 224 \gls{LGG} patients to find a relationship between the location of a \gls{tumor} and its genetic features.
+I found that \gls{IDH}-mutated \gls{LGG} are more frequently located in the frontal lobes and \gls{IDH}-wildtype \gls{LGG} are more frequently located in the basal ganglia of the right hemisphere.
+\Glspl{tumor} that showed 9p loss were more frequently located in the left parietal lobes.
+For other genetic features, such as the 1p/19q co-deletion status, no significant association with the \gls{tumor} location was found.
+I also found that \glspl{tumor} with total resection or a small post-operative volume were predominantly located in the frontal lobes.
+
+In \textbf{\cref{chap:HGGLocation}}, I used \gls{MRI} data from 435 \gls{IDH}-wildtype \gls{HGG} patients to find a relationship between the \gls{tumor} location and the \gls{MGMT} methylation status of the glioma.
+A visual inspection found that \gls{MGMT} unmethylated glioma were more frequently located in the bifrontal and left occipital periventricular areas and less frequently near the right occipital periventricular area.
+However, further analysis did not find a significant relationship between the \gls{tumor} localization and the \gls{MGMT} methylation status.
+
+In \textbf{\cref{chap:LGG1p19q}}, I developed a radiomics method that predicts the 1p/19q status of non-enhancing \gls{LGG} using a \gls{SVM} using pre-operative \gls{MRI} scans.
+\gls{MRI} scans from 284 patients were used to develop the method, and an independent dataset of 129 patients was used to evaluate the method.
+This method was successful in predicting the 1p/19q status and outperformed two out of four clinical experts that performed the same task.
+Analysis of the radiomics method showed that it mainly used imaging features that were previously described in the literature as the basis of its predictions.
+
+In \textbf{\cref{chap:DDS}}, I focused on the problem of using unstructured, large-scale data for biomedical imaging research.
+In this chapter, I proposed a method, based on a convolutional neural network, that can automatically predict the contrast type of brain \gls{MRI} scans.
+The method was trained using 11065 \gls{MRI} scans of 719 glioma patients and tested on 2369 scans of 192 glioma patients.
+It was also tested on 7227 scans of 1318 Alzheimer patients, to show the generalizability of our method to \gls{MRI} scans that do not contain brain \glspl{tumor}.
+Our method was able to predict the contrast type of the scan with near-perfect accuracy for both the glioma patients and the Alzheimer patients.
+Based on the predicted scan type, our method can quickly structure a dataset, providing a tremendous speed-up compared to the manual sorting of these datasets.
+
+In \textbf{\cref{chap:prognosais}}, I developed a method that can simultaneously segment glioma and predict their \gls{IDH}-status, 1p/19q-status, and grade using pre-operative \gls{MRI} scans.
+By predicting these genetic and histological features, a \gls{tumor} can be categorized according to the \gls{WHO} 2016 guidelines.
+This method was based on an existing convolutional neural network architecture, which was altered to enable the multiple, simultaneous predictions.
+By optimizing the model, I was able to use the full 3D \gls{MRI} scan as an input.
+Furthermore, this method worked on all types of glioma, regardless of their clinical characteristics or visual appearance.
+This method was developed using a dataset of 1508 glioma patients and tested on an independent dataset of 240 patients.
+The method achieved good performance for all of the different tasks, demonstrating the possibilities of using a single method for multiple tasks.
+
+Finally, in \textbf{\cref{chap:discussion}}, I discuss the contributions of this thesis towards the improvement of the image analysis of glioma.
+Although there are still barriers to overcome before automated image analysis and machine learning methods will be ingrained in the clinic, there is a clear potential for these methods to contribute in the clinical management of glioma in a significant way.
