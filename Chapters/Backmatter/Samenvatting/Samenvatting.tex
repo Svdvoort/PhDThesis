@@ -4,59 +4,58 @@
 \begin{ChapterAbstractNoTitle}
 \end{ChapterAbstractNoTitle}
 
-In de afgelopen jaren hadden automatische beeldanalyse en machine learning een grote impact op onderzoek naar biomedische beeldanalyse.
-Tegelijkertijd heeft onderzoek naar gliomen verschillende genetische eigenschappen onthuld die de agressiviteit van tumoren beïnvloeden.
+In de afgelopen jaren hebben automatische beeldanalyse methodes en machine learning een grote impact gehad op onderzoek op het gebied van biomedische beeldanalyse.
+Tegelijkertijd heeft onderzoek naar gliomen verschillende genetische eigenschappen onthuld die bepalend zijn voor de agressiviteit van tumoren.
 Door deze ontwikkelingen is 'radiomics' erg populair geworden.
-Radiomics methoden extraheren beeld eigenschappen uit biomedische beelden en correleren deze met de klinische karakteristieken van een tumor.
-In dit proefschrift combineer ik de meest recente inzichten vanuit het klinische en radiomics onderzoek, met een focus op de automatische beeldanalyse van Magnetic Resonance Imaging (MRI) scans van gliomen.
+Radiomics methoden extraheren beeld eigenschappen uit biomedische beelden en correleren deze eigenschappen met de klinische karakteristieken van een tumor.
+In dit proefschrift combineer ik de meest recente inzichten vanuit het klinische en radiomics onderzoek, en pas ik deze inzichten toe op de automatische beeldanalyse van Magnetic Resonance Imaging (MRI) scans van gliomen.
 
 
 \textbf{Hoofdstuk \ref{chap:introduction}} introduceert de huidige klinische kennis en behandeling van gliomen.
-Het legt de rol die de genetische eigenschappen van een glioom spelen bij de agressiviteit en behandel reactie van een tumor uit.
-Verder bespreekt het de rol die deze genetische eigenschappen spelen bij beslissingen binnen het behandeltraject van gliomen.
+Dit hoofdstek legt de relatie uit tussen de genetische eigenschappen en de agressiviteit van een glioom, alsmede hoe de genetische eigenschappen van een glioom bepalend kunnen zijn voor de effectiviteit van een bepaalde behandeling.
+In dit hoofdstuk bespreek ik verder de rol die deze genetische eigenschappen spelen bij beslissingen binnen het behandeltraject van gliomen.
 In dit hoofdstuk introduceer ik ook de huidige rol van biomedische beeldvorming bij de klinische behandeling van gliomen.
 
-In \textbf{Hoofdstuk \ref{chap:radiomics}} geef ik een algemene introductie over automatische beeld analysis methodes en machine learning methodes.
-Ik leg onder andere de methodologie van verschillende machine learning technieken uit, en bediscussieer het belang van een goed uitgevoerde radiomics study en de mogelijke valkuilen bij het opzetten van een dergelijke studie.
-Dit hoofdstuk verwijst ook naar een aantal infrastructuur middelen die onderzoekers kunnen gebruiken om radiomics experiment op een efficiënte manier uit te voeren.
+In \textbf{Hoofdstuk \ref{chap:radiomics}} geef ik een algemene introductie over automatische beeld analyse methodes en machine learning methodes.
+Ik leg onder andere de methodologie achter verschillende machine learning technieken uit, en bediscussieer het belang van een goed uitgevoerde radiomics study en de mogelijke valkuilen bij het opzetten van een dergelijke studie.
+Dit hoofdstuk refereert ook aan een aantal infrastructuur middelen die onderzoekers kunnen gebruiken om radiomics experimenten op een effici{\"e}nte manier uit te voeren.
 
-In \textbf{Hoofdstuk \ref{chap:LGGLocation}} gebruik ik MRI data van 224 patiënten met een  laaggradig glioom (LGG) om te onderzoeken over een relatie bestaat tussen de locatie en genetische eigenschappen van een tumor.
+In \textbf{Hoofdstuk \ref{chap:LGGLocation}} gebruik ik MRI data van 224 pati{\"e}nten met een  laaggradig glioom (LGG) om te onderzoeken of er een relatie bestaat tussen de locatie en genetische eigenschappen van een tumor.
 Als een dergelijke relatie bestaat kunnen deze locatie eigenschappen in een klinische omgeving gebruikt worden als een eerste indicatie voor de genetische eigenschappen van een glioom.
 Ik heb ontdekt dat isocitrate dehydrogenase (IDH) gemuteerde LGG vaker voorkwamen in de frontale kwabben en dat IDH wild type LGG vaker voorkwamen in de basale ganglia van de rechter hersenhelft.
-Tumoren met met verlies van chromosoom 9p kwamen vaker voor in de linker wandbeenkwabben.
+Tumoren met verlies van chromosoom 9p kwamen vaker voor in de linker wandbeenkwabben.
 Voor andere genetische eigenschappen, zoals de 1p/19q co-deletie status, heb ik geen significante relatie met de tumor locatie ontdekt.
 
-Naar aanleiding van de resultaten van \textbf{Hoofdstuk \ref{chap:LGGLocation}} heb ik onderzocht of er in hooggradige gliomen (HGG), waar andere genetische eigenschappen van belang zijn dan bij LGG, ook een mogelijke relatie is tussen de genetische eigenschappen en de locatie van de tumor.
-In \textbf{Hoofdstuk \ref{chap:HGGLocation}} heb ik daarom MRI data van 435 patiënten met een IDH-wildtype HGG gebruikt om te onderzoek over een relatie bestaat tussen de locatie en de O$^6$-methylguanine-methyltransferase (MGMT) methylatiestatus van een tumor.
-Op basis van een visuele analyse kwamen MGMT ongemethyleerde gliomen vaker voor in de bifrontale en linker occipitale periventriculaire gebieden, en kwamen ze minder vaak voor in het rechter occipitaal periventriculaire gebied.
-Verder analyse heeft echter geen significante relatie kunnen vinden tussen deze of andere gebieden en de MGMT methylatiestatus.
+Naar aanleiding van de resultaten van \textbf{Hoofdstuk \ref{chap:LGGLocation}} heb ik onderzocht of er in hooggradige gliomen (HGG), waar andere genetische eigenschappen van belang zijn dan bij LGG, ook een relatie bestaat tussen de genetische eigenschappen en de locatie van de tumor.
+In \textbf{Hoofdstuk \ref{chap:HGGLocation}} heb ik daarom MRI data van 435 pati{\"e}nten met een IDH wild type HGG gebruikt om te onderzoek of er een relatie bestaat tussen de locatie en de O$^6$-methylguanine-methyltransferase (MGMT) methylatiestatus van een tumor.
+Bij een visuele inspectie leken  MGMT ongemethyleerde gliomen vaker voor te komen in de bifrontale en linker occipitale periventriculaire gebieden, en leken ze minder vaak voor te komen in het rechter occipitale periventriculaire gebied.
+Verdere analyse heeft echter geen significante relatie kunnen vinden tussen deze of andere gebieden en de MGMT methylatiestatus.
 
-De lokatie eigenschappen die zijn bepaald in \textbf{Hoofdstukken \ref{chap:LGGLocation} en \ref{chap:HGGLocation}} zijn maar een klein deel van de beeldeigenschappen die kunnen worden geëxtraheerd uit MRI scans.
+De lokatie eigenschappen die zijn bepaald in \textbf{Hoofdstukken \ref{chap:LGGLocation} en \ref{chap:HGGLocation}} zijn maar een klein deel van de beeldeigenschappen die kunnen worden ge{\"e}xtraheerd uit MRI scans.
 In \textbf{Hoofdstuk \ref{chap:LGG1p19q}} heb ik daarom een radiomics methode ontwikkeld die de 1p/19q co-deletie status van niet-aankleurende LGG voorspelt.
-Deze voorspelling wordt gedaan door een Support Vector Machine (SVM) op basis van 78 beeldeigenschappen die zijn geëxtraheerd uit preoperatieve MRI beelden en 2 klinische eigenschappen.
-Ik heb data van 284 patiënten gebruikt om deze methode te ontwikkelen, vervolgens heb ik de methode getest op een onafhankelijke dataset van 129 patiënten.
-Deze methode kon de 1p/19q co-deletie status succesvol voorspellen en was beter dan twee van de vier klinische experts die waren gevraagd om dezelfde voorspelling te maken.
-Verdere analyse liet zien dat deze methode zijn voorspelling baseerde op beeldeigenschappen die al eerder in de literatuur bekend waren.
+Deze voorspelling wordt gedaan door een Support Vector Machine (SVM) op basis van 78 beeldeigenschappen die zijn ge{\"e}xtraheerd uit preoperatieve MRI beelden en 2 klinische eigenschappen.
+Ik heb data van 284 pati{\"e}nten gebruikt om deze methode te ontwikkelen, vervolgens heb ik de methode getest op een onafhankelijke dataset van 129 pati{\"e}nten.
+Deze methode kon de 1p/19q co-deletie status succesvol voorspellen en was beter dan twee van de vier klinische experts die waren gevraagd om de 1p/19q co-deletie status te voorspellen.
+Verdere analyse liet zien dat deze methode zijn voorspelling voornamelijk baseerde op beeldeigenschappen die al eerder in de literatuur bekend waren.
 
-De resultaten uit \textbf{Hoofdstuk \ref{chap:LGG1p19q}} tonen het belang van een grote, diverse dataset voor de ontwikkeling van een radiomics methode aan.
+De resultaten uit \textbf{Hoofdstuk \ref{chap:LGG1p19q}} toonden het belang van een grote, diverse dataset voor de ontwikkeling van een radiomics methode aan.
 Echter, klinische datasets die gebruikt worden in radiomics onderzoek zijn initieel vaak ongestructureerd, wat het gebruik van deze datasets bemoeilijkt.
 Daarom heb ik in \textbf{Hoofdstuk \ref{chap:DDS}} een methode ontwikkeld die het gebruik van ongestructureerde, grootschalige datasets van biomedische beelden vergemakkelijkt.
 Deze methode is gebaseerd op een convolutioneel neuraal netwerk (CNN) en deze methode kan het contrast type van  MRI hersenscans voorspellen.
 Op basis van het voorspelde contrast type kan deze methode de data vervolgens automatisch structureren.
-11065 MRI scans van 719 glioom patiënten zijn gebruikt om de methode te ontwikkelen en de methode is vervolgens getest op 2369 scans van 192 glioom patienten.
-Om de generaliseerbaarheid naar hersen MRI scans van patiënten zonder glioom aan te tonen is de methode ook getest op 7227 scans van 1318 patiënten met de ziekte van Alzheimer.
-Mijn methode kon het contrast type van de scan nagenoeg perfect voorspellen voor zowel de glioom patiënten als de Alzheimer patienten
+11065 MRI scans van 719 glioom pati{\"e}nten zijn gebruikt om de methode te ontwikkelen en de methode is vervolgens getest op 2369 scans van 192 glioom patienten.
+Om de generaliseerbaarheid naar hersen MRI scans van pati{\"e}nten zonder glioom aan te tonen is de methode ook getest op 7227 scans van 1318 pati{\"e}nten met de ziekte van Alzheimer.
+Mijn methode kon het contrast type van de scan nagenoeg perfect voorspellen voor zowel de glioom pati{\"e}nten als de Alzheimer patienten
 
-De methode uit \textbf{Hoofdstuk \ref{chap:DDS}} heb ik gebruikt om de tot op heden grootste en meeste diverse MRI dataset van glioom patiënten op te stellen.
-Deze dataset heb ik vervolgens gebruikt om een methode te ontwikkelen die tegelijkertijd de tumor kan omlijnen en de IDH-status, 1p/19q co-deletie status, en graad van de tumor kan voorspellen.
-
-Door al deze genetische en histologische eigenschappen van de tumor te voorspellen kan deze worden gecategoriseerd op basis van de World Health Organization (WHO) 2016 aanbevelingen.
-Deze methode was gebaseerd op een bestaande CNN architectuur, die heb ik aangepast om het mogelijk te maken de meerdere eigenschappen tegelijkertijd te voorspellen.
+De methode uit \textbf{Hoofdstuk \ref{chap:DDS}} heb ik gebruikt om de tot op heden grootste en meeste diverse MRI dataset van glioom pati{\"e}nten op te stellen.
+Deze dataset heb ik vervolgens in \textbf{Hoofdstuk \ref{chap:prognosais}} gebruikt om een methode te ontwikkelen die de tumor kan omlijnen en tegelijkertijd de IDH-status, 1p/19q co-deletie status, en graad van de tumor kan voorspellen.
+Door al deze genetische en histologische eigenschappen van de tumor te voorspellen, kan de tumor worden gecategoriseerd op basis van de aanbevelingen van de World Health Organization (WHO) uit 2016.
+Deze methode was gebaseerd op een bestaande CNN architectuur, die heb ik aangepast zodat het mogelijk was om de verschillende genetische en histologische eigenschappen gelijktijdig te voorspellen.
 Door het model te optimaliseren was ik in staat om de volledige 3D MRI scan te gebruiken als een invoer voor het netwerk, ondanks de beperkingen van de technische systemen.
-Ik heb een dataset van 1508 glioom patiënten gebruikt om deze methode te trainen en de methode vervolgens getest op een onafhankelijke dataset van 240 patiënten.
-De methode behaalde een goede voorspellings accuraatheid voor alle verschillende taken, wat de mogelijkheden aantoont van het gebruik van één enkele methode voor meerdere voorspellingen.
+Ik heb een dataset van 1508 glioom pati{\"e}nten gebruikt om deze methode te trainen en de methode vervolgens getest op een onafhankelijke dataset van 240 pati{\"e}nten.
+De methode behaalde een goede voorspellings nauwkeurigheid voor alle verschillende taken, wat de mogelijkheden aantoont van het gebruik van {\'e}{\'e}n enkele methode voor meerdere voorspellingen.
 
 Tot slot bediscussieer ik in \textbf{Hoofdstuk \ref{chap:discussion}} de bijdragen die dit proefschrift heeft geleverd aan het verbeteren van de beeldanalyse van gliomen.
-Alhoewel er nog een aantal hindernissen overwonnen moeten worden voordat automatische beeldanalyse gemeengoed worden in de klinische praktijk, is het duidelijk deze methodes significant bij kunnen dragen aan het verbeteren van de diagnose en behandeling van gliomen.
+Alhoewel er nog een aantal hindernissen overwonnen dienen worden voordat automatische beeldanalyse gemeengoed zullen zijn in de klinische praktijk, is het duidelijk dat deze methodes significant bij kunnen dragen aan het verbeteren van de diagnose en behandeling van gliomen.
 
 
