@@ -123,9 +123,16 @@
 \AtEveryBibitem{
 \renewcommand*{\mkbibnamefamily}[1]{%
   \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
+    {
+      \ifpartannotation{authorship}{shared}{
+        \textbf{#1}\textsuperscript{*} }
+      {\textbf{#1}}
+      }
+  {\ifpartannotation{authorship}{shared}{
+      #1\textsuperscript{*} }
+    {#1}
 }
+}}
 
 \AtEveryBibitem{
 \renewcommand*{\mkbibnameprefix}[1]{%
