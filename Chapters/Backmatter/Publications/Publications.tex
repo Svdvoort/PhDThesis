@@ -25,16 +25,21 @@
     keyword=presentation
 }
 
+\defbibfilter{articles}{
+    type=article or type=unpublished
+}
+
 
 \begin{refsection}[mypublications]
 \nocite{*}
-\printbibliography[omitnumbers=true,title={Journal Papers},env=mypubs,type=article,heading=subbibliography]
+\printbibliography[omitnumbers=true,title={Journal Papers},env=mypubs,filter=articles,heading=subbibliography]
 \printbibliography[omitnumbers=true,title={Book Chapters},env=mypubs,type=inbook,heading=subbibliography]
 \printbibliography[omitnumbers=true,title={Conference Papers},env=mypubs,filter=conference_papers,heading=subbibliography]
 \printbibliography[omitnumbers=true,title={Conference Abstracts},env=mypubs,filter=conference_abstracts,heading=subbibliography]
 \printbibliography[omitnumbers=true,title={Presentations},env=mypubs,filter=conference_presentations,heading=subbibliography]
 
 \vspace*{1cm}
-* indicates equal contributions
+\noindent* indicates equal contributions\\
+$\dagger$ indicates presenting author
 
 \end{refsection}
