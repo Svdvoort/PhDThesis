@@ -7,7 +7,7 @@
 In recent years, automated image analysis and machine learning methods have had a significant impact on biomedical imaging research.
 At the same time, research on glioma has revealed several genetic features that drive the aggressiveness of these \glspl{tumor}.
 These two developments have popularized the field of radiomics, where imaging features are extracted from biomedical images and correlated with the clinical characteristics of a \gls{tumor}.
-In this thesis, I combined the latest insight from clinical and radiomics research, focussing on the automated image analysis of glioma \gls{MRI} scans.
+In this thesis, I combined the latest insights from clinical and radiomics research, focussing on the automated image analysis of glioma \gls{MRI} scans.
 
 \textbf{\cref{chap:introduction}} introduces the current clinical understanding and management of glioma.
 It focusses on the role that a glioma's genetic features play in the aggressiveness and treatment response of the \gls{tumor}, and the role of these genetic features in the clinical decision making.
@@ -18,38 +18,38 @@ I explain the methodology underlying several machine learning techniques and dis
 The chapter also discusses infrastructure resources that researchers can use to efficiently carry out radiomics experiments.
 
 In \textbf{\cref{chap:LGGLocation}}, I used MRI data from 224 \gls{LGG} patients to investigate whether there is a relationship between the location of a \gls{tumor} and its genetic features.
-If such a relationship exists, these localization features can be used in a clinical setting as a first indication of a \gls{tumor}'s genetic features.
+If such a relationship exists, these localisation features can be used in a clinical setting as a first indication of a \gls{tumor}'s genetic features.
 I found that \gls{IDH}-mutated \gls{LGG} were more frequently located in the frontal lobes and \gls{IDH}-wildtype \gls{LGG} were more frequently located in the basal ganglia of the right hemisphere.
 \Glspl{tumor} that showed 9p loss were more frequently located in the left parietal lobes.
 For other genetic features, such as the 1p/19q co-deletion status, no significant association with the \gls{tumor} location was found.
 
-Motivated by the findings of \textbf{\cref{chap:LGGLocation}}, I also investigated potential localization features for \gls{HGG}, where different genetic features play a role.
-Therefore, in \textbf{\cref{chap:HGGLocation}}, I used \gls{MRI} data from 435 \gls{IDH}-wildtype \gls{HGG} patients to determine whether there is a relationship between the \gls{tumor} location and the \gls{MGMT} methylation status of the glioma.
-A visual inspection found that \gls{MGMT} unmethylated glioma were more frequently located in the bifrontal and left occipital periventricular areas and less frequently near the right occipital periventricular area.
-However, a statistical analysis did not find a significant relationship between the \gls{tumor} localization and the \gls{MGMT} methylation status.
+Motivated by the findings of \textbf{\cref{chap:LGGLocation}}, I also investigated potential localisation features for \gls{HGG}, where different genetic features play a role.
+To this end, in \textbf{\cref{chap:HGGLocation}}, I used \gls{MRI} data from 435 \gls{IDH}-wildtype \gls{HGG} patients to determine whether there is a relationship between the \gls{tumor} location and the \gls{MGMT} methylation status of the glioma.
+A visual inspection suggested that \gls{MGMT} unmethylated glioma were more frequently located in the bifrontal and left occipital periventricular areas and less frequently near the right occipital periventricular area.
+However, a statistical analysis did not support a significant relationship between the \gls{tumor} localisation and the \gls{MGMT} methylation status.
 
-The localization features from \textbf{\cref{chap:LGGLocation,chap:HGGLocation}} are only a small subset of the imaging features that can be extracted from the \gls{MRI} scans.
-Therefore, in \textbf{\cref{chap:LGG1p19q}}, I developed a radiomics method that predicts the 1p/19q status of non-enhancing \gls{LGG} using a \gls{SVM} based on 78 imaging features extracted from pre-operative \gls{MRI} scans and 2 clinical features.
+The localisation features as used in \textbf{\cref{chap:LGGLocation,chap:HGGLocation}} are only a small subset of the imaging features that can be extracted from \gls{MRI} scans.
+Therefore, in \textbf{\cref{chap:LGG1p19q}}, I developed a radiomics method that predicts the 1p/19q status of non-enhancing \gls{LGG} using a \gls{SVM} based on 78 imaging features extracted from pre-operative \gls{MRI} scans as well as 2 clinical features.
 Data from 284 patients was used to develop the method, and an independent dataset of 129 patients was used to evaluate the method.
 This method was successful in predicting the 1p/19q status and outperformed two out of four clinical experts that performed the same task.
-Further analysis showed that the method mainly used imaging features that were previously described in the literature as the basis of its predictions.
+Further analysis showed that the method, as the basis of its predictions, mainly used imaging features that were previously related to the 1p/19q status in the literature.
 
 The results from \textbf{\cref{chap:LGG1p19q}} showed the importance of using a large, diverse dataset for the development of a radiomics method.
 However, the clinical datasets that are used in radiomics research are often unstructured, complicating the automatic processing of the data.
 Therefore, in \textbf{\cref{chap:DDS}}, I proposed a method that solves the problem of using unstructured, large-scale biomedical imaging data.
-This method, based on a convolutional neural network, can  predict the contrast type of brain \gls{MRI} scans and can automatically sort the data based on the predicted contrast type, providing a tremendous speed-up compared to the manual sorting of these datasets.
-The method was trained using 11065 \gls{MRI} scans of 719 glioma patients and tested on 2369 scans of 192 glioma patients.
-It was also tested on 7227 scans of 1318 Alzheimer patients, to show the generalizability of our method to \gls{MRI} scans that do not contain brain \glspl{tumor}.
-Our method was able to predict the contrast type of the scan with near-perfect accuracy for both the glioma patients and the Alzheimer patients.
+This method, based on a convolutional neural network, can  predict the type of brain \gls{MRI} scans and can automatically sort the data based on the predicted type, providing a tremendous speed-up compared to the manual sorting of these datasets.
+The method was trained using 11,065 \gls{MRI} scans of 719 glioma patients and tested on 2,369 scans of 192 glioma patients.
+It was also tested on 7,227 scans of 1,318 Alzheimer patients, to show the generalizability of our method to \gls{MRI} scans that do not contain brain \glspl{tumor}.
+Our method was able to predict the type of the scan with near-perfect accuracy in both the glioma patients and the Alzheimer patients.
 
 I used the method developed in \textbf{\cref{chap:DDS}} to create the largest, most diverse glioma \gls{MRI} dataset to date.
 This dataset was then used in \textbf{\cref{chap:prognosais}} to develop a method that can simultaneously segment glioma and predict their \gls{IDH}-status, 1p/19q-status, and grade using pre-operative \gls{MRI} scans.
-By predicting these genetic and histological features, a \gls{tumor} can be categorized according to the \gls{WHO} 2016 guidelines.
+By predicting these genetic and histological features, a \gls{tumor} can be categorised according to the \gls{WHO} 2016 guidelines.
 This method was based on an existing convolutional neural network architecture, which was altered to enable the multiple, simultaneous predictions.
-By optimizing the model I was able to use the full 3D \gls{MRI} scan as an input, despite the limited computational resources available to train the model.
-Furthermore, this method worked on all types of glioma, regardless of their clinical characteristics or visual appearance.
-This method was developed using a dataset of 1508 glioma patients and tested on an independent dataset of 240 patients.
+By optimising the model I was able to use the full 3D \gls{MRI} scan as an input, despite the limited computational resources available to train the model.
+Furthermore, this method was designed to work on all types of glioma, regardless of their clinical characteristics or visual appearance.
+This method was developed using a dataset of 1,508 glioma patients and tested on an independent dataset of 240 patients.
 The method achieved good performance for all of the different tasks, demonstrating the possibilities of using a single method for multiple tasks.
 
-Finally, in \textbf{\cref{chap:discussion}}, I discuss the contributions of this thesis towards the improvement of the image analysis of glioma.
-Although there are still hurdles to overcome before automated image analysis and machine learning methods will be common-place in the clinic, there is a clear potential for these methods to contribute in the diagnosis and treatment of glioma in a significant way.
+Finally, in \textbf{\cref{chap:discussion}}, I discuss the contributions of this thesis towards the improvement of image analysis of glioma.
+Although there are still hurdles to overcome before automated image analysis and machine learning methods will be common-place in the clinic, there is a clear potential for these methods to contribute to the diagnosis and treatment of glioma in a significant way.
