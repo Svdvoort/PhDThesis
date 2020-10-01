@@ -115,23 +115,16 @@
 % % Bold your own name in the bibliography of publications
 \AtEveryBibitem{
 \renewcommand*{\mkbibnamegiven}[1]{%
-  \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
+  \ifitemannotation{highlight}{\textbf{#1}}{#1}}
 }
 
 \AtEveryBibitem{
 \renewcommand*{\mkbibnamefamily}[1]{%
   \ifitemannotation{highlight}
-    {
-      \ifpartannotation{authorship}{shared}{
-        \textbf{#1}\textsuperscript{*} }
-      {\ifitemannotation{presenter}{\textbf{#1}\textsuperscript{$\dagger$}}{\textbf{#1}}}
-      }
-  {\ifpartannotation{authorship}{shared}{
-      #1\textsuperscript{*} }
-    {\ifitemannotation{presenter}{#1\textsuperscript{$\dagger$}}{#1}}
-}
+    {\ifpartannotation{authorship}{shared}{\textbf{#1}\textsuperscript{*}}
+    {\ifitemannotation{presenter}{\textbf{#1}\textsuperscript{$\dagger$}}{\textbf{#1}}}}
+  {\ifpartannotation{authorship}{shared}{#1\textsuperscript{*}}
+  {\ifitemannotation{presenter}{#1\textsuperscript{$\dagger$}}{#1}}}
 }}
 
 \AtEveryBibitem{
@@ -150,28 +143,19 @@
 
 \renewcommand*{\mkbibnamegiven}[1]{%
   \ifitemannotation{highlight}
-    {\textbf{#1} }
-    {#1} }
+    {\textbf{#1}}
+    {#1}}
 
 \renewcommand*{\mkbibnamefamily}[1]{%
   \ifitemannotation{highlight}
-    {
-      \ifpartannotation{authorship}{shared}{
-        \textbf{#1}\textsuperscript{*} }
-      {\textbf{#1} } }
-  {\ifpartannotation{authorship}{shared}{
-      #1\textsuperscript{*} }
-    {#1} }}
+    {\ifpartannotation{authorship}{shared}{\textbf{#1}\textsuperscript{*}}{\textbf{#1}}}
+  {\ifpartannotation{authorship}{shared}{#1\textsuperscript{*}}{#1}}}
 
 \renewcommand*{\mkbibnameprefix}[1]{%
-  \ifitemannotation{highlight}
-    {\textbf{#1} }
-    {#1} }
+  \ifitemannotation{highlight}{\textbf{#1}}{#1}}
 
 \renewcommand*{\mkbibnamesuffix}[1]{%
-  \ifitemannotation{highlight}
-    {\textbf{#1} }
-    {#1} }
+  \ifitemannotation{highlight}{\textbf{#1}}{#1}}
 
 % We remove URL from the bib, unless it is misc
 \DeclareStyleSourcemap{
