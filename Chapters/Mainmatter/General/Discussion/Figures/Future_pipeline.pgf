@@ -1,0 +1,147 @@
+\begin{tikzpicture}[auto,
+    general_block/.style ={rectangle, text centered, font=\large, minimum height=3cm, minimum height=1cm},
+    general_text_block/.style ={rectangle, text centered, font=\large, minimum height=3cm, minimum height=1.5cm, text width=3cm},
+    scan_block/.style ={general_block, fill=color0},
+    scan_text_block/.style = {general_text_block, fill=color0, text width=3cm, draw},
+    preprocess_block/.style ={general_block, fill=color2},
+    preprocess_text_block/.style ={general_text_block, fill=color2, text width=3cm, draw},
+    visit_block/.style ={general_block, fill=color5},
+    visit_text_block/.style ={general_text_block, fill=color5, text width=3cm, draw},
+    long_block/.style ={general_block, fill=color6},
+    long_text_block/.style ={general_text_block, fill=color6, text width=3cm, draw},
+    arrow_line/.style= {draw, -{Latex[length=5mm, width=5mm]}, thick, rounded corners=5pt, line width=0.1cm},
+    ]
+
+    % \node [scan_block] (scan_section)
+
+    \coordinate (in_scanner_top) at (0, 0);
+    \coordinate (in_scanner_bottom) at (0.5, -2.5);
+    \coordinate (scan_section) at ($(in_scanner_top)!0.5!(in_scanner_bottom)$);
+
+
+    \draw [scan_block, draw=none] (in_scanner_top) rectangle (in_scanner_bottom);
+
+    % \coordinate
+
+    % \node [scan_block]
+    \node [general_text_block, left = of in_scanner_top, xshift=1cm] {\textbf{Patient in\\scanner}};
+
+    \node [scan_text_block, right = of in_scanner_top, yshift=-1.5cm] (kspace) {Optimal k-space sampling};
+
+
+
+    %%%%%% Preprocessing
+
+    \coordinate (preprocess_top) at (0, -2.5);
+    \coordinate (preprocess_bottom) at (0.5, -10);
+    \coordinate (preprocess_section) at ($(preprocess_top)!0.5!(preprocess_bottom)$);
+
+    \draw [preprocess_block, draw=none] (preprocess_top) rectangle  (preprocess_bottom);
+
+    \node [general_text_block, left = of preprocess_top, xshift=1cm] {\textbf{Patient out of scanner}};
+
+    \node [preprocess_text_block, right = of preprocess_top, yshift=-1.5cm]  (QA) {Artifact detection};
+
+    \node [preprocess_text_block, right = of QA] (quantitative_MR) {Quantitative MR\\derivation};
+
+    \node [preprocess_text_block, below = of quantitative_MR] (structure) {Structure scans according to type};
+
+    \node [preprocess_text_block, below = of QA] (artifact_removal) {Artifact removal};
+
+
+    \node [preprocess_text_block, below = of artifact_removal] (registration) {Registration\\ (to atlas)};
+
+    \node [preprocess_text_block, right = of registration] (PWI_parameters) {Parameter calculation DWI/PWI};
+
+
+    \node [preprocess_text_block, right = of PWI_parameters] (missing_contrast) {Create surrogates for missing scan types};
+
+    \draw [arrow_line] (QA) -- (artifact_removal);
+
+    \coordinate (structure_halfway) at ($(structure)!0.5!(PWI_parameters)$);
+
+    \coordinate (singularity_point) at ([yshift=1cm] PWI_parameters.north);
+
+    \draw [arrow_line] (structure.south) -- (singularity_point) --  (registration.north east);
+
+    \draw [arrow_line] (structure.south) -- (singularity_point) -- (PWI_parameters.north);
+
+    \draw [arrow_line] (structure.south) -- (singularity_point) --  (missing_contrast.north west);
+
+
+    %%% one more in scanner node that we want to position properly
+
+    \node [scan_text_block] at (kspace -| missing_contrast) (MR_reconstruction) {MR\\reconstruction};
+
+    \draw [arrow_line] (kspace) -- (kspace -| quantitative_MR) -- (quantitative_MR);
+    \draw [arrow_line] (MR_reconstruction) -- (MR_reconstruction -| quantitative_MR) -- (quantitative_MR);
+
+
+    %%%% AT doctor
+
+    \coordinate (visit_top) at (0, -10);
+    \coordinate (visit_bottom) at (0.5, -17.5);
+    \coordinate (visit_section) at ($(visit_top)!0.5!(visit_bottom)$);
+
+    \draw [visit_block, draw=none] (visit_top) rectangle  (visit_bottom);
+
+    \node [general_text_block, left = of visit_top, xshift=1cm] {\textbf{Patient visits clinician}};
+
+
+    \node [visit_text_block, right = of visit_top, yshift=-1.5cm] (survival) {Survival prediction};
+
+    \node [visit_text_block] at (survival -| missing_contrast) (genetics) {Genetic predition};
+
+    \node [visit_text_block, below = of survival] (segmentation) {Segmentation};
+
+    \node [visit_text_block] at (segmentation -| missing_contrast) (treatment_prediction) {Optimal treatment prediction};
+
+    \coordinate (seg_treatment_midpoint) at ($(segmentation.south)!0.5!(treatment_prediction.south)$);
+    \coordinate (survival_genetic_midpoint) at ($(survival)!0.5!(genetics)$);
+    \coordinate (segmentation_treatment_midpoint) at ($(segmentation)!0.5!(treatment_prediction)$);
+
+    \node [visit_text_block, below = of seg_treatment_midpoint] (automatic_report) {Automatic report generation};
+
+
+    \draw [arrow_line] (survival.east) -- (survival_genetic_midpoint) -- (automatic_report.north);
+    \draw [arrow_line] (genetics.west) -- (survival_genetic_midpoint) -- (automatic_report.north);
+    \draw [arrow_line] (segmentation.east) -- (segmentation_treatment_midpoint) -- (automatic_report);
+    \draw [arrow_line] (treatment_prediction.west) -- (segmentation_treatment_midpoint) -- (automatic_report);
+
+
+
+    % \node [automated_block, below = of treatment_prediction] (automatic_report) {Generate automatic report for clinicians};
+
+    %%%%%% Longitudinal
+
+    \coordinate (long_top) at (0, -17.5);
+    \coordinate (long_bottom) at (0.5, -20);
+    \coordinate (long_section) at ($(visit_top)!0.5!(visit_bottom)$);
+
+
+    \draw [long_block, draw=none] (long_top) rectangle  (long_bottom);
+
+    \node [general_text_block, left = of long_top, xshift=1cm] {\textbf{Patient follow-up}};
+
+    \node [long_text_block, right = of long_top, yshift=-1.5cm] (long_registration) {Longitudinal registration};
+
+    \node [long_text_block, right = of long_registration] (long_parameter) {Parameter change\\visualization};
+
+    \node [long_text_block, right = of long_parameter] (pseudo_progression) {Pseudo-progression prediction};
+
+    % \node [long_text_block, below = of long_parameter] (research) {Automatic anonymization \& data sharing};
+
+    % \coordinate (scanner_rightmost) at ([xshift=0.5cm] pseudo_progression.east |- in_scanner_bottom);
+    % \coordinate (preprocess_rightmost) at ([xshift=0.5cm] pseudo_progression.east |- preprocess_bottom);
+    % \coordinate (visit_righmost) at ([xshift=0.5cm] pseudo_progression.east |- visit_bottom);
+
+    % \begin{scope}[on background layer]
+    %     \draw [general_block, fill=color0shade, draw=none] (0.5, 0) rectangle (scanner_rightmost);
+    %     \draw [general_block, fill=color2shade, draw=none] (0.5, -3) rectangle (preprocess_rightmost);
+    %     \draw [general_block, fill=color5shade, draw=none] (0.5, -10) rectangle (visit_righmost);
+    % \end{scope}
+
+
+
+
+\end{tikzpicture}
