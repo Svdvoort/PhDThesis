@@ -26,13 +26,13 @@
     \node[draw=black, fit=(Intens) (ShapeText) (LBP_small)](Features) {};
     \node[above of=Features, yshift=3.95cm] {\huge Image features};
 
-    \node[inner sep=0pt, right of=Features, xshift=6.5cm,yshift=0cm] (SVM)
+    \node[inner sep=0pt, right of=Features, xshift=7cm,yshift=0cm] (SVM)
     {\centering \subimport{}{SVM.pgf}};
     \node[draw=black, fit=(SVM)](Classifiers) {};
 
-    \node[above of=Classifiers, yshift=2.3cm, text width=4cm, align=center] {\huge Machine learning};
+    \node[above of=Classifiers, yshift=3cm, text width=6cm, align=center] {\huge Machine learning};
 
-    \node[inner sep=0pt, right of=Classifiers, xshift=5cm,yshift=2.35cm] (survival)
+    \node[inner sep=0pt, right of=Classifiers, xshift=6cm,yshift=2.35cm] (survival)
     {\includegraphics[scale=0.33, clip, trim={0cm 0cm 1cm 0cm}]{ROC.eps}};
     \node[inner sep=0pt, below of=survival, xshift=0.3cm, yshift=-3cm] (classification)
     {\includegraphics[scale=0.55,clip,trim={3cm 18cm 8cm 0cm}]{Classification_tree.pdf}};

@@ -64,7 +64,7 @@ For example, a folder structure with a folder for each \gls{sub}, \gls{ses} and 
 A standardized \gls{ds} is a \gls{ds} where the data has been structured according to a specific, public standard, for example \gls{BIDS}.
 
 
-\begin{table}
+\begin{table}[htbp]
   \centering
 
   \caption{Overview of terminology used in this paper, the corresponding \gls{BIDS} terminology and meaning of each term.}
@@ -135,7 +135,7 @@ The different types of derived images were combined into a single category, as t
 The details of the \gls{BTtrain} and \gls{BTtest} are presented in \cref{tab:data_tumor}.
 An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest} can be seen in \cref{fig:seq_examples}.
 
-\begin{table}
+\begin{table}[htbp]
     \centering
 
     \caption{Overview of data in the \gls{BTset}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified.}
@@ -237,7 +237,7 @@ The \gls{ADNI} \gls{ds} does include \gls{ASL}, however since our algorithm was 
 The derived maps from these \gls{ASL} \glspl{scan} were included since the derived category encompasses all diffusion and perfusion derived imaging.
 These \gls{ASL} derived maps explain the 47 3D \glspl{scan} in \cref{tab:data_adni}.
 
-\begin{table}
+\begin{table}[htbp]
     \centering
 
     \caption{Overview of data in the \gls{NTTS}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified.}
@@ -465,7 +465,7 @@ To compare the performance of \gls{HC} with the performance of \gls{DDS} the ove
 
 \newpage
 
-\begin{table}[H]
+\begin{table}[htbp]
  \centering
   \caption{DICOM tag numbers and descriptions of the DICOM tags extracted for the \acrlong{HC} heuristic. For text-based tags the number of unique instances is shown and for numerical-based tags the distribution is shown, based on the \glspl{scan} in the \gls{BTtrain}. }
   \label{tab:heuditags}
@@ -538,7 +538,7 @@ The feature maps of all convolutional layers are shown in \cref{app:filtervis}.
 For the shallow convolutional layers, some filters seemed to detect the skull without looking at the brain tissue, whereas other layers seemed to focus more on specific brain structures such as the \gls{CSF}.
 Interpreting the deeper convolutional layers gets harder as the feature maps of those layers have a lower resolution.
 
-\begin{table}
+\begin{table}[htbp]
  \centering
   \caption{Overall accuracy and per-class accuracy achieved by \gls{DDS} in Experiment I and Experiment II.}
   \label{tab:seqacc}
@@ -624,7 +624,7 @@ Furthermore, due to the large number of \glspl{scan} the difference is only visi
 These results show that \gls{DDS} outperformed \gls{HC} both in terms of the overall accuracy and the per-class accuracy for all \glspl{class}.
 \cref{app:timing} compares the time required to sort the \glspl{ds} using either \gls{DDS}, \gls{HC}, or by hand, which shows that \gls{DDS} is more than twice as fast as the other two methods.
 
-\begin{table}
+\begin{table}[htbp]
 
  \centering
   \caption{Accuracy of \acrlong{HC} on the \gls{BTtest}. Results of \gls{DDS} on this test set are also given, where the \glspl{scan} which were not available in the \gls{DICOM} format were excluded from the test set.}
