@@ -155,7 +155,13 @@ Zondag
 \textbf{ISBN}: \@isbn \par
 \vfill
 \textbf{\copyright~\@author, \DTMfetchyear{defensedate}}\par
-For all articles published, the copyright has been transferred to the respective publisher.
+Except for the following chapters:
+Chapter 2: \copyright Elsevier Inc., 2020
+Chapter 3: \copyright Oxford University Press, 2019
+Chapter 5: \copyright American Association for Cancer Research, 2019
+Chapter 6: \copyright Springer Nature, 2020
+
+All rights reserved
 No part of this thesis may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without written permission from the author or, when appropiate, from the publisher.
 \end{titlingpage}
 }
@@ -167,7 +173,7 @@ No part of this thesis may be reproduced, stored in a retrieval system, or trans
 \vspace{1em}
 {
 \begin{tabbing}
-\=Promotoren\hspace{3em}\=\@firstpromoter\\
+\=\textbf{Promotoren}\hspace{3em}\=\@firstpromoter\\
 \ifx \@secondpromoter \undefined
 \else
 \>\>\@secondpromoter\\
@@ -180,11 +186,11 @@ No part of this thesis may be reproduced, stored in a retrieval system, or trans
 \else
 \>\>\@fourthpromoter\\
 \fi
-\vspace{1em}
+\\
 
 \ifx \@firstothermember \undefined
 \else
-\>Overige leden \>\@firstothermember\\
+\>\textbf{Overige leden} \>\@firstothermember\\
 \fi
 \ifx \@secondothermember \undefined
 \else
@@ -200,12 +206,12 @@ No part of this thesis may be reproduced, stored in a retrieval system, or trans
 \fi
 \ifx \@firstothermember \undefined
 \else
-\vspace{1em}
+\\
 \fi
 
 \ifx \@firstcopromoter \undefined
 \else
-\>Co{-}promotoren \>\@firstcopromoter\\
+\>\textbf{Co{-}promotoren} \>\@firstcopromoter\\
 \fi
 \ifx \@secondcopromoter \undefined
 \else
