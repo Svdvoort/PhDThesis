@@ -90,7 +90,7 @@
 
     \node [visit_text_block, right = of visit_top, yshift=-1.5cm] (survival) {Survival prediction};
 
-    \node [visit_text_block] at (survival -| missing_contrast) (genetics) {Genetic predition};
+    \node [visit_text_block] at (survival -| missing_contrast) (genetics) {Genetic prediction};
 
     \node [visit_text_block, below = of survival] (segmentation) {Segmentation};
 
