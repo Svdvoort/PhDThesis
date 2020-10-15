@@ -60,8 +60,8 @@ This update led to better patient stratification and more objective categorizati
 An overview of the \gls{WHO} 2016 guidelines and their relation to the previous guidelines is presented in \cref{fig:intro_glioma_categorization}.
 
 \begin{figure}[hbt]
-    \resizebox{0.98\textwidth}{!}{\subimport{Figures/}{WHO_2016_flowchart.pgf}}
     \centering
+    \resizebox{0.98\textwidth}{!}{\subimport{Figures/}{WHO_2016_flowchart.pgf}}
     \caption{The \acrfull{WHO} 2016 categorizaton of glioma. The aggressiveness of the \glspl{tumor} increases from left to right}\label{fig:intro_glioma_categorization}
 \end{figure}
 
@@ -127,6 +127,7 @@ An example of an \gls{MRI} scanner is shown in \cref{fig:intro_MR_machine}.
 
 
 \begin{figure}[hbt]
+    \centering
     \includegraphics[width=\textwidth]{Figures/MRI_scanner.jpg}
     \caption{A \acrfull{MRI} scanner}\label{fig:intro_MR_machine}
 \end{figure}
@@ -188,7 +189,7 @@ Thus, although some promising imaging markers have been found, there is a need f
 
 This need for new imaging markers has caused a rise in popularity of automated methods, most notably machine learning methods.
 Machine learning methods can be used to relate the scan of a patient with a clinical outcome, where the clinical outcome of interest can range from the prediction of the genetic features, a field which is commonly known as radiomics \autocite{lambin2012radiomics}, to the automatic outlining of a \gls{tumor} on a scan.
-\cref{fig:intro_example_ml} shows some potential applications of machine learning methods in the clinic.
+\cref{fig:intro_example_ml} shows an example machine learning pipeline.
 The main advantage of machine learning methods is that they do not require that the relationship between the imaging marker and the clinical outcome is known, instead these methods can learn this relationship by themselves.
 Thus, they can be very versatile tools which can be used with known imaging markers, in which case they can find new relationships with the clinical outcome.
 They can also be used in cases where no known imaging markers exist, in this case the scans themselves can directly be used as an input, allowing the algorithm to find new imaging markers by itself.
@@ -197,9 +198,13 @@ Machine learning and deep learning have had quite an impact in medical imaging r
 Furthermore, by using automated methods, more comprehensive, observer-independent imaging markers can be developed.
 Utilizing these strengths of automated methods provides clinical experts with more and better information than the current visual analysis, better supporting them in their decision making.
 
-\begin{figure}
-\includegraphics[width=\textwidth]{example-image-a}
-\caption{Example of machine learning method TODO: make this figure.}\label{fig:intro_example_ml}
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.93\textwidth}{!}{\subimport{Figures/}{Machine_learning_pipeline.pgf}}
+    \caption{Example of a machine learning pipeline in which patients belong to one of two clinical outcome categories (symbolized by the circles and squares).
+    The machine learning model learns the characteristic scan appearance of each category based on scans from patients for which the clinical outcome is known.
+    Scans of patients for which the clinical outcome is not yet known are evaluated by the model, which then predicts the likely clinical outcome.}\label{fig:intro_example_ml}
 \end{figure}
 
 

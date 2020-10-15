@@ -1,0 +1,132 @@
+% \documentclass[border=15pt, multi, tikz]{standalone}
+
+
+% \usepackage{tikz}
+% \usepackage{graphicx}
+% \usepackage{xcolor}
+% \usepackage[outline]{contour}
+
+% \usetikzlibrary{positioning}
+% \usetikzlibrary{shapes,arrows, spy}
+% \usetikzlibrary{fit}
+% \usetikzlibrary{calc}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{3d}
+% \usetikzlibrary{decorations.pathreplacing}
+% \usetikzlibrary{decorations.markings}
+
+% \usetikzlibrary{calc}
+% \usetikzlibrary{positioning}
+% \usetikzlibrary{quotes,arrows.meta}
+% \usetikzlibrary{positioning}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{shadows.blur}
+
+% \definecolor{SectionColor}{RGB}{240, 240, 240}
+% \definecolor{RedColor}{RGB}{238, 136, 102}
+% \definecolor{GreenColor}{RGB}{68, 187, 153}
+
+
+
+% % group 1: EE8866 -> red
+% % group 2: 44BB99 -> green
+% % Midpoint: 99A280
+
+
+% \begin{document}
+
+
+\begin{tikzpicture}[auto,
+    arrow_line/.style= {draw, -{Latex[length=5mm, width=5mm]}, thick, rounded corners=5pt, line width=0.1cm},
+    circle dotted/.style={dash pattern=on .05mm off 15mm, line cap=round},
+    text_style/.style={scale=3.5,font=\sffamily}]
+
+    \node (patient_1) {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-02-0070_ring.png}};
+    \node [below right = of patient_1] (patient_2) [rotate=-15] {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-08-0350_ring.png}};
+    \node at ([xshift=1.5cm, yshift=2cm] patient_1 |- patient_2) (patient_3) [rotate=15, anchor=center] {\includegraphics[width=\textwidth]{TCGA-LGG__TCGA-HT-7884_square.png}};
+    \node at ([xshift=-3cm, yshift=-1cm] patient_1 -| patient_2) (patient_4) [rotate=-35, anchor=center] {\includegraphics[width=\textwidth]{TCGA-LGG__TCGA-DU-7018_square.png}};
+
+    \coordinate (patient_1_3_mid) at ($(patient_1)!0.5!(patient_3)$);
+    \coordinate (patient_2_4_mid) at ($(patient_2)!0.5!(patient_4)$);
+    \coordinate (patient_1_4_mid) at ($(patient_1)!0.5!(patient_4)$);
+    \coordinate (all_patient_mid) at ($(patient_1_3_mid)!0.5!(patient_2_4_mid)$);
+
+    \node at (all_patient_mid) (patient_5) [rotate=20, anchor=center] {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-12-1598_ring.png}};
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+    %%%%%%%% Features
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node [right = 17cm of patient_1] (patient_1_feature) {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-02-0070_ring.png}};
+    \node [right = -3cm of patient_1_feature] (patient_2_feature) {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-08-0350_ring.png}};
+    \node [below = -2cm of patient_1_feature] (patient_3_feature) {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-12-1598_ring.png}};
+
+    \node [below right = 2cm and 6cm of patient_1_feature] (patient_4_feature) {\includegraphics[width=\textwidth]{TCGA-LGG__TCGA-HT-7884_square.png}};
+    \node [below left = -9cm and -6cm of patient_4_feature] (patient_5_feature) {\includegraphics[width=\textwidth]{TCGA-LGG__TCGA-DU-7018_square.png}};
+
+
+    \coordinate (patient_1_3_mid_feature) at ($(patient_1_feature)!0.5!(patient_3_feature)$);
+    \coordinate (patient_2_4_mid_feature) at ($(patient_2_feature)!0.5!(patient_4_feature)$);
+    \coordinate (patient_1_4_mid_feature) at ($(patient_1_feature)!0.5!(patient_4_feature)$);
+    \coordinate (all_patient_mid_feature) at ($(patient_1_3_mid_feature)!0.5!(patient_2_4_mid_feature)$);
+
+
+    \begin{scope}[on background layer]
+        \node[fit=(patient_1_feature) (patient_2_feature) (patient_3_feature) (patient_4_feature) (patient_5_feature), fill=SectionColor, rounded corners=25mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=15pt, shadow xshift=0.4cm, shadow yshift=-0.5cm}] (feature_box) {};
+        \node[fit=(patient_1) (patient_2) (patient_3) (patient_4) (patient_5) (feature_box.north -| patient_5) (feature_box.south -| patient_5), fill=SectionColor, rounded corners=25mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=15pt, shadow xshift=0.4cm, shadow yshift=-0.5cm}] (input_data_box) {};
+    \end{scope}
+    \node [above = 0cm of input_data_box, text_style] (input_data_text) {\Huge \textbf{Train data}};
+    \node at (input_data_text -| feature_box) [text_style] {\Huge \textbf{Machine learning model}};
+
+    \draw [-, SectionColor, line width=100pt] ([xshift=-1.5cm] input_data_box.east) -- ([xshift=1cm] feature_box);
+    \draw [-, line width=30pt, loosely dashed] ([xshift=-1cm, yshift=-1cm] feature_box.north east) -- ([xshift=1cm, yshift=1cm] feature_box.south west);
+
+
+    % %%%%%%%%%%%%%%%%%%%%%
+    % %%%%%%%% Evaluated patient
+    % %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node [below = 23cm of patient_1_feature, opacity=0.3] (patient_1_eval) {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-02-0070_ring.png}};
+    \node [right = -3cm of patient_1_eval, opacity=0.3] (patient_2_eval) {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-08-0350_ring.png}};
+    \node [below = -2cm of patient_1_eval, opacity=0.3] (patient_3_eval) {\includegraphics[width=\textwidth]{TCGA-GBM__TCGA-12-1598_ring.png}};
+
+    \node [below right = 2cm and 6cm of patient_1_eval, opacity=0.3] (patient_4_eval) {\includegraphics[width=\textwidth]{TCGA-LGG__TCGA-HT-7884_square.png}};
+    \node [below left = -9cm and -6cm of patient_4_eval, opacity=0.3] (patient_5_eval) {\includegraphics[width=\textwidth]{TCGA-LGG__TCGA-DU-7018_square.png}};
+
+    \node [above right = -8cm and -13cm of patient_4_eval] (unknown_patient_eval) {\includegraphics[width=1.15\textwidth]{TCGA-GBM__TCGA-06-0182_square.png}};
+    \begin{scope}[on background layer]
+        \node[fit=(patient_1_eval) (patient_2_eval) (patient_3_eval) (patient_4_eval) (patient_5_eval), fill=SectionColor, rounded corners=25mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=15pt, shadow xshift=0.4cm, shadow yshift=-0.5cm}] (eval_box) {};
+        \draw [-, SectionColor, line width=100pt] ([yshift=1.5cm] feature_box.south) -- (eval_box);
+
+    \end{scope}
+
+    \node [above = 0cm of eval_box, text_style] {\Huge\textbf{Model evaluation}};
+
+    \draw [-, line width=30pt, loosely dashed] ([xshift=-1cm, yshift=-1cm] eval_box.north east) -- ([xshift=1cm, yshift=1cm] eval_box.south west);
+
+
+
+    % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % %%%%%%%%%%%%% Unknown data
+    % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node at (all_patient_mid |- eval_box.center) (to_predict_patient) {\includegraphics[width=2\textwidth]{Unknown_patient.png}};
+    \node at (to_predict_patient.center) [scale=15,font=\sffamily , text=white] {\contour{black}{\color{white}\Huge\textbf{?}}};
+
+    \begin{scope}[on background layer]
+        \node[fit=(to_predict_patient) (eval_box.north -| to_predict_patient) (eval_box.south -| to_predict_patient) (input_data_box.east |- to_predict_patient) (input_data_box.west |- to_predict_patient), fill=SectionColor, rounded corners=25mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=15pt, shadow xshift=0.4cm, shadow yshift=-0.5cm}] (unknown_data_box) {};
+    \end{scope}
+    \node [above = 0cm of unknown_data_box,text_style] (new_data_text_box) {\Huge \textbf{New data}};
+
+    \draw [-, SectionColor, line width=100pt] ([xshift=-2cm] unknown_data_box.east) -- ([xshift=1cm] eval_box);
+
+
+
+
+\end{tikzpicture}
+
+
+
+% \end{document}
+
