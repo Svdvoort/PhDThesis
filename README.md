@@ -4,7 +4,7 @@
 
 ## About
 
-This repository contains the code for my PhD thesis, which I am currently completing at the Biomedical Imaging Group Rotterdam (BIGR) at the Erasmus Universty Medical Centre in Rotterdam, The Netherlands.
+This repository contains the code for my PhD thesis, which I am currently completing at the Biomedical Imaging Group Rotterdam (BIGR) at the Erasmus University Medical Centre in Rotterdam, The Netherlands.
 
 The latest version of the manuscript, as well as all the old versions, can be found under [the 'releases' tab](https://github.com/Svdvoort/PhDThesis/releases). Underneath the release you will find the 'assets' tab, where the compiled PDF can be found.
 
