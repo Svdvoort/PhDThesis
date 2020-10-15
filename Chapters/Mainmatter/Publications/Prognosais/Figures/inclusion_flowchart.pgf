@@ -1,0 +1,150 @@
+\begin{tikzpicture}[auto,
+    block_center/.style ={rectangle, draw=black, very thick, fill=white,
+      text width=25em, text centered,
+      minimum height=4em},
+    algorithm_center/.style ={circle, draw=black, very thick, fill=white,
+    text width = 7em, text ragged, minimum height=1em, inner sep=3pt, text centered},
+    block_left/.style ={rectangle, draw=black, very thick, fill=white,
+      text width=20em, text ragged, minimum height=2em, inner sep=5pt},
+    exclusion_block_left/.style ={rectangle, draw=black, very thick, fill=white,
+    text width=20em, text ragged, minimum height=4em, inner sep=6pt},
+    block_test/.style ={rectangle, draw=black, thick, fill=white,
+    text width=10em, text ragged, minimum height=4em, inner sep=6pt},
+      line/.style ={draw, very thick, -{Latex[length=3mm,width=5mm]}, shorten >=0pt}]
+
+     \node [block_left] (identified) {%
+     {\large\textbf{Patient screening}}
+    \\
+     \begin{tabbing}
+      \textit{\textbf{Train set}}\\
+      \=\textbf{2}\=\textbf{1}\=\textbf{8}\=\textbf{1}\hspace{1em}\=Glioma patients\\
+      \\
+      \>\textbf{1241}\>\>\>\>Erasmus MC\\
+      \>\>\textbf{491}\>\>\>\acrlong{HMC}\\
+      \>\>\textbf{168}\>\>\>\acrshort{BRATS}\\
+      \>\>\textbf{130}\>\>\>\acrshort{REMBRANDT}\\
+      \>\>\>\textbf{66}\>\>\acrshort{CPTAC}\\
+      \>\>\>\textbf{39}\>\>\acrshort{IVY}\\
+      \>\>\>\textbf{20}\>\>\acrlong{AMC}\\
+      \>\>\>\textbf{20}\>\>\acrshort{BTP}\\
+      \>\>\>\>\textbf{6}\>\acrlong{UMCU}\\
+      \\
+    % \end{tabbing}
+
+    \textit{\textbf{Test set}}\\
+    % \begin{tabbing}
+      \>\>\textbf{461}\>\>\>Glioma patients\\
+      \\
+      \>\>\textbf{199}\>\>\>\acrshort{TCGALGG}\\
+      \>\>\textbf{262}\>\>\>\acrshort{TCGAGBM}
+    \end{tabbing}
+    };
+
+    \draw ([yshift=-1.8cm, xshift=5mm] identified.west) -- ([yshift=-1.8cm, xshift=-5mm] identified.east);
+
+
+     \node [block_left, below=7cm of identified.center] (included) {
+      {\large\textbf{Patient inclusion}}
+     \begin{tabbing}
+      \textit{\textbf{Train set}}\\
+     \=\textbf{1}\=\textbf{5}\=\textbf{0}\=\textbf{8}\hspace{1em}\=Patients in train set\\
+     \\
+     \>\>\textbf{816}\>\>\>Erasmus MC\\
+     \>\>\textbf{279}\>\>\>\acrlong{HMC}\\
+     \>\>\textbf{168}\>\>\>\acrshort{BRATS}\\
+     \>\>\textbf{109}\>\>\>\acrshort{REMBRANDT}\\
+     \>\>\>\textbf{51}\>\>\acrshort{CPTAC}\\
+     \>\>\>\textbf{39}\>\>\acrshort{IVY}\\
+     \>\>\>\textbf{20}\>\>\acrlong{AMC}\\
+     \>\>\>\textbf{20}\>\>\acrshort{BTP}\\
+     \>\>\>\>\textbf{6}\>\acrlong{UMCU}\\
+     \\
+     \textit{\textbf{Test set}}\\
+     \>\>\textbf{240}\>\>\>Patients in test set\\
+     \\
+     \>\>\textbf{107}\>\>\>\acrshort{TCGALGG}\\
+     \>\>\textbf{133}\>\>\>\acrshort{TCGAGBM}\\
+     \end{tabbing}};
+
+     \draw ([yshift=-1.6cm, xshift=5mm] included.west) -- ([yshift=-1.6cm, xshift=-5mm] included.east);
+
+
+
+     \node [exclusion_block_left, below right=0.2cm and 5cm of identified.center] (excluded) {%
+     {\large\textbf{Patient exclusion}}
+     \begin{tabbing}
+      \textit{\textbf{Train set}}\\
+      \=\textbf{6}\=\textbf{7}\=\textbf{3}\hspace{1em}\=No pre-operative \\
+                   \>\>\>\> pre-, or post-contrast \acrshort{T1},\\
+                   \>\>\>\> \acrshort{T2} or \acrshort{FLAIR}\\
+      \\
+      \>\textbf{425}\>\>\>Erasmus MC\\
+      \>\textbf{212}\>\>\>\acrlong{HMC}\\
+      \>\>\>\textbf{0}\>\acrshort{BRATS}\\
+      \>\>\textbf{21}\>\>\acrshort{REMBRANDT}\\
+      \>\>\textbf{15}\>\>\acrshort{CPTAC}\\
+      \>\>\>\textbf{0}\>\acrshort{IVY}\\
+      \>\>\>\textbf{0}\>\acrlong{AMC}\\
+      \>\>\>\textbf{0}\>\acrshort{BTP}\\
+      \>\>\>\textbf{0}\>\acrlong{UMCU}\\
+      \\
+      \textit{\textbf{Test set}}\\
+      \>\textbf{221}\>\>\>No pre-operative \\
+                   \>\>\>\> pre-, or post-contrast \acrshort{T1},\\
+                   \>\>\>\> \acrshort{T2} or \acrshort{FLAIR}\\
+      \\
+      \>\textbf{92}\>\>\>\acrshort{TCGALGG}\\
+      \>\textbf{129}\>\>\>\acrshort{TCGAGBM}\\
+
+    \end{tabbing}
+     };
+
+     \draw ([yshift=-1.6cm, xshift=5mm] excluded.west) -- ([yshift=-1.6cm, xshift=-5mm] excluded.east);
+
+    % \node [algorithm_center, below=3 cm of included] (ml_algorithm) {Machine\\ Learning\\ Algorithm};
+
+
+    % \node [block_test, right=4cm of ml_algorithm.center] (test_included) {%
+    % \begin{tabbing}
+    % \textbf{129} \=Patients included\\
+    %              \>as external\\
+    %              \>validation set
+    % \end{tabbing}
+    % };
+    % \node [block_test, above=1cm of test_included] (test_screened) {%
+    % \begin{tabbing}
+    % \textbf{159} \=Patients screened\\
+    %              \>from the TCIA\\
+    %              \>dataset
+    % \end{tabbing}
+    % };
+    % \node [block_test, above right=0cm and 3cm of test_included.center] (test_excluded){%
+    %     \begin{tabbing}
+    %      \textbf{30} \=Patients excluded\\
+    %      \\
+    %      \textbf{18} \>Enhancement\\
+    %      \textbf{7}  \>Post-biopsy scan\\
+    %      \textbf{3}  \>No \cgls{T1C} scan\\
+    %      \textbf{2}  \>Paediatric cases\\
+    %    \end{tabbing}
+    % };
+
+    % \node[draw,inner sep=2mm, dashed, label=below:External validation,fit=(test_included) (test_excluded) (test_screened)] {};
+
+    % \node[block_center, below=1cm of ml_algorithm] (metrics) {\textbf{Outcome: predictive performance}\\
+    % Accuracy, AUC, Sensitivity, Specificity};
+
+    \begin{scope}[every path/.style=line]
+        % paths for enrollemnt rows
+        \path (identified.south)   -- (included);
+        \path (identified)   |- (excluded);
+        % \path (included) -- (ml_algorithm);
+
+        % \path (test_screened) -- (test_included);
+        % \path (test_screened) |- (test_excluded);
+        % \path (test_included) -- (ml_algorithm);
+
+        % \path (ml_algorithm) -- (metrics);
+    \end{scope}
+
+  \end{tikzpicture}
