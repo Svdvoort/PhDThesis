@@ -5,7 +5,7 @@
 
 \begin{ChapterAbstractNoTitle}
 Sora recently visited his doctor because he had constant headaches, often felt nauseous, and had blurry vision.
-His doctor referred him to the hospital, where he came under the care of Egwene, a neuro-oncologist, who explained to him that he might have a brain \gls{tumor} and that she wanted to make a scan of his brain.
+His doctor referred him to the hospital, where he came under the care of Egwene, a neuro-oncologist, who explained to him that he might have a brain \gls{tumor} and that she wanted to take a scan of his brain.
 Shocked and a bit worried by this news, Sora went into the MRI scanner, which he was told could make an image of the \gls{tumor} inside his head.
 At the same time Sora was getting out of the scanner, his scans were being analyzed by a computer that could pick up on details of the scan invisible to the human eye.
 The computer used these scan details to determine several \gls{tumor} characteristics related to the aggressiveness of the \gls{tumor}.
@@ -15,7 +15,7 @@ Together they discussed possible treatment options and the best course of action
 By analyzing the scan using a computer directly after the scan was made, Sora could go home without worrying about the results of his scan, and Egwene could rest assured knowing that she could optimally tailor the treatment to Sora's specific situation.
 \end{ChapterAbstractNoTitle}
 
-Although the above story is currently (unfortunately) still fictional, research in medical imaging has rapidly evolved over the last couple of years, bringing the existence of such automated systems closer to reality than ever before.
+Although the above story is currently (unfortunately) still fictional, research in medical imaging has rapidly evolved over the last couple of years, bringing the existence of such automated analysis systems closer to reality than ever before.
 However, there is still a gap to bridge before they can find their way into the clinic.
 Therefore, in this thesis, I focus on automated systems that analyze \acrshort{MRI} scans of glioma patients and provide clinicians with additional information earlier in the clinical decision making process, enabling them to provide care that is more personalized to each patient.
 
@@ -35,7 +35,7 @@ Therefore, primary brain \glspl{tumor} are categorized by the type of brain cell
 Although \gls{glioma} have a low incidence compared to other cancers, around \per{1.7} globally \autocite{leece2017indicence}, they are one of the deadliest with a median survival of nine months in the worst case to fifteen years in the best case \autocite{ho2014incidence, olar2015survival}.
 Unfortunately, no cure exists for \gls{glioma} but there are several treatments that can prolong the life expectancy and/or quality of life of patients.
 Since no two \gls{glioma} are the same, the treatment is tailored to each specific case in order to deliver the best possible treatment for each patient.
-Therefore, it is important to categorize \gls{glioma} in a clinically relevant way, which supports the clinical decision making process and leads to better patient care.
+Therefore, it is important to categorize \gls{glioma} in a clinically relevant way, to support the clinical decision making process, leading to better patient care.
 
 \section{Categorization of glioma}
 Historically \glspl{glioma} were categorized based solely on their histopathological appearance, that is, the appearance of the \gls{tumor} cells under a microscope.
@@ -48,14 +48,14 @@ Although grade I \gls{glioma} exist, these are regarded as benign and as such ar
 Historically, grade II \gls{glioma} were often referred to as \gls{LGG}, and grade III and grade IV \gls{glioma} were referred to as \gls{HGG}.
 There is some relation between the type and grade of a glioma; \gls{glioblastoma} are grade IV glioma, the most aggressive type, while \gls{astro}, \gls{oliastro}, and \gls{oli} are less aggressive and can be either grade II or grade III\footnote{Officially \gls{glioblastoma} are grade IV \gls{astro}, however in practice these are always referred to as \gls{glioblastoma}, while \gls{astro} refers to the grade II/III ones.}.
 
-This categorization based on the typing and the grading of the \gls{tumor} is suboptimal.
-Firstly, the histopathological categorization and grading of the \glspl{tumor} are very observer-dependent \autocite{mittler1996gradingreliability, vandenbent2010interobserver}.
-Since the clinical decision making depended on the categorization, this observer dependency could lead to an inadequate treatment of the \gls{tumor} \autocite{vandenbent2010interobserver}.
+This categorization based on \gls{tumor} typing and grading is suboptimal.
+Firstly, histopathological categorization and \gls{tumor} grading are very observer-dependent \autocite{mittler1996gradingreliability, vandenbent2010interobserver}.
+Since clinical decision making depends on this categorization, this observer dependency could lead to an inadequate treatment of the \gls{tumor} \autocite{vandenbent2010interobserver}.
 Secondly, within these categories, large differences between the survival of patients existed  \autocite{dubbink2015molecular}.
 This suggests a different underlying mechanism that determines the aggressiveness of the \gls{tumor} than what the categorization based on grade and type accounts for.
 For example, some grade II and grade III \gls{glioma} showed survival rates more characteristic of grade IV \gls{glioma} than other grade III \gls{glioma}.
 It was found that this difference in survival can be better explained by the genetic features of the \gls{tumor} \autocite{dubbink2015molecular,eckel2015gliomagroups}.
-Therefore, in 2016 the \gls{WHO} updated the categorization of \gls{glioma} to include these genetic features and depend less on the histopathology alone \autocite{louis20162016}.
+Therefore, in 2016 the \gls{WHO} updated the categorization of \gls{glioma} to include these genetic features and classification now depends less on the histopathology alone \autocite{louis20162016}.
 This update led to better patient stratification and more objective categorization of \gls{glioma} \autocite{molinaro2019geneticepidemiology}.
 An overview of the \gls{WHO} 2016 guidelines and their relation to the previous guidelines is presented in \cref{fig:intro_glioma_categorization}.
 
@@ -65,7 +65,7 @@ An overview of the \gls{WHO} 2016 guidelines and their relation to the previous 
     \caption{The \acrfull{WHO} 2016 categorizaton of glioma. The aggressiveness of the \glspl{tumor} increases from left to right}\label{fig:intro_glioma_categorization}
 \end{figure}
 
-In the updated guidelines, the \gls{glioma} typing has become less relevant.
+In the updated guidelines, \gls{glioma} typing has become less relevant.
 The histopathology now only needs to distinguish (what where historically) \gls{astro} and \gls{oli} (\gls{LGG}) on the one hand and \gls{glioblastoma} (\gls{HGG}) on the other hand.
 with the introduction of the 2016 guidelines, the definition of \gls{LGG} and \gls{HGG} also changed; grade III \gls{glioma} are now often considered \gls{LGG} instead of \gls{HGG}.
 However, this categorization is still a topic of debate and guidelines are continuously updated as new evidence on better categorizations becomes available \autocite{lous2020impactnow}.
@@ -86,7 +86,7 @@ Within the \gls{LGG} (what was previously \gls{astro}, \gls{oliastro}, and \gls{
     \item Diffuse \gls{astro}, \gls{IDH} mutated and \acl{1p19qint}
     \item \Gls{oli}, \gls{IDH} mutated and \acl{1p19qcodel}
 \end{itemize}
-No category exists for \gls{IDH} wildtype, \acl{1p19qcodel} \gls{glioma} as it was found that all \acl{1p19qcodel} \glspl{tumor} are also \gls{IDH} mutated \autocite{labussi20101p19qcodeletedIDH}.
+No category exists for \gls{IDH} wildtype \acl{1p19qcodel} \gls{glioma} as it was found that all \acl{1p19qcodel} \glspl{tumor} are also \gls{IDH} mutated \autocite{labussi20101p19qcodeletedIDH}.
 Although the terms \gls{astro} and \gls{oli} are still used in the updated guidelines, they no longer carry the same meaning as before, since their categorization is no longer based on the \gls{gcell} type but instead on the genetic features.
 Among the \gls{LGG}, the \glspl{oli} have the best prognosis and the diffuse \glspl{astro} \gls{IDH} wildtype show the worst prognosis \autocite{eckel2015gliomagroups}.
 Due to the aggressiveness of \gls{IDH} wildtype \gls{astro}, it is even suggested that these are actually misclassified \gls{glioblastoma} \autocite{hartmann2010IDH1gbm, brat2018IMPACT}.
@@ -99,9 +99,9 @@ Although the guidelines currently only include the \gls{IDHmut} status for the c
 % Needed to correctly use the MGMT abbrv
 \glsunset{MGMT}
 Patients with \gls{MGMT} methylated \glspl{tumor} survive longer than patients with \gls{MGMT} unmethylated \glspl{tumor} \autocite{martinez2007MGMT, gessler2018MGMT, weller2009molecularGBM}.
-Thus, although not used for \gls{glioma} typing, the \gls{MGMT} methylation status is often relevant for the clinical decision making \autocite{molinaro2019geneticepidemiology}.
+Thus, although not used for \gls{glioma} typing, the \gls{MGMT} methylation status is often relevant for clinical decision making \autocite{molinaro2019geneticepidemiology}.
 
-Not only do the genetic features determine the aggressiveness of the \gls{tumor}, but they also influence the \gls{tumor}'s response to certain treatments.
+Not only do genetic features determine the aggressiveness of the \gls{tumor}, but they also influence the \gls{tumor}'s response to certain treatments.
 For example \gls{IDH} mutated \gls{glioma} respond better to radiotherapy than \gls{IDH} wildtype \gls{glioma} \autocite{juratli2015IDHtreatment}, and the \gls{codeletion} status and \gls{MGMT} methylation status might be predictors of the \gls{tumor}'s sensitivity to chemotherapy \autocite{idbaih2007markersresponse}.
 Thus, it is important to know the genetic features of a \gls{glioma}, both for the prognosis of the patient and for deciding on the most suitable treatment.
 
@@ -111,7 +111,7 @@ Thus, biopsies are not part of the treatment but are merely used to decide on fu
 Resection is part of the treatment process and involves surgically removing as much of the \gls{tumor} as possible.
 Part of the removed \gls{tumor} can then be used for the genetic and histopathological analysis to decide on follow-up treatments, such as chemotherapy and radiotherapy.
 Taking a biopsy or resecting the \gls{tumor} requires intrusive surgery, which not only puts an extra burden on the healthcare system but also comes with risks for the patient \autocite{chen2009biopsy}.
-Therefore, it would be beneficial if the genetic features of a \gls{glioma} can be determined without the need for a biopsy of which the sole purpose of the biopsy is to obtain tissue that can be analyzed to help the clinical decision making.
+Therefore, it would be beneficial if the genetic features of a \gls{glioma} can be determined without the need for a biopsy in cases where the sole purpose of the biopsy is to obtain tissue to assist in clinical decision making.
 
 A non-invasive method to determine the genetic features of the \gls{tumor} not only obviates the need for an intrusive surgical operation, but it can also provide relevant information earlier in the treatment process, which can aid in the clinical decision making.
 In the case of an asymptomatic \gls{tumor} with a favorable genetic profile a watch-and-wait approach may be considered since leaving the \gls{tumor} untreated might have less of a negative impact than the potentially damaging effect of the treatment on the healthy tissue \autocite{vandenbent2012lggtreatment, welle2017EANO}.
@@ -120,8 +120,8 @@ Since \gls{MRI} is already part of the standard clinical pathway for glioma pati
 \section{MRI analysis of glioma}
 
 \Acrfull{MRI} is an imaging technique that uses the magnetic properties of protons, one of three elementary particles that form an atom, to create an image.
-Although protons appear in all atoms, hydrogen atoms are of particular interest because they consist of a single proton, simplifying their magnetic properties and thus making them easier to use in the imaging process.
-Furthermore, a water molecule contains two hydrogen atoms and since the majority of the human body consists of water, hydrogen atoms (and thus protons) are abundant in the human body, especially in soft tissue.
+Although protons appear in all atoms, hydrogen atoms are of particular interest because a water molecule contains two hydrogen atoms and since the majority of the human body consists of water, hydrogen atoms (and thus protons) are abundant in the human body, especially in soft tissue.
+Furthermore, hydrogen atoms consist of a single proton, simplifying their magnetic properties and thus making them easier to use in the imaging process.
 An \gls{MRI} scanner manipulates the protons to form an image and can even manipulate them in different ways to obtain different imaging contrasts.
 An example of an \gls{MRI} scanner is shown in \cref{fig:intro_MR_machine}.
 
@@ -136,8 +136,8 @@ An example of an \gls{MRI} scanner is shown in \cref{fig:intro_MR_machine}.
 Shortly after the first introduction of \gls{MRI}, it was proposed that the method could be used to identify \glspl{tumor} \autocite{damadian1971tumor}.
 After some improvements, the technique was first applied to the brain in 1980 \autocite{holland1980brain}, and in the same year MRI was first used to investigate a brain \gls{tumor} \autocite{hawkes1980NMRbrain}.
 Since then, the quality of \gls{MRI} scans has vastly improved and \gls{MRI} techniques have been developed that can image various tissue characteristics.
-Some examples of \gls{MRI} scans are shown in \cref{fig:intro_MR_example}, showing the different tissue characteristics, although many more techniques to image other tissue characteristics exist.
-In these scans, the \gls{tumor} can clearly be seen, which gives the clinician important information in a non-invasive way, with minimal risk for the patient.
+Some examples of \gls{MRI} scans are shown in \cref{fig:intro_MR_example}, showing different tissue characteristics, although many more techniques to image other tissue characteristics exist.
+In these scans, the \gls{tumor} can clearly be seen, which provides the clinician important information in a non-invasive way, with minimal risk for the patient.
 Therefore, \gls{MRI} is part of the standard-of-care for brain \gls{tumor} diagnosis and treatment decisions.
 
 \begin{figure}[hbt]
@@ -179,16 +179,16 @@ Firstly, the imaging markers have to be relatively simple, because clinicians ne
 For example, most current clinically used imaging markers rely on 2D measurements (whereas the \gls{tumor} is of course 3D), or only consider a single point or small area of the \gls{tumor} instead of the whole \gls{tumor}.
 As a result the information included in these imaging markers is limited, whereas using more information could lead to a better correlation with the physiological aspect of interest.
 Secondly, \gls{MRI} is a qualitative and not a quantitative measurement, meaning that only the contrast of the scan and not its absolute value contains information\footnote{This is similar to food; it is easy to say that chocolate tastes better than Brussels sprouts, but one cannot say that chocolate tastes 5 \say{taste units} and Brussels sprouts tastes 1 \say{taste unit}.}.
-Because of this, scans from the same patient from two different \gls{MRI} scanners might have a similar visual appearance, but can result in different values for the same marker.
+Because of this, scans from the same patient from two different \gls{MRI} scanners might have a similar visual appearance, while resulting in different values for the same marker.
 This complicates the use of these imaging markers as it is not possible to use their absolute value, which means that they can never be truly objective.
-Thirdly, partly due to the previous point, the imaging markers are often vaguely defined.
+Thirdly, partly due to the previous point, the imaging markers are often subjectively defined.
 Instead of defining a quantitative imaging marker, qualitative imaging markers are used based on the interpretation of the visual appearance of the \gls{tumor}.
 For example, a score can be assigned to how aggressive the \gls{tumor} looks.
 This leads to imaging markers that are, similar to the typing and grading that was done before, observer-dependent.
 Thus, although some promising imaging markers have been found, there is a need for new imaging markers and new methods that can include more information from the \gls{MRI} scan, are more objective, more consistent and, most importantly, do not put an additional burden on clinicians.
 
-This need for new imaging markers has caused a rise in popularity of automated methods, most notably machine learning methods.
-Machine learning methods can be used to relate the scan of a patient with a clinical outcome, where the clinical outcome of interest can range from the prediction of the genetic features, a field which is commonly known as radiomics \autocite{lambin2012radiomics}, to the automatic outlining of a \gls{tumor} on a scan.
+This need for new imaging markers has caused a rise in popularity of automated analysis methods, most notably machine learning methods.
+Machine learning methods can be used to relate scan characteristics of a patient with a clinical outcome, where the clinical outcome of interest can range from the prediction of the genetic features, a field which is commonly known as radiomics \autocite{lambin2012radiomics}, to the automatic outlining of a \gls{tumor} on a scan.
 \cref{fig:intro_example_ml} shows an example machine learning pipeline.
 The main advantage of machine learning methods is that they do not require that the relationship between the imaging marker and the clinical outcome is known, instead these methods can learn this relationship by themselves.
 Thus, they can be very versatile tools which can be used with known imaging markers, in which case they can find new relationships with the clinical outcome.
@@ -213,7 +213,7 @@ Utilizing these strengths of automated methods provides clinical experts with mo
 In this thesis, I am addressing the problems related to the clinical use of \acrshort{MR} imaging markers in glioma by focusing on three main goals:
 
 \begin{enumerate}
-\item Develop observer-independent imaging markers for the genetic features of \gls{glioma} that clinicians can use in a straightforward way
+\item Develop observer-independent imaging markers for assessing the genetic features of \gls{glioma} that clinicians can use in a straightforward way
 \item Provide tools and data to make research into new \gls{glioma} imaging markers more accessible, and applicable to a broader patient population
 \item Provide clinically relevant information of \gls{glioma} that is normally obtained from invasive procedures in a non-invasive way using \gls{MRI} scans, leveraging imaging markers that can not be analyzed by the human eye
 \end{enumerate}
