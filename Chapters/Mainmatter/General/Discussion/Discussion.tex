@@ -13,7 +13,7 @@ In this final chapter, I discuss the main findings and contributions of this the
 
 \subsection{Summary of findings}
 
-In \cref{chap:HGGLocation,chap:LGGLocation} I looked at the relation between the location and genetic features of \gls{glioma}.
+In \cref{chap:HGGLocation,chap:LGGLocation} I investigated the relation between the location and genetic features of \gls{glioma}.
 In \cref{chap:LGGLocation} I found that \gls{IDH}-mutated \gls{LGG} are more frequently located in the frontal lobes, and \gls{IDH} wildtype \gls{LGG} are more frequently located in the basal ganglia of the right hemisphere.
 In \cref{chap:HGGLocation} I found that there is no difference in localization between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{IDH} wildtype glioblastoma.
 
@@ -35,8 +35,8 @@ The results from \cref{chap:LGGLocation,chap:HGGLocation} are the most straightf
 The localization features described in those chapters for the different genetic groups (or in the case of the \gls{MGMT} status, the lack of such features) are easy to determine and do not require additional methods or expertise to be implemented in the clinical workflow.
 These results show the importance of researching these relatively simple imaging markers, as they can (in the short term) be the most impactful.
 
-The radiomics research in \cref{chap:LGG1p19q,chap:prognosais} shows promising results and constitutes an important step in bringing radiomics methods closer to the clinic.
-In both cases, an independent test set was used to validate the studies' results, something that, although strongly recommended, is still not commonplace in (glioma) radiomics research \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
+The radiomics approaches in \cref{chap:LGG1p19q,chap:prognosais} achieved promising results and constitutes an important step in bringing radiomics methods closer to the clinic.
+In both cases, an independent test set was used to validate the performance of the radiomics approach, something that, although strongly recommended, is still not commonplace in (glioma) radiomics research \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
 
 In \cref{chap:LGG1p19q}, there was a focus on the explainability of the algorithm; by showing the relative feature importance and examples of what the algorithm considered the most representative patient of each class, we were able to provide some insight into the method.
 Furthermore, the feature importance and representative examples matched with imaging features previously described in the literature, further supporting that our method recognized the relevant imaging features.
@@ -98,7 +98,7 @@ In this case, the radiomics method provides no benefit to the patient, as the cl
 Moreover, the genetic and histological features can be determined from the resected tissue using the current golden standard methods.
 What then is the role of radiomics methods in the clinical workflow, and what is the added value of radiomics?
 
-Firstly, although most patients will undergo the traditional resection pathway, there might be a subset of patients for whom radiomics methods can be beneficial.
+Firstly, although most patients will undergo the traditional resection pathway, there likely is a subset of patients for whom radiomics methods can be beneficial.
 For example, if a \gls{tumor} is located in an area of the brain associated with a high risk of complications in case of a biopsy or resection, a radiomics method can be used to predict the aggressiveness of the \gls{tumor}.
 If the \gls{tumor} is predicted to be low risk, and the patient does not currently experience any symptoms, it might be beneficial to delay the resection.
 If this is the intended use case of a radiomics method, the method needs to be optimized for these scenarios to ensure an optimal benefit.
@@ -106,7 +106,7 @@ If this is the intended use case of a radiomics method, the method needs to be o
 Secondly, the genetic and histological analysis of \gls{tumor} tissue is not perfect, and radiomics methods can serve as an additional check.
 A biopsy sample, which is only a small part of the \gls{tumor}, might not represent the \gls{tumor} as a whole.
 For example, the biopsy could be taken from a region of the \gls{tumor} that is less aggressive, underestimating the real aggressiveness of the \gls{tumor} \autocite{muragaki2008biopsy}.
-Using a radiomics method as a second opinion can give an extra degree of certainty when it agrees with the tissue analysis.
+Using a radiomics method, which looks at the full \gls{tumor}, as a second opinion can give an extra degree of certainty when it agrees with the tissue analysis.
 A disagreement between the tissue analysis and the radiomics prediction might warrant a second look at that case, potentially reducing errors.
 
 Thirdly, radiomics methods might be an excellent opportunity to include the latest glioma insights into clinical workflows in which the current standard-of-care cannot be used.
@@ -143,8 +143,10 @@ Another key factor is the proper validation of radiomics methods.
 Proper validation requires the use of independent, clinically representative datasets to evaluate the performance of a method \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
 Currently, external validation sets are only used in a minority of the studies, and as a result, the reported performance is most likely a too optimistic representation of the actual clinical performance.
 This was also seen in \cref{chap:LGG1p19q}, where the results of mixing the train and test datasets were consistently better than the results evaluated on the independent test set.
+Furthermore, different algorithms are often validated on different datasets, which makes it difficult to objectively compare the performance of different methods.
+Thus, the availability of public datasets and the use of these datasets as external validation sets is important to obtain realistic and comparable performance measurements.
 
-It is also important to report a method's performance in a way that represents the clinical reality.
+It is also important to report a method's performance in a setting that is representative for the clinical reality.
 The performance of radiomics methods can be expressed in numerous metrics, where each might give a different view of the method's performance, and where some metrics might make the performance of a method look better than others.
 This variety in metrics can lead to (subconsciously) choosing the best performing metrics, which might not give a good representation of the clinical performance.
 For example, in \cref{chap:prognosais} we achieved a high \gls{AUC} for all the different tasks.
@@ -199,7 +201,7 @@ Even if a method shows perfect performance, clinical experts might not use it if
 How then do we increase the trust in radiomics methods?
 
 An important step is the increased explainability of machine learning methods.
-In \cref{chap:LGG1p19q,chap:prognosais,chap:DDS} we  tried to provide some insight into the machine learning methods.
+In \cref{chap:LGG1p19q,chap:prognosais,chap:DDS} we  tried to provide some insight into the image information that was used by the machine learning methods.
 In \cref{chap:LGG1p19q}, we looked at the relative importance of different features, and in \cref{chap:prognosais,chap:DDS}, we showed attention maps and convolution filter outputs.
 Although in this way we can provide some insight into these methods, this is very high-level and lacks an explanation as to why certain imaging features are used in the prediction.
 Although much research focuses on methods that can provide additional insight into these methods, the question remains whether human-interpretable explanations of machine learning methods will be available in the near future \autocite{zhang2018interpretable}.
@@ -254,13 +256,12 @@ Apart from the questions related to the clinical implementation of radiomics met
 
 \subsection{How can radiomics keep up with new clinical research?}\label{subsec:discussion_new_research}
 Radiomics methods are, at their core, statistical methods that rely on historical data to predict future events.
-In order to extract enough statistical information, a database of sufficient size is needed.
+In order to extract sufficient statistical information, a database of a certain size is needed.
 Since the number of glioma patients is (luckily) relatively low, it often takes several years to accumulate a large enough database to use in machine learning research.
 For example, the data used in \cref{chap:prognosais} was collected over a period of ten years.
 This timeframe needed to collect the data means that these databases often contain data that is several years old.
-During this time, research might have revealed new insights about patients' relevant disease characteristics, or new imaging sequences may have been developed.
+During this time, research might have revealed new insights about patients' relevant disease characteristics, new imaging sequences, or new imaging hardware may have been developed.
 These new insights cannot directly be incorporated in radiomics methods, since the existing datasets do not contain this new information.
-Thus, radiomics methods are always based on outdated data.
 The question then is: how can radiomics methods keep up with the latest clinical research?
 
 It is essential to distinguish between developments regarding the data used as an input to radiomics methods and developments that influence the clinical features that the algorithms try to predict.
@@ -375,8 +376,11 @@ The sharing of data is also related to more political considerations.
 Since both the Dutch healthcare system and the Dutch research infrastructure is primarily financed by taxpayer money, it could be argued that the data needs to be collected by and made available to all Dutch researchers.
 In this way, the data can improve the Dutch healthcare system, potentially reducing costs in the future, and an extensive database could quickly propel the Netherlands to be at the forefront of glioma image analysis research.
 
-However, ultimately it is essential to create more public databases.
+Recently, initiatives such as healthRI (\url{https://www.health-ri.nl/}) have been setup to facilitate data sharing in a national infrastructure, but unfortunately the amount of data being shared is still limited.
+Ultimately it is essential to create more public databases.
 The public sharing of databases allows all institutes, especially those which are not privileged enough to have access to this data themselves, to incorporate the latest research in the clinical practice, as discussed in \cref{subsec:discussion_added_value_radiomics}.
+Combining the data of multiple centers in these public databases also means that databases will grow at a quicker rate.
+This is especially relevant when for the incorporation of new clinical and imaging insights, as less time is needed to collect a database of sufficient size, allowing the faster development of radiomics methods that include these new insights.
 Furthermore, this will create even larger and more diverse databases and allows for better reproducible research that can be verified on these publicly available datasets.
 
 
