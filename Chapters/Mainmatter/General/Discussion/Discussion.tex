@@ -33,13 +33,16 @@ I showed that this method was able to perform all of these tasks with good perfo
 
 The results from \cref{chap:LGGLocation,chap:HGGLocation} are the most straightforward to implement in the clinic directly.
 The localization features described in those chapters for the different genetic groups (or in the case of the \gls{MGMT} status, the lack of such features) are easy to determine and do not require additional methods or expertise to be implemented in the clinical workflow.
+In the clinic these localization features can be used to get a prediction of the genetic status at an early stage during clinical decision making.
 These results show the importance of researching these relatively simple imaging markers, as they can (in the short term) be the most impactful.
 
 The radiomics approaches in \cref{chap:LGG1p19q,chap:prognosais} achieved promising results and constitutes an important step in bringing radiomics methods closer to the clinic.
 In both cases, an independent test set was used to validate the performance of the radiomics approach, something that, although strongly recommended, is still not commonplace in (glioma) radiomics research \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
+By validating the methods on an independent test set, the measured performance is a better representation of the expected clinical performance, making the clinical acceptance of these algorithms more likely.
 
 In \cref{chap:LGG1p19q}, there was a focus on the explainability of the algorithm; by showing the relative feature importance and examples of what the algorithm considered the most representative patient of each class, we were able to provide some insight into the method.
 Furthermore, the feature importance and representative examples matched with imaging features previously described in the literature, further supporting that our method recognized the relevant imaging features.
+This helps with the acceptance of this method in clinical practice, as the method is no longer a complete black box, increasing the trust in the validity of the algorithm.
 
 The scan sorting method presented in \cref{chap:DDS} was developed with a research application in mind.
 At the moment, the method is already finding its way into research as it is being used to reduce the time needed to prepare new datasets for research on automated analysis methods \autocite{garderen2020automaticanalysis}.
@@ -49,7 +52,7 @@ These automated methods make us of specific scan types, and our method can be us
 \cref{chap:prognosais} is an important milestone for radiomics research, as it presents one of the first multi-task radiomics approaches.
 The method is especially pioneering as it combines the segmentation task and genetic feature prediction task, which are often considered separate challenges.
 Furthermore, the method was trained on the largest, most diverse glioma dataset to date, and could use the full 3D \gls{MRI} scan as the basis of its prediction.
-Thus, it pushed some important research boundaries, while the diverse data set and multiple clinically relevant prediction tasks make it more likely that this method will be embedded in the clinical workflow in the future.
+Thus, it pushed some important research boundaries, while the diverse training data, the independent test set, and multiple clinically relevant prediction tasks make it more likely that this method will be embedded in the clinical workflow in the future.
 
 
 \subsection{Methodological contributions}
@@ -215,6 +218,11 @@ If a sample is wrongly predicted, but the algorithm can explain why it looked at
 Another way to gain trust is to create methods that can not only predict disease characteristics, but that are also able to provide the level of certainty with which they make their predictions.
 If it can be shown that these methods are good at estimating their own uncertainty, this allows clinical experts to only take the predictions into account in instances when the algorithm is certain.
 Furthermore, it would create a sense of trust since the method is not presented as perfect, since the uncertainty measure shows that the method is fallible.
+
+It might not be possible to create a radiomics method that is not (at least partly) a black box.
+However, currently there are also medicines for which the exact workings might not be known, but which are still used as they have been shown to be beneficial for (groups of) patients.
+Therefore, although increasing the trust in radiomics methods it might not be necessary to create a fully explainable model, instead the benefit to the patient needs to be shown, for example in prospective studies.
+
 
 \subsection{What clinical assumptions underlie radiomics methods?}
 
