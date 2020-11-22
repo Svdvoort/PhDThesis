@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
             name: Propositions_Sebastian_R_van_der_Voort.pdf
-            path: Propositions/Propositions.pdf
+            path: Propositions.pdf
       - name: Get current date/time
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d_%HH%MM')"
@@ -96,6 +96,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Propositions/Propositions.pdf
+          asset_path: Propositions.pdf
           asset_name: Propositions_Sebastian_R_van_der_Voort.pdf
           asset_content_type: application/pdf
