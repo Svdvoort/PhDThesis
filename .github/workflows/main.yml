@@ -62,6 +62,17 @@ jobs:
         with:
             name: Thesis_Sebastian_R_van_der_Voort.pdf
             path: Thesis_Sebastian_R_van_der_Voort.pdf
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          args:
+            -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          root_file: Propositions/Propositions.tex
+      - name: Make PDF file available
+        uses: actions/upload-artifact@v1
+        with:
+            name: Propositions_Sebastian_R_van_der_Voort.pdf
+            path: Propositions/Propositions.pdf
       - name: Get current date/time
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d_%HH%MM')"
@@ -84,4 +95,14 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: Thesis_Sebastian_R_van_der_Voort.pdf
           asset_name: Thesis_Sebastian_R_van_der_Voort.pdf
+          asset_content_type: application/pdf
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: Propositions/Propositions.pdf
+          asset_name: Propositions_Sebastian_R_van_der_Voort.pdf
           asset_content_type: application/pdf
