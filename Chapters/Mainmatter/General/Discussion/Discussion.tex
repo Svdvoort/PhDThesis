@@ -25,6 +25,9 @@ In \cref{chap:DDS}, I developed a method that can automatically recognize the im
 The method can also sort the scans based on the predicted image contrast type.
 This method achieved a near-perfect accuracy, and even generalized to brain scans of patients without a \gls{tumor}.
 
+In \cref{chap:EGD}, I collected data from 774 patients with glioma and made this data publicly available.
+The dataset contains imaging data, genetic and histological features, and segmented tumors, and is currently the largest of its kind.
+
 Finally, in \cref{chap:prognosais}, I developed a method that predicts the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while simultaneously providing an automatic segmentation of the \gls{tumor}.
 I showed that this method was able to perform all of these tasks with good performance, worked for all subtypes of glioma, and generalized well to a separate patient population.
 
@@ -48,6 +51,9 @@ The scan sorting method presented in \cref{chap:DDS} was developed with a resear
 At the moment, the method is already finding its way into research as it is being used to reduce the time needed to prepare new datasets for research on automated analysis methods \autocite{garderen2020automaticanalysis}.
 Although the clinical impact may currently be limited, since clinical applicability was not the goal of this study, the introduction of automated methods in the clinic might change this.
 These automated methods make us of specific scan types, and our method can be used as the first step in such an automated pipeline to identify the required scan types without the need for human interaction.
+
+The dataset presented in \cref{chap:EGD} is a valuable addition to the currently publicly available data.
+The large number of patients included in this dataset and the clinical routine, real-life character of this data will aid in the development of more generalizable methods and allows for the better comparison of different methods by evaluating them on the same, publicly available data.
 
 \cref{chap:prognosais} is an important milestone for radiomics research, as it presents one of the first multi-task radiomics approaches.
 The method is especially pioneering as it combines the segmentation task and genetic feature prediction task, which are often considered separate challenges.

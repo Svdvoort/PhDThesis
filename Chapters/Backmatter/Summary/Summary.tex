@@ -43,7 +43,11 @@ It was also tested on 7,227 scans of 1,318 Alzheimer patients, to show the gener
 Our method was able to predict the type of the scan with near-perfect accuracy in both the glioma patients and the Alzheimer patients.
 
 I used the method developed in \textbf{\cref{chap:DDS}} to create the largest, most diverse glioma \gls{MRI} dataset to date.
-This dataset was then used in \textbf{\cref{chap:prognosais}} to develop a method that can simultaneously segment glioma and predict their \gls{IDH}-status, 1p/19q-status, and grade using pre-operative \gls{MRI} scans.
+This dataset has been made publicly available and is described in \textbf{\cref{chap:EGD}}.
+The dataset contains imaging data, genetic and histological features, and tumor segmentations of 774 patients with glioma.
+The public availability of this data allows for the development and validation of new radiomics and automated segmentation methods.
+
+The dataset described in \textbf{\cref{chap:EGD}}, along with other publicly available data, was used in \textbf{\cref{chap:prognosais}} to develop a method that can simultaneously segment glioma and predict their \gls{IDH}-status, 1p/19q-status, and grade using pre-operative \gls{MRI} scans.
 By predicting these genetic and histological features, a \gls{tumor} can be categorised according to the \gls{WHO} 2016 guidelines.
 This method was based on an existing convolutional neural network architecture, which was altered to enable the multiple, simultaneous predictions.
 By optimising the model I was able to use the full 3D \gls{MRI} scan as an input, despite the limited computational resources available to train the model.
