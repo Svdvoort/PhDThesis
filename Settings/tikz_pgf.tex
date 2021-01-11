@@ -17,6 +17,15 @@
 \tikzstyle{line} = [draw, -latex']
 
 
+\tikzset{fit margins/.style={/tikz/afit/.cd,#1,
+/tikz/.cd,
+inner xsep=\pgfkeysvalueof{/tikz/afit/left}+\pgfkeysvalueof{/tikz/afit/right},
+inner ysep=\pgfkeysvalueof{/tikz/afit/top}+\pgfkeysvalueof{/tikz/afit/bottom},
+xshift=-\pgfkeysvalueof{/tikz/afit/left}+\pgfkeysvalueof{/tikz/afit/right},
+yshift=-\pgfkeysvalueof{/tikz/afit/bottom}+\pgfkeysvalueof{/tikz/afit/top}},
+afit/.cd,left/.initial=2pt,right/.initial=2pt,bottom/.initial=2pt,top/.initial=2pt}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % pgf plots settings
@@ -24,3 +33,5 @@
 \pgfplotsset{compat=1.15}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{dateplot}
+
+

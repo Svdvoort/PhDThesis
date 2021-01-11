@@ -248,3 +248,6 @@ TSWLatexianTemp*
 
 # Also ignore the tex document used for testing
 temp_manuscript.tex
+
+# Ignore temporary figure folder
+./Temp_figures/
