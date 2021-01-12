@@ -1,0 +1,34 @@
+\begin{tikzpicture}[auto,
+    block_left/.style ={rectangle, draw=black, very thick, fill=white,
+      text width=15em, text ragged, minimum height=4em, inner sep=6pt},
+    exclusion_block_left/.style ={rectangle, draw=black, very thick, fill=white,
+    text width=15em, text ragged, minimum height=4em, inner sep=6pt},
+    line/.style ={draw, thick, -latex', shorten >=0pt}]
+     \node [block_left] (identified) {%
+     \begin{tabbing}
+      \textbf{769} \=Patients screened\\
+    \end{tabbing}};
+
+
+    \node [exclusion_block_left, below right = .2cm and 3.5cm of identified.center] (excluded) {%
+    \begin{tabbing}
+     \textbf{333} \=Patients screened\\
+     \\
+      \textbf{311} \>No molecular data\\
+      \textbf{22} \>\acrshort{IDH} mutated\\
+   \end{tabbing}};
+
+   \node [block_left, below=2.7cm of identified.center] (included) {%
+
+   \begin{tabbing}
+    \textbf{436} \= Patients included for analysis\\
+   \end{tabbing}
+   };
+
+
+    \begin{scope}[every path/.style=line]
+        \path (identified)   -- (included);
+        \path (identified)   |- (excluded);
+    \end{scope}
+
+  \end{tikzpicture}
