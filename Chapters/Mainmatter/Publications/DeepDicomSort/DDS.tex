@@ -67,8 +67,6 @@ A standardized \gls{ds} is a \gls{ds} where the data has been structured accordi
 \begin{table}[htbp]
   \centering
 
-  \caption{Overview of terminology used in this paper, the corresponding \gls{BIDS} terminology and meaning of each term.}
-  \label{tab:terminology}
   \begin{tabular}{L{1.5cm}L{3cm}L{6cm}}
   \toprule
   \textbf{Term} & \textbf{\gls{BIDS} term} & \textbf{Meaning}\\
@@ -96,6 +94,7 @@ A standardized \gls{ds} is a \gls{ds} where the data has been structured accordi
   \gls{NIFTI} & \gls{NIFTI} & A data format used to store (neuro) medical imaging data.\\
   \bottomrule
   \end{tabular}
+  \caption{Overview of terminology used in this paper, the corresponding \gls{BIDS} terminology and meaning of each term}\label{tab:terminology}
 \end{table}
 
 
@@ -108,7 +107,7 @@ We used \gls{MRI} \glspl{scan} of \glspl{sub} with brain tumors, as well as \gls
 To ensure sufficient heterogeneity in our \gls{ds}, we included \glspl{scan} from multiple different sources, and we only excluded \glspl{scan} if their \gls{type} did not fall into one of the eight categories that we aimed at predicting with our method.
 Thus, no \glspl{scan} were excluded based on other criteria such as low image quality, the occurrence of imaging artifacts, scanner settings, or disease state of the \gls{sub}.
 
-\subsubsection{\Gls{BTset}}
+\subsubsection{\Acrlong{BTset}}
 Our method was initially developed and subsequently tested on brain \gls{MRI} \glspl{scan} of \glspl{sub} with brain tumors.
 \Glspl{scan} of \glspl{sub} with brain tumors were used because the brain tumor imaging protocols used to acquire these \glspl{scan} usually span a wide array of \glspl{type}, including pre-contrast and post-contrast \glspl{scan}.
 The \gls{BTset} consisted of a train set and an independent test set, which in total included data from 11 different sources.
@@ -138,9 +137,6 @@ An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest
 \begin{table}[htbp]
     \centering
 
-    \caption{Overview of data in the \gls{BTset}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified.}
-    \label{tab:data_tumor}
-
     \newlength\scantablewidth
     \setlength\scantablewidth{0.6cm}
     \newlength\datasetsep
@@ -168,6 +164,7 @@ An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest
      \textbf{Total} & 7263 & 1030 & 1197 & 1575 & 11065 & & 1603 & 220  & 315  & 231  & 2369\\
      \bottomrule
     \end{tabular}
+    \caption{Overview of data in the \gls{BTset}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified}\label{tab:data_tumor}
 \end{table}
 
 \begin{figure}
@@ -240,8 +237,6 @@ These \gls{ASL} derived maps explain the 47 3D \glspl{scan} in \cref{tab:data_ad
 \begin{table}[htbp]
     \centering
 
-    \caption{Overview of data in the \gls{NTTS}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified.}
-    \label{tab:data_adni}
 
     \setlength\scantablewidth{0.6cm}
     \setlength\datasetsep{20pt}
@@ -267,6 +262,7 @@ These \gls{ASL} derived maps explain the 47 3D \glspl{scan} in \cref{tab:data_ad
      \textbf{Total} & 3536 & 488  & 288  & 2915 & 7227\\
      \bottomrule
     \end{tabular}
+    \caption{Overview of data in the \gls{NTTS}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified}\label{tab:data_adni}
 \end{table}
 
 \begin{samepage}
@@ -408,27 +404,25 @@ In this experiment, no \gls{T1C} and \gls{DSC} \glspl{scan} were present in the 
 Thus, we still allowed the model to predict the \gls{type} as one of these \glspl{class} to mirror this realistic setting.
 
 \newpage
-\begin{figure}[H]
+\begin{sidewaysfigure}
 \centering
-
-\resizebox{\textwidth}{!}{
+\resizebox{0.9\textwidth}{!}{
     \subimport{Figures/}{brain_tumor_experiment.pgf}
 }
-
 \caption{Overview of Experiment I. In this experiment, the \gls{BTtrain} was used to obtain the optimal model parameters and to train the algorithm. The trained model was then evaluated on the \gls{BTtest}.}
 \label{fig:brain_tumor_experiment}
-\end{figure}
+\end{sidewaysfigure}
 
-\begin{figure}[H]
+\begin{sidewaysfigure}
 \centering
 
-\scalebox{0.4}{
+\resizebox{0.9\textwidth}{!}{
 \subimport{Figures/}{adni_experiment.pgf}
 }
 
 \caption{Overview of Experiment II. In this experiment the \gls{BTset} was used to train the algorithm, and the trained model was then evaluated on the \gls{NTTS}.}
 \label{fig:adni_experiment}
-\end{figure}
+\end{sidewaysfigure}
 
 To evaluate the performance of our algorithm, we calculated the overall accuracy and the per-class accuracy of the classification.
 The overall accuracy was defined as the number of correctly predicted \glspl{scan} divided by the total number of \glspl{scan}.
@@ -467,8 +461,6 @@ To compare the performance of \gls{HC} with the performance of \gls{DDS} the ove
 
 \begin{table}[htbp]
  \centering
-  \caption{DICOM tag numbers and descriptions of the DICOM tags extracted for the \acrlong{HC} heuristic. For text-based tags the number of unique instances is shown and for numerical-based tags the distribution is shown, based on the \glspl{scan} in the \gls{BTtrain}. }
-  \label{tab:heuditags}
   \begin{tabular}{L{5cm} l l l}
       \toprule
       \textbf{Tag description} & \textbf{Tag number}\\
@@ -482,19 +474,20 @@ To compare the performance of \gls{HC} with the performance of \gls{DDS} the ove
       Number of columns in image & 0028,0011 & Range: 128 - 1152\\
       \bottomrule
   \end{tabular}
+  \caption{DICOM tag numbers and descriptions of the DICOM tags extracted for the \acrlong{HC} heuristic. For text-based tags the number of unique instances is shown and for numerical-based tags the distribution is shown, based on the \glspl{scan} in the \gls{BTtrain}}\label{tab:heuditags}
 \end{table}
 
 
-\begin{figure}[H]
+\begin{sidewaysfigure}
 \centering
 
-\resizebox{\textwidth}{!}{
+\resizebox{0.9\textwidth}{!}{
 \subimport{Figures/}{heudiconv_experiment.pgf}
 }
 
 \caption{Overview of the \gls{HC} experiment. In this experiment the \glspl{scan} from the \gls{BTtrain} that were available in \gls{DICOM} format were used to construct the heuristic file. \gls{HC} used this heuristic file to predict the \gls{type} of the \glspl{scan} from the \gls{BTtest} which were available in \gls{DICOM} format.}
 \label{fig:heudiconv_experiment}
-\end{figure}
+\end{sidewaysfigure}
 
 
 \section{Results}
@@ -540,8 +533,6 @@ Interpreting the deeper convolutional layers gets harder as the feature maps of 
 
 \begin{table}[htbp]
  \centering
-  \caption{Overall accuracy and per-class accuracy achieved by \gls{DDS} in Experiment I and Experiment II.}
-  \label{tab:seqacc}
   \begin{tabular}{rC{4cm}C{3cm}}
       \toprule
 & \textbf{Experiment I} & \textbf{Experiment II}\\
@@ -558,6 +549,8 @@ Interpreting the deeper convolutional layers gets harder as the feature maps of 
   \textit{Derived}    & 0.994 & 0.983\\
   \bottomrule
   \end{tabular}
+  \caption{Overall accuracy and per-class accuracy achieved by \gls{DDS} in Experiment I and Experiment II}\label{tab:seqacc}
+
 \end{table}
 
 
@@ -627,8 +620,6 @@ These results show that \gls{DDS} outperformed \gls{HC} both in terms of the ove
 \begin{table}[htbp]
 
  \centering
-  \caption{Accuracy of \acrlong{HC} on the \gls{BTtest}. Results of \gls{DDS} on this test set are also given, where the \glspl{scan} which were not available in the \gls{DICOM} format were excluded from the test set.}
-  \label{tab:heudiresults}
   \begin{tabular}{rC{3cm}C{3cm}}
       \toprule
 
@@ -646,6 +637,8 @@ These results show that \gls{DDS} outperformed \gls{HC} both in terms of the ove
   \textit{Derived}   & 0.948 & 0.994\\
   \bottomrule
   \end{tabular}
+  \caption{Accuracy of \acrlong{HC} on the \gls{BTtest}. Results of \gls{DDS} on this test set are also given, where the \glspl{scan} which were not available in the \gls{DICOM} format were excluded from the test set}\label{tab:heudiresults}
+
 \end{table}
 
 
@@ -779,7 +772,7 @@ In this methodology, the network could not only predict the \gls{type} of a \gls
 This requires a significant change to the model architecture, which we considered outside the scope of this research for now.
 
 Another limitation is the use of reorient2std from FSL, which means that (this part of) the code cannot be used in a commercial setting.
-Commercially allowed alternatives exist, such as the 'reorient\_image' function from ANTs (\url{http://stnava.github.io/ANTs/}), however these have not been tested as part of the \gls{DDS} pipeline.
+Commercially allowed alternatives exist, such as the \say{reorient\_image} function from ANTs (\url{http://stnava.github.io/ANTs/}), however these have not been tested as part of the \gls{DDS} pipeline.
 
 A promising future direction could be to predict the metadata of a \gls{scan} based on its visual appearance.
 For example, one could predict the sequence that has been used to acquire a \gls{scan} (e.g. MPRAGE or MP2RAGE in the case of a \gls{T1} \gls{scan}), or reconstruct the acquisition settings of a \gls{scan} (e.g. the spin echo time).
@@ -877,9 +870,6 @@ These results justified our choice for a 2D model, which not only achieved a hig
 
 \begin{table}[H]
  \centering
-  \caption{Overall training accuracy, overall validation accuracy, and the time it took to train each network for the different network architectures test in the model parameter selection.
-  A train/validation split of the \gls{BTtrain} was used to determine the performance.}
-  \label{tab:modelaccuracies}
   \begin{tabular}{L{2.5cm}C{2cm}C{2cm}C{2cm}}
       \toprule
 & \textbf{Train} & \textbf{Validation} & \textbf{Training time (h)}\\
@@ -893,6 +883,9 @@ These results justified our choice for a 2D model, which not only achieved a hig
     \textit{3D ResNet18} & 1.000 & 0.832 & 27.7\\
   \bottomrule
   \end{tabular}
+  \caption{Overall training accuracy, overall validation accuracy, and the time it took to train each network for the different network architectures test in the model parameter selection.
+  A train/validation split of the \gls{BTtrain} was used to determine the performance}\label{tab:modelaccuracies}
+
 \end{table}
 
 \clearpage
@@ -906,8 +899,6 @@ The confusion matrices for Experiment I (\cref{tab:seqresults}) and Experiment I
  \centering
 
  \setlength{\tabcolsep}{2pt}
-  \caption{Confusion matrix of results from Experiment I}
-  \label{tab:seqresults}
   \begin{tabular}{lr C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm}}
     \multirow{7}{*}{\bfseries \raggedleft \rotatebox{90}{Ground truth\hspace{4em}}}&
   \multicolumn{8}{c}{{\bfseries \hspace{8em} Predicted}}\\
@@ -922,14 +913,14 @@ The confusion matrices for Experiment I (\cref{tab:seqresults}) and Experiment I
  &\multicolumn{1}{|c}{\textit{\gls{DSC}}}      & 0    & 0    & 0     & 0     & 0     & 0     & 87 & 0 \\
  &\multicolumn{1}{|c}{\textit{Derived}}      & 0    & 0    & 1     & 0     & 0     & 0     & 0   & 156\\
   \end{tabular}
+  \caption{Confusion matrix of results from Experiment I}\label{tab:seqresults}
+
 \end{table}
 
 \begin{table}[ht]
  \centering
 
  \setlength{\tabcolsep}{2pt}
-  \caption{Confusion matrix of results from Experiment II}
-  \label{tab:confusion_adni}
   \begin{tabular}{lr C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm}}
     \multirow{7}{*}{\bfseries \raggedleft \rotatebox{90}{Ground truth\hspace{4em}}}&
   \multicolumn{8}{c}{{\bfseries \hspace{8em} Predicted}}\\
@@ -944,6 +935,8 @@ The confusion matrices for Experiment I (\cref{tab:seqresults}) and Experiment I
  &\multicolumn{1}{|c}{\textit{\gls{DSC}}}      & 0    & 0    & 0     & 0     & 0     & 0     & 0   & 0 \\
  &\multicolumn{1}{|c}{\textit{Derived}}      & 0    & 0    & 1     & 0     & 0     & 3     & 0    & 228\\
   \end{tabular}
+  \caption{Confusion matrix of results from Experiment II}\label{tab:confusion_adni}
+
 \end{table}
 
 
@@ -957,8 +950,6 @@ These results are obtained by comparing the predicted \gls{class} of a \gls{slic
 
 \begin{table}[ht]
  \centering
-  \caption{Overall accuracy and per-class accuracy achieved by \gls{DDS} in Experiment I and Experiment II on a per-\gls{slice} basis.}
-  \label{tab:acc_slices}
   \begin{tabular}{rC{4cm}C{3cm}}
       \toprule
 & \textbf{Experiment I} & \textbf{Experiment II}\\
@@ -975,6 +966,8 @@ These results are obtained by comparing the predicted \gls{class} of a \gls{slic
   \textit{Derived}    & 0.990 & 0.908\\
   \bottomrule
   \end{tabular}
+  \caption{Overall accuracy and per-class accuracy achieved by \gls{DDS} in Experiment I and Experiment II on a per-\gls{slice} basis}\label{tab:acc_slices}
+
 \end{table}
 
 \clearpage
