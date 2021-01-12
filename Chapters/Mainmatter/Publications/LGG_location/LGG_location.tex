@@ -1,6 +1,6 @@
 % !TEX root = ../../../../temp_manuscript.tex
 
-\chapter[Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups][LGG location molecular subgroups]{Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups}\label{chap:LGGLocation}
+\chapter[Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups][WHO 2016 subgroup localization]{Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups}\label{chap:LGGLocation}
 
 
 
@@ -94,9 +94,9 @@ The following criteria for molecular classification were used:
 \subsection{Statistical analysis}
 We created \gls{tumor} location heatmaps for the different \cgls{WHO} subtypes by iterating over all voxels in the \cgls{MNI} atlas and counting the number of \gls{tumor} occurrences for each group in each voxel.
 Via this procedure, we created location heatmaps for the \cgls{WHO} 2016 molecular subgroups.
-Additional heatmaps were generated for glioma-specific single genes and chromosomes of interest (CIC, FUBP1, chromosome 7 and 9p), as well as location heatmaps stratified for extensiveness of resection (4 groups of postoperative \gls{tumor} volumes; 0 cm$^3$/0.1-5.0 cm$^3$/5.1-15 cm$^3$/$>$15 cm$^3$).
+Additional heatmaps were generated for glioma-specific single genes and chromosomes of interest (CIC, FUBP1, chromosome 7 and 9p), as well as location heatmaps stratified for extensiveness of resection (4 groups of postoperative \gls{tumor} volumes: \SI{0}{\cubic\centi\metre}, \SIrange{0.1}{5.0}{\cubic\centi\metre}, \SIrange{5.1}{15.0}{\cubic\centi\metre}, \SI{>15.0}{\cubic\centi\metre}).
 
-To test for differences in spatial distribution between \cgls{WHO} 2016 subgroups, we assessed the cluster-wise significance at the voxel-level between distributions, using permutation testing with Threshold Free Cluster Enhancement in the software package \say{FSL Randomise} \autocite{winkler2014permutation} (version 5.0.9, using 15 000 permutations).
+To test for differences in spatial distribution between \cgls{WHO} 2016 subgroups, we assessed the cluster-wise significance at the voxel-level between distributions, using permutation testing with Threshold Free Cluster Enhancement in the software package \say{FSL Randomise} \autocite{winkler2014permutation} (version 5.0.9, using \num{15000} permutations).
 This approach corrects P-values for the familywise error in testing the many voxels, considering a corrected P-value of $<$0.05 as statistically significant.
 We first compared all \cgls{IDH} wild-type \cglspl{LGG} with all \cgls{IDH} mutated \cglspl{LGG}.
 In a subsequent analysis, we assessed the statistical significance of location differences of \cgls{IDH}-mutated astrocytoma and oligodendroglioma separately.
@@ -128,8 +128,7 @@ With \cgls{IDH} wild-type astrocytomas as reference category, our analysis indic
     \caption{Spatial distribution heatmaps of WHO 2016 glioma subgroups. The color of a voxel corresponds with the number of \glspl{tumor} localized at that
     location, ranging from red (low number) to white (high number). The color bars on the right indicate the frequencies corresponding with the color
     per voxel; (a) location distribution of oligodendroglioma shows most are located in the frontal lobes. (b) IDH-mutated astrocytoma shows a distribution with most \glspl{tumor} located in or near the insular region. (c) IDH wild-type astrocytomas are more often located in midline region and basal
-    ganglia.}
-    \label{fig:LGG_location_heatmap_subgroups}
+    ganglia}\label{fig:LGG_location_heatmap_subgroups}
     \end{figure}
 
 
@@ -138,8 +137,7 @@ With \cgls{IDH} wild-type astrocytomas as reference category, our analysis indic
     \includegraphics[width=\textwidth]{Figures/Figure_2.png}
     \caption{Differences in location distribution between \cgls{IDH} wild-type and mutated low-grade gliomas. Voxel-color indicates corrected P-value with
     color bar for scale; (a) regions more often occupied by \cgls{IDH}-mutated low-grade gliomas; (b) regions more often occupied by \cgls{IDH} wild-type low-
-    grade gliomas.}
-    \label{fig:LGG_location_P_values}
+    grade gliomas}\label{fig:LGG_location_P_values}
     \end{figure}
 
 
@@ -153,7 +151,7 @@ However, in a subsequent 3-group comparison, including \cgls{IDH} wild-type astr
     \caption{Results of the FSL Randomize test with 15000 permutations for statistical
     differences in location distribution. The color of a voxel is correlated with
     a p-value as indicated in the top-right color bar; (a) heatmap of unique
-    localisations for oligodendroglioma compared with IDH mutated astrocytomas (b) heatmap of unique localisations for IDH mutated astroctyomas
+    localizations for oligodendroglioma compared with IDH mutated astrocytomas (b) heatmap of unique localizations for IDH mutated astroctyomas
     compared with oligodendrogliomas}\label{fig:LGG_location_oligo_astro_p_value}
 \end{figure}
 
@@ -175,7 +173,7 @@ In \cgls{IDH}-mutated astrocytoma, we created heatmaps of loss of chromosomal ar
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{Figures/p_value_9p.png}
-    \caption{Results of the FSL Randomize test showing unique localisations for loss of 9p in the context of oligodendroglioma}\label{fig:LGG_location_p_value_9p}
+    \caption{Results of the FSL Randomize test showing unique localizations for loss of 9p in the context of oligodendroglioma}\label{fig:LGG_location_p_value_9p}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -186,20 +184,19 @@ In \cgls{IDH}-mutated astrocytoma, we created heatmaps of loss of chromosomal ar
 
 \subsection{Resection Probability of LGG}
 For a previous study on the extent of resection in the same cohort, postoperative \gls{tumor} volumes were also assessed with the BrainLab Elements SmartBrush Tool.
-We assigned patients into one of the 4 groups based on the postoperative \gls{tumor} volume: 0.0, 0.1-5.0, 5.1-15.0, and $>$ 15.0 cm$^3$ postoperative \gls{tumor} volume.
+We assigned patients into one of the 4 groups based on the postoperative \gls{tumor} volume:  \SI{0}{\cubic\centi\metre}, \SIrange{0.1}{5.0}{\cubic\centi\metre}, \SIrange{5.1}{15.0}{\cubic\centi\metre}, and \SI{>15.0}{\cubic\centi\metre} postoperative \gls{tumor} volume.
 We generated location distribution heat maps stratified by these 4 groups, to investigate if there are preferential localizations for gross total resections.
 Results are shown in Figure 3.
-All \glspl{tumor} with a total resection (0.0 cm$^3$ postoperative residue) were located in the frontal lobe.
-Similarly, the majority of \glspl{tumor} with a low postoperative \gls{tumor} volume (0.1-5.0 cm$^3$) were located in the frontal lobes.
-\Glspl{tumor} with a postoperative volume of more than 5.0 cm$^3$ more frequently occurred in the insular region, temporal lobes, and in or near the primary sensory and motor cortex.
+All \glspl{tumor} with a total resection (\SI{0.0}{\cubic\centi\metre} postoperative residue) were located in the frontal lobe.
+Similarly, the majority of \glspl{tumor} with a low postoperative \gls{tumor} volume (\SIrange{0.1}{5.0}{\cubic\centi\metre}) were located in the frontal lobes.
+\Glspl{tumor} with a postoperative volume of more than \SI{5.0}{\cubic\centi\metre} more frequently occurred in the insular region, temporal lobes, and in or near the primary sensory and motor cortex.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{Figures/Figure_3.png}
 \caption{Spatial distribution heatmaps of \cgls{WHO} 2016 grade II glioma stratified according to postoperative \gls{tumor} volume. The color bars on the right
-indicate the frequencies corresponding with the color of the voxels; (a) gliomas with a total resection (0.0 cm$^3$ residue); (b) gliomas with a postoperative \gls{tumor} volume of 0.1-5.0 cm$^3$ ; (c) gliomas with a postoperative \gls{tumor} volume of 5.1-15.0 cm$^3$ ; (d) gliomas with a postoperative \gls{tumor} volume
-of more than 15.0 cm$^3$.}
-\label{fig:LGG_location_postop_volume}
+indicate the frequencies corresponding with the color of the voxels; (a) gliomas with a total resection (\SI{0.0}{\cubic\centi\metre} residue); (b) gliomas with a postoperative \gls{tumor} volume of \SIrange{0.1}{5.0}{\cubic\centi\metre} ; (c) gliomas with a postoperative \gls{tumor} volume of  \SIrange{5.1}{15.0}{\cubic\centi\metre}; (d) gliomas with a postoperative \gls{tumor} volume
+of more than \SI{15.0}{\cubic\centi\metre}}\label{fig:LGG_location_postop_volume}
 \end{figure}
 
 
@@ -252,7 +249,7 @@ Our study was retrospective in nature, and the \cgls{MRI} protocols were not sta
 Consequently, voxel size and slice thickness were not homogeneous in the cohort.
 Images with large voxel size and slice thickness pose challenges for accurate segmentation and registration.
 More subtle differences in location between groups might be missed.
-However, our aim was not to find subtle differences, but clinically relevant differences between groups, and our cohort with heterogeneous \cgls{MR} protocols is sufficient for this aim (and also reflects the 'real-life' situation).
+However, our aim was not to find subtle differences, but clinically relevant differences between groups, and our cohort with heterogeneous \cgls{MR} protocols is sufficient for this aim (and also reflects the \say{real-life} situation).
 More importantly, the mapping of patient \cgls{MR} scans with segmentation to the \cgls{MNI} standard brain can lead to distortion and a slight change of location on the standard brain compared with the original \cgls{MR} scan.
 This is especially relevant for relatively large lesions with mass effect, for example, \glspl{tumor} that compress the ventricles.
 Because of this, our heatmaps erroneously showed some \glspl{tumor} to be located in the ventricles.
