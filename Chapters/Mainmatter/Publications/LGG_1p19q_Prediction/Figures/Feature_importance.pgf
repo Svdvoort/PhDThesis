@@ -38,7 +38,7 @@ ylabel={\huge\textbf{Feature}},
 ymin=-0.5, ymax=42.5,
 ytick style={draw=none},
 ytick={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42},
-yticklabels={Age,Gender,Anterior/Posterior position,Left/Right position,Inferior/Superior position,Compactness,Convexity,Circular variance,Elliptic variance,Ratio of principle axis,Radial distance,Roughness,Solidity,Volume,Energy,Kurtosis,Max,Mean,Median,Min,Peak,Range,Skewness,Standard deviation,Quartile range,LBP R1P8 kurtosis,LBP R3P24 kurtosis,LBP R5P24 kurtosis,LBP R1P8 mean,LBP R3P24 mean,LBP R5P24 mean,LBP R1P8 median,LBP R3P24 median,LBP R5P24 median,LBP R1P8 peak,LBP R3P24 peak,LBP R5P24 peak,LBP R1P8 skew,LBP R3P24 skew,LBP R5P24 skew,LBP R1P8 std,LBP R3P24 std,LBP R5P24 std}
+yticklabels={Age,Sex,Anterior/Posterior position,Left/Right position,Inferior/Superior position,Compactness,Convexity,Circular variance,Elliptic variance,Ratio of principle axis,Radial distance,Roughness,Solidity,Volume,Energy,Kurtosis,Max,Mean,Median,Min,Peak,Range,Skewness,Standard deviation,Quartile range,LBP R1P8 kurtosis,LBP R3P24 kurtosis,LBP R5P24 kurtosis,LBP R1P8 mean,LBP R3P24 mean,LBP R5P24 mean,LBP R1P8 median,LBP R3P24 median,LBP R5P24 median,LBP R1P8 peak,LBP R3P24 peak,LBP R5P24 peak,LBP R1P8 skew,LBP R3P24 skew,LBP R5P24 skew,LBP R1P8 std,LBP R3P24 std,LBP R5P24 std}
 ]
 \draw[draw=none,fill=color0,line width=1pt] (axis cs:0,-0.4) rectangle (axis cs:0.02182,0.4);
 \addlegendimage{ybar,ybar legend,draw=color0,fill=color0,line width=3pt,scale=1.5};
