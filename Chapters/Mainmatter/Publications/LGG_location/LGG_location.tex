@@ -17,9 +17,9 @@
     Differences between subgroups were determined using voxelwise permutation testing.
 
     \textbf{Results:}
-    A total of 110 \cgls{IDH} mutated astrocytoma patients, 92 \cgls{IDH} mutated and \acl{1p19qcodel} oligodendroglioma patients, and 22 \cgls{IDH} wild-type astrocytoma patients were included.
+    A total of 110 \cgls{IDH} mutated astrocytoma patients, 92 \cgls{IDH} mutated and \acl{1p19qcodel} oligodendroglioma patients, and 22 \cgls{IDH} wildtype astrocytoma patients were included.
     We identified small regions in which specific molecular subtypes occurred more frequently.
-    \cgls{IDH}-mutated \cglspl{LGG} were more frequently located in the frontal lobes and \cgls{IDH} wild-type \glspl{tumor} more frequently in the basal ganglia of the right hemisphere.
+    \cgls{IDH}-mutated \cglspl{LGG} were more frequently located in the frontal lobes and \cgls{IDH} wildtype \glspl{tumor} more frequently in the basal ganglia of the right hemisphere.
     We found no localizations of significant difference for single genes/\cglspl{CNV} in subgroups, except for loss of 9p in oligodendrogliomas with a predilection for the left parietal lobes.
     More extensive resections in \cgls{LGG} were associated with frontal locations.
 
@@ -39,8 +39,8 @@ Previous studies suggest that the anatomic location of a glioma is correlated wi
 If so, \gls{tumor} location may contribute to presurgical clinical decision-making and may provide a noninvasive marker for prediction of molecular subtype.
 However, current evidence to support this is mainly derived from relatively small series which are often single molecular marker studies  \autocite{stockhammer2012idh1, goze2009lack, laigle2004correlations, metellus2010absence}.
 For example, it was shown that loss of 1p is associated with a more frequent location in the frontal lobes and that \acl{1p19qcotion} is absent in insular \glspl{tumor} \autocite{goze2009lack, laigle2004correlations}.
-In a series of 47 patients, \citeauthorref{metellus2010absence} showed that \cgls{IDH} wild-type \cgls{LGG} are preferentially located in the insular region.
-We recently reported on a cohort of resected LGG samples, wherein we found that IDH wild-type \glspl{tumor} were more often located in eloquent areas \autocite{wijnenga2017impact}.
+In a series of 47 patients, \citeauthorref{metellus2010absence} showed that \cgls{IDH} wildtype \cgls{LGG} are preferentially located in the insular region.
+We recently reported on a cohort of resected LGG samples, wherein we found that IDH wildtype \glspl{tumor} were more often located in eloquent areas \autocite{wijnenga2017impact}.
 In that study, just as in many other previous studies on glioma location, we used the cerebral lobes as the location description factor, which is not accurate.
 A recent study by \citeauthorref{tejada2018voxel} showed a location predilection for \cgls{IDH}-mutated \glspl{tumor} in the frontal lobes in the rostral extension of the lateral ventricles.
 Despite these data, no large series have been described that visualize the anatomic location of \cgls{WHO} 2016 LGG subtypes in a voxel-based manner.
@@ -63,7 +63,7 @@ We used the preoperative \cgls{MR} scans that were available from a routine clin
 \cgls{MR} sequence protocols varied per patient, as patients were diagnosed in several centers without the use of a uniform \gls{tumor} \cgls{MR} imaging protocol.
 For inclusion in this study, at least a \cgls{FLAIR} or \cgls{T2} sequence needed to be available.
 We did not use inclusion or exclusion criteria for voxel size and/or slice thickness.
-We segmented preoperative and postoperative glioma lesions on MR imaging in a semiautomated fashion with the SmartBrush tool that is incorporated in Brainlab Elements (version 2.1.0.15).
+We segmented preoperative and postoperative glioma lesions on \cgls{MR} imaging in a semiautomated fashion with the SmartBrush tool that is incorporated in Brainlab Elements (version 2.1.0.15).
 With this tool, a three-dimensional (3D) \cgls{VOI} can be created by manually segmenting the lesion on 2 perpendicular slices, from which the software calculates a full 3D \cgls{VOI}, which was manually adjusted where necessary.
 We used the \cgls{FLAIR} sequence when available (3D where possible); otherwise, the conventional \cgls{T2} sequence was used for segmentation.
 All \gls{tumor}-related \cgls{T2} and \cgls{FLAIR} signal abnormalities were included in the segmentation.
@@ -87,7 +87,7 @@ The following criteria for molecular classification were used:
 
 \item \cgls{IDH} mutated astrocytoma: \cgls{IDH}1 or \cgls{IDH}2 mutated.
 
-\item \cgls{IDH} wild-type astrocytoma, with molecular features of glioblastoma (according to recent cIMPACT-NOW update 3 \autocite{brat2018}  in further text named as \say{\cgls{IDH} wild-type astrocytoma}): \cgls{IDH}1 or \cgls{IDH}2 wild-type and: TERT promoter mutation without \acl{1p19qcotion}, or loss of heterozygosity of chromosome 10q and imbalance of chromosome 7, or EGFR amplification.
+\item \cgls{IDH} wildtype astrocytoma, with molecular features of glioblastoma (according to recent cIMPACT-NOW update 3 \autocite{brat2018}  in further text named as \say{\cgls{IDH} wildtype astrocytoma}): \cgls{IDH}1 or \cgls{IDH}2 wildtype and: TERT promoter mutation without \acl{1p19qcotion}, or loss of heterozygosity of chromosome 10q and imbalance of chromosome 7, or EGFR amplification.
 
 \end{itemize}
 
@@ -97,8 +97,8 @@ Via this procedure, we created location heatmaps for the \cgls{WHO} 2016 molecul
 Additional heatmaps were generated for glioma-specific single genes and chromosomes of interest (CIC, FUBP1, chromosome 7 and 9p), as well as location heatmaps stratified for extensiveness of resection (4 groups of postoperative \gls{tumor} volumes: \SI{0}{\cubic\centi\metre}, \SIrange{0.1}{5.0}{\cubic\centi\metre}, \SIrange{5.1}{15.0}{\cubic\centi\metre}, \SI{>15.0}{\cubic\centi\metre}).
 
 To test for differences in spatial distribution between \cgls{WHO} 2016 subgroups, we assessed the cluster-wise significance at the voxel-level between distributions, using permutation testing with Threshold Free Cluster Enhancement in the software package \say{FSL Randomise} \autocite{winkler2014permutation} (version 5.0.9, using \num{15000} permutations).
-This approach corrects P-values for the familywise error in testing the many voxels, considering a corrected P-value of $<$0.05 as statistically significant.
-We first compared all \cgls{IDH} wild-type \cglspl{LGG} with all \cgls{IDH} mutated \cglspl{LGG}.
+This approach corrects P-values for the familywise error in testing the many voxels, considering a corrected P-value of \num{<0.05} as statistically significant.
+We first compared all \cgls{IDH} wildtype \cglspl{LGG} with all \cgls{IDH} mutated \cglspl{LGG}.
 In a subsequent analysis, we assessed the statistical significance of location differences of \cgls{IDH}-mutated astrocytoma and oligodendroglioma separately.
 
 
@@ -106,7 +106,7 @@ In a subsequent analysis, we assessed the statistical significance of location d
 
 Our initial cohort consisted of 246 patients with confirmed \cgls{LGG}, for which \cgls{FFPE} material and \cgls{MR} scans were available.
 Twenty-two patients were excluded: 16 due to sequencing failure, 2 due to a preoperative contrast enhancement suggestive of glioblastoma, and another 4 due to insufficient image quality
-Of the remaining 224 patients, 110 were \cgls{IDH} mutated astrocytomas, 92 were oligodendrogliomas, and 22 were \cgls{IDH} wild-type astrocytomas.
+Of the remaining 224 patients, 110 were \cgls{IDH} mutated astrocytomas, 92 were oligodendrogliomas, and 22 were \cgls{IDH} wildtype astrocytomas.
 Clinical characteristics of this cohort were consistent with \cgls{LGG} patient characteristics known from the literature and are shown in \cref{tab:LGG_location_characteristics}.
 
 \subimport{Tables/}{clinical_characteristics.tex}
@@ -115,19 +115,19 @@ Clinical characteristics of this cohort were consistent with \cgls{LGG} patient 
 
 Spatial distribution heatmaps for each \cgls{WHO} 2016 grade II glioma subgroup are shown in \cref{fig:LGG_location_heatmap_subgroups}.
 Upon visual inspection, most oligodendrogliomas were located in the frontal lobes and cortex, while \cgls{IDH}-mutated astrocytomas were more frequently located in the frontotemporal lobes and the insular region.
-\cgls{IDH} wild-type astrocytomas were more frequently located in the basal ganglia and rostral areas of the hemispheres.
+\cgls{IDH} wildtype astrocytomas were more frequently located in the basal ganglia and rostral areas of the hemispheres.
 In this cohort, \glspl{tumor} were slightly more frequently located in the left hemisphere, both for \cgls{IDH}-mutated astrocytomas and oligodendrogliomas.
 
-Statistical analysis of the spatial distributions indicated that \glspl{tumor} were more frequent in the anterior extensions of the lateral ventricles for \cgls{IDH}-mutated \cglspl{LGG} (oligodendrogliomas and \cgls{IDH}-mutated astrocytomas combined) compared with \cgls{IDH} wild-type astrocytomas.
+Statistical analysis of the spatial distributions indicated that \glspl{tumor} were more frequent in the anterior extensions of the lateral ventricles for \cgls{IDH}-mutated \cglspl{LGG} (oligodendrogliomas and \cgls{IDH}-mutated astrocytomas combined) compared with \cgls{IDH} wildtype astrocytomas.
 The P-values per voxel are shown in \cref{fig:LGG_location_P_values}A.
-With \cgls{IDH} wild-type astrocytomas as reference category, our analysis indicated that \cgls{IDH} wild-type astrocytomas are more frequently located in the basal ganglia of the right hemisphere (when compared with \cgls{IDH}-mutated \cglspl{LGG}) (\cref{fig:LGG_location_P_values}B).
+With \cgls{IDH} wildtype astrocytomas as reference category, our analysis indicated that \cgls{IDH} wildtype astrocytomas are more frequently located in the basal ganglia of the right hemisphere (when compared with \cgls{IDH}-mutated \cglspl{LGG}) (\cref{fig:LGG_location_P_values}B).
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{Figures/Figure_1.png}
-    \caption{Spatial distribution heatmaps of WHO 2016 glioma subgroups. The color of a voxel corresponds with the number of \glspl{tumor} localized at that
+    \caption{Spatial distribution heatmaps of \acrshort{WHO} 2016 glioma subgroups. The color of a voxel corresponds with the number of \glspl{tumor} localized at that
     location, ranging from red (low number) to white (high number). The color bars on the right indicate the frequencies corresponding with the color
-    per voxel; (a) location distribution of oligodendroglioma shows most are located in the frontal lobes. (b) IDH-mutated astrocytoma shows a distribution with most \glspl{tumor} located in or near the insular region. (c) IDH wild-type astrocytomas are more often located in midline region and basal
+    per voxel; (a) location distribution of oligodendroglioma shows most are located in the frontal lobes. (b) \acrshort{IDH}-mutated astrocytoma shows a distribution with most \glspl{tumor} located in or near the insular region. (c) \acrshort{IDH} wildtype astrocytomas are more often located in midline region and basal
     ganglia}\label{fig:LGG_location_heatmap_subgroups}
     \end{figure}
 
@@ -135,14 +135,14 @@ With \cgls{IDH} wild-type astrocytomas as reference category, our analysis indic
     \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{Figures/Figure_2.png}
-    \caption{Differences in location distribution between \cgls{IDH} wild-type and mutated low-grade gliomas. Voxel-color indicates corrected P-value with
-    color bar for scale; (a) regions more often occupied by \cgls{IDH}-mutated low-grade gliomas; (b) regions more often occupied by \cgls{IDH} wild-type low-
+    \caption{Differences in location distribution between \cgls{IDH} wildtype and mutated low-grade gliomas. Voxel-color indicates corrected P-value with
+    color bar for scale; (a) regions more often occupied by \cgls{IDH}-mutated low-grade gliomas; (b) regions more often occupied by \cgls{IDH} wildtype low-
     grade gliomas}\label{fig:LGG_location_P_values}
     \end{figure}
 
 
 Direct comparison between \cgls{IDH}-mutated astrocytomas and oligodendrogliomas showed a small area in the left frontal cortex where oligodendrogliomas occurred significantly more frequently (P $<$ 0.05), and a small region in the right temporal lobe where \cgls{IDH} mutated astrocytomas (\cref{fig:LGG_location_oligo_astro_p_value}) occurred more frequently.
-However, in a subsequent 3-group comparison, including \cgls{IDH} wild-type astrocytomas, there were no locations of significant differences for \cgls{IDH}-mutated astrocytomas or oligodendrogliomas individually, only for \cgls{IDH} wild-type astrocytomas individually.
+However, in a subsequent 3-group comparison, including \cgls{IDH} wildtype astrocytomas, there were no locations of significant differences for \cgls{IDH}-mutated astrocytomas or oligodendrogliomas individually, only for \cgls{IDH} wildtype astrocytomas individually.
 
 
 \begin{figure}[htbp]
@@ -203,7 +203,7 @@ of more than \SI{15.0}{\cubic\centi\metre}}\label{fig:LGG_location_postop_volume
 \section{Discussion}
 In this study, we aimed to visualize and compare the spatial distribution of \cgls{WHO} 2016 grade II glioma subgroups.
 By using advanced image processing analyses, we were able to generate accurate spatial distribution maps, especially compared with previous studies that were primarily based on location description/scores \autocite{stockhammer2012idh1, goze2009lack, laigle2004correlations, metellus2010absence}.
-Our data indicate there are significant differences in spatial distribution patterns dependent on \cgls{IDH} status, with \cgls{IDH}-mutated \cglspl{LGG} more frequently located in the rostral extensions of the lateral ventricles, and \cgls{IDH} wild-type astrocytomas more frequently in the basal ganglia of the right hemisphere.
+Our data indicate there are significant differences in spatial distribution patterns dependent on \cgls{IDH} status, with \cgls{IDH}-mutated \cglspl{LGG} more frequently located in the rostral extensions of the lateral ventricles, and \cgls{IDH} wildtype astrocytomas more frequently in the basal ganglia of the right hemisphere.
 Our data are in line with earlier observations and confirm there is a correlation between molecular background of a glioma and anatomic location \autocite{stockhammer2012idh1, goze2009lack, laigle2004correlations, metellus2010absence, tejada2018voxel}.
 On the other hand, our data also indicate an overlap in anatomic location between \cgls{WHO} 2016 subgroups.
 
@@ -214,8 +214,8 @@ Although oligodendrogliomas and \cgls{IDH}-mutated astrocytomas differ in clinic
 It is suggested that the cell of origin for \cgls{IDH}-mutated gliomas is localized within the subventricular zone \autocite{sanai2005neural}.
 If oligodendrogliomas and \cgls{IDH}-mutated astrocytomas share the cell type of origin, this might explain the significant predilection of \cgls{IDH}-mutated \cglspl{LGG} in the rostral extensions of the anterior lateral ventricles, and the absence of a location difference between \cgls{IDH}-mutated astrocytomas and oligodendrogliomas.
 
-Compared with \cgls{IDH}-mutated \cglspl{LGG}, \cgls{IDH} wild-type astrocytomas showed a distinct spatial distribution with more lesions located in the midline and basal ganglia.
-This different spatial distribution is an interesting observation, as it shows that, in the setting of grade II gliomas, \cgls{IDH} wild-type astrocytomas have a different anatomical and thus clinical presentation.
+Compared with \cgls{IDH}-mutated \cglspl{LGG}, \cgls{IDH} wildtype astrocytomas showed a distinct spatial distribution with more lesions located in the midline and basal ganglia.
+This different spatial distribution is an interesting observation, as it shows that, in the setting of grade II gliomas, \cgls{IDH} wildtype astrocytomas have a different anatomical and thus clinical presentation.
 The spatial distribution explains the high percentage of biopsies in these patients we reported previously, as \glspl{tumor} in these locations are not eligible for safe resections \autocite{wijnenga2017impact}.
 We also reported previously \autocite{wijnenga2017impact} that these \glspl{tumor} often do not present with epilepsy, in contrast to \cgls{IDH}-mutated grade II gliomas, and this might also be explained by their preferential, noncortical location.
 On the other hand, it has also been postulated that high frequency of epilepsy in \cgls{IDH}-mutated gliomas is explained by mimicking the activity of glutamate on the NMDA receptor due to high levels of d-2-hydroxyglutarate \autocite{chen2017mutant}.
@@ -257,11 +257,11 @@ However, if a registration that perfectly mapped the \gls{tumor} to its position
 As such the resulting mapping would misrepresent the actual \gls{tumor} volume.
 Therefore, we have chosen to accept the erroneous mappings into the ventricles in favor of these volume effects.
 To be as accurate as possible, we manually checked all registrations and corrected where necessary.
-Furthermore, although this is a relatively large consecutive series of molecular-defined grade II glioma, a further expansion of our dataset is needed, as especially the group of \cgls{IDH} wild-type astrocytomas is small.
-We need larger numbers to confirm that the spatial distribution of \cgls{IDH} wild-type \cgls{LGG} is indeed different compared with \cgls{IDH}-mutated \cgls{LGG}, as it is known that glioblastomas are also frequently located in the frontal lobes.
+Furthermore, although this is a relatively large consecutive series of molecular-defined grade II glioma, a further expansion of our dataset is needed, as especially the group of \cgls{IDH} wildtype astrocytomas is small.
+We need larger numbers to confirm that the spatial distribution of \cgls{IDH} wildtype \cgls{LGG} is indeed different compared with \cgls{IDH}-mutated \cgls{LGG}, as it is known that glioblastomas are also frequently located in the frontal lobes.
 However, a recent study showed that, in the context of glioblastoma, the frontal cortex is also significantly associated with the presence of \cgls{IDH} mutations \autocite{tejada2018voxel}.
 
-In conclusion, \cgls{WHO} 2016 low-grade glioma molecularly defined subgroups show both differences and similarities in spatial distribution, with \cgls{IDH}-mutated \cglspl{LGG} significantly more frequently located in the frontal lobes and \cgls{IDH} wild-type \glspl{tumor} more frequently in the basal ganglia of the right hemisphere.
+In conclusion, \cgls{WHO} 2016 low-grade glioma molecularly defined subgroups show both differences and similarities in spatial distribution, with \cgls{IDH}-mutated \cglspl{LGG} significantly more frequently located in the frontal lobes and \cgls{IDH} wildtype \glspl{tumor} more frequently in the basal ganglia of the right hemisphere.
 
 % \newpage
 % \begin{subappendices}
