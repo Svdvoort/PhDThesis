@@ -32,7 +32,7 @@ Since different types of brain cells exist, the cancerous cells can have mutated
 Therefore, primary brain \glspl{tumor} are categorized by the type of brain cells from which they mutated, with \glspl{glioma} being the most prevalent \autocite{leece2017indicence}.
 \Glspl{glioma} are \glspl{tumor} which cancerous cells mutated from \glspl{gcell}.
 \Glspl{gcell}, which play a supporting role in the \acrlong{CNS}, are the most abundant cell type in the brain \autocite{jakel2017glial}.
-Although \gls{glioma} have a low incidence compared to other cancers, around \per{1.7} globally \autocite{leece2017indicence}, they are one of the deadliest with a median survival of nine months in the worst case to fifteen years in the best case \autocite{ho2014incidence, olar2015survival}.
+Although \gls{glioma} have a low incidence compared to other cancers, around \SI{1.7}{\percent} globally, they are one of the deadliest with a median survival of nine months in the worst case to fifteen years in the best case \autocite{leece2017indicence, ho2014incidence, olar2015survival}.
 Unfortunately, no cure exists for \gls{glioma} but there are several treatments that can prolong the life expectancy and/or quality of life of patients.
 Since no two \gls{glioma} are the same, the treatment is tailored to each specific case in order to deliver the best possible treatment for each patient.
 Therefore, it is important to categorize \gls{glioma} in a clinically relevant way, to support the clinical decision making process, leading to better patient care.
@@ -62,7 +62,7 @@ An overview of the \gls{WHO} 2016 guidelines and their relation to the previous 
 \begin{figure}[hbt]
     \centering
     \resizebox{0.98\textwidth}{!}{\subimport{Figures/}{WHO_2016_flowchart.pgf}}
-    \caption{The \acrfull{WHO} 2016 categorizaton of glioma. The aggressiveness of the \glspl{tumor} increases from left to right}\label{fig:intro_glioma_categorization}
+    \caption{The \acrfull{WHO} 2016 categorization of glioma. The aggressiveness of the \glspl{tumor} increases from left to right}\label{fig:intro_glioma_categorization}
 \end{figure}
 
 In the updated guidelines, \gls{glioma} typing has become less relevant.
@@ -102,7 +102,7 @@ Patients with \gls{MGMT} methylated \glspl{tumor} survive longer than patients w
 Thus, although not used for \gls{glioma} typing, the \gls{MGMT} methylation status is often relevant for clinical decision making \autocite{molinaro2019geneticepidemiology}.
 
 Not only do genetic features determine the aggressiveness of the \gls{tumor}, but they also influence the \gls{tumor}'s response to certain treatments.
-For example \gls{IDH} mutated \gls{glioma} respond better to radiotherapy than \gls{IDH} wildtype \gls{glioma} \autocite{juratli2015IDHtreatment}, and the \gls{codeletion} status and \gls{MGMT} methylation status might be predictors of the \gls{tumor}'s sensitivity to chemotherapy \autocite{idbaih2007markersresponse}.
+For example \gls{IDH} mutated \gls{glioma} respond better to radiotherapy than \gls{IDH} wildtype \gls{glioma}, and the \gls{codeletion} status and \gls{MGMT} methylation status might be predictors of the \gls{tumor}'s sensitivity to chemotherapy \autocite{juratli2015IDHtreatment, idbaih2007markersresponse}.
 Thus, it is important to know the genetic features of a \gls{glioma}, both for the prognosis of the patient and for deciding on the most suitable treatment.
 
 In current clinical practice, the genetic and histopathological features are determined from \gls{tumor} tissue obtained through biopsy or resection.
@@ -115,7 +115,7 @@ Therefore, it would be beneficial if the genetic features of a \gls{glioma} can 
 
 A non-invasive method to determine the genetic features of the \gls{tumor} not only obviates the need for an intrusive surgical operation, but it can also provide relevant information earlier in the treatment process, which can aid in the clinical decision making.
 In the case of an asymptomatic \gls{tumor} with a favorable genetic profile a watch-and-wait approach may be considered since leaving the \gls{tumor} untreated might have less of a negative impact than the potentially damaging effect of the treatment on the healthy tissue \autocite{vandenbent2012lggtreatment, welle2017EANO}.
-Since \gls{MRI} is already part of the standard clinical pathway for glioma patients, it is the ideal candidate for a non-invasive way of identifying the genetic and histopathological features of the \gls{tumor}.
+Since \acrlong{MRI} is already part of the standard clinical pathway for glioma patients, it is the ideal candidate for a non-invasive way of identifying the genetic and histopathological features of the \gls{tumor}.
 
 \section{MRI analysis of glioma}
 
@@ -204,7 +204,7 @@ Utilizing these strengths of automated methods provides clinical experts with mo
     \resizebox{0.93\textwidth}{!}{\subimport{Figures/}{Machine_learning_pipeline.pgf}}
     \caption{Example of a machine learning pipeline in which patients belong to one of two clinical outcome categories (symbolized by the circles and squares).
     The machine learning model learns the characteristic scan appearance of each category based on scans from patients for whom the clinical outcome is known.
-    Scans of patients for whom the clinical outcome is not yet known are evaluated by the model, which then predicts the likely clinical outcome.}\label{fig:intro_example_ml}
+    Scans of patients for whom the clinical outcome is not yet known are evaluated by the model, which then predicts the likely clinical outcome}\label{fig:intro_example_ml}
 \end{figure}
 
 
@@ -239,7 +239,7 @@ This thesis presents different applications of these automated methods for the i
     In this way, it is possible to quickly go from unstructured data from the clinical practice to structured data that can be used for research.
     This chapter fits with goal 2.
 
-    \item[\cref{chap:EGD}] presents the \gls{EGD}, a dataset containing \gls{MRI} scans, genetic and histological features, and outlined tumors of patients with glioma.
+    \item[\cref{chap:EGD}] presents the \gls{EGD}, a dataset containing \gls{MRI} scans, genetic and histological features, and outlined \glspl{tumor} of patients with glioma.
     This data is publicly available and can be used by other researchers to develop and validate radiomics methods and automated segmentation methods.
     This chapter fits with goal 2.
 
