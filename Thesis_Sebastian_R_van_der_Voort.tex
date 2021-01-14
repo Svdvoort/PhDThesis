@@ -39,85 +39,84 @@
 \makecommitteepage
 \endgroup
 
-% To force that there are empty pages after the titling pages
+\clearemptydoublepage
 
 \frontmatter
-\null
-\cleardoublepage
-
 \tableofcontents*
+% \cleardoublepage
+
+\clearemptydoublepage
 
 \mainmatter
 \thumbtrue
 %Introduction
 \subimport{Chapters/Mainmatter/General/Introduction/}{Introduction.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 
 %Radiomics book chapter
 \IfFileExists{./PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/Radiomics/Radiomics.tex}{
 \subimport{PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/Radiomics/}{Radiomics.tex}}
 {\subimport{Chapters/Mainmatter/Publications/Radiomics/}{Radiomics.tex}}
-\cleardoublepage
+\clearemptydoublepage
 
 %LGG Location chapter
 \subimport{Chapters/Mainmatter/Publications/LGG_location/}{LGG_location.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 %HGG Location chapter
 \subimport{Chapters/Mainmatter/Publications/HGG_location/}{HGG_location.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 % 1p19q prediction chapter
 \subimport{Chapters/Mainmatter/Publications/LGG_1p19q_Prediction/}{Prediction_1p19q.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 % DeepDicomSort chapter
 \subimport{Chapters/Mainmatter/Publications/DeepDicomSort/}{DDS.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 %EGD chapter
 \IfFileExists{./PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/EGD/EGD.tex}{
 \subimport{PhDThesis_copyrighted_materials/Chapters/Mainmatter/Publications/EGD/}{EGD.tex}}
 {\subimport{Chapters/Mainmatter/Publications/EGD/}{EGD.tex}}
-\cleardoublepage
+\clearemptydoublepage
 
 
 % PrognosAIS chapter
 \subimport{Chapters/Mainmatter/Publications/Prognosais/}{prognosais.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 % Conclusion chapter
 \subimport{Chapters/Mainmatter/General/Discussion/}{Discussion.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 %Start of backmatter
 \backmatter
 \thumbfalse
 % Thesis summary
 \subimport{Chapters/Backmatter/Summary/}{Summary.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 % Dutch summary
 \subimport{Chapters/Backmatter/Samenvatting/}{Samenvatting.tex}
-\cleardoublepage
-
+\clearemptydoublepage
 
 % Curriculum Vitae
 \subimport{Chapters/Backmatter/CV/}{CV.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 % Publications
 \subimport{Chapters/Backmatter/Publications/}{Publications.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 % Portfolio
 \subimport{Chapters/Backmatter/Portfolio/}{Portfolio.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 % Acronym list
 \printglossaries
-\cleardoublepage
+\clearemptydoublepage
 
 % Bibliography
 \printbibliography[heading=bibintoc]

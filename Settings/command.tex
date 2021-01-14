@@ -29,3 +29,10 @@
 \blfootnote{\fullcite[Based on: ][]{#1}}
 \end{refsection}
 }
+
+% This comment inserts an empty double page whenever
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\null\pagestyle{empty}\cleartooddpage}%
+}
+
