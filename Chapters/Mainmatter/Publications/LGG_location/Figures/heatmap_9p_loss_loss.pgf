@@ -1,0 +1,152 @@
+%% Creator: Matplotlib, PGF backend
+%%
+%% To include the figure in your LaTeX document, write
+%%   \input{<filename>.pgf}
+%%
+%% Make sure the required packages are loaded in your preamble
+%%   \usepackage{pgf}
+%%
+%% and, on pdftex
+%%   \usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+%%
+%% or, on luatex and xetex
+%%   \usepackage{unicode-math}
+%%
+%% Figures using additional raster images can only be included by \input if
+%% they are in the same directory as the main LaTeX file. For loading figures
+%% from other directories you can use the `import` package
+%%   \usepackage{import}
+%%
+%% and then include the figures with
+%%   \import{<path to file>}{<filename>.pgf}
+%%
+%% Matplotlib used the following preamble
+%%   \usepackage{glossaries}\newglossaryentry{tumor}{name=tumour,description={A lump of cancerous cells}}
+%%
+\begingroup%
+\makeatletter%
+\begin{pgfpicture}%
+\pgfpathrectangle{\pgfpointorigin}{\pgfqpoint{5.501139in}{1.117661in}}%
+\pgfusepath{use as bounding box, clip}%
+\begin{pgfscope}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\pgfsetlinewidth{0.000000pt}%
+\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetstrokeopacity{0.000000}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{0.000000in}{0.000000in}}%
+\pgfpathlineto{\pgfqpoint{5.501139in}{0.000000in}}%
+\pgfpathlineto{\pgfqpoint{5.501139in}{1.117661in}}%
+\pgfpathlineto{\pgfqpoint{0.000000in}{1.117661in}}%
+\pgfpathclose%
+\pgfusepath{}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.000000in}{0.069476in}}{\pgfqpoint{0.857881in}{0.978709in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.000000in}{0.070000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.858333in,height=0.980000in]{heatmap_9p_loss_loss-img0.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.857881in}{0.009062in}}{\pgfqpoint{0.900171in}{1.099537in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.858333in}{0.008333in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.901667in,height=1.100000in]{heatmap_9p_loss_loss-img1.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{1.758051in}{0.000000in}}{\pgfqpoint{0.906212in}{1.117661in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{1.758333in}{0.000000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.906667in,height=1.118333in]{heatmap_9p_loss_loss-img2.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{2.664263in}{0.036248in}}{\pgfqpoint{0.869963in}{1.045164in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{2.665000in}{0.036667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.870000in,height=1.046667in]{heatmap_9p_loss_loss-img3.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{3.534227in}{0.114787in}}{\pgfqpoint{0.821632in}{0.888088in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{3.535000in}{0.115000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.821667in,height=0.888333in]{heatmap_9p_loss_loss-img4.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{4.355859in}{0.244677in}}{\pgfqpoint{0.604141in}{0.628307in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{4.356667in}{0.245000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.605000in,height=0.628333in]{heatmap_9p_loss_loss-img5.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{5.005311in}{0.181847in}}{\pgfqpoint{0.120828in}{0.753968in}}%
+\pgfusepath{clip}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\definecolor{currentfill}{rgb}{1.000000,1.000000,1.000000}%
+\pgfsetfillcolor{currentfill}%
+\pgfsetlinewidth{0.010037pt}%
+\definecolor{currentstroke}{rgb}{1.000000,1.000000,1.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{5.005311in}{0.181847in}}%
+\pgfpathlineto{\pgfqpoint{5.005311in}{0.184792in}}%
+\pgfpathlineto{\pgfqpoint{5.005311in}{0.932870in}}%
+\pgfpathlineto{\pgfqpoint{5.005311in}{0.935815in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.935815in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.932870in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.184792in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.181847in}}%
+\pgfpathclose%
+\pgfusepath{stroke,fill}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfsys@transformshift{5.005000in}{0.182661in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.121667in,height=0.753333in]{heatmap_9p_loss_loss-img6.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.223361in, y=0.133621in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle {0}\)}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.223361in, y=0.887590in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle {7}\)}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.223361in, y=0.672170in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle {5}\)}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.501139in,y=0.558831in,,top,rotate=270.000000]{\color{textcolor}\rmfamily\fontsize{12.000000}{14.400000}\bfseries\selectfont \# of \glspl{tumor}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\pgfsetlinewidth{0.200750pt}%
+\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{5.005311in}{0.181847in}}%
+\pgfpathlineto{\pgfqpoint{5.005311in}{0.184792in}}%
+\pgfpathlineto{\pgfqpoint{5.005311in}{0.932870in}}%
+\pgfpathlineto{\pgfqpoint{5.005311in}{0.935815in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.935815in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.932870in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.184792in}}%
+\pgfpathlineto{\pgfqpoint{5.126139in}{0.181847in}}%
+\pgfpathclose%
+\pgfusepath{stroke}%
+\end{pgfscope}%
+\end{pgfpicture}%
+\makeatother%
+\endgroup%

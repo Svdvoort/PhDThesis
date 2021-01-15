@@ -1,0 +1,185 @@
+%% Creator: Matplotlib, PGF backend
+%%
+%% To include the figure in your LaTeX document, write
+%%   \input{<filename>.pgf}
+%%
+%% Make sure the required packages are loaded in your preamble
+%%   \usepackage{pgf}
+%%
+%% and, on pdftex
+%%   \usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+%%
+%% or, on luatex and xetex
+%%   \usepackage{unicode-math}
+%%
+%% Figures using additional raster images can only be included by \input if
+%% they are in the same directory as the main LaTeX file. For loading figures
+%% from other directories you can use the `import` package
+%%   \usepackage{import}
+%%
+%% and then include the figures with
+%%   \import{<path to file>}{<filename>.pgf}
+%%
+%% Matplotlib used the following preamble
+%%   \usepackage{fontspec}
+%%   \setmainfont{DejaVuSerif.ttf}[Path=/home/sebastian/Repos/Plotting_tools/env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/]
+%%   \setsansfont{DejaVuSans.ttf}[Path=/home/sebastian/Repos/Plotting_tools/env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/]
+%%   \setmonofont{DejaVuSansMono.ttf}[Path=/home/sebastian/Repos/Plotting_tools/env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/]
+%%
+\begingroup%
+\makeatletter%
+\begin{pgfpicture}%
+\pgfpathrectangle{\pgfpointorigin}{\pgfqpoint{5.810225in}{2.745712in}}%
+\pgfusepath{use as bounding box, clip}%
+\begin{pgfscope}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\pgfsetlinewidth{0.000000pt}%
+\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetstrokeopacity{0.000000}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{0.000000in}{0.000000in}}%
+\pgfpathlineto{\pgfqpoint{5.810225in}{0.000000in}}%
+\pgfpathlineto{\pgfqpoint{5.810225in}{2.745712in}}%
+\pgfpathlineto{\pgfqpoint{0.000000in}{2.745712in}}%
+\pgfpathclose%
+\pgfusepath{}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.000000in}{1.438286in}}{\pgfqpoint{0.953072in}{1.087307in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.000000in}{1.438333in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.953333in,height=1.086667in]{p_value_IDH_wt_vs_mutated_wt-img0.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.953072in}{1.371169in}}{\pgfqpoint{1.000054in}{1.221543in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.953333in}{1.371667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=1.001667in,height=1.220000in]{p_value_IDH_wt_vs_mutated_wt-img1.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{1.953126in}{1.361101in}}{\pgfqpoint{1.006766in}{1.241678in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{1.953333in}{1.361667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=1.008333in,height=1.243333in]{p_value_IDH_wt_vs_mutated_wt-img2.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{2.959892in}{1.354389in}}{\pgfqpoint{0.993342in}{1.255101in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{2.960000in}{1.355000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.995000in,height=1.256667in]{p_value_IDH_wt_vs_mutated_wt-img3.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{3.953234in}{1.361101in}}{\pgfqpoint{1.006766in}{1.241678in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{3.953333in}{1.361667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=1.008333in,height=1.243333in]{p_value_IDH_wt_vs_mutated_wt-img4.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.000000in}{0.072710in}}{\pgfqpoint{0.953072in}{1.178460in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.000000in}{0.073333in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.953333in,height=1.180000in]{p_value_IDH_wt_vs_mutated_wt-img5.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.953072in}{0.053799in}}{\pgfqpoint{1.000054in}{1.216282in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.953333in}{0.053333in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=1.001667in,height=1.216667in]{p_value_IDH_wt_vs_mutated_wt-img6.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{1.953126in}{0.046694in}}{\pgfqpoint{1.006766in}{1.230492in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{1.953333in}{0.046667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=1.008333in,height=1.231667in]{p_value_IDH_wt_vs_mutated_wt-img7.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{2.959892in}{0.065245in}}{\pgfqpoint{0.993342in}{1.193390in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{2.960000in}{0.065000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.995000in,height=1.195000in]{p_value_IDH_wt_vs_mutated_wt-img8.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{3.953234in}{0.081651in}}{\pgfqpoint{1.006766in}{1.160577in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{3.953333in}{0.081667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=1.008333in,height=1.161667in]{p_value_IDH_wt_vs_mutated_wt-img9.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{5.035507in}{0.081651in}}{\pgfqpoint{0.201353in}{2.611299in}}%
+\pgfusepath{clip}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\definecolor{currentfill}{rgb}{1.000000,1.000000,1.000000}%
+\pgfsetfillcolor{currentfill}%
+\pgfsetlinewidth{0.010037pt}%
+\definecolor{currentstroke}{rgb}{1.000000,1.000000,1.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{5.035507in}{0.081651in}}%
+\pgfpathlineto{\pgfqpoint{5.035507in}{0.091852in}}%
+\pgfpathlineto{\pgfqpoint{5.035507in}{2.682750in}}%
+\pgfpathlineto{\pgfqpoint{5.035507in}{2.692950in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{2.692950in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{2.682750in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{0.091852in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{0.081651in}}%
+\pgfpathclose%
+\pgfusepath{stroke,fill}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfsys@transformshift{5.035000in}{0.082378in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.201667in,height=2.611667in]{p_value_IDH_wt_vs_mutated_wt-img10.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.334083in, y=0.028890in, left, base]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont >0.4}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.334083in, y=1.334539in, left, base]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont 0.2}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.334083in, y=2.313776in, left, base]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont 0.05}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.334083in, y=2.640189in, left, base]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont 0}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.810225in,y=1.387301in,,top,rotate=270.000000]{\color{textcolor}\sffamily\fontsize{12.000000}{14.400000}\bfseries\selectfont p-value}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\pgfsetlinewidth{0.200750pt}%
+\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{5.035507in}{0.081651in}}%
+\pgfpathlineto{\pgfqpoint{5.035507in}{0.091852in}}%
+\pgfpathlineto{\pgfqpoint{5.035507in}{2.682750in}}%
+\pgfpathlineto{\pgfqpoint{5.035507in}{2.692950in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{2.692950in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{2.682750in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{0.091852in}}%
+\pgfpathlineto{\pgfqpoint{5.236861in}{0.081651in}}%
+\pgfpathclose%
+\pgfusepath{stroke}%
+\end{pgfscope}%
+\end{pgfpicture}%
+\makeatother%
+\endgroup%
