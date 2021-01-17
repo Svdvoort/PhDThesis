@@ -218,24 +218,68 @@ For visual inspection, heatmaps based on \gls{T1C} and \gls{T2}/\gls{FLAIR} segm
 Visual inspection of maps in \cref{fig:HGG_location_heatmap} suggests that glioblastoma were most frequently located in the right temporal, insular, and parietal area, and near the periventricular area both frontally and occipitally.
 Visual inspection of \cref{fig:HGG_location_heatmap_genetic,fig:HGG_location_frequency_map} indicates that when compared with \gls{MGMT} unmethylated glioblastoma, methylated glioblastoma were more frequently located near bifrontal and left occipital periventricular area (up to \per{6.5} frequency difference) and less frequently near the right occipital periventricular area (up to \per{9.1} frequency difference).
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{Figures/Heatmap.png}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\textwidth]{Figures/Heatmap.png}
 
-    \caption{Heatmaps of all 436 \acrshort{IDH} wildtype glioblastoma.}\label{fig:HGG_location_heatmap}
+%     \caption{Heatmaps of all 436 \acrshort{IDH} wildtype glioblastoma.}\label{fig:HGG_location_heatmap}
+% \end{figure}
+
+\begin{figure}
+\centering
+% \includegraphics[width=\textwidth]{Figures/Heatmap.png}
+\begin{subfigure}[b]{\textwidth}
+    \centering
+    \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_all_T1.pgf}}
+    \caption{Distribution of \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_heatmap_all_T1}
+\end{subfigure}
+\begin{subfigure}[b]{\textwidth}
+    \centering
+    \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_all_T2.pgf}}
+    \caption{Distribution of \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_heatmap_all_T2}
+\end{subfigure}
+\caption{Heatmaps of all 436 \acrshort{IDH} wildtype glioblastoma.}\label{fig:HGG_location_heatmap}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Heatmap_MGMT_status.png}
-
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_methylated_T1.pgf}}
+        \caption{Distribution of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_heatmap_methylated_T1}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_methylated_T2.pgf}}
+        \caption{Distribution of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_heatmap_methylated_T2}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_unmethylated_T1.pgf}}
+        \caption{Distribution of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_heatmap_unmethylated_T1}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_unmethylated_T2.pgf}}
+        \caption{Distribution of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_heatmap_unmethylated_T2}
+    \end{subfigure}
     \caption{Heatmaps of \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_heatmap_genetic}
 \end{figure}
 
+
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Frequency_map.png}
-
+    % \includegraphics[width=\textwidth]{Figures/Frequency_map.png}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{frequency_map_T1.pgf}}
+        \caption{Frequency map of \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_frequency_T1}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{frequency_map_T2.pgf}}
+        \caption{Frequency map of \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_frequency_T2}
+    \end{subfigure}
     \caption{Frequency difference maps between \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_frequency_map}
 \end{figure}
 
@@ -247,8 +291,26 @@ Scroll-through video clips for visual inspection of all topographic maps are pub
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Pvalue_map.png}
-
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T1_methylated.pgf}}
+        \caption{P-value of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_pvalue_methylated_T1}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T2_methylated.pgf}}
+        \caption{P-value of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_pvalue_methylated_T2}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T1_unmethylated.pgf}}
+        \caption{P-value of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_pvalue_unmethylated_T1}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T2_unmethylated.pgf}}
+        \caption{P-value of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_pvalue_unmethylated_T2}
+    \end{subfigure}
     \caption{P-value maps of \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_pvalue_map}
 \end{figure}
 

@@ -1,0 +1,170 @@
+%% Creator: Matplotlib, PGF backend
+%%
+%% To include the figure in your LaTeX document, write
+%%   \input{<filename>.pgf}
+%%
+%% Make sure the required packages are loaded in your preamble
+%%   \usepackage{pgf}
+%%
+%% and, on pdftex
+%%   \usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+%%
+%% or, on luatex and xetex
+%%   \usepackage{unicode-math}
+%%
+%% Figures using additional raster images can only be included by \input if
+%% they are in the same directory as the main LaTeX file. For loading figures
+%% from other directories you can use the `import` package
+%%   \usepackage{import}
+%%
+%% and then include the figures with
+%%   \import{<path to file>}{<filename>.pgf}
+%%
+%% Matplotlib used the following preamble
+%%   \usepackage{glossaries}\newglossaryentry{tumor}{name=tumour,description={A lump of cancerous cells}}
+%%
+\begingroup%
+\makeatletter%
+\begin{pgfpicture}%
+\pgfpathrectangle{\pgfpointorigin}{\pgfqpoint{5.651414in}{1.101102in}}%
+\pgfusepath{use as bounding box, clip}%
+\begin{pgfscope}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\pgfsetlinewidth{0.000000pt}%
+\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetstrokeopacity{0.000000}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{0.000000in}{0.000000in}}%
+\pgfpathlineto{\pgfqpoint{5.651414in}{0.000000in}}%
+\pgfpathlineto{\pgfqpoint{5.651414in}{1.101102in}}%
+\pgfpathlineto{\pgfqpoint{0.000000in}{1.101102in}}%
+\pgfpathclose%
+\pgfusepath{}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.000000in}{0.070639in}}{\pgfqpoint{0.849630in}{0.987407in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.000000in}{0.070000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.850000in,height=0.988333in]{p_value_T2_methylated-img0.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{0.849630in}{0.027583in}}{\pgfqpoint{0.849630in}{1.073519in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{0.850000in}{0.028333in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.850000in,height=1.075000in]{p_value_T2_methylated-img1.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{1.699259in}{0.039065in}}{\pgfqpoint{0.849630in}{1.050556in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{1.700000in}{0.038333in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.850000in,height=1.051667in]{p_value_T2_methylated-img2.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{2.548889in}{0.056287in}}{\pgfqpoint{0.826667in}{1.016111in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{2.548333in}{0.056667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.826667in,height=1.016667in]{p_value_T2_methylated-img3.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{3.375556in}{0.070639in}}{\pgfqpoint{0.826667in}{0.987407in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{3.375000in}{0.070000in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.826667in,height=0.988333in]{p_value_T2_methylated-img4.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{4.202222in}{0.156750in}}{\pgfqpoint{0.757778in}{0.815185in}}%
+\pgfusepath{clip}%
+\pgfsys@transformshift{4.201667in}{0.156667in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.758333in,height=0.816667in]{p_value_T2_methylated-img5.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfpathrectangle{\pgfqpoint{5.016833in}{0.075231in}}{\pgfqpoint{0.151556in}{0.978222in}}%
+\pgfusepath{clip}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\definecolor{currentfill}{rgb}{1.000000,1.000000,1.000000}%
+\pgfsetfillcolor{currentfill}%
+\pgfsetlinewidth{0.010037pt}%
+\definecolor{currentstroke}{rgb}{1.000000,1.000000,1.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{5.016833in}{0.075231in}}%
+\pgfpathlineto{\pgfqpoint{5.016833in}{0.079053in}}%
+\pgfpathlineto{\pgfqpoint{5.016833in}{1.049632in}}%
+\pgfpathlineto{\pgfqpoint{5.016833in}{1.053454in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{1.053454in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{1.049632in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{0.079053in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{0.075231in}}%
+\pgfpathclose%
+\pgfusepath{stroke,fill}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfsys@transformshift{5.016667in}{0.076102in}%
+\pgftext[left,bottom]{\includegraphics[interpolate=true,width=0.151667in,height=0.978333in]{p_value_T2_methylated-img6.png}}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.265611in, y=0.027006in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont 0}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.265611in, y=0.222651in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont 0.8}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.265611in, y=0.418295in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont 0.6}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.265611in, y=0.613939in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont 0.4}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.265611in, y=0.809584in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont 0.2}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.265611in, y=0.956317in, left, base]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont 0.05}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{textcolor}%
+\pgfsetfillcolor{textcolor}%
+\pgftext[x=5.651414in,y=0.564342in,,top,rotate=270.000000]{\color{textcolor}\rmfamily\fontsize{12.000000}{14.400000}\bfseries\selectfont p-value}%
+\end{pgfscope}%
+\begin{pgfscope}%
+\pgfsetbuttcap%
+\pgfsetmiterjoin%
+\pgfsetlinewidth{0.200750pt}%
+\definecolor{currentstroke}{rgb}{0.000000,0.000000,0.000000}%
+\pgfsetstrokecolor{currentstroke}%
+\pgfsetdash{}{0pt}%
+\pgfpathmoveto{\pgfqpoint{5.016833in}{0.075231in}}%
+\pgfpathlineto{\pgfqpoint{5.016833in}{0.079053in}}%
+\pgfpathlineto{\pgfqpoint{5.016833in}{1.049632in}}%
+\pgfpathlineto{\pgfqpoint{5.016833in}{1.053454in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{1.053454in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{1.049632in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{0.079053in}}%
+\pgfpathlineto{\pgfqpoint{5.168389in}{0.075231in}}%
+\pgfpathclose%
+\pgfusepath{stroke}%
+\end{pgfscope}%
+\end{pgfpicture}%
+\makeatother%
+\endgroup%
