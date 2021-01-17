@@ -1,6 +1,6 @@
 % Following magic comments allow for compilation of root file
 % !TEX root = ../../../../temp_manuscript.tex
-\chapter[Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblastoma With vs. Without MGMT Promoter Methylation][MGMT topographical mapping]{Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblastoma With vs. Without MGMT Promoter Methylation}\label{chap:HGGLocation}
+\chapter[Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblastoma With vs. Without MGMT Promoter Methylation][HGG MGMT topographical mapping]{Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblastoma With vs. Without MGMT Promoter Methylation}\label{chap:HGGLocation}
 
 
 \begin{ChapterAbstract}
@@ -9,7 +9,7 @@
     We initiated this study to re-evaluate the topographical distribution of glioblastoma with vs. without \cgls{MGMT} promoter methylation in light of the updated \cgls{WHO} 2016 classification.
 
     \textbf{Methods:} Preoperative \acrlong{T2}/\acrlong{FLAIR} and \acrlong{T1C} \acrlong{MRI} scans of patients aged 18 year or older with \cgls{IDH} wildtype glioblastoma were collected.
-    Tumors were semi-automatically segmented, and the topographical distribution between glioblastoma with vs. without \cgls{MGMT} promoter methylation was visualized using frequency heatmaps.
+    \Glspl{tumor} were semi-automatically segmented, and the topographical distribution between glioblastoma with vs. without \cgls{MGMT} promoter methylation was visualized using frequency heatmaps.
     Then, voxel-wise differences were analyzed using permutation testing with Threshold Free Cluster Enhancement.
 
     \textbf{Results:} Four hundred thirty-six \cgls{IDH} wildtype glioblastoma patients were included; 211 with and 225 without \cgls{MGMT} promoter methylation.
@@ -27,8 +27,8 @@ Patients with glioblastoma have a poor prognosis with a median overall survival 
 This prognosis varies based on factors such as age, Karnofsky Performance Status, extent of resection, and molecular markers, in particular \cgls{IDH} mutation and \cgls{MGMT} promoter methylation status \autocite{gessler2018surgery}.
 
 \cgls{MGMT} is a DNA repair enzyme, which is expressed by the \cgls{MGMT} gene located on chromosome 10q26.
-Promoter methylation of this gene reduces \cgls{MGMT} protein expression and consequently decreases DNA repair and increases alkylating chemotherapy induced tumor death.
-Therefore, patients with \cgls{MGMT} methylated glioblastoma are more sensitive to neo-adjuvant temozolomide than those without MGMT methylated glioblastoma.
+Promoter methylation of this gene reduces \cgls{MGMT} protein expression and consequently decreases DNA repair and increases alkylating chemotherapy induced \gls{tumor} death.
+Therefore, patients with \cgls{MGMT} methylated glioblastoma are more sensitive to neo-adjuvant temozolomide than those without \cgls{MGMT} methylated glioblastoma.
 \cgls{MGMT} is methylated in around \per{50} of patients with newly diagnosed glioblastoma \autocite{hegi2005MGMT}.
 
 There are conflicting results in the published literature on a possible differential topographical distribution of glioblastoma with vs. without \cgls{MGMT} promoter methylation \autocite{smits2017imaging}.
@@ -43,19 +43,19 @@ Therefore, we have initiated this study to re-evaluate the topographical distrib
 \section{Methods}
 \subsection{Patient inclusion}
 
-All consecutive patients aged 18 years or older newly diagnosed with a contrast-enhancing and histopathologically confirmed glioblastoma \gls{IDH} wildtype who underwent tumor resection or biopsy between January 2011 and May 2018 at the Erasmus MC, University Medical Center Rotterdam, or Haaglanden MC were retrospectively included in this study.
+All consecutive patients aged 18 years or older newly diagnosed with a contrast-enhancing and histopathologically confirmed glioblastoma \gls{IDH} wildtype who underwent \gls{tumor} resection or biopsy between January 2011 and May 2018 at the Erasmus MC, University Medical Center Rotterdam, or Haaglanden MC were retrospectively included in this study.
 Patients were eligible if preoperative \gls{T2}/\gls{FLAIR} and \gls{T1C} \gls{MRI} scans as well as molecular data on \gls{IDH} mutation and \gls{MGMT} methylation status were available.
 Recurrent glioblastoma or confirmed \gls{IDH} mutated glioblastoma were excluded.
 The study design was approved by the Medical Ethical Committee of Erasmus MC and Haaglanden MC.
 The study was performed in accordance with the 1964 Helsinki Declaration and its later amendments or comparable ethical standards.
 
-\subsection{Image acquisition, tumor segmentation, and registration}
-From clinical preoperative \gls{MRI} scans, which were obtained according to clinical brain tumor protocols on either a 1.5T or 3.0T scanner, \gls{T2}/\gls{FLAIR} and \gls{T1C} images were collected.
+\subsection{Image acquisition, \gls{tumor} segmentation, and registration}
+From clinical preoperative \gls{MRI} scans, which were obtained according to clinical brain \gls{tumor} protocols on either a \SI{1.5}{\tesla} or \SI{3.0}{\tesla} scanner, \gls{T2}/\gls{FLAIR} and \gls{T1C} images were collected.
 For glioblastoma segmentation, we first imported both the \gls{T1C} and \gls{T2}/\gls{FLAIR} scans into BrainLab (BrainLab, Feldkirchen, Germany, version 2.1.0.15).
-We semi-automatically segmented all tumor-related contrast-enhancement (including the central necrotic part, if present) using the SmartBrush tool in Brainlab Elements and manually adapted the segmentation if needed.
-We then used the \gls{T2}/\gls{FLAIR} scan to semi-automatically segment all tumor-related non-enhancing hyperintense abnormalities (extra-lesional hemorrhage was excluded).
+We semi-automatically segmented all \gls{tumor}-related contrast-enhancement (including the central necrotic part, if present) using the SmartBrush tool in Brainlab Elements and manually adapted the segmentation if needed.
+We then used the \gls{T2}/\gls{FLAIR} scan to semi-automatically segment all \gls{tumor}-related non-enhancing hyperintense abnormalities (extra-lesional hemorrhage was excluded).
 
-All tumor segmentations were then registered to the \gls{MNI} International Consortium for Brain Mapping 152 non-linear, symmetric atlas 2009a \autocite{fonov2011unbiased, fonov2009unbiased}.
+All \gls{tumor} segmentations were then registered to the \gls{MNI} International Consortium for Brain Mapping 152 non-linear, symmetric atlas 2009a \autocite{fonov2011unbiased, fonov2009unbiased}.
 The \gls{T1C} scans were registered to the \gls{T1} atlas and the \gls{T2}/\gls{FLAIR} scans to the \gls{T2} atlas.
 Registration was done using SimpleElastix (version 72b7e81), based on a mutual information metric using an affine registration \autocite{marstal2016simpleelastix}.
 The resulting transformation parameters were used to transform the 3D segmentations to the atlas space.
@@ -65,9 +65,9 @@ We created voxel-wise frequency maps for all glioblastoma combined, and frequenc
 
 \subsection{Molecular analysis}
 
-Tumor tissue samples were obtained from patients through surgical resection or biopsy.
+\Gls{tumor} tissue samples were obtained from patients through surgical resection or biopsy.
 Histopathological examination was performed by neuropathologists.
-DNA was extracted from microdissected FFPE tissue fragments by proteinase K digestion for 16 h at \SI{56}{\celsius} in the presence of \per{5} Chelex 100 resin and used after inactivation of proteinase K and removal of cell debris and the Chelex resin.
+DNA was extracted from microdissected \gls{FFPE} tissue fragments by proteinase K digestion for 16 h at \SI{56}{\celsius} in the presence of \per{5} Chelex 100 resin and used after inactivation of proteinase K and removal of cell debris and the Chelex resin.
 \gls{IDH} mutational analysis was assessed with Sanger sequencing and targeted \gls{NGS} analysis.
 Sanger sequencing of PCR-amplified fragments from \gls{IDH}1 and \gls{IDH}2 mutational hot spots was essentially performed as previously described \autocite{vandenbent2013interlaboratory}.
 M13-tailed primers for PCR amplification of IDH1 codon 132 were forward {5'-TCTTCAGAGAAGCCATTAT-3'} and reverse {5'-GCAAAATCACATTATTGCCAAC-3'}, for IDH2 codon 140, forward {5'-GGCTGCAGTGGGACCACTAT-3'} and reverse {5'-TTGGTCCAGCCAGGGACTAG-3'}, and for IDH2 codon 172, forward \\ {5'-ACATCCTGGGGGGGACTGTC-3'} and reverse \\{5'-GACAAGAGGATGGCTAGGCG-3'}.
@@ -92,11 +92,11 @@ SW48 cell line DNA and tonsil DNA was used as a positive control for methylated 
 Controls without DNA were used for each set of methylation-specific PCR assays.
 
 \subsection{Statistical analysis}
-We first tested the differences between preoperative enhancing and non-enhancing tumor volumes as well as their ratio with the Kruskal-Wallis test.
-We mapped the anatomical localization of all \gls{MGMT} methylated and unmethylated glioblastoma by iterating over all voxels in the \gls{MNI} atlas and counting the number of tumor frequencies for each group in each voxel.
-To test for differences in spatial distribution between glioblastoma with vs. without \gls{MGMT} promoter methylation, we assessed the cluster-wise significance at the voxel-level between distributions, using permutation testing with Threshold Free Cluster Enhancement \autocite{smith2009threshold} in the software package \say{FSL Randomise} (version 5.0.9, using 10,000 permutations) \autocite{winkler2014permutation}.
+We first tested the differences between preoperative enhancing and non-enhancing \gls{tumor} volumes as well as their ratio with the Kruskal-Wallis test.
+We mapped the anatomical localization of all \gls{MGMT} methylated and unmethylated glioblastoma by iterating over all voxels in the \gls{MNI} atlas and counting the number of \gls{tumor} frequencies for each group in each voxel.
+To test for differences in spatial distribution between glioblastoma with vs. without \gls{MGMT} promoter methylation, we assessed the cluster-wise significance at the voxel-level between distributions, using permutation testing with Threshold Free Cluster Enhancement \autocite{smith2009threshold} in the software package \gls{FSL} randomise (version 5.0.9, using \num{10000} permutations) \autocite{winkler2014permutation}.
 We also performed the same analysis with correction for age as a potential confounder by determining age for each patient at the time of the \gls{MRI} scan.
-We then calculated the difference between each patient's age and the average age of all patients included in the study, which was added to the experimental setup for FSL Randomise.
+We then calculated the difference between each patient's age and the average age of all patients included in the study, which was added to the experimental setup for \gls{FSL} Randomise.
 Threshold Free Cluster Enhancement corrects p-values for the family-wise error in testing multiple voxels, considering a corrected \pvalue{< 0.05} as statistically significant.
 
 
@@ -105,10 +105,10 @@ Threshold Free Cluster Enhancement corrects p-values for the family-wise error i
 
 In total, 769 patients with newly diagnosed, contrast enhancing glioblastoma were screened, of whom we excluded 333 patients: 22 were excluded due to \gls{IDH} mutation and 311 were excluded due to insufficient or missing molecular data on \gls{IDH} mutation or \gls{MGMT} methylation status.
 Final analysis included 436 patients with \gls{IDH} wildtype glioblastoma (see flowchart, \cref{fig:HGG_location_flowchart}); 211 with and 225 without \gls{MGMT} promoter methylation.
-Three hundred forty patients had undergone a surgical tumor resection and 96 a diagnostic biopsy.
+Three hundred forty patients had undergone a surgical \gls{tumor} resection and 96 a diagnostic biopsy.
 In all patients, preoperative \gls{T1C} \gls{MRI} scans were available; in 90 patients, \gls{FLAIR} scans, and in 346 patients \gls{T2} scans were available.
-When compared with \gls{MGMT} unmethylated glioblastoma, \gls{MGMT} methylated glioblastoma had a significantly higher ratio of non-enhancing vs. contrast-enhancing volume [2.09 (inter quartile range 2.6) and 2.5 (inter quartile range 3.3), \pvalue{=0.045}, respectively].
-Patient and tumor characteristics are further presented in \cref{tab:HGG_location_characteristics} and \cref{tab:HGG_location_tumor_characteristics}.
+When compared with \gls{MGMT} unmethylated glioblastoma, \gls{MGMT} methylated glioblastoma had a significantly higher ratio of non-enhancing vs. contrast-enhancing volume [\num{2.09} (inter quartile range \num{2.6}) and \num{2.5} (inter quartile range \num{3.3}), \pvalue{=0.045}, respectively].
+Patient and \gls{tumor} characteristics are further presented in \cref{tab:HGG_location_characteristics} and \cref{tab:HGG_location_tumor_characteristics}.
 
 \begin{figure}
     \centering
@@ -121,15 +121,14 @@ Patient and tumor characteristics are further presented in \cref{tab:HGG_locatio
     \sisetup{
     table-number-alignment = center,
     table-text-alignment = center,
-    table-figures-integer = 1,
-    table-figures-decimal = 4,
     }
-\begin{tabular}{L{5cm} S[table-number-alignment=center-decimal-marker, table-format=4.0] S[table-number-alignment=center-decimal-marker, table-format=4.1]}
+\begin{tabular}{L{5cm} S[table-number-alignment=center-decimal-marker, table-format=3.0] S[table-number-alignment=center-decimal-marker, table-format=3.1]}
     \toprule
     & {\thead{N}} & {\thead{\si{\percent}}}\\
     \midrule
 
-    All patients & 436 & 100\\
+    \textbf{Total} & 436 & 100.0\\
+    \\
 
     \textbf{Sex}\\
     \hspace{1em}Male & 276 & 63.3\\
@@ -138,15 +137,15 @@ Patient and tumor characteristics are further presented in \cref{tab:HGG_locatio
     \textbf{Age (years)}\\
     \hspace{1em}$\leq 65$ & 227 & 52.1\\
     \hspace{1em}$> 65$  & 209 & 47.9\\
-    \hspace{1em}Mean (SD) & \multicolumn{2}{c}{61.5 (16.2)}\\
+    \hspace{1em}Mean (SD) & \multicolumn{2}{c}{\hphantom{0}61.5 (16.2)}\\
 
     \textbf{\acrshort{KPS}}\\
     \hspace{1em}$\leq 70$ & 142 & 32.6\\
     \hspace{1em}$> 70$ & 294 & 67.4\\
-    \hspace{1em}Mean(SD) & \multicolumn{2}{c}{80 (12.5)}\\
+    \hspace{1em}Mean(SD) & \multicolumn{2}{c}{\hphantom{0}80 (12.5)}\\
 
     \textbf{Preoperative \acrshort{MRI} scans}\\
-    \hspace{1em}\acrshort{T1C} & 436 & 100\\
+    \hspace{1em}\acrshort{T1C} & 436 & 100.0\\
     \hspace{1em}\acrshort{T2} & 346 & 79.4\\
     \hspace{1em}\acrshort{FLAIR} & 90 & 20.6\\
 
@@ -154,37 +153,68 @@ Patient and tumor characteristics are further presented in \cref{tab:HGG_locatio
     \hspace{1em}Resection & 340 & 78.0\\
     \hspace{1em}Biopsy & 97 & 22.0\\
 
+    \textbf{\acrshort{MGMT} status}\\
+    \hspace{1em} Methylated & 221 & 48.4\\
+    \hspace{1em} Unmethylated & 255 & 51.6\\
     \bottomrule
 \end{tabular}
-\caption{Patient and tumor characteristics. Abbreviations: \acrcaption{KPS}, \acrcaption{SD}, \acrcaption{T1C}, \acrcaption{T2}, \acrcaption{FLAIR}}\label{tab:HGG_location_characteristics}
+\caption{Patient and \gls{tumor} characteristics. Abbreviations: \acrcaption{KPS}, \acrcaption{SD}, \acrcaption{T1C}, \acrcaption{T2}, \acrcaption{FLAIR}}\label{tab:HGG_location_characteristics}
 \end{table}
 
-\begin{table}
+% \begin{table}
+%     \sisetup{
+%     table-number-alignment = center,
+%     table-text-alignment = center,
+%     table-figures-integer = 1,
+%     table-figures-decimal = 4,
+%     }
+% \begin{tabular}{L{5cm} S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=2.1]   S[table-number-alignment=center-decimal-marker, table-format=2.1]  S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=0.3]}
+%     \toprule
+%     {\textbf{Preoperative \gls{tumor} volume}}& \multicolumn{2}{c}{\thead{MGMT promoter}}\\
+%     \cmidrule{2-3}
+%      & {Methylated} & {Unmethylated} & {p-value}\\
+%      & {211 (\per{48.4})} & {255 (\per{51.6})}\\
+%     \midrule
+%     % Need to fix this for the IQR
+%     Contrast-enhancing & \IQR{30.1}{39.5} & \IQR{35}{45.8} & \num{0.130}\\
+%     Non-enhancing & \IQR{75.5}{105.0} & \IQR{65.5}{84.2} & \num{0.338}\\
+%     Non-enhancing/contrast-enhancing ratio & \IQR{2.5}{3.3} & \IQR{2.09}{2.6} & \num{0.045}\\
+%     \bottomrule
+% \end{tabular}
+% \caption{Preoperative \gls{tumor} volume of different subgroups. Abbreviations: \acrcaption{IQR}}\label{tab:HGG_location_tumor_characteristics}
+% \end{table}
+
+\begin{table}[htbp]
     \sisetup{
     table-number-alignment = center,
     table-text-alignment = center,
-    table-figures-integer = 1,
-    table-figures-decimal = 4,
     }
-\begin{tabular}{L{5cm} S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=0.3]}
+\begin{tabular}{L{5cm} S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=3.1]   S[table-number-alignment=center-decimal-marker, table-format=2.1]  S[table-number-alignment=center-decimal-marker, table-format=2.1] S[table-number-alignment=center-decimal-marker, table-format=0.3]}
     \toprule
-    {\textbf{Preoperative volume, median cm$^\textbf{3}$ (IQR)}}& \multicolumn{2}{c}{\thead{MGMT promoter}}\\
-    \cmidrule{2-3}
-     & {Methylated} & {Unmethylated} & {p-value}\\
-     & {211 (\per{48.4})} & {255 (\per{51.6})}\\
+    & \multicolumn{2}{c}{\thead{\acrshort{MGMT}\\methylated}} & \multicolumn{2}{c}{\thead{\acrshort{MGMT}\\unmethylated}}\\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    & {Median} & {IQR} & {Median} & {IQR} & {p-value}\\
+    % \cmidrule{2-3}
+    %  & {Methylated} & {Unmethylated} & {p-value}\\
+    %  & {211 (\per{48.4})} & {255 (\per{51.6})}\\
     \midrule
+    Contrast-enhancing & 30.1 & 39.5 & \num{35.0} & \num{45.8} & \num{0.130}\\
+    Non-enhancing& 75.5 & 105.0 & 65.5 & 84.2 & 0.338\\
+    \\
+    Ratio non-enhancing vs. contrast-enhancing & 2.5 & 3.3 & 2.1 & 2.6 & 0.045\\
     % Need to fix this for the IQR
-    Contrast-enhancing & \IQR{30.1}{39.5} & \IQR{35}{45.8} & 0.130\\
-    Non-enhancing & \IQR{75.5}{105.0} & \IQR{65.5}{84.2} & 0.338\\
-    Non-enhancing/contrast-enhancing ratio & \IQR{2.5}{3.3} & \IQR{2.09}{2.6} & 0.045\\
+    % Contrast-enhancing & \IQR{30.1}{39.5} & \IQR{35}{45.8} & \num{0.130}\\
+    % Non-enhancing & \IQR{75.5}{105.0} & \IQR{65.5}{84.2} & \num{0.338}\\
+    % Non-enhancing/contrast-enhancing ratio & \IQR{2.5}{3.3} & \IQR{2.09}{2.6} & \num{0.045}\\
     \bottomrule
 \end{tabular}
-\caption{Tumor characteristics. Abbreviations: \acrcaption{IQR}}\label{tab:HGG_location_tumor_characteristics}
+\caption{Preoperative \gls{tumor} volume (in \si{\cubic\centi\metre}) of different subgroups. Abbreviations: \acrcaption{IQR}}\label{tab:HGG_location_tumor_characteristics}
 \end{table}
+
 
 \subsection{Topographical mapping of 436 \acrshort{IDH} wildtype glioblastoma}
 
-For visual inspection, heatmaps based on \gls{T1C} and \gls{T2}/\gls{FLAIR} segmentations were created for all 436 patients (\cref{fig:HGG_location_heatmap,fig:HGG_location_heatmap_genetic}), as well as frequency difference maps between MGMT methylated vs. unmethylated glioblastoma (\cref{fig:HGG_location_frequency_map}).
+For visual inspection, heatmaps based on \gls{T1C} and \gls{T2}/\gls{FLAIR} segmentations were created for all 436 patients (\cref{fig:HGG_location_heatmap,fig:HGG_location_heatmap_genetic}), as well as frequency difference maps between \gls{MGMT} methylated vs. unmethylated glioblastoma (\cref{fig:HGG_location_frequency_map}).
 Visual inspection of maps in \cref{fig:HGG_location_heatmap} suggests that glioblastoma were most frequently located in the right temporal, insular, and parietal area, and near the periventricular area both frontally and occipitally.
 Visual inspection of \cref{fig:HGG_location_heatmap_genetic,fig:HGG_location_frequency_map} indicates that when compared with \gls{MGMT} unmethylated glioblastoma, methylated glioblastoma were more frequently located near bifrontal and left occipital periventricular area (up to \per{6.5} frequency difference) and less frequently near the right occipital periventricular area (up to \per{9.1} frequency difference).
 
@@ -211,10 +241,9 @@ Visual inspection of \cref{fig:HGG_location_heatmap_genetic,fig:HGG_location_fre
 
 To test whether this difference was statistically significant, voxel-wise analyses of both the \gls{T1C} and \gls{T2}/\gls{FLAIR} segmentation heatmaps were performed.
 Although statistical analysis of the \gls{T1C} scans marked a region near the right occipital periventricular area as a potentially discriminating area between \gls{MGMT} methylated vs. unmethylated glioblastoma, this difference was not statistically significant (\cref{fig:HGG_location_pvalue_map}, together with corresponding p-values).
-This figure in fact shows that not any statistically significantly discriminating brain area between \gls{MGMT} methylated and unmethylated glioblastoma could be found (\pvalue{< 0.05}).
+\cref{fig:HGG_location_pvalue_map} in fact shows that not any statistically significantly discriminating brain area between \gls{MGMT} methylated and unmethylated glioblastoma could be found (\pvalue{< 0.05}).
 This result did not change after an additional analysis with correction for age as potential confounding factor.
 Scroll-through video clips for visual inspection of all topographic maps are publicly available as Supplementary Material.
-
 
 \begin{figure}
     \centering
@@ -239,22 +268,22 @@ First, inconsistencies may arise from variations in glioblastoma patient populat
 \citeauthorref{ellingson2013probabilistic} included a series of 507 de novo glioblastoma with mixed \gls{IDH} subtypes, including 366 \gls{IDH} wildtype, 34 \gls{IDH} mutated glioblastoma, and also 107 glioblastoma without data on \gls{IDH} mutation status.
 Moreover, the majority of the studies did not report the \gls{IDH} mutation status of included glioblastoma \autocite{ellingson2012anatomic,wang2014anatomical,eoli2007methylation,drabycz2010analysis}.
 
-Mixing molecular subtypes or not knowing \gls{IDH} mutation status of glioblastoma is undesirable when assessing topographical distribution of molecular subtypes \autocite{louis20162016}, since it is now known that \gls{IDH} mutated glioblastoma represent a distinct molecular subtype of glioblastoma from a distinct precursor lesion which have a predominantly frontal lobe involvement when compared with IDH wildtype glioblastoma \autocite{lai2011evidence}.
+Mixing molecular subtypes or not knowing \gls{IDH} mutation status of glioblastoma is undesirable when assessing topographical distribution of molecular subtypes \autocite{louis20162016}, since it is now known that \gls{IDH} mutated glioblastoma represent a distinct molecular subtype of glioblastoma from a distinct precursor lesion which have a predominantly frontal lobe involvement when compared with \gls{IDH}-wildtype glioblastoma \autocite{lai2011evidence}.
 This topographic link between \gls{IDH} mutation and \gls{MGMT} methylation was also suggested by \citeauthorref{ellingson2013probabilistic} demonstrating that \gls{IDH} mutated and \gls{MGMT} methylated glioblastoma were indeed more frequently localized in the frontal lobe.
-This has not only been demonstrated in glioblastoma but also in non-contrast enhancing low grade glioma in which \gls{IDH} mutated low grade glioma (both oligodendroglioma and astrocytoma) were more frequently located in the frontal lobes, while non-contrast enhancing IDH wildtype astrocytoma were more frequently located in the basal ganglia of the right hemisphere \autocite{chaichana2011factors}.
+This has not only been demonstrated in glioblastoma but also in non-contrast enhancing low grade glioma in which \gls{IDH} mutated low grade glioma (both oligodendroglioma and astrocytoma) were more frequently located in the frontal lobes, while non-contrast enhancing \gls{IDH}-wildtype astrocytoma were more frequently located in the basal ganglia of the right hemisphere \autocite{chaichana2011factors}.
 This topographical link thus suggests \gls{IDH} mutation status as a (confounding) factor between \gls{MGMT} methylation status and localization.
-Therefore, studies must be conducted based on homogeneous tumor populations with respect to \gls{IDH} mutational status.
-This hypothesis was recently supported by Roux et al., who assessed a homogenous \gls{IDH} wildtype glioblastoma population (\numbersamples{= 392}) and found no difference in localization between glioblastoma with and without MGMT methylation, in line with our study \autocite{roux2019mri}.
+Therefore, studies must be conducted based on homogeneous \gls{tumor} populations with respect to \gls{IDH} mutational status.
+This hypothesis was recently supported by \citeauthorref{roux2019mri}, who assessed a homogenous \gls{IDH} wildtype glioblastoma population (\numbersamples{= 392}) and found no difference in localization between glioblastoma with and without \gls{MGMT} methylation, in line with our study.
 
 Second, the conflicting results in the literature may arise from different statistical methods that were used across studies.
 Studies often investigated the anatomic localization of glioblastoma with and without \gls{MGMT} promoter methylation with visual examination, qualitatively, without a statistical, voxel-wise quantitative analysis \autocite{carillo2012relationship,eoli2007methylation,han2018structural,drabycz2010analysis}.
 \citeauthorref{ellingson2013probabilistic} used frequency difference maps to demonstrate that \gls{MGMT} methylated glioblastoma were more frequently localized in the left temporal lobe.
 Using similar frequency difference maps, we also found topographical differences, which indicated that when compared with \gls{MGMT} unmethylated glioblastoma, \gls{MGMT} methylated glioblastoma were more frequently localized near bifrontal and right occipital periventricular area and less frequently near the right occipital periventricular area.
 However, we showed that these apparent differences did not survive rigorous statistical testing.
-Ellingson et al. report the use of \say{Analysis of Differential Involvement} for their statistical analysis, which is based on the Fisher exact test \autocite{ellingson2012anatomic}.
-We used \say{FSL randomise}, which is different from the Fisher exact test because it does not make any assumptions about the underlying distribution of the variables \autocite{winkler2014permutation}.
+\citeauthorref{ellingson2012anatomic} report the use of \say{Analysis of Differential Involvement} for their statistical analysis, which is based on the Fisher exact test.
+We used \gls{FSL} randomise, which is different from the Fisher exact test because it does not make any assumptions about the underlying distribution of the variables \autocite{winkler2014permutation}.
 Another methodological difference can be found in the correction for multiple comparisons.
-Ellingson et al. used random permutations based on Bullmore et al. instead of the more recently proposed and widely accepted method of doing random permutations employed in \say{FSL randomise} based on \citeauthorref{winkler2014permutation} and \citeauthorref{bullmore1999global}.
+\citeauthorref{ellingson2012anatomic} used random permutations based on \citeauthorref{bullmore1999global} instead of the more recently proposed and widely accepted method of doing random permutations employed in \gls{FSL} randomise \autocite{winkler2014permutation}.
 Furthermore, the method by \citeauthorref{bullmore1999global} requires a user-defined threshold for clustering, which can impact the results substantially \autocite{bullmore1999global}.
 Instead, we used \say{Threshold Free Cluster Enhancement}, which does not require thresholding to determine the clusters, and which has been shown to have a higher sensitivity compared to other methods \autocite{smith2009threshold}.
 Our stringent methodology of rigorous statistical testing and applying new insights in glioblastoma molecular subtyping to a large studied patient population are the strengths of our study.
@@ -262,112 +291,109 @@ Our stringent methodology of rigorous statistical testing and applying new insig
 \section{Limitations}
 
 The main limitation of this study is its retrospective design, which may have introduced selection and confounding biases.
-Selection bias may occur when patients who receive diagnostic biopsies are excluded from analysis, since these tumors are often large, multifocal, located deep within the basal ganglia, or crossing midline.
-This may skew the results on tumor localization of glioblastoma, which is our main outcome.
+Selection bias may occur when patients who receive diagnostic biopsies are excluded from analysis, since these \glspl{tumor} are often large, multifocal, located deep within the basal ganglia, or crossing midline.
+This may skew the results on \gls{tumor} localization of glioblastoma, which is our main outcome.
 We have therefore attempted to limit this bias first by consecutive inclusion of all glioblastoma patients operated upon between 2011 and 2018 in our cohort, including diagnostic biopsies.
-In addition, it is known that tumor localization is associated with \gls{IDH} mutation status, with \gls{IDH} mutated tumors located more frequently in the frontal lobes, as mentioned earlier \autocite{lai2011evidence}.
-Since \gls{IDH} mutation status is both associated with tumor localization and \gls{MGMT} methylation status, it may function as a confounding factor.
-We therefore have also attempted to limit this potential bias by excluding all \gls{IDH} mutated tumors.
+In addition, it is known that \gls{tumor} localization is associated with \gls{IDH} mutation status, with \gls{IDH} mutated \glspl{tumor} located more frequently in the frontal lobes, as mentioned earlier \autocite{lai2011evidence}.
+Since \gls{IDH} mutation status is both associated with \gls{tumor} localization and \gls{MGMT} methylation status, it may function as a confounding factor.
+We therefore have also attempted to limit this potential bias by excluding all \gls{IDH} mutated \glspl{tumor}.
 Another limitation is that we included patients from two medical centers from a period of over seven years.
 This introduced variation of \gls{MRI} scan protocols such as magnet strength, voxel size, and slice thickness, which consequently may have negatively influenced registration accuracy and anatomical localization.
-Such registration inaccuracies can however be considered minor relative to the size of the tumor, and it is therefore unlikely that our results were significantly impacted by scanner variations.
-Additionally, tumor volume assessment on these \gls{MRI} scans were performed by one observer without confirmation of a second, independent assessor.
+Such registration inaccuracies can however be considered minor relative to the size of the \gls{tumor}, and it is therefore unlikely that our results were significantly impacted by scanner variations.
+Additionally, \gls{tumor} volume assessment on these \gls{MRI} scans were performed by one observer without confirmation of a second, independent assessor.
 This may have introduced some degree of information bias.
 We have attempted to limit this bias during volumetric assessment by blinding the assessor for patients' clinical and molecular characteristics.
-Also, it is known that both the inter- and intraobserver agreement for preoperative tumor volumes in glioblastoma is relatively high, while small variations in segmentation will probably have only a very limited effect on determining gross tumor localization \autocite{kubben2010intraobserver}.
+Also, it is known that both the inter- and intraobserver agreement for preoperative \gls{tumor} volumes in glioblastoma is relatively high, while small variations in segmentation will probably have only a very limited effect on determining gross \gls{tumor} localization \autocite{kubben2010intraobserver}.
 Finally, it should be noted that the known intertest variability is a limitation of \gls{MGMT} analyses, as assays used in other studies may produce slightly different \gls{MGMT} methylation results \autocite{wick2014mgmt}.
-This may partially explain the variety in the proportion of \gls{MGMT} methylated tumors reported in literature.
+This may partially explain the variety in the proportion of \gls{MGMT} methylated \glspl{tumor} reported in literature.
 
 To conclude, in the largest homogenous \gls{IDH} wildtype glioblastoma population to date, we showed that visual appearance of differences could not be confirmed with rigorous voxel-wise statistical testing and thus that there is no statistical difference in anatomical localization between \gls{IDH} wildtype glioblastoma with vs. without \gls{MGMT} promoter methylation.
 
-\newpage
-\begin{subappendices}
+% \newpage
+% \begin{subappendices}
 
-    \section{Frequency difference maps}
-    \begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{0.4\textwidth}
-        \centering
-        \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T1-}{0}{154}
-        \caption{\gls{T1C} frequency difference map}\label{fig:HGG_loc_T1_freq_dif_gif}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.4\textwidth}
-        \centering
-        \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T2-}{0}{154}
-        \caption{\gls{T2}/\gls{FLAIR} frequency difference map}\label{fig:HGG_loc_T2_freq_dif_gif}
-    \end{subfigure}
-    \caption{Frequency difference maps between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{GBM}}
-    \end{figure}
+%     \section{Frequency difference maps}
+%     \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[t]{0.4\textwidth}
+%         \centering
+%         \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T1-}{0}{154}
+%         \caption{\gls{T1C} frequency difference map}\label{fig:HGG_loc_T1_freq_dif_gif}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.4\textwidth}
+%         \centering
+%         \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T2-}{0}{154}
+%         \caption{\gls{T2}/\gls{FLAIR} frequency difference map}\label{fig:HGG_loc_T2_freq_dif_gif}
+%     \end{subfigure}
+%     \caption{Frequency difference maps between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{GBM}}
+%     \end{figure}
 
-    \newpage
-    \section{Heatmaps}
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T1-}{0}{154}
-            \caption{\gls{T1C} heatmap, all patients}\label{fig:HGG_loc_T1_heatmap_all}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} heatmap, all patients}\label{fig:HGG_loc_T2_heatmap_all}
-        \end{subfigure}
+%     \newpage
+%     \section{Heatmaps}
+%     \begin{figure}[H]
+%         \centering
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T1-}{0}{154}
+%             \caption{\gls{T1C} heatmap, all patients}\label{fig:HGG_loc_T1_heatmap_all}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} heatmap, all patients}\label{fig:HGG_loc_T2_heatmap_all}
+%         \end{subfigure}
 
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T1-}{0}{154}
-            \caption{\gls{T1C} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_heatmap_methylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_heatmap_methylated}
-        \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T1-}{0}{154}
+%             \caption{\gls{T1C} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_heatmap_methylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_heatmap_methylated}
+%         \end{subfigure}
 
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T1-}{0}{154}
-            \caption{\gls{T1C} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_heatmap_unmethylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_heatmap_unmethylated}
-        \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T1-}{0}{154}
+%             \caption{\gls{T1C} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_heatmap_unmethylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_heatmap_unmethylated}
+%         \end{subfigure}
 
-        \caption{Location heatmaps of the tumors}
-    \end{figure}
+%         \caption{Location heatmaps of the \glspl{tumor}}
+%     \end{figure}
 
-    \newpage
-    \section{P-value maps}
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T1-}{0}{154}
-            \caption{\gls{T1C} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_p_value_map_methylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_p_value_map_methylated}
-        \end{subfigure}
+%     \newpage
+%     \section{P-value maps}
+%     \begin{figure}[H]
+%         \centering
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T1-}{0}{154}
+%             \caption{\gls{T1C} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_p_value_map_methylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_p_value_map_methylated}
+%         \end{subfigure}
 
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T1-}{0}{154}
-            \caption{\gls{T1C} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_p_value_map_unmethylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_p_value_map_unmethylated}
-        \end{subfigure}
-        \caption{P-value maps of the tumors}
-    \end{figure}
-\end{subappendices}
-
-
-
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T1-}{0}{154}
+%             \caption{\gls{T1C} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_p_value_map_unmethylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_p_value_map_unmethylated}
+%         \end{subfigure}
+%         \caption{P-value maps of the \glspl{tumor}}
+%     \end{figure}
+% \end{subappendices}
 
