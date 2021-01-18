@@ -12,16 +12,16 @@
 
     \node [exclusion_block_left, below right = .2cm and 3.5cm of identified.center] (excluded) {%
     \begin{tabbing}
-     \textbf{333} \=Patients screened\\
+     \textbf{333} \=Patients excluded\\
      \\
       \textbf{311} \>No molecular data\\
-      \textbf{22} \>\acrshort{IDH} mutated\\
+      \textbf{22} \>\acrshort{IDH}-mutated\\
    \end{tabbing}};
 
    \node [block_left, below=2.7cm of identified.center] (included) {%
 
    \begin{tabbing}
-    \textbf{436} \= Patients included for analysis\\
+    \textbf{436} \=Patients included for analysis\\
    \end{tabbing}
    };
 

@@ -107,7 +107,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.124074in,y=1.172954in,,base]{\color{textcolor}\rmfamily\fontsize{12.000000}{14.400000}\bfseries\selectfont \hspace{2cm}\acrshort{FLAIR}/\acrshort{T2}}%
+\pgftext[x=2.124074in,y=1.172954in,,base]{\color{textcolor}\rmfamily\fontsize{12.000000}{14.400000}\bfseries\selectfont \hspace{2cm}\acrshort{T2}/\acrshort{FLAIR}}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfpathrectangle{\pgfqpoint{2.548889in}{0.056287in}}{\pgfqpoint{0.826667in}{1.016111in}}%
