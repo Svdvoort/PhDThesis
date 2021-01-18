@@ -218,68 +218,33 @@ For visual inspection, heatmaps based on \gls{T1C} and \gls{T2}/\gls{FLAIR} segm
 Visual inspection of maps in \cref{fig:HGG_location_heatmap} suggests that glioblastoma were most frequently located in the right temporal, insular, and parietal area, and near the periventricular area both frontally and occipitally.
 Visual inspection of \cref{fig:HGG_location_heatmap_genetic,fig:HGG_location_frequency_map} indicates that when compared with \gls{MGMT} unmethylated glioblastoma, methylated glioblastoma were more frequently located near bifrontal and left occipital periventricular area (up to \per{6.5} frequency difference) and less frequently near the right occipital periventricular area (up to \per{9.1} frequency difference).
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=\textwidth]{Figures/Heatmap.png}
 
-%     \caption{Heatmaps of all 436 \acrshort{IDH} wildtype glioblastoma.}\label{fig:HGG_location_heatmap}
-% \end{figure}
-
-\begin{figure}
+\begin{figure}[htbp]
 \centering
-% \includegraphics[width=\textwidth]{Figures/Heatmap.png}
-\begin{subfigure}[b]{\textwidth}
-    \centering
-    \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_all_T1.pgf}}
-    \caption{Distribution of \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_heatmap_all_T1}
-\end{subfigure}
-\begin{subfigure}[b]{\textwidth}
-    \centering
-    \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_all_T2.pgf}}
-    \caption{Distribution of \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_heatmap_all_T2}
-\end{subfigure}
+
+\resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_all_T1_and_T2.pgf}}
 \caption{Heatmaps of all 436 \acrshort{IDH} wildtype glioblastoma.}\label{fig:HGG_location_heatmap}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{\textwidth}
         \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_methylated_T1.pgf}}
-        \caption{Distribution of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_heatmap_methylated_T1}
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_methylated_T1_and_T2.pgf}}
+        \caption{Distribution of \gls{MGMT} methylated \glspl{tumor}}\label{fig:HGG_location_heatmap_methylated}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
         \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_methylated_T2.pgf}}
-        \caption{Distribution of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_heatmap_methylated_T2}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_unmethylated_T1.pgf}}
-        \caption{Distribution of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_heatmap_unmethylated_T1}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_unmethylated_T2.pgf}}
-        \caption{Distribution of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_heatmap_unmethylated_T2}
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{heatmap_unmethylated_T1_and_T2.pgf}}
+        \caption{Distribution of \gls{MGMT} unmethylated \glspl{tumor}}\label{fig:HGG_location_heatmap_unmethylated}
     \end{subfigure}
     \caption{Heatmaps of \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_heatmap_genetic}
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[htbp]
     \centering
-    % \includegraphics[width=\textwidth]{Figures/Frequency_map.png}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{frequency_map_T1.pgf}}
-        \caption{Frequency map of \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_frequency_T1}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{frequency_map_T2.pgf}}
-        \caption{Frequency map of \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_frequency_T2}
-    \end{subfigure}
+    \resizebox{\textwidth}{!}{\subimport{Figures/}{frequency_map_T1_and_T2.pgf}}
     \caption{Frequency difference maps between \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_frequency_map}
 \end{figure}
 
@@ -289,29 +254,19 @@ Although statistical analysis of the \gls{T1C} scans marked a region near the ri
 This result did not change after an additional analysis with correction for age as potential confounding factor.
 Scroll-through video clips for visual inspection of all topographic maps are publicly available as Supplementary Material.
 
-\begin{figure}
+\begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{\textwidth}
         \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T1_methylated.pgf}}
-        \caption{P-value of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_pvalue_methylated_T1}
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_methylated_T1_and_T2.pgf}}
+        \caption{P-values of \gls{MGMT} methylated \glspl{tumor}}\label{fig:HGG_location_pvalue_methylated}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
         \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T2_methylated.pgf}}
-        \caption{P-value of \gls{MGMT} methylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_pvalue_methylated_T2}
+        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_unmethylated_T1_and_T2.pgf}}
+        \caption{P-values of \gls{MGMT} unmethylated \glspl{tumor}}\label{fig:HGG_location_pvalue_unmethylated}
     \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T1_unmethylated.pgf}}
-        \caption{P-value of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T1C} scan}\label{fig:HGG_location_pvalue_unmethylated_T1}
-    \end{subfigure}
-    \begin{subfigure}[b]{\textwidth}
-        \centering
-        \resizebox{\textwidth}{!}{\subimport{Figures/}{p_value_T2_unmethylated.pgf}}
-        \caption{P-value of \gls{MGMT} unmethylated \glspl{tumor} segmented on  the \gls{T2}/\gls{FLAIR} scan}\label{fig:HGG_location_pvalue_unmethylated_T2}
-    \end{subfigure}
-    \caption{P-value maps of \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma.}\label{fig:HGG_location_pvalue_map}
+    \caption{P-value maps of \acrshort{MGMT} methylated (\numbersamples{= 211}) and unmethylated (\numbersamples{= 225}) glioblastoma}\label{fig:HGG_location_pvalue_map}
 \end{figure}
 
 \section{Discussion}
@@ -371,91 +326,91 @@ This may partially explain the variety in the proportion of \gls{MGMT} methylate
 
 To conclude, in the largest homogenous \gls{IDH} wildtype glioblastoma population to date, we showed that visual appearance of differences could not be confirmed with rigorous voxel-wise statistical testing and thus that there is no statistical difference in anatomical localization between \gls{IDH} wildtype glioblastoma with vs. without \gls{MGMT} promoter methylation.
 
-\newpage
-\begin{subappendices}
+% \newpage
+% \begin{subappendices}
 
-    \section{Frequency difference maps}
-    \begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{0.4\textwidth}
-        \centering
-        \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T1-}{0}{154}
-        \caption{\gls{T1C} frequency difference map}\label{fig:HGG_loc_T1_freq_dif_gif}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.4\textwidth}
-        \centering
-        \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T2-}{0}{154}
-        \caption{\gls{T2}/\gls{FLAIR} frequency difference map}\label{fig:HGG_loc_T2_freq_dif_gif}
-    \end{subfigure}
-    \caption{Frequency difference maps between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{GBM}}
-    \end{figure}
+%     \section{Frequency difference maps}
+%     \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[t]{0.4\textwidth}
+%         \centering
+%         \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T1-}{0}{154}
+%         \caption{\gls{T1C} frequency difference map}\label{fig:HGG_loc_T1_freq_dif_gif}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.4\textwidth}
+%         \centering
+%         \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Frequency_difference_map_T2-}{0}{154}
+%         \caption{\gls{T2}/\gls{FLAIR} frequency difference map}\label{fig:HGG_loc_T2_freq_dif_gif}
+%     \end{subfigure}
+%     \caption{Frequency difference maps between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{GBM}}
+%     \end{figure}
 
-    \newpage
-    \section{Heatmaps}
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T1-}{0}{154}
-            \caption{\gls{T1C} heatmap, all patients}\label{fig:HGG_loc_T1_heatmap_all}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} heatmap, all patients}\label{fig:HGG_loc_T2_heatmap_all}
-        \end{subfigure}
+%     \newpage
+%     \section{Heatmaps}
+%     \begin{figure}[H]
+%         \centering
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T1-}{0}{154}
+%             \caption{\gls{T1C} heatmap, all patients}\label{fig:HGG_loc_T1_heatmap_all}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_all_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} heatmap, all patients}\label{fig:HGG_loc_T2_heatmap_all}
+%         \end{subfigure}
 
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T1-}{0}{154}
-            \caption{\gls{T1C} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_heatmap_methylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_heatmap_methylated}
-        \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T1-}{0}{154}
+%             \caption{\gls{T1C} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_heatmap_methylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_methylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_heatmap_methylated}
+%         \end{subfigure}
 
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T1-}{0}{154}
-            \caption{\gls{T1C} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_heatmap_unmethylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_heatmap_unmethylated}
-        \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T1-}{0}{154}
+%             \caption{\gls{T1C} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_heatmap_unmethylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Heatmap_unmethylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} heatmap, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_heatmap_unmethylated}
+%         \end{subfigure}
 
-        \caption{Location heatmaps of the \glspl{tumor}}
-    \end{figure}
+%         \caption{Location heatmaps of the \glspl{tumor}}
+%     \end{figure}
 
-    \newpage
-    \section{P-value maps}
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T1-}{0}{154}
-            \caption{\gls{T1C} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_p_value_map_methylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_p_value_map_methylated}
-        \end{subfigure}
+%     \newpage
+%     \section{P-value maps}
+%     \begin{figure}[H]
+%         \centering
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T1-}{0}{154}
+%             \caption{\gls{T1C} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_p_value_map_methylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_methylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_p_value_map_methylated}
+%         \end{subfigure}
 
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T1-}{0}{154}
-            \caption{\gls{T1C} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_p_value_map_unmethylated}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
-            \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T2-}{0}{154}
-            \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_p_value_map_unmethylated}
-        \end{subfigure}
-        \caption{P-value maps of the \glspl{tumor}}
-    \end{figure}
-\end{subappendices}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T1-}{0}{154}
+%             \caption{\gls{T1C} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_p_value_map_unmethylated}
+%         \end{subfigure}
+%         \begin{subfigure}[t]{0.4\textwidth}
+%             \centering
+%             \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/P_value_map_unmethylated_T2-}{0}{154}
+%             \caption{\gls{T2}/\gls{FLAIR} P-value map, \gls{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_p_value_map_unmethylated}
+%         \end{subfigure}
+%         \caption{P-value maps of the \glspl{tumor}}
+%     \end{figure}
+% \end{subappendices}
 
