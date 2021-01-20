@@ -8,15 +8,33 @@ Therefore, we investigated whether this data organization step can be automated.
 To this end, we designed a \gls{CNN} that automatically recognizes eight different brain \gls{MRI} \glspl{type} based on visual appearance.
 Thus, our method is unaffected by inconsistent or missing \gls{scan} metadata.
 It can recognize \gls{T1}, \gls{T1C}, \gls{T2}, \gls{PD}, \gls{FLAIR}, \gls{DWI}, \gls{DSC} \glspl{scan} and derived maps (e.g. \acrlong{ADC} and cerebral blood flow).
-In a first experiment, we used \glspl{scan} of \glspl{sub} with brain tumors: 11065 \glspl{scan} of 719 \glspl{sub} for training, and 2369 \glspl{scan} of 192 \glspl{sub} for testing.
+In a first experiment, we used \glspl{scan} of \glspl{sub} with brain \glspl{tumor}: \num{11065} \glspl{scan} of \num{719} \glspl{sub} for training, and \num{2369} \glspl{scan} of \num{192} \glspl{sub} for testing.
 The \gls{CNN} achieved an overall accuracy of \per{98.7}.
-In a second experiment, we trained the \gls{CNN} on all 13434 \glspl{scan} from the first experiment and tested it on 7227 \glspl{scan} of 1318 Alzheimer's \glspl{sub}.
+In a second experiment, we trained the \gls{CNN} on all \num{13434} \glspl{scan} from the first experiment and tested it on \num{7227} \glspl{scan} of \num{1318} Alzheimer's \glspl{sub}.
 Here, the \gls{CNN} achieved an overall accuracy of \per{98.5}.
 In conclusion, our method can accurately predict \gls{type}, and can quickly and automatically sort a brain \gls{MRI} \gls{ds} virtually without the need for manual verification.
 In this way, our method can assist with properly organizing a \gls{ds}, which maximizes the shareability and integrity of the data.
 
 \publishedas{vandervoort2020deepdicomsort}
 \end{ChapterAbstract}
+\setcellgapes{5pt}
+
+
+% To not show acronyms
+\glsunset{sub}
+\glsunset{ses}
+\glsunset{scan}
+\glsunset{type}
+\glsunset{slice}
+\glsunset{ds}
+\glsunset{sample}
+\glsunset{class}
+\glsunset{HC}
+\glsunset{site}
+\glsunset{NTTS}
+\glsunset{BTtrain}
+\glsunset{BTtest}
+\glsunset{BTset}
 
 \section{Introduction}
 
@@ -41,7 +59,7 @@ This manual labeling can be a very time-consuming task, which hampers scientific
 Similar arguments concerning the complexity of medical imaging data and the importance of data structuring also motivated the creation of the \gls{BIDS} standard \autocite{gorgolewski2016brain}.
 
 Previous research has focused on modality recognition \autocite{dimitrovski2015improved,yu2015modality,arias2016medical}, as well as on distinguishing different modalities of \gls{MRI} \glspl{scan} \autocite{srinivas2014medical,remedios2018classifying}.
-Only one of these studies \autocite{remedios2018classifying} considered the prediction of the \gls{type} of \gls{MRI} \glspl{scan}, who predicted 4 \glspl{type}, namely \gls{T1}, \gls{T1C}, fluid-attenuated inversion recovery (FLAIR) and \gls{T2} \glspl{scan}.
+Only one of these studies \autocite{remedios2018classifying} considered the prediction of the \gls{type} of \gls{MRI} \glspl{scan}, who predicted \num{4} \glspl{type}, namely \gls{T1}, \gls{T1C}, fluid-attenuated inversion recovery (FLAIR) and \gls{T2} \glspl{scan}.
 However, with the increasing popularity of multi-parametric \gls{MRI} in machine learning algorithms and automatic pipelines \autocite{li2017deep,akkus2017predicting,nie20163d,pereira2015deep}, the need to recognize more \glspl{type} is arising.
 
 In this research, we propose a method, called \gls{DDS}, that recognizes eight different \glspl{type} of brain \gls{MRI} \glspl{scan}, and facilitates sorting into a structured format.
@@ -89,9 +107,9 @@ A standardized \gls{ds} is a \gls{ds} where the data has been structured accordi
   \\
   \Gls{class} & N/A & An output category of the \gls{CNN}\\
   \\
-  \gls{DICOM} & DICOM & A data format used to store medical imaging data. In addition to the imaging data, DICOM files can also store metadata about the scanner equipment, the specific imaging protocol and clinical information.\\
+  \acrshort{DICOM} & \acrshort{DICOM} & A data format used to store medical imaging data. In addition to the imaging data, \acrshort{DICOM} files can also store metadata about the scanner equipment, the specific imaging protocol and clinical information.\\
   \\
-  \gls{NIFTI} & \gls{NIFTI} & A data format used to store (neuro) medical imaging data.\\
+  \acrshort{NIFTI} & \acrshort{NIFTI} & A data format used to store (neuro) medical imaging data.\\
   \bottomrule
   \end{tabular}
   \caption{Overview of terminology used in this paper, the corresponding \gls{BIDS} terminology and meaning of each term}\label{tab:terminology}
@@ -102,32 +120,32 @@ A standardized \gls{ds} is a \gls{ds} where the data has been structured accordi
 \subsection{Data}
 
 An extensive collection of data from multiple different sources was used to construct our method and evaluate its performance.
-We used \gls{MRI} \glspl{scan} of \glspl{sub} with brain tumors, as well as \glspl{scan} of \glspl{sub} without brain tumors.
+We used \gls{MRI} \glspl{scan} of \glspl{sub} with brain \glspl{tumor}, as well as \glspl{scan} of \glspl{sub} without brain \glspl{tumor}.
 
 To ensure sufficient heterogeneity in our \gls{ds}, we included \glspl{scan} from multiple different sources, and we only excluded \glspl{scan} if their \gls{type} did not fall into one of the eight categories that we aimed at predicting with our method.
 Thus, no \glspl{scan} were excluded based on other criteria such as low image quality, the occurrence of imaging artifacts, scanner settings, or disease state of the \gls{sub}.
 
 \subsubsection{\Acrlong{BTset}}
-Our method was initially developed and subsequently tested on brain \gls{MRI} \glspl{scan} of \glspl{sub} with brain tumors.
-\Glspl{scan} of \glspl{sub} with brain tumors were used because the brain tumor imaging protocols used to acquire these \glspl{scan} usually span a wide array of \glspl{type}, including pre-contrast and post-contrast \glspl{scan}.
-The \gls{BTset} consisted of a train set and an independent test set, which in total included data from 11 different sources.
+Our method was initially developed and subsequently tested on brain \gls{MRI} \glspl{scan} of \glspl{sub} with brain \glspl{tumor}.
+\Glspl{scan} of \glspl{sub} with brain \glspl{tumor} were used because the brain \gls{tumor} imaging protocols used to acquire these \glspl{scan} usually span a wide array of \glspl{type}, including pre-contrast and post-contrast \glspl{scan}.
+The \gls{BTset} consisted of a train set and an independent test set, which in total included data from \num{11} different sources.
 The \glspl{sub} were distributed among the \gls{BTtrain} and \gls{BTtest} before starting any experiments, and the data was divided such that the distribution of the \glspl{type} was similar in the train set and the test set.
 We chose to put all \glspl{sub} that originated from the same \gls{ds} in either the train set or test set to test the generalizability of our algorithm.
 Thus, all \glspl{scan} of a \gls{sub} were either all in the \gls{BTtrain} or all in the \gls{BTtest}, and no data leak could take place, precluding an overly optimistic estimation of the performance of our method.
 In this way, a good performance of our method on the test set could not be the result of the algorithm having learned features that are specific to a particular \gls{site} or scanner.
 
-The \gls{BTtrain} contained 11065 \glspl{scan} of 1347 different \glspl{ses} from 719 \glspl{sub}.
+The \gls{BTtrain} contained \num{11065} \glspl{scan} of \num{1347} different \glspl{ses} from \num{719} \glspl{sub}.
 These \glspl{scan} were included from the \gls{BTP} \autocite{schmainda2018radiology}, \gls{IVY} \autocite{nameeta2016radiology}, \gls{LGG1p19q} \autocite{bradley2017radiology,akkus2017predicting}, \gls{TCGAGBM} \autocite{scarpace2016radiology} and \gls{TCGALGG} \autocite{pedano2016radiology} collections from \gls{TCIA} \autocite{clark2013cancer}.
 Two \glspl{ds} from \gls{USIGT} \autocite{fyllingen2016glioblastoma,xiao2017retrospective} were also included in the \gls{BTtrain}.
-In total, the data originated from 17 different \glspl{site}, and the \glspl{scan} were acquired on at least 29 different scanner models from 4 different vendors (GE, Hitachi, Philips, and Siemens).
+In total, the data originated from \num{17} different \glspl{site}, and the \glspl{scan} were acquired on at least \num{29} different scanner models from \num{4} different vendors (GE, Hitachi, Philips, and Siemens).
 
-The \gls{BTtest} contained 2369 \glspl{scan} of 302 different \glspl{ses} from 192 \glspl{sub}.
+The \gls{BTtest} contained \num{2369} \glspl{scan} of \num{302} different \glspl{ses} from \num{192} \glspl{sub}.
 These \glspl{scan} were included from the \gls{BITE} \gls{ds} \autocite{mercier2012online} as well as the \gls{CPTAC} \autocite*{cptac2018radiology}, \gls{REMBRANDT} \autocite{scarpace2015radiology}, and \gls{RIDER} \autocite{barboriak2015radiology} collections from the \gls{TCIA}.
-In total, the data originated from 8 different \glspl{site}, and the \glspl{scan} were acquired on at least 15 different scanner models from 4 different vendors (GE, Philips, Siemens, and Toshiba).
+In total, the data originated from \num{8} different \glspl{site}, and the \glspl{scan} were acquired on at least \num{15} different scanner models from \num{4} different vendors (GE, Philips, Siemens, and Toshiba).
 
 For some \glspl{scan}, the scanner type was not available in the \gls{DICOM} tags (\gls{DICOM} tag (0008, 1090)); thus, the data variation in the number of scanners could be even larger.
 
-All \glspl{sub} included in the \gls{BTset} had a (pre-operative or post-operative) brain tumor.
+All \glspl{sub} included in the \gls{BTset} had a (pre-operative or post-operative) brain \gls{tumor}.
 The \glspl{scan} in the \glspl{ds} were manually sorted, and \gls{T1}, \gls{T1C}, \gls{T2}, \gls{PD}, \gls{FLAIR}, \gls{DWI}, \gls{DSC}, and derived images were identified.
 The different types of derived images were combined into a single category, as the derivation of these images is often inconsistent among scanners and vendors, and thus these images need to be rederived from the raw data (e.g. the original \gls{DWI} or \gls{DSC} \gls{scan}).
 
@@ -146,25 +164,25 @@ An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest
 
     \setlength{\tabcolsep}{3pt}
 
-    \begin{tabular}{L{1.65cm}R{\scantablewidth}R{\scantablewidth}R{\scantablewidth}R{\scantablewidth}R{\totaldata}C{\scantablewidth}R{\scantablewidth}R{\scantablewidth}R{\scantablewidth}R{\scantablewidth}R{\totaldata}}
+    \begin{tabular}{L{1.78cm}S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]S[table-format=5.0]C{\datasetsep}S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]}
     \toprule
-     &\multicolumn{5}{c}{\textbf{\Gls{BTtrain}}}&&\multicolumn{5}{c}{\textbf{\Gls{BTtest}}}\\
+    &\multicolumn{5}{c}{\textbf{\Acrlong{BTtrain}}}&&\multicolumn{5}{c}{\textbf{\Acrlong{BTtest}}}\\
     \cmidrule(l){2-6}\cmidrule(l){8-12}
-    \textbf{\Gls{type}} & Ax & Cor & Sag & 3D & Total&  & Ax & Cor & Sag & 3D & Total\\
-     \midrule
-     \gls{T1}       & 580  & 14   & 872  & 454  & 1920  & & 206  & 2    & 202  & 26   & 436\\
-     \gls{T1C}      & 964  & 526  & 298  & 1040 & 2828  & & 208  & 133  & 97   & 172  & 610\\
-     \gls{T2}       & 1151 & 411  & 23   & 31   & 1616  & & 232  & 46   & 16   & 1    & 295\\
-     \gls{PD}       & 413  & 40   & 0    & 0    & 453   & & 145  & 36   & 0    & 0    & 181\\
-     \gls{FLAIR}    & 991  & 39   & 4    & 50   & 1084  & & 221  & 3    & 0    & 32   & 256\\
-     \gls{DWI}      & 1359 & 0    & 0    & 0    & 1359  & & 347  & 0    & 0    & 0    & 347\\
-     \gls{DSC}      & 669  & 0    & 0    & 0    & 669   & & 87   & 0    & 0    & 0    & 87\\
+    {\textbf{\Gls{type}}} & {Ax} & {Cor} & {Sag} & {3D} & {Total}&& {Ax} & {Cor} & {Sag} & {3D} & {Total}\\
+    \midrule
+     \acrshort{T1}       & 580  & 14   & 872  & 454  & 1920  & & 206  & 2    & 202  & 26   & 436\\
+     \acrshort{T1C}      & 964  & 526  & 298  & 1040 & 2828  & & 208  & 133  & 97   & 172  & 610\\
+     \acrshort{T2}       & 1151 & 411  & 23   & 31   & 1616  & & 232  & 46   & 16   & 1    & 295\\
+     \acrshort{PD}       & 413  & 40   & 0    & 0    & 453   & & 145  & 36   & 0    & 0    & 181\\
+     \acrshort{FLAIR}    & 991  & 39   & 4    & 50   & 1084  & & 221  & 3    & 0    & 32   & 256\\
+     \acrshort{DWI}      & 1359 & 0    & 0    & 0    & 1359  & & 347  & 0    & 0    & 0    & 347\\
+     \acrshort{DSC}      & 669  & 0    & 0    & 0    & 669   & & 87   & 0    & 0    & 0    & 87\\
      Derived        & 1136 & 0    & 0    & 0    & 1136  & & 157  & 0    & 0    & 0    & 157\\
      \midrule
      \textbf{Total} & 7263 & 1030 & 1197 & 1575 & 11065 & & 1603 & 220  & 315  & 231  & 2369\\
      \bottomrule
     \end{tabular}
-    \caption{Overview of data in the \gls{BTset}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified}\label{tab:data_tumor}
+    \caption{Overview of data in the \gls{BTset}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal, and 3D) are specified}\label{tab:data_tumor}
 \end{table}
 
 \begin{figure}
@@ -221,18 +239,18 @@ An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest
 
 \subsubsection{\gls{NTTS}}
 
-In order to evaluate the results of the algorithm on non-tumor brain imaging, we used the \gls{ADNI} \gls{ds} (\url{adni.loni.usc.edu}).
+In order to evaluate the results of the algorithm on non-\gls{tumor} brain imaging, we used the \gls{ADNI} \gls{ds} (\url{adni.loni.usc.edu}).
 The \gls{ADNI} was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD.
 The primary goal of \gls{ADNI} has been to test whether serial magnetic resonance imaging, positron emission tomography, other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of mild cognitive impairment and early Alzheimer's disease.
 For up-to-date information, see \url{adni-info.org}.
 
-We used the baseline and screening data of 1318 \glspl{sub}, resulting in 7227 \glspl{scan}.
-These \glspl{scan} originated from 67 different \glspl{site} and were acquired on 23 different scanner models from 3 different vendors (GE, Philips, and Siemens).
+We used the baseline and screening data of \num{1318} \glspl{sub}, resulting in \num{7227} \glspl{scan}.
+These \glspl{scan} originated from \num{67} different \glspl{site} and were acquired on \num{23} different scanner models from \num{3} different vendors (GE, Philips, and Siemens).
 Details of the \gls{NTTS} are presented in \cref{tab:data_adni}.
 Since no contrast is administered to \glspl{sub} in the \gls{ADNI} study, there are no \gls{T1C} or \gls{DSC} \glspl{scan} in this \gls{ds}.
 The \gls{ADNI} \gls{ds} does include \gls{ASL}, however since our algorithm was not designed to recognize these \glspl{scan}, they were excluded.
 The derived maps from these \gls{ASL} \glspl{scan} were included since the derived category encompasses all diffusion and perfusion derived imaging.
-These \gls{ASL} derived maps explain the 47 3D \glspl{scan} in \cref{tab:data_adni}.
+These \gls{ASL} derived maps explain the \num{47} 3D \glspl{scan} in \cref{tab:data_adni}.
 
 \begin{table}[htbp]
     \centering
@@ -244,29 +262,28 @@ These \gls{ASL} derived maps explain the 47 3D \glspl{scan} in \cref{tab:data_ad
 
     \setlength{\tabcolsep}{3pt}
 
-    \begin{tabular}{L{1.65cm}R{\scantablewidth}R{\scantablewidth}R{\scantablewidth}R{\scantablewidth}R{\totaldata}}
+    \begin{tabular}{L{1.78cm}S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]S[table-format=4.0]}
     \toprule
-     &\multicolumn{5}{c}{\textbf{\gls{NTTS}}}\\
+     &\multicolumn{5}{c}{\textbf{\Acrlong{NTTS}}}\\
     \cmidrule(l){2-6}
-    \textbf{\Gls{type}} & Ax & Cor & Sag & 3D & Total\\
+    \textbf{\Acrshort{type}} & {Ax} & {Cor} & {Sag} & {3D} & {Total}\\
      \midrule
-     \gls{T1}       & 0    & 0    & 276  & 2380 & 2656\\
-     \gls{T1C}      & 0    & 0    & 0    & 0    & 0   \\
-     \gls{T2}       & 1725 & 488  & 5    & 0    & 2218\\
-     \gls{PD}       & 1069 & 0    & 0    & 0    & 1069\\
-     \gls{FLAIR}    & 1    & 0    & 3    & 488  & 492 \\
-     \gls{DWI}      & 558  & 0    & 2    & 0    & 560   \\
-     \gls{DSC}      & 0    & 0    & 0    & 0    & 0   \\
+     \acrshort{T1}       & 0    & 0    & 276  & 2380 & 2656\\
+     \acrshort{T1C}      & 0    & 0    & 0    & 0    & 0   \\
+     \acrshort{T2}       & 1725 & 488  & 5    & 0    & 2218\\
+     \acrshort{PD}       & 1069 & 0    & 0    & 0    & 1069\\
+     \acrshort{FLAIR}    & 1    & 0    & 3    & 488  & 492 \\
+     \acrshort{DWI}      & 558  & 0    & 2    & 0    & 560   \\
+     \acrshort{DSC}      & 0    & 0    & 0    & 0    & 0   \\
      Derived        & 183  & 0    & 2    & 47   & 232 \\
      \midrule
      \textbf{Total} & 3536 & 488  & 288  & 2915 & 7227\\
      \bottomrule
     \end{tabular}
-    \caption{Overview of data in the \gls{NTTS}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal and 3D) are specified}\label{tab:data_adni}
+    \caption{Overview of data in the \acrlong{NTTS}. The number of \glspl{scan} for each \gls{type} and the different spatial orientations (axial, coronal, sagittal, and 3D) are specified}\label{tab:data_adni}
 \end{table}
 
-\begin{samepage}
-\subsection{\gls{DDS}}
+\subsection{\acrlong{DDS}}
 The pipeline of our proposed method, \gls{DDS}, consisted of three phases:
 \begin{enumerate}
     \item Pre-processing: prepare the \glspl{scan} as an input for the \gls{CNN}
@@ -284,15 +301,14 @@ An overview of the \gls{DDS} pipeline is presented in \cref{fig:DDS_pipeline}.
 \includegraphics[width=\textwidth]{Figures/DDS_pipeline.pdf}
 \caption{Overview of the \gls{DDS} pipeline.
 \Glspl{scan} are first converted from \gls{DICOM} to \gls{NIFTI} format and pre-processed.
-During the pre-processing the \gls{scan} is split into 25 individual \glspl{slice}, that are then classified as one of eight \glspl{type} by the \gls{CNN}.
+During the pre-processing the \gls{scan} is split into \num{25} individual \glspl{slice}, that are then classified as one of eight \glspl{type} by the \gls{CNN}.
 The predictions of the individual \glspl{slice} are combined in a majority vote and the predicted \gls{type} of each \gls{scan} is used to structure the \gls{ds}.
 \gls{DDS} can structure either the original \gls{DICOM} files, or the \gls{NIFTI} files.
-In the last case the \gls{ds} turns into \gls{BIDS} compliant \gls{ds}.}
+In the last case the \gls{ds} turns into \gls{BIDS} compliant \gls{ds}}
 \label{fig:DDS_pipeline}
 
 \end{figure}
 
-\end{samepage}
 \subsubsection{Pre-processing}
 \label{sec:preprocessing}
 As a first pre-processing step, all \gls{DICOM} files were converted to \gls{NIFTI} format using dcm2niix \autocite{li2016first}, as this simplifies the further processing of the \glspl{scan}.
@@ -309,13 +325,13 @@ This 4D label was set to 1 if the \gls{scan} was 4-dimensional, and to 0 if it w
 
 All \glspl{scan} were then reoriented to match the orientation of a common template using FSL's reorient2std \autocite{jenkinson2012fsl}.
 After this step, the \glspl{scan} were resampled to $ 256 \times 256 \times 25$ voxels, using cubic b-spline interpolation, while maintaining the original field of view.
-All of these resampled (3D) \glspl{scan} were split into (2D) \glspl{slice}, resulting in 25 individual \glspl{slice} of $256 \times 256$ voxels.
+All of these resampled (3D) \glspl{scan} were split into (2D) \glspl{slice}, resulting in \num{25} individual \glspl{slice} of $256 \times 256$ voxels.
 The \gls{slice} extraction was then followed by an intensity scaling of each \gls{slice}.
-The intensity was scaled such that the minimum intensity was 0, and the maximum intensity was 1 to compensate for intensity differences between \glspl{slice}.
+The intensity was scaled such that the minimum intensity was 0, and the maximum intensity was \num{1} to compensate for intensity differences between \glspl{slice}.
 These pre-processed \glspl{slice} were than used as input \glspl{sample} for the \gls{CNN}.
 No data augmentation was used, as the large number of \glspl{scan} and different data sources that were used to train the algorithm already ensured sufficient natural variation in the \glspl{sample}, obviating the need for additional augmentation.
 
-After applying these pre-processing steps, the \gls{BTtrain} consisted of 276625 \glspl{sample}, the \gls{BTtest} consisted of 59225 \glspl{sample}, and the \gls{NTTS} consisted of 180675 \glspl{sample}.
+After applying these pre-processing steps, the \gls{BTtrain} consisted of \num{276625} \glspl{sample}, the \gls{BTtest} consisted of \num{59225} \glspl{sample}, and the \gls{NTTS} consisted of \num{180675} \glspl{sample}.
 
 \subsubsection{Network}
 \label{sec:network}
@@ -327,15 +343,15 @@ This architecture was inspired by the VGG network \autocite{simonyan2014very}.
 The network was implemented using TensorFlow 1.12.3 \autocite{abadi2016tensorflow}.
 The cross-entropy between the predicted and ground truth labels was used as a loss function.
 Weights were initialized using Glorot Uniform initialization \autocite{glorot2010understanding}.
-We used Adam as an optimizer \autocite{kingma2014adam}, which started with a learning rate of $0.001$, $\beta_1 = 0.9$, and $\beta_2=0.999$, as these were proposed as reasonable default values \autocite{kingma2014adam}.
-The learning rate was automatically adjusted based on the training loss; if the training loss did not decrease during 3 epochs, the learning rate was decreased by a factor 10, with a minimum learning rate of $1\cdot10^{-7}$.
-The network could train for a maximum of 100 epochs, and the network automatically stopped training when the loss did not decrease during 6 epochs.
-We used a batch size of 32.
+We used Adam as an optimizer \autocite{kingma2014adam}, which started with a learning rate of \num{0.001} $\beta_1 = 0.9$, and $\beta_2=0.999$, as these were proposed as reasonable default values \autocite{kingma2014adam}.
+The learning rate was automatically adjusted based on the training loss; if the training loss did not decrease during \num{3} epochs, the learning rate was decreased by a factor \num{10}, with a minimum learning rate of \num{1e-7}.
+The network could train for a maximum of \num{100} epochs, and the network automatically stopped training when the loss did not decrease during \num{6} epochs.
+We used a batch size of \num{32}.
 We arrived at this \gls{CNN} design and these settings by testing multiple different options and selecting the best performing one.
 Details about the optimization of the settings are presented in \cref{sec:experiments}, \cref{fig:brain_tumor_experiment}, and \cref{app:crossval}.
 
 During the training of the network, all \glspl{slice} were inputted to the \gls{CNN} as individual \glspl{sample}, and no information about the (possible) relation between different \glspl{slice} was provided.
-After training the network, the \gls{type} of a \gls{scan} was predicted by passing all 25 \glspl{slice} of the \gls{scan} through the \gls{CNN} and then combining these individual \gls{slice} predictions using a majority vote.
+After training the network, the \gls{type} of a \gls{scan} was predicted by passing all \num{25} \glspl{slice} of the \gls{scan} through the \gls{CNN} and then combining these individual \gls{slice} predictions using a majority vote.
 
 \begin{figure}
 \centering
@@ -345,7 +361,7 @@ After training the network, the \gls{type} of a \gls{scan} was predicted by pass
 }
 
 \caption{The architecture of the \gls{CNN}. The convolutional blocks consisted of N 2D convolutional filters followed by batch normalization and a parametric rectified linear unit.
-The output size of the convolutional blocks and pooling layers is specified.}
+The output size of the convolutional blocks and pooling layers is specified}
 \label{fig:sequence_architecture}
 \end{figure}
 
@@ -395,7 +411,7 @@ In Experiment I, the \gls{BTtest} was only used to evaluate the results and was 
 \cref{fig:brain_tumor_experiment} shows an overview of the model parameter selection, training and testing steps, and the data used in Experiment I.
 More details about the selection of the optimal model parameters and the results of other model parameters can be found in \cref{app:crossval}.
 
-In Experiment II we used the \gls{NTTS} as a test set to see if our method also generalizes to \glspl{scan} in which no brain tumor was present.
+In Experiment II we used the \gls{NTTS} as a test set to see if our method also generalizes to \glspl{scan} in which no brain \gls{tumor} was present.
 In this experiment, we trained the \gls{CNN} using the whole \gls{BTset} (a combination of all the data in the \gls{BTtrain} and \gls{BTtest}) and then evaluated the performance of the model on the \gls{NTTS}.
 No model parameter selection was done in this experiment, instead the optimal model parameters that were obtained from Experiment I were used.
 Thus, apart from training the \gls{CNN} on a larger \gls{ds}, the methods used in Experiment I and Experiment II were the same.
@@ -403,24 +419,23 @@ Thus, apart from training the \gls{CNN} on a larger \gls{ds}, the methods used i
 In this experiment, no \gls{T1C} and \gls{DSC} \glspl{scan} were present in the test set, however in a real-world setting one may not know a priori whether these \glspl{type} were present or absent.
 Thus, we still allowed the model to predict the \gls{type} as one of these \glspl{class} to mirror this realistic setting.
 
-\newpage
-\begin{sidewaysfigure}
+\begin{sidewaysfigure}[htbp]
 \centering
 \resizebox{0.9\textwidth}{!}{
     \subimport{Figures/}{brain_tumor_experiment.pgf}
 }
-\caption{Overview of Experiment I. In this experiment, the \gls{BTtrain} was used to obtain the optimal model parameters and to train the algorithm. The trained model was then evaluated on the \gls{BTtest}.}
+\caption{Overview of Experiment I. In this experiment, the \gls{BTtrain} was used to obtain the optimal model parameters and to train the algorithm. The trained model was then evaluated on the \gls{BTtest}}
 \label{fig:brain_tumor_experiment}
 \end{sidewaysfigure}
 
-\begin{sidewaysfigure}
+\begin{sidewaysfigure}[htbp]
 \centering
 
 \resizebox{0.9\textwidth}{!}{
 \subimport{Figures/}{adni_experiment.pgf}
 }
 
-\caption{Overview of Experiment II. In this experiment the \gls{BTset} was used to train the algorithm, and the trained model was then evaluated on the \gls{NTTS}.}
+\caption{Overview of Experiment II. In this experiment the \gls{BTset} was used to train the algorithm, and the trained model was then evaluated on the \gls{NTTS}}
 \label{fig:adni_experiment}
 \end{sidewaysfigure}
 
@@ -436,13 +451,13 @@ Saliency maps were generated for all \glspl{slice} of the \glspl{scan} of the ex
 Additional saliency maps were generated for 20 \glspl{sample} of each \gls{type} that were randomly selected from the test sets of Experiment I and Experiment II.
 The saliency maps for the \glspl{sample} from Experiment I were generated using the \gls{CNN} trained in Experiment I, and for the \glspl{sample} from Experiment II the \gls{CNN} trained in Experiment II was used.
 By generating saliency maps for multiple \glspl{sample}, we could show the behavior of our algorithm for different \gls{scan} appearances.
-Some of these \glspl{sample} contained tumors, contained imaging artifacts or had a low image quality.
+Some of these \glspl{sample} contained \glspl{tumor}, contained imaging artifacts or had a low image quality.
 Thus, these saliency maps also showed the robustness of our algorithm to unusual \gls{scan} appearance.
 To gain some insight into the behavior of each convolutional layer we determined the feature maps of each convolutional layer.
 We calculated the feature maps for the \gls{T1} \gls{slice} shown in \cref{fig:seq_examples} by passing it through the network and determining the output of each filter after each convolutional layer.
 
 
-\subsubsection{Comparison with \gls{HC}}
+\subsubsection{Comparison with \acrlong{HC}}
 
 We compared the performance of \gls{HC} and \gls{DDS} using the data from Experiment I, since the data in Experiment II did not include all \glspl{type}.
 When using \gls{HC}, only the \glspl{scan} which were available in \gls{DICOM} format could be processed.
@@ -457,7 +472,6 @@ For example, if the text \say{T1} was present in the series description, it was 
 
 To compare the performance of \gls{HC} with the performance of \gls{DDS} the overall accuracy and per-class accuracy of the \gls{type} predictions obtained from \gls{HC} were calculated.
 
-\newpage
 
 \begin{table}[htbp]
  \centering
@@ -485,7 +499,7 @@ To compare the performance of \gls{HC} with the performance of \gls{DDS} the ove
 \subimport{Figures/}{heudiconv_experiment.pgf}
 }
 
-\caption{Overview of the \gls{HC} experiment. In this experiment the \glspl{scan} from the \gls{BTtrain} that were available in \gls{DICOM} format were used to construct the heuristic file. \gls{HC} used this heuristic file to predict the \gls{type} of the \glspl{scan} from the \gls{BTtest} which were available in \gls{DICOM} format.}
+\caption{Overview of the \gls{HC} experiment. In this experiment the \glspl{scan} from the \gls{BTtrain} that were available in \gls{DICOM} format were used to construct the heuristic file. \gls{HC} used this heuristic file to predict the \gls{type} of the \glspl{scan} from the \gls{BTtest} which were available in \gls{DICOM} format}
 \label{fig:heudiconv_experiment}
 \end{sidewaysfigure}
 
@@ -493,7 +507,7 @@ To compare the performance of \gls{HC} with the performance of \gls{DDS} the ove
 \section{Results}
 
 \subsection{Experiment I - Evaluation on \gls{BTset}}
-The results from Experiment I (evaluation on the \gls{BTtest}, containing \glspl{scan} of \glspl{sub} with brain tumors) are reported in \cref{tab:seqacc}.
+The results from Experiment I (evaluation on the \gls{BTtest}, containing \glspl{scan} of \glspl{sub} with brain \glspl{tumor}) are reported in \cref{tab:seqacc}.
 The network was trained for 96 epochs.
 In this experiment our method achieved an overall accuracy of \per{98.7}.
 
@@ -504,10 +518,10 @@ This is not surprising since there are \glspl{slice} in a \gls{scan} from which 
 
 
 \subsection{Experiment II - Evaluation on \gls{NTTS}}
-The results from Experiment II (evaluation on the \gls{NTTS}, containing \glspl{scan} of \glspl{sub} without brain tumors) are reported in \cref{tab:seqacc}.
+The results from Experiment II (evaluation on the \gls{NTTS}, containing \glspl{scan} of \glspl{sub} without brain \glspl{tumor}) are reported in \cref{tab:seqacc}.
 Just like in Experiment I the network was trained for 96 epochs.
 In this experiment our method achieved an overall accuracy of \per{98.5}.
-It took approximately 22 hours to train the network of this experiment using an Nvidia Titan V GPU with 12 GB memory.
+It took approximately \num{22} hours to train the network of this experiment using an Nvidia Titan V GPU with 12 GB memory.
 
 The highest per-class accuracy was achieved for the \gls{T1} \glspl{scan} (\per{100.0}), whereas the \gls{T2} \glspl{scan} had the lowest accuracy (\per{95.1}).
 Most of the incorrectly predicted \gls{T2} \glspl{scan} were predicted as \gls{T1C} or \gls{PD} \glspl{scan}.
@@ -521,11 +535,11 @@ For the \gls{PD} \gls{slice}, the \gls{CNN} did not have a specific focus on the
 The \gls{DWI} and derived \glspl{slice} also showed some focus outside of the skull, probably because of the artifacts outside of the skull that these \glspl{type} often feature (as can be seen in \cref{fig:DWI-DCam}).
 We have created saliency maps for all 25 \glspl{slice} of the \glspl{scan} shown in \cref{fig:seq_examples}, which are shown in \cref{app:saliency}.
 For most other \glspl{slice} the focus of the \gls{CNN} was the same as for the \glspl{slice} from \cref{fig:seq_gradcam}.
-Furthermore, the presence of a tumor did not disturb the prediction as also evidenced by the high accuracy achieved in Experiment I.
+Furthermore, the presence of a \gls{tumor} did not disturb the prediction as also evidenced by the high accuracy achieved in Experiment I.
 Only on the most superior and inferior \glspl{slice} did the \gls{CNN} struggle, probably due to the fact that the brain was barely visible on those \glspl{slice}.
 
 Additional saliency maps for randomly selected \glspl{sample} from the test sets of Experiment I and Experiment II are shown in \cref{app:artifactsaliency}.
-These examples show that our method is robust to heterogeneity in the visual appearance of the \glspl{scan}, as well as to the presence of tumors, the presence of imaging artifacts, and poor image quality.
+These examples show that our method is robust to heterogeneity in the visual appearance of the \glspl{scan}, as well as to the presence of \glspl{tumor}, the presence of imaging artifacts, and poor image quality.
 This is demonstrated by the fact that the \gls{CNN} focused on the same brain structures for almost all of the \glspl{slice} and correctly predicted the \gls{type} even for \glspl{slice} with poor imaging quality or artifacts.
 The feature maps of all convolutional layers are shown in \cref{app:filtervis}.
 For the shallow convolutional layers, some filters seemed to detect the skull without looking at the brain tissue, whereas other layers seemed to focus more on specific brain structures such as the \gls{CSF}.
@@ -533,20 +547,20 @@ Interpreting the deeper convolutional layers gets harder as the feature maps of 
 
 \begin{table}[htbp]
  \centering
-  \begin{tabular}{rC{4cm}C{3cm}}
+  \begin{tabular}{lS[table-format=1.3]S[table-format=1.3]}
       \toprule
-& \textbf{Experiment I} & \textbf{Experiment II}\\
+& {\textbf{Experiment I}} & {\textbf{Experiment II}}\\
     \midrule
-  \textit{Overall}    & 0.987 & 0.985\\
+  Overall    & 0.987 & 0.985\\
   \cmidrule{2-3}
-  \textit{\gls{T1}}        & 0.993 & 1.000\\
-  \textit{\gls{T1C}}       & 0.997 & N/A\\
-  \textit{\gls{T2}}        & 0.990 & 0.965\\
-  \textit{\gls{PD}}        & 1.000 & 0.998\\
-  \textit{\gls{FLAIR}}  & 0.930 & 0.951\\
-  \textit{\gls{DWI}}        & 0.991 & 0.995\\
-  \textit{\gls{DSC}}    & 1.000 & N/A\\
-  \textit{Derived}    & 0.994 & 0.983\\
+  \acrshort{T1}        & 0.993 & 1.000\\
+  \acrshort{T1C}       & 0.997 & {\NA}\\
+  \acrshort{T2}        & 0.990 & 0.965\\
+  \acrshort{PD}        & 1.000 & 0.998\\
+  \acrshort{FLAIR}  & 0.930 & 0.951\\
+  \acrshort{DWI}        & 0.991 & 0.995\\
+  \acrshort{DSC}    & 1.000 & {\NA}\\
+  Derived    & 0.994 & 0.983\\
   \bottomrule
   \end{tabular}
   \caption{Overall accuracy and per-class accuracy achieved by \gls{DDS} in Experiment I and Experiment II}\label{tab:seqacc}
@@ -620,21 +634,21 @@ These results show that \gls{DDS} outperformed \gls{HC} both in terms of the ove
 \begin{table}[htbp]
 
  \centering
-  \begin{tabular}{rC{3cm}C{3cm}}
+  \begin{tabular}{lS[table-format=1.3]S[table-format=1.3]}
       \toprule
 
-  & \textbf{\acrlong{HC}} & \textbf{\acrlong{DDS}}\\
+  & {\textbf{\acrlong{HC}}} & {\textbf{\acrlong{DDS}}}\\
   \midrule
-  \textit{Overall}   & 0.720 & 0.987\\
+  Overall   & 0.720 & 0.987\\
   \cmidrule{2-3}
-  \textit{\gls{T1}}       & 0.963 & 0.993\\
-  \textit{\gls{T1C}}      & 0.447 & 0.997\\
-  \textit{\gls{T2}}       & 0.930 & 0.990\\
-  \textit{\gls{PD}}       & 0.077 & 1.000\\
-  \textit{\gls{FLAIR}} & 0.684 & 0.930\\
-  \textit{\gls{DWI}}       & 0.887 & 0.991\\
-  \textit{\gls{DSC}}   & 0.600 & 1.000\\
-  \textit{Derived}   & 0.948 & 0.994\\
+  \acrshort{T1}       & 0.963 & 0.993\\
+  \acrshort{T1C}      & 0.447 & 0.997\\
+  \acrshort{T2}       & 0.930 & 0.990\\
+  \acrshort{PD}       & 0.077 & 1.000\\
+  \acrshort{FLAIR} & 0.684 & 0.930\\
+  \acrshort{DWI}       & 0.887 & 0.991\\
+  \acrshort{DSC}   & 0.600 & 1.000\\
+  Derived   & 0.948 & 0.994\\
   \bottomrule
   \end{tabular}
   \caption{Accuracy of \acrlong{HC} on the \gls{BTtest}. Results of \gls{DDS} on this test set are also given, where the \glspl{scan} which were not available in the \gls{DICOM} format were excluded from the test set}\label{tab:heudiresults}
@@ -646,7 +660,7 @@ These results show that \gls{DDS} outperformed \gls{HC} both in terms of the ove
 \label{sec:discussion}
 Our results show that it is possible to use a \gls{CNN} to automatically identify the \gls{type} of brain \gls{MRI} \glspl{scan} and use this to sort a large, heterogeneous \gls{ds}.
 Because of the high accuracy of our method, it can be used virtually without manual verification.
-The \gls{CNN} performed well both for \glspl{scan} with and without the presence of a tumor.
+The \gls{CNN} performed well both for \glspl{scan} with and without the presence of a \gls{tumor}.
 The performance of our method generalizes well across \glspl{scan} from different \glspl{site}, scanners, \glspl{sub}, and scan protocols.
 Our method was also able to correctly predict the \gls{type} of \glspl{scan} that had poor imaging quality or contained imaging artifacts, as can be seen in \cref{app:randomtumorsample}.
 The \gls{CNN} focused mainly on the ventricles, areas close to the skull, and the \gls{CSF} at the edges of the brain.
@@ -724,7 +738,7 @@ Although it is possible that there were still some incorrectly annotated \glspl{
 
 \caption{Examples of \glspl{scan} our method misclassified (\protect\subref{fig:RIDER_FLAIR} and \protect\subref{fig:T2_hippo}) and a correctly classified \gls{scan} \protect\subref{fig:IvyGAP_FLAIR} as comparison, along with their saliency maps.
 The \gls{FLAIR} \gls{scan} in \protect\subref{fig:RIDER_FLAIR} is probably misclassified as its appearance is very different from \gls{FLAIR} \glspl{scan} that were in the train \gls{ds}.
-The \gls{T2} \gls{scan} in \protect\subref{fig:T2_hippo} is probably misclassified because it has a very limited field of view.}
+The \gls{T2} \gls{scan} in \protect\subref{fig:T2_hippo} is probably misclassified because it has a very limited field of view}
 \label{fig:FLAIR_comparison}
 
 \end{figure}
@@ -738,7 +752,7 @@ Instead, by using a \gls{CNN}, no features had to be defined as the \gls{CNN} au
 The \gls{CNN} also does not require a brain mask, as it has learned to ignore the background and focus on the brain itself, as shown by the saliency maps.
 
 We opted for a 2D \gls{CNN} instead of a 3D \gls{CNN}, because this allowed us to extract a larger region of the \gls{scan} to be used as an input for the \gls{CNN}.
-By using a 2D \gls{CNN}, this region could encompass a full slice of the brain enabling the \gls{CNN} to learn features that capture the relative differences in appearance of the various tissue types (white matter, gray matter, CSF, bone, skin, etc.), which are characteristic of the \gls{type}.
+By using a 2D \gls{CNN}, this region could encompass a full slice of the brain enabling the \gls{CNN} to learn features that capture the relative differences in appearance of the various tissue types (white matter, gray matter, \acrshort{CSF}, bone, skin, etc.), which are characteristic of the \gls{type}.
 Furthermore, because a 2D \gls{CNN} typically requires less memory than a 3D \gls{CNN} \autocite{prasoon2013deep}, it requires less computational power (making our method accessible to a broader audience), and also requires less time to train and evaluate \autocite{rongjian2014deep}.
 
 Our method achieved a better overall accuracy and per-class accuracy than \gls{HC}.
@@ -800,7 +814,7 @@ During the splitting, all \glspl{slice} of a \gls{scan} where either all in the 
 We compared five different \gls{CNN} architectures: the architecture proposed in this paper, Alexnet \autocite{krizhevsky2012imagenet}, ResNet18 \autocite{he2016deep}, DenseNet121 \autocite{huang2017densely} and VGG19 \autocite{simonyan2014very}.
 For all networks, the same pre-processing approach as described in \cref{sec:preprocessing} was used, with the optimizer settings as described in \cref{sec:network}.
 The only difference was that the learning rate reduction was based on the validation loss instead of the training loss.
-For the VGG19 model, the initial learning rate was lowered to 0.0001, as the model would otherwise get stuck in a poor minimum early in the training stage.
+For the VGG19 model, the initial learning rate was lowered to \num{0.0001}, as the model would otherwise get stuck in a poor minimum early in the training stage.
 Different pre-processing settings (e.g. different normalization settings) and model settings (e.g. learning rate) were tested.
 However, here we show only the effect of the different architectures using the same pre-processing settings for all models to make a fair comparison and since we obtained the best results using these pre-processing settings.
 
@@ -815,10 +829,10 @@ Selecting the least computationally intensive model allows a wider adoption of o
 
 We also trained two 3D models to compare their performance with the 2D models.
 In the case of the 3D models, most of the pre-processing steps were kept the same, apart from the \gls{slice} extraction.
-Instead of extracting 25 \glspl{slice}, 3D patches with a size of $90\times90\times15$ voxels were extracted.
-A maximum of 10 patches per \gls{scan} were extracted, in such a way that they covered as much of the (geometrical) center of the \gls{scan} as possible to ensure that the patches contained brain and not just background.
+Instead of extracting \num{25} \glspl{slice}, 3D patches with a size of $90\times90\times15$ voxels were extracted.
+A maximum of \num{10} patches per \gls{scan} were extracted, in such a way that they covered as much of the (geometrical) center of the \gls{scan} as possible to ensure that the patches contained brain and not just background.
 We trained a 3D ResNet18 and a 3D DenseNet121; the learning curves can be seen in \cref{fig:DenseNet3D} and \cref{fig:ResNet3D}.
-These 3D architectures achieved a lower validation accuracy than their 2D counterparts, 0.87 versus 0.98 for the DenseNet model and 0.83 versus 0.97 for the ResNet model.
+These 3D architectures achieved a lower validation accuracy than their 2D counterparts, \num{0.87} versus \num{0.98} for the DenseNet model and \num{0.83} versus \num{0.97} for the ResNet model.
 These results justified our choice for a 2D model, which not only achieved a higher accuracy but was also less computationally intensive.
 
 
@@ -870,17 +884,17 @@ These results justified our choice for a 2D model, which not only achieved a hig
 
 \begin{table}[H]
  \centering
-  \begin{tabular}{L{2.5cm}C{2cm}C{2cm}C{2cm}}
+  \begin{tabular}{L{2.5cm}S[table-format=1.3]S[table-format=1.3]S[table-format=2.1]}
       \toprule
-& \textbf{Train} & \textbf{Validation} & \textbf{Training time (h)}\\
+& {\textbf{Train}} & {\textbf{Validation}} & {\textbf{Training time (h)}}\\
     \midrule
-    \textit{Our model} & 0.999 & 0.971 & 14.8\\
-    \textit{2D AlexNet} & 0.255 & 0.255 & 11.0\\
-    \textit{2D DensNet121} & 1.000 & 0.980 & 21.8\\
-    \textit{2D ResNet18} & 1.000 & 0.973 & 26.4\\
-    \textit{2D VGG19} & 1.000 & 0.948 & 34.6\\
-    \textit{3D DenseNet121} & 1.000 & 0.868 & 22.9\\
-    \textit{3D ResNet18} & 1.000 & 0.832 & 27.7\\
+    Our model & 0.999 & 0.971 & 14.8\\
+    2D AlexNet & 0.255 & 0.255 & 11.0\\
+    2D DensNet121 & 1.000 & 0.980 & 21.8\\
+    2D ResNet18 & 1.000 & 0.973 & 26.4\\
+    2D VGG19 & 1.000 & 0.948 & 34.6\\
+    3D DenseNet121 & 1.000 & 0.868 & 22.9\\
+    3D ResNet18 & 1.000 & 0.832 & 27.7\\
   \bottomrule
   \end{tabular}
   \caption{Overall training accuracy, overall validation accuracy, and the time it took to train each network for the different network architectures test in the model parameter selection.
@@ -895,49 +909,56 @@ These results justified our choice for a 2D model, which not only achieved a hig
 
 The confusion matrices for Experiment I (\cref{tab:seqresults}) and Experiment II (\cref{tab:confusion_adni}), which show the relation between the ground truth \gls{type} and the predicted \gls{type}.
 
-\begin{table}[ht]
- \centering
+{    % for making group where "\makegapedcells" is valid
+\begin{table}[htbp]
+\makegapedcells
+% \hspace*{-2cm}
+% \centering
+\begin{tabular}{cc|cccccccc}
+\multicolumn{2}{c}{}
+            &   \multicolumn{8}{c}{\textbf{Predicted}} \\
+    &       &   \rotatebox{-45}{\acrshort{T1}} & \rotatebox{-45}{\shortstack{\acrshort{T1C}}} & \rotatebox{-45}{\acrshort{T2}}  &  \rotatebox{-45}{\acrshort{PD}} & \rotatebox{-45}{\shortstack{T2w-\\FLAIR}}& \rotatebox{-45}{\acrshort{DWI}} & \rotatebox{-45}{\acrshort{DSC}} & \rotatebox{-45}{Derived}\\
+    \cline{2-10}
+\multirow{8}{*}{\rotatebox[origin=c]{90}{\textbf{Ground truth}\hspace{3cm}}}
+    &\acrshort{T1}    & 433    & 2 & 0 & 1 & 0 &0 & 0 & 0\\[2ex]
+    &\acrshort{T1C} & 2 & 608 & 0 & 0 & 0 & 0 & 0 & 0 \\[2ex]
+    &\acrshort{T2} & 1    & 2    & 292   & 0     & 0     & 0     & 0   & 0\\[2ex]
+    &\acrshort{PD} & 0    & 0    & 0     & 181   & 0     & 0     & 0   & 0 \\[2ex]
+    &\acrshort{FLAIR}    & 18   & 0    & 0     & 0     & 238   & 0     & 0   & 0\\[2ex]
+    &\acrshort{DWI}          & 0    & 0    & 0     & 0     & 0     & 344   & 2   & 1 \\[2ex]
+    &\acrshort{DSC}      & 0    & 0    & 0     & 0     & 0     & 0     & 87 & 0 \\[2ex]
+    &Derived      & 0    & 0    & 1     & 0     & 0     & 0     & 0   & 156\\[2ex]
+    \cline{2-10}
+    \end{tabular}
+    \caption{Confusion matrix of results from Experiment I}\label{tab:seqresults}
+\end{table}
+ }
 
- \setlength{\tabcolsep}{2pt}
-  \begin{tabular}{lr C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm}}
-    \multirow{7}{*}{\bfseries \raggedleft \rotatebox{90}{Ground truth\hspace{4em}}}&
-  \multicolumn{8}{c}{{\bfseries \hspace{8em} Predicted}}\\
-  \cmidrule(lr){3-10}
- & & \textit{\gls{T1}} & \textit{\gls{T1C}} & \textit{\gls{T2}} & \textit{\gls{PD}} & \textit{\gls{FLAIR}} & \textit{\gls{DWI}} & \textit{\gls{DSC}} & \textit{Derived}\\
- &\multicolumn{1}{|c}{\textit{\gls{T1}}}          & 433  & 2    & 0     & 1     & 0     & 0     & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{T1C}}}         & 2    & 608  & 0     & 0     & 0     & 0     & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{T2}}}          & 1    & 2    & 292   & 0     & 0     & 0     & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{PD}}}          & 0    & 0    & 0     & 181   & 0     & 0     & 0   & 0 \\
- &\multicolumn{1}{|c}{\textit{\gls{FLAIR}}}    & 18   & 0    & 0     & 0     & 238   & 0     & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{DWI}}}          & 0    & 0    & 0     & 0     & 0     & 344   & 2   & 1 \\
- &\multicolumn{1}{|c}{\textit{\gls{DSC}}}      & 0    & 0    & 0     & 0     & 0     & 0     & 87 & 0 \\
- &\multicolumn{1}{|c}{\textit{Derived}}      & 0    & 0    & 1     & 0     & 0     & 0     & 0   & 156\\
-  \end{tabular}
-  \caption{Confusion matrix of results from Experiment I}\label{tab:seqresults}
-
+ {    % for making group where "\makegapedcells" is valid
+\begin{table}[htbp]
+\makegapedcells
+% \hspace*{-2cm}
+% \centering
+\begin{tabular}{cc|cccccccc}
+\multicolumn{2}{c}{}
+            &   \multicolumn{8}{c}{\textbf{Predicted}} \\
+    &       &   \rotatebox{-45}{\acrshort{T1}} & \rotatebox{-45}{\shortstack{\acrshort{T1C}}} & \rotatebox{-45}{\acrshort{T2}}  &  \rotatebox{-45}{\acrshort{PD}} & \rotatebox{-45}{\shortstack{T2w-\\FLAIR}}& \rotatebox{-45}{\acrshort{DWI}} & \rotatebox{-45}{\acrshort{DSC}} & \rotatebox{-45}{Derived}\\
+    \cline{2-10}
+    \multirow{8}{*}{\rotatebox[origin=c]{90}{\textbf{Ground truth}\hspace{3cm}}}
+    &\acrshort{T1}        & 2655  & 1    & 0    & 0     & 0     & 0     & 0   & 0\\[2ex]
+    &\acrshort{T1C}         & 0    & 0    & 0     & 0     & 0     & 0     & 0   & 0\\[2ex]
+    &\acrshort{T2}          & 0    & 34   & 2140  & 44    & 0     & 0     & 0   & 0\\[2ex]
+    &\acrshort{PD}          & 0    & 0    & 2     & 1067  & 0     & 0     & 0   & 0 \\[2ex]
+    &\acrshort{FLAIR}    & 6    & 5    & 0     & 1     & 468   & 12    & 0   & 0\\[2ex]
+    &\acrshort{DWI}          & 0    & 0    & 0     & 0     & 0     & 557   & 3   & 0 \\[2ex]
+    &\acrshort{DSC}      & 0    & 0    & 0     & 0     & 0     & 0     & 0   & 0 \\[2ex]
+    &Derived      & 0    & 0    & 1     & 0     & 0     & 3     & 0    & 228\\[2ex]
+   \cline{2-10}
+    \end{tabular}
+    \caption{Confusion matrix of results from Experiment II}\label{tab:confusion_adni}
 \end{table}
 
-\begin{table}[ht]
- \centering
-
- \setlength{\tabcolsep}{2pt}
-  \begin{tabular}{lr C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.1cm}}
-    \multirow{7}{*}{\bfseries \raggedleft \rotatebox{90}{Ground truth\hspace{4em}}}&
-  \multicolumn{8}{c}{{\bfseries \hspace{8em} Predicted}}\\
-  \cmidrule(lr){3-10}
- & & \textit{\gls{T1}} & \textit{\gls{T1C}} & \textit{\gls{T2}} & \textit{\gls{PD}} & \textit{\gls{FLAIR}} & \textit{\gls{DWI}} & \textit{\gls{DSC}} & \textit{Derived}\\
- &\multicolumn{1}{|c}{\textit{\gls{T1}}}          & 2655  & 1    & 0    & 0     & 0     & 0     & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{T1C}}}         & 0    & 0    & 0     & 0     & 0     & 0     & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{T2}}}          & 0    & 34   & 2140  & 44    & 0     & 0     & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{PD}}}          & 0    & 0    & 2     & 1067  & 0     & 0     & 0   & 0 \\
- &\multicolumn{1}{|c}{\textit{\gls{FLAIR}}}    & 6    & 5    & 0     & 1     & 468   & 12    & 0   & 0\\
- &\multicolumn{1}{|c}{\textit{\gls{DWI}}}          & 0    & 0    & 0     & 0     & 0     & 557   & 3   & 0 \\
- &\multicolumn{1}{|c}{\textit{\gls{DSC}}}      & 0    & 0    & 0     & 0     & 0     & 0     & 0   & 0 \\
- &\multicolumn{1}{|c}{\textit{Derived}}      & 0    & 0    & 1     & 0     & 0     & 3     & 0    & 228\\
-  \end{tabular}
-  \caption{Confusion matrix of results from Experiment II}\label{tab:confusion_adni}
-
-\end{table}
+ }
 
 
 \clearpage
@@ -950,20 +971,20 @@ These results are obtained by comparing the predicted \gls{class} of a \gls{slic
 
 \begin{table}[ht]
  \centering
-  \begin{tabular}{rC{4cm}C{3cm}}
+  \begin{tabular}{lS[table-format=1.3]S[table-format=1.3]}
       \toprule
-& \textbf{Experiment I} & \textbf{Experiment II}\\
+& {\textbf{Experiment I}} & {\textbf{Experiment II}}\\
     \midrule
-  \textit{Overall}    & 0.934 & 0.851\\
+  Overall    & 0.934 & 0.851\\
   \cmidrule{2-3}
-  \textit{\gls{T1}}        & 0.942 & 0.814\\
-  \textit{\gls{T1C}}       & 0.940 & N/A\\
-  \textit{\gls{T2}}        & 0.926 & 0.894\\
-  \textit{\gls{PD}}        & 0.905 & 0.914\\
-  \textit{\gls{FLAIR}}  & 0.879 & 0.592\\
-  \textit{\gls{DWI}}        & 0.985 & 0.943\\
-  \textit{\gls{DSC}}    & 0.925 & N/A\\
-  \textit{Derived}    & 0.990 & 0.908\\
+  \acrshort{T1}        & 0.942 & 0.814\\
+  \acrshort{T1C}       & 0.940 & {\NA}\\
+  \acrshort{T2}        & 0.926 & 0.894\\
+  \acrshort{PD}        & 0.905 & 0.914\\
+  \acrshort{FLAIR}  & 0.879 & 0.592\\
+  \acrshort{DWI}        & 0.985 & 0.943\\
+  \acrshort{DSC}    & 0.925 & {\NA}\\
+  Derived    & 0.990 & 0.908\\
   \bottomrule
   \end{tabular}
   \caption{Overall accuracy and per-class accuracy achieved by \gls{DDS} in Experiment I and Experiment II on a per-\gls{slice} basis}\label{tab:acc_slices}
@@ -979,17 +1000,17 @@ We did so by assuming the hypothetical situation where one has an automated tool
 The manual sorting was simulated by iterating over all \glspl{scan} in a \gls{ses} in random order until either the \gls{T1C} and \gls{FLAIR} \glspl{scan} were found or until there were no more \glspl{scan} to check.
 The sorting of the \gls{ds} using \gls{HC} or \gls{DDS} was simulated by first iterating over all \glspl{scan} that were predicted as a \gls{T1C} or \gls{FLAIR} by these methods, and checking whether that prediction was correct.
 If the predicted \gls{type} was incorrect, the same approach as for the manual sorting was followed to find the correct \glspl{scan}.
-We assumed that, on average, a human required 25 seconds per \gls{scan} to visually identify the correct \gls{type}.
+We assumed that, on average, a human required \num{25} seconds per \gls{scan} to visually identify the correct \gls{type}.
 By multiplying this time per \gls{scan} with the total number of \glspl{scan} that were iterated over, we obtained an estimate for the total time taken by each method to find the \gls{T1C} and \gls{FLAIR} \glspl{scan}.
 We used the \gls{BTtest} to evaluate the timing results, since \gls{HC} was only optimized for the \gls{BTset}.
 
 \subsection{Results}
-The time required to identify the \gls{T1C} and \gls{FLAIR} \gls{scan} for each \gls{ses} in the \gls{BTtest} by hand was estimated to be 29.0 hours.
-The estimated time required to check and correct the automated \gls{type} recognition by \gls{HC} was 35.7 hours, which excludes the time required to construct the heuristic.
-If the automated \gls{type} recognition was done by \gls{DDS} instead, we estimated that 12.3 hours of manual time were required.
-The time required to run the \gls{DDS} pipeline on the \gls{ds} was 61.5 minutes using an Intel Xeon Processor E5-2690 v3 for pre-processing and post-processing, and an Nvidia Tesla K40m GPU to classify the \glspl{sample} using the \gls{CNN}.
-If the \glspl{scan} identified by \gls{DDS} were used without a manual check, in which case the total sorting time was only 61.5 minutes, 527 \glspl{scan} would have been correctly identified.
-Four \glspl{scan} were incorrectly identified as a \gls{T1C} or \gls{FLAIR} \gls{scan}, for one \gls{ses} the \gls{T1C} would not have been found, and for 8 \glspl{ses} the \gls{FLAIR} would not have been found.
+The time required to identify the \gls{T1C} and \gls{FLAIR} \gls{scan} for each \gls{ses} in the \gls{BTtest} by hand was estimated to be \num{29.0} hours.
+The estimated time required to check and correct the automated \gls{type} recognition by \gls{HC} was \num{35.7} hours, which excludes the time required to construct the heuristic.
+If the automated \gls{type} recognition was done by \gls{DDS} instead, we estimated that \num{12.3} hours of manual time were required.
+The time required to run the \gls{DDS} pipeline on the \gls{ds} was \num{61.5} minutes using an Intel Xeon Processor E5-2690 v3 for pre-processing and post-processing, and an Nvidia Tesla K40m GPU to classify the \glspl{sample} using the \gls{CNN}.
+If the \glspl{scan} identified by \gls{DDS} were used without a manual check, in which case the total sorting time was only \num{61.5} minutes, \num{527} \glspl{scan} would have been correctly identified.
+Four \glspl{scan} were incorrectly identified as a \gls{T1C} or \gls{FLAIR} \gls{scan}, for one \gls{ses} the \gls{T1C} would not have been found, and for \num{8} \glspl{ses} the \gls{FLAIR} would not have been found.
 
 It should be noted that with the automated methods (\gls{DDS} and \gls{HC}), one gets a fully sorted \gls{ds}, whereas the sorting by hand still requires the sorting of the \glspl{scan} that were not yet identified.
 
@@ -998,21 +1019,21 @@ It should be noted that with the automated methods (\gls{DDS} and \gls{HC}), one
 \section{Saliency map for full \glsfmtlong{scan}}
 \label{app:saliency}
 
-\cref{fig:saliency_lower_slices} and \cref{fig:saliency_upper_slices} show the saliency maps for all 25 \glspl{slice} from the \glspl{scan} of the example \gls{sub} from \cref{fig:seq_examples}.
+\cref{fig:saliency_lower_slices} and \cref{fig:saliency_upper_slices} show the saliency maps for all \num{25} \glspl{slice} from the \glspl{scan} of the example \gls{sub} from \cref{fig:seq_examples}.
 The \gls{CNN} seems to focus on the same features as in \cref{fig:seq_gradcam}, mostly on the ventricles and on the \gls{CSF} at the edges of the brain.
-In the superior \glspl{slice} of the \gls{scan}, it can be seen that the presence of a tumor does not disrupt the \gls{CNN}.
-Although it looks at the edge of the tumor, it does not put a lot of focus on the tumor itself.
+In the superior \glspl{slice} of the \gls{scan}, it can be seen that the presence of a \gls{tumor} does not disrupt the \gls{CNN}.
+Although it looks at the edge of the \gls{tumor}, it does not put a lot of focus on the \gls{tumor} itself.
 For the most superior \glspl{slice} of \gls{T1}, \gls{T1C} and \gls{T2} it can be seen that when the brain is no longer present in the \gls{slice} the \gls{CNN} loses it focus and seems to look randomly throughout the \gls{slice}.
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{Figures/Appendix/attention_overview_slices_0_12.pdf}
-\caption{Saliency maps for \glspl{slice} 1 through 13 of the \gls{sub} from \cref{fig:seq_examples}}
+\caption{Saliency maps for \glspl{slice} \num{1} through \num{13} of the \gls{sub} from \cref{fig:seq_examples}}
 \label{fig:saliency_lower_slices}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{Figures/Appendix/attention_overview_slices_13_24.pdf}
-\caption{Saliency maps for \glspl{slice} 14 through 25 of the \gls{sub} from \cref{fig:seq_examples}}
+\caption{Saliency maps for \glspl{slice} \num{14} through \num{25} of the \gls{sub} from \cref{fig:seq_examples}}
 \label{fig:saliency_upper_slices}
 \end{figure}
 
@@ -1025,19 +1046,19 @@ For the most superior \glspl{slice} of \gls{T1}, \gls{T1C} and \gls{T2} it can b
 \subsection{Random samples from the \gls{BTtest}}
 \label{app:randomtumorsample}
 
-To show the robustness of our method to differences in \gls{scan} appearance, as well as to imaging artifacts, we have randomly selected 20 \glspl{slice} of each \gls{type} from the \gls{BTtest}.
+To show the robustness of our method to differences in \gls{scan} appearance, as well as to imaging artifacts, we have randomly selected \num{20} \glspl{slice} of each \gls{type} from the \gls{BTtest}.
 All of these \glspl{slice} were then passed through the \gls{CNN}, and we determined the saliency maps along with the predicted \gls{class} of each \gls{slice}.
 This is the prediction based on the \gls{slice} itself, and thus before the majority vote.
 The saliency maps and predicted \glspl{type} are shown in \cref{fig:random_1} and \cref{fig:random_2}.
 We have highlighted \glspl{slice} that contain imaging artifacts (\textcolor{red}{$\dagger$}), have a poor image quality (\textcolor{green}{$\dagger$}), and \glspl{sub} with a large head tilt  (\textcolor{cyan}{$\dagger$}).
-These saliency maps show that the \gls{CNN} is quite robust to the presence of a tumor, the presence of imaging artifacts, or poor image quality, in most cases the \gls{CNN} still predicts the correct \gls{type}.
-%
+These saliency maps show that the \gls{CNN} is quite robust to the presence of a \gls{tumor}, the presence of imaging artifacts, or poor image quality, in most cases the \gls{CNN} still predicts the correct \gls{type}.
+
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Figures/Appendix/Random_saliency_1}
 
-    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{BTtest}.}
+    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{BTtest}}
     \label{fig:random_1}
 \end{figure}
 
@@ -1045,7 +1066,7 @@ These saliency maps show that the \gls{CNN} is quite robust to the presence of a
     \centering
     \includegraphics[width=\textwidth]{Figures/Appendix/Random_saliency_2}
 
-    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{BTtest}.}
+    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{BTtest}}
     \label{fig:random_2}
 \end{figure}
 
@@ -1063,7 +1084,7 @@ We have highlighted \glspl{slice} that contain imaging artifacts, including hipp
     \centering
     \includegraphics[width=\textwidth]{Figures/Appendix/ADNI_random_saliency_1.pdf}
 
-    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{NTTS}.}
+    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{NTTS}}
     \label{fig:random_adni_1}
 \end{figure}
 
@@ -1071,7 +1092,7 @@ We have highlighted \glspl{slice} that contain imaging artifacts, including hipp
     \centering
     \includegraphics[width=\textwidth]{Figures/Appendix/ADNI_random_saliency_2.pdf}
 
-    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{NTTS}.}
+    \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{NTTS}}
     \label{fig:random_adni_2}
 \end{figure}
 
@@ -1092,13 +1113,13 @@ In the case of the \gls{T1} \gls{slice}, there were two out of five \glspl{slice
 This is most likely caused by the \gls{CNN} having learned that a \gls{T1} and \gls{T1C} \gls{scan} have a similar appearance in general, but that the \gls{T1C} \gls{scan} has brighter spots.
 In two cases the \gls{DSC} \gls{slice} was misclassified as a \gls{DWI}.
 Probably this is caused by the \gls{CNN} seeing the random brightness spots outside the skull as imaging artifacts, which often show up in \gls{DWI} \glspl{scan} and less so in \gls{DSC} \glspl{scan}.
-Although the \gls{CNN} misclassified the \gls{T1} and \gls{DSC} \glspl{slice} in some cases, when bright spots were introduced on all 25 \glspl{slice} of the \gls{T1} and \gls{DSC} \glspl{scan} (randomly for each \gls{slice}) and then passed through the network, the \gls{CNN} still predicted the correct \gls{type} of the \gls{scan} after the majority vote.
+Although the \gls{CNN} misclassified the \gls{T1} and \gls{DSC} \glspl{slice} in some cases, when bright spots were introduced on all \num{25} \glspl{slice} of the \gls{T1} and \gls{DSC} \glspl{scan} (randomly for each \gls{slice}) and then passed through the network, the \gls{CNN} still predicted the correct \gls{type} of the \gls{scan} after the majority vote.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Figures/Appendix/saliency_noise.pdf}
     \caption{Saliency maps and predicted \glspl{type} of the derived \glspl{slice} from \cref{fig:seq_examples} after randomly setting some pixels to the maximum intensity.
-    Every time the \gls{slice} with the added noise is shown, followed by the saliency map and predicted \gls{type} for the same \gls{slice} in the row below.}
+    Every time the \gls{slice} with the added noise is shown, followed by the saliency map and predicted \gls{type} for the same \gls{slice} in the row below}
     \label{fig:bright_noise}
 \end{figure}
 
@@ -1117,13 +1138,11 @@ It can be seen that some filters mainly identify the skull (for example, filter 
     \begin{figure}[ht]
         \centering
         \includegraphics[width=\textwidth]{Figures/Appendix/Filters/T1_conv2d_\layer.pdf}
-        \caption{Feature map visualizations of the trained CNN from Experiment I. These visualization were obtained by passing a \gls{T1}~\gls{slice} through the network, and showing the results directly after convolutional layer \layer.
-        The \gls{slice} is the same as the one shown in \cref{fig:seq_examples}.}
+        \caption{Feature map visualizations of the trained \acrshort{CNN} from Experiment I. These visualization were obtained by passing a \gls{T1}~\gls{slice} through the network, and showing the results directly after convolutional layer \layer.
+        The \gls{slice} is the same as the one shown in \cref{fig:seq_examples}}
         \label{fig:filter_result_T1_\layer}
 
     \end{figure}
 }
-
-\clearpage
 
 \end{subappendices}
