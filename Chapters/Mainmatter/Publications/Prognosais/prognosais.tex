@@ -66,7 +66,6 @@ The patients in the train set originated from nine different data collections an
 
 \begin{table}[htbp]
 \centering
-\caption{Patient characteristics for the train set and test set.}\label{tab:patient_char}
 \begin{tabular}{l r r C{0.5cm} r r}
 \toprule
 &\multicolumn{2}{c}{\textbf{Train set}} && \multicolumn{2}{c}{\textbf{Test set}}\\
@@ -105,6 +104,7 @@ Segmentation\\
 
 \bottomrule
 \end{tabular}
+\caption{Patient characteristics for the train set and test set.}\label{tab:patient_char}
 
 {\small \raggedright \acrcaption{IDH}, \acrcaption{WHO}, \acrcaption{GBM} \par}
 \end{table}
@@ -136,7 +136,6 @@ In \cref{app:seg_examples_random} we show five patients that were randomly selec
 
 \begin{table}[htbp]
     \centering
-    \caption{Evaluation results of the final model on the test set.}\label{tab:cnn_results}
     \begin{tabular}{llC{1.7cm}C{1.7cm}C{1.7cm}C{1.7cm}}
         \toprule
         \thead{Patient\\group} & Task &  AUC & Accuracy & Sensitivity & Specificity \\
@@ -158,6 +157,7 @@ In \cref{app:seg_examples_random} we show five patients that were randomly selec
         HGG & IDH &  0.64 & 0.94 & 0.40 & 0.96\\
         \bottomrule
         \end{tabular}
+        \caption{Evaluation results of the final model on the test set.}\label{tab:cnn_results}
 
         {\small \raggedright Abbreviations: \acrcaption{AUC}, \acrcaption{IDH}, \acrcaption{LGG}, \acrcaption{HGG} \par}
 \end{table}
@@ -563,7 +563,6 @@ Thus, although our method wrongly predicted the WHO 2016 subtype, it might actua
 
 {    % for making group where "\makegapedcells" is valid
 \begin{table}[htbp]
-\caption{Confusion matrix of the IDH predictions.}\label{tab:conf_IDH}
 \makegapedcells
 \begin{tabular}{cc|cc}
 \multicolumn{2}{c}{}
@@ -575,12 +574,13 @@ Thus, although our method wrongly predicted the WHO 2016 subtype, it might actua
     & Mutated    & 25    & 63                \\
     \cline{2-4}
     \end{tabular}
+    \caption{Confusion matrix of the IDH predictions.}\label{tab:conf_IDH}
+
 \end{table}
  }
 
  {    % for making group where "\makegapedcells" is valid
 \begin{table}[htbp]
-    \caption{Confusion matrix of the 1p/19q predictions.}\label{tab:conf_1p19q}
 \makegapedcells
 \begin{tabular}{cc|cc}
 \multicolumn{2}{c}{}
@@ -592,12 +592,12 @@ Thus, although our method wrongly predicted the WHO 2016 subtype, it might actua
     & Co-deleted    & 16    & 10                \\
     \cline{2-4}
     \end{tabular}
+    \caption{Confusion matrix of the 1p/19q predictions.}\label{tab:conf_1p19q}
 \end{table}
  }
 
  {    % for making group where "\makegapedcells" is valid
  \begin{table}[htbp]
-    \caption{Confusion matrix of the grade predictions.}\label{tab:conf_grade}
  \makegapedcells
  \begin{tabular}{cc|ccc}
  \multicolumn{2}{c}{}
@@ -610,6 +610,8 @@ Thus, although our method wrongly predicted the WHO 2016 subtype, it might actua
      & Grade IV    & 2    & 5 & 125                \\
      \cline{2-5}
      \end{tabular}
+     \caption{Confusion matrix of the grade predictions.}\label{tab:conf_grade}
+
  \end{table}
   }
 
@@ -617,9 +619,6 @@ Thus, although our method wrongly predicted the WHO 2016 subtype, it might actua
   {    % for making group where "\makegapedcells" is valid
   \begin{table}[htbp]
     \footnotesize
-     \caption{Confusion matrix of the WHO 2016 predictions.
-     The 'other' category indicates patients that were predicted as a non-existing WHO 2016 subtype, for example IDH wildtype, 1p/19q co-deleted tumors.
-      Only one patient (TCGA-HT-A5RC) was predicted as a non-existing category. It was predicted as an IDH wildtype, 1p/19q co-deleted, grade IV tumor.}\label{tab:conf_who}
   \makegapedcells
   \hspace*{-2cm}
   \begin{tabular}{cc|cccccc}
@@ -635,6 +634,9 @@ Thus, although our method wrongly predicted the WHO 2016 subtype, it might actua
       & \shortstack{IDH-wildtype\\glioblastoma} & 0 & 3 &  3 & 1 & 96 & 0 \\[2ex]
       \cline{2-8}
       \end{tabular}
+      \caption{Confusion matrix of the WHO 2016 predictions.
+      The 'other' category indicates patients that were predicted as a non-existing WHO 2016 subtype, for example IDH wildtype, 1p/19q co-deleted tumors.
+       Only one patient (TCGA-HT-A5RC) was predicted as a non-existing category. It was predicted as an IDH wildtype, 1p/19q co-deleted, grade IV tumor.}\label{tab:conf_who}
       {\small \raggedright Oligodendroglioma are IDH-mutated, 1p/19q co-deleted, grade II/III gioma.\\
       IDH-mutated astrocytoma are IDH-mutated, 1p/19q intact, grade II/III glioma.\\
       IDH-wildtype astrocytoma are IDH-wildtype, 1p/19q intact, grade II/III glioma.\\
@@ -1150,7 +1152,6 @@ In this way, we could counteract the effect of certain outputs having more known
 
 \begin{table}[htbp]
 \centering
-\caption{Hyperparameters that were tuned, and the values that were tested. Values in bold show the selected values used in the final model.}
 \begin{tabular}{ll}
 \toprule
 Tuning parameter & Tested values\\
@@ -1163,6 +1164,7 @@ Augmentation factor & 1, \textbf{2}, 3\\
 Augmentation probability & 0.25, 0.30, \textbf{0.35}, 0.40, 0.45\\
 \bottomrule
 \end{tabular}
+\caption{Hyperparameters that were tuned, and the values that were tested. Values in bold show the selected values used in the final model.}
 \end{table}
 
 \newpage
