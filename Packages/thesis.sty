@@ -78,7 +78,7 @@ sortcites=true]{biblatex}
 % Make sure we have consistent quotations everywhere
 \usepackage{dirtytalk}
 % Automatically format numbers
-\usepackage{siunitx}
+\usepackage[separate-uncertainty = true]{siunitx}
 % Control look of figure and table captions
 \usepackage{caption}
 \usepackage{subcaption}
@@ -94,6 +94,8 @@ sortcites=true]{biblatex}
 \usepackage{fancyhdr}
 % To create outlines around letters
 \usepackage[outline]{contour}
+% Ensure that floats always appaer after their reference
+\usepackage{flafter}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
