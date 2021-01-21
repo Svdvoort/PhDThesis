@@ -1,0 +1,20 @@
+
+\begin{tikzpicture}
+    \definecolor{color0}{HTML}{77AADD}
+    \definecolor{color1}{HTML}{EE8866}
+    \begin{axis}[%
+    hide axis,
+    xmin=10,
+    xmax=50,
+    ymin=0,
+    ymax=0.4,
+    legend style={draw=white!15!black,legend cell align=left}
+    ]
+
+    \addlegendimage{color0, opacity=0.7, line width=5pt}\addlegendentry{\huge Training Loss}
+    \addlegendimage{color0, opacity=0.7, dashed, line width=5pt}\addlegendentry{\huge Validation Loss}
+    \addlegendimage{color1, opacity=0.7, line width=5pt}\addlegendentry{\huge Training Accuracy}
+    \addlegendimage{color1, opacity=0.7, dashed, line width=5pt}\addlegendentry{\huge Validation Accuracy}
+    \end{axis}
+\end{tikzpicture}
+

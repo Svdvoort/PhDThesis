@@ -5,6 +5,9 @@
 \definecolor{color0}{HTML}{77AADD}
 \definecolor{color1}{HTML}{EE8866}
 \pgfplotsset{every tick label/.append style={font=\large}}
+\pgfplotsset{every axis/.append style={
+                    label style={font=\LARGE\bfseries},
+                    }}
 
 
 \begin{axis}[
@@ -14,12 +17,12 @@ minor ytick={},
 tick align=outside,
 tick pos=left,
 x grid style={white!69.0196078431373!black},
-xlabel={\LARGE\textbf{Epoch}},
+xlabel={Epoch},
 xmin=-0.1, xmax=73.5,
 xtick style={color=black},
 xtick={-10,0,10,20,30,40,50,60,70},
 y grid style={white!69.0196078431373!black},
-ylabel={\LARGE\textbf{Loss}},
+ylabel={Loss},
 ymin=0.000422977928408757, ymax=1.54616183762172,
 ymode=log,
 ytick style={color=black},
@@ -99,7 +102,7 @@ table {%
 68 0.00262735078028975
 69 0.00134790036731986
 70 0.00213991094154711
-};\label{train_loss}
+};
 \addplot [line width=2pt, color0, opacity=0.7, dashed]
 table {%
 0 0.55238646608683
@@ -173,7 +176,7 @@ table {%
 68 0.353983637198145
 69 0.353954658891736
 70 0.353978902771475
-};\label{val_loss}
+};
 \end{axis}
 
 \begin{axis}[
@@ -197,10 +200,10 @@ ytick={-0.2,0,0.2,0.4,0.6,0.8,1,1.2},
 yticklabels={−0.2,0.0,0.2,0.4,0.6,0.8,1.0,1.2}
 ]
 
-\addlegendimage{/pgfplots/refstyle=train_loss, line width=5pt}\addlegendentry{\huge Training Loss}
-\addlegendimage{/pgfplots/refstyle=val_loss, line width=5pt}\addlegendentry{\huge Validation Loss}
-\addlegendimage{/pgfplots/refstyle=train_acc, line width=5pt}\addlegendentry{\huge Training Accuracy}
-\addlegendimage{/pgfplots/refstyle=val_acc, line width=5pt}\addlegendentry{\huge Validation Accuracy}
+% \addlegendimage{/pgfplots/refstyle=train_loss, line width=5pt}\addlegendentry{\huge Training Loss}
+% \addlegendimage{/pgfplots/refstyle=val_loss, line width=5pt}\addlegendentry{\huge Validation Loss}
+% \addlegendimage{/pgfplots/refstyle=train_acc, line width=5pt}\addlegendentry{\huge Training Accuracy}
+% \addlegendimage{/pgfplots/refstyle=val_acc, line width=5pt}\addlegendentry{\huge Validation Accuracy}
 \addplot [line width=2pt, color1, opacity=0.7]
 table {%
 0 0.650125
@@ -274,7 +277,7 @@ table {%
 68 0.9991875
 69 0.9994375
 70 0.9994375
-};\label{train_acc}
+};
 \addplot [line width=2pt, color1, opacity=0.7, dashed]
 table {%
 0 0.791285
@@ -348,7 +351,7 @@ table {%
 68 0.97076905
 69 0.9708293
 70 0.9708293
-};\label{val_acc}
+};
 \end{axis}
 
 

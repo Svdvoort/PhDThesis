@@ -197,44 +197,44 @@ An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest
 
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/T1}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/T1}
     \caption{\gls{T1}}\label{fig:T1}
 \end{subfigure}
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/T1GD}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/T1GD}
     \caption{\gls{T1C}}\label{fig:T1GD}
 \end{subfigure}
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/T2}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/T2}
     \caption{\gls{T2}}\label{fig:T2w}
 \end{subfigure}
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/PD}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/PD}
     \caption{\gls{PD}}\label{fig:PDw}
 \end{subfigure}
 
 
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/FLAIR}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/FLAIR}
     \caption{\gls{FLAIR}}\label{fig:FLAIR}
 \end{subfigure}
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/DWI}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/DWI}
     \caption{\gls{DWI}}\label{fig:DWI}
 \end{subfigure}
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/DSC}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/DSC}
     \caption{\gls{DSC}}\label{fig:PWI-DSC}
 \end{subfigure}
 \begin{subfigure}[t]{\figexamplewidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/DERIVED}
+    \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/DERIVED}
     \caption{Derived (ADC)}\label{fig:Derived}
 \end{subfigure}
 \caption{Examples of the different \glspl{type} for a single \gls{sub} from the \gls{BTtest}}\label{fig:seq_examples}
@@ -300,9 +300,7 @@ If one chooses to create a \gls{BIDS} compliant \gls{ds}, the \glspl{scan} are s
 An overview of the \gls{DDS} pipeline is presented in \cref{fig:DDS_pipeline}.
 
 \begin{figure}
-\centering
-
-\includegraphics[width=\textwidth]{Figures/DDS_pipeline.pdf}
+\centering\includegraphics[width=\textwidth]{Figures/DDS_pipeline.pdf}
 \caption{Overview of the \gls{DDS} pipeline.
 \Glspl{scan} are first converted from \gls{DICOM} to \gls{NIFTI} format and pre-processed.
 During the pre-processing the \gls{scan} is split into \num{25} individual \glspl{slice}, that are then classified as one of eight \glspl{type} by the \gls{CNN}.
@@ -573,44 +571,44 @@ Interpreting the deeper convolutional layers gets harder as the feature maps of 
 
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/T1_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip,width=\textwidth]{Figures/T1_saliency}
         \caption{\gls{T1}}\label{fig:T1Cam}
     \end{subfigure}
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/T1GD_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip,width=\textwidth]{Figures/T1GD_saliency}
         \caption{\gls{T1C}}\label{fig:T1GDCam}
     \end{subfigure}
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/T2_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip,width=\textwidth]{Figures/T2_saliency}
         \caption{\gls{T2}}\label{fig:T2wCam}
     \end{subfigure}
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/PD_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip,width=\textwidth]{Figures/PD_saliency}
         \caption{\gls{PD}}\label{fig:PDwCam}
     \end{subfigure}
 
 
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/FLAIR_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip,width=\textwidth]{Figures/FLAIR_saliency}
         \caption{\gls{FLAIR}}\label{fig:FLAIRCam}
     \end{subfigure}
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/DWI_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip,width=\textwidth]{Figures/DWI_saliency}
         \caption{\gls{DWI}}\label{fig:DWICam}
     \end{subfigure}
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/DSC_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip,width=\textwidth]{Figures/DSC_saliency}
         \caption{\gls{DSC}}\label{fig:PWICam}
     \end{subfigure}
     \begin{subfigure}[t]{\figexamplewidth}
         \centering
-        \includegraphics[width=\textwidth]{Figures/DERIVED_saliency}
+        \includegraphics[trim={0.5cm 0cm 0.5cm 1cm}, clip, width=\textwidth]{Figures/DERIVED_saliency}
         \caption{Derived (ADC)}\label{fig:DWI-DCam}
     \end{subfigure}
     \caption{Saliency maps of the \glspl{type}, generated by the \gls{CNN} evaluated on the same \glspl{slice} as in \cref{fig:seq_examples}. This \gls{CNN} was the model obtained in Experiment I}\label{fig:seq_gradcam}
@@ -718,24 +716,24 @@ Although it is possible that there were still some incorrectly annotated \glspl{
     \begin{subfigure}[t]{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figures/FLAIR_Ivy_Saliency}
-        \caption{Saliency map of the correctly classified \gls{scan} from \protect\subref{fig:IvyGAP_FLAIR}}\label{fig:IvyGAP_FLAIR_saliency}
+        \caption{Saliency map of the correctly classified \gls{scan} from \refsubfigure{fig:IvyGAP_FLAIR}}\label{fig:IvyGAP_FLAIR_saliency}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figures/Appendix/FLAIR_RIDER_saliency}
-        \caption{Saliency map of the misclassified \gls{scan} from \protect\subref{fig:RIDER_FLAIR}}\label{fig:RIDER_FLAIR_saliency}
+        \caption{Saliency map of the misclassified \gls{scan} from \refsubfigure{fig:RIDER_FLAIR}}\label{fig:RIDER_FLAIR_saliency}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.25\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figures/Appendix/Saliency_T2_hippo.pdf}
-        \caption{Saliency map of the misclassified \gls{scan} from \protect\subref{fig:T2_hippo}}\label{fig:T2_hippo_saliency}
+        \caption{Saliency map of the misclassified \gls{scan} from \refsubfigure{fig:T2_hippo}}\label{fig:T2_hippo_saliency}
     \end{subfigure}
 
-\caption{Examples of \glspl{scan} our method misclassified (\protect\subref{fig:RIDER_FLAIR} and \protect\subref{fig:T2_hippo}) and a correctly classified \gls{scan} \protect\subref{fig:IvyGAP_FLAIR} as comparison, along with their saliency maps.
-The \gls{FLAIR} \gls{scan} in \protect\subref{fig:RIDER_FLAIR} is probably misclassified as its appearance is very different from \gls{FLAIR} \glspl{scan} that were in the train \gls{ds}.
-The \gls{T2} \gls{scan} in \protect\subref{fig:T2_hippo} is probably misclassified because it has a very limited field of view}\label{fig:FLAIR_comparison}
+\caption{Examples of \glspl{scan} our method misclassified (\refsubfigure{fig:RIDER_FLAIR} and \refsubfigure{fig:T2_hippo}) and a correctly classified \gls{scan} \refsubfigure{fig:IvyGAP_FLAIR} as comparison, along with their saliency maps.
+The \gls{FLAIR} \gls{scan} in \refsubfigure{fig:RIDER_FLAIR} is probably misclassified as its appearance is very different from \gls{FLAIR} \glspl{scan} that were in the train \gls{ds}.
+The \gls{T2} \gls{scan} in \refsubfigure{fig:T2_hippo} is probably misclassified because it has a very limited field of view}\label{fig:FLAIR_comparison}
 
 \end{figure}
 
@@ -840,39 +838,42 @@ These results justified our choice for a 2D model, which not only achieved a hig
 \begin{subfigure}[t]{\modelplotwidth}
     \centering
     \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{DDSNet_2D.pgf}}
-    % \includegraphics[width=\textwidth]{Figures/Appendix/DDSNet_2D.pdf}
     \caption{Model used in \gls{DDS}}\label{fig:DDSNet2D}
 \end{subfigure}
 \begin{subfigure}[t]{\modelplotwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/AlexNet_2D.pdf}
+    \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{AlexNet_2D.pgf}}
     \caption{2D AlexNet}\label{fig:AlexNet2D}
 \end{subfigure}
 \begin{subfigure}[t]{\modelplotwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/DenseNet_2D.pdf}
+    \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{DenseNet_2D.pgf}}
     \caption{2D DenseNet121}\label{fig:DenseNet2D}
 \end{subfigure}
 \begin{subfigure}[t]{\modelplotwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/ResNet_2D.pdf}
+    \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{ResNet_2D.pgf}}
     \caption{2D ResNet18}\label{fig:ResNet2D}
 \end{subfigure}
 
 \begin{subfigure}[t]{\modelplotwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/VGG_2D.pdf}
+    \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{VGG_2D.pgf}}
     \caption{2D VGG19}\label{fig:VGG2D}
 \end{subfigure}
 \begin{subfigure}[t]{\modelplotwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/DenseNet_3D.pdf}
+    \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{DenseNet_3D.pgf}}
     \caption{3D DenseNet121}\label{fig:DenseNet3D}
 \end{subfigure}
 \begin{subfigure}[t]{\modelplotwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/ResNet_3D.pdf}
+    \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{ResNet_3D.pgf}}
     \caption{3D ResNet18}\label{fig:ResNet3D}
+\end{subfigure}
+\begin{subfigure}[b]{\modelplotwidth}
+    \resizebox{\textwidth}{!}{\subimport{Figures/Appendix/}{nets_legend.pgf}}
+    \caption{Legend for all plots}
 \end{subfigure}
 
 \caption{Learning curves of the different network architectures tested in the model parameter selection}\label{fig:modellearningcurves}
@@ -1068,14 +1069,14 @@ We have highlighted \glspl{slice} that contain imaging artifacts, including hipp
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/ADNI_random_saliency_1.pdf}
+    \includegraphics[width=.98\textwidth]{Figures/Appendix/ADNI_random_saliency_1.pdf}
 
     \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{NTTS}}\label{fig:random_adni_1}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{Figures/Appendix/ADNI_random_saliency_2.pdf}
+    \includegraphics[width=.98\textwidth]{Figures/Appendix/ADNI_random_saliency_2.pdf}
 
     \caption{Saliency maps and predicted \gls{type} of randomly drawn \glspl{sample} from the \gls{NTTS}}\label{fig:random_adni_2}
 \end{figure}
@@ -1102,7 +1103,7 @@ Although the \gls{CNN} misclassified the \gls{T1} and \gls{DSC} \glspl{slice} in
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Figures/Appendix/saliency_noise.pdf}
-    \caption{Saliency maps and predicted \glspl{type} of the derived \glspl{slice} from \cref{fig:seq_examples} after randomly setting some pixels to the maximum intensity.
+    \caption{Saliency maps and predicted \glspl{type} of the \glspl{slice} from \cref{fig:seq_examples} after randomly setting some pixels to the maximum intensity.
     Every time the \gls{slice} with the added noise is shown, followed by the saliency map and predicted \gls{type} for the same \gls{slice} in the row below}\label{fig:bright_noise}
 \end{figure}
 
