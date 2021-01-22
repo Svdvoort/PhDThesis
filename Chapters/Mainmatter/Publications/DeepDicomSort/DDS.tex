@@ -1,7 +1,26 @@
 % !TEX root = ../../../../temp_manuscript.tex
 
 \chapter[DeepDicomSort: An automatic sorting algorithm for brain magnetic resonance imaging data][DeepDicomSort]{DeepDicomSort: An automatic sorting algorithm for brain magnetic resonance imaging data}\label{chap:DDS}
+
 \begin{ChapterAbstract}
+    \glsunset{sub}
+\glsunset{ses}
+\glsunset{scan}
+\glsunset{type}
+\glsunset{slice}
+\glsunset{ds}
+\glsunset{sample}
+\glsunset{class}
+\glsunset{HC}
+\glsunset{site}
+\glsunset{NTTS}
+\glsunset{BTtrain}
+\glsunset{BTtest}
+\glsunset{BTset}
+\glsunset{TCGAGBM}
+\glsunset{TCGALGG}
+\glsunset{LGG1p19q}
+\glsunset{BTP}
 With the increasing size of \glspl{ds} used in medical imaging research, the need for automated data curation is arising.
 One important data curation task is the structured organization of a \gls{ds} for preserving integrity and ensuring reusability.
 Therefore, we investigated whether this data organization step can be automated.
@@ -39,6 +58,9 @@ In this way, our method can assist with properly organizing a \gls{ds}, which ma
 \glsunset{TCGALGG}
 \glsunset{LGG1p19q}
 \glsunset{BTP}
+\glsunset{DDS}
+\glsunset{DICOM}
+\glsunset{NIFTI}
 
 \section{Introduction}
 
@@ -63,7 +85,7 @@ This manual labeling can be a very time-consuming task, which hampers scientific
 Similar arguments concerning the complexity of medical imaging data and the importance of data structuring also motivated the creation of the \gls{BIDS} standard \autocite{gorgolewski2016brain}.
 
 Previous research has focused on modality recognition \autocite{dimitrovski2015improved,yu2015modality,arias2016medical}, as well as on distinguishing different modalities of \gls{MRI} \glspl{scan} \autocite{srinivas2014medical,remedios2018classifying}.
-Only one of these studies \autocite{remedios2018classifying} considered the prediction of the \gls{type} of \gls{MRI} \glspl{scan}, who predicted \num{4} \glspl{type}, namely \gls{T1}, \gls{T1C}, fluid-attenuated inversion recovery (FLAIR) and \gls{T2} \glspl{scan}.
+Only one of these studies predicted of the \gls{type} of \gls{MRI} \glspl{scan}, where four \glspl{type} were considered:\gls{T1}, \gls{T1C}, fluid-attenuated inversion recovery (FLAIR), and \gls{T2} \glspl{scan} \autocite{remedios2018classifying}.
 However, with the increasing popularity of multi-parametric \gls{MRI} in machine learning algorithms and automatic pipelines \autocite{li2017deep,akkus2017predicting,nie20163d,pereira2015deep}, the need to recognize more \glspl{type} is arising.
 
 In this research, we propose a method, called \gls{DDS}, that recognizes eight different \glspl{type} of brain \gls{MRI} \glspl{scan}, and facilitates sorting into a structured format.
@@ -111,12 +133,12 @@ A standardized \gls{ds} is a \gls{ds} where the data has been structured accordi
   \\
   \Gls{class} & \NA & An output category of the \gls{CNN}\\
   \\
-  \acrshort{DICOM} & \acrshort{DICOM} & A data format used to store medical imaging data. In addition to the imaging data, \acrshort{DICOM} files can also store metadata about the scanner equipment, the specific imaging protocol and clinical information.\\
+  \acrshort{DICOM} & \acrshort{DICOM} & A data format used to store medical imaging data. In addition to the imaging data, \acrshort{DICOM} files can also store metadata about the scanner equipment, the specific imaging protocol and clinical information\\
   \\
-  \acrshort{NIFTI} & \acrshort{NIFTI} & A data format used to store (neuro) medical imaging data.\\
+  \acrshort{NIFTI} & \acrshort{NIFTI} & A data format used to store (neuro) medical imaging data\\
   \bottomrule
   \end{tabular}
-  \caption{Overview of terminology used in this paper, the corresponding \gls{BIDS} terminology and meaning of each term}\label{tab:terminology}
+  \caption{Overview of terminology used in this paper, the corresponding \gls{BIDS} terminology, and meaning of each term}\label{tab:terminology}
 \end{table}
 
 
@@ -149,7 +171,7 @@ In total, the data originated from \num{8} different \glspl{site}, and the \glsp
 
 For some \glspl{scan}, the scanner type was not available in the \gls{DICOM} tags (\gls{DICOM} tag (0008, 1090)); thus, the data variation in the number of scanners could be even larger.
 
-All \glspl{sub} included in the \gls{BTset} had a (pre-operative or post-operative) brain \gls{tumor}.
+All \glspl{sub} included in the \gls{BTset} had a (preoperative or postoperative) brain \gls{tumor}.
 The \glspl{scan} in the \glspl{ds} were manually sorted, and \gls{T1}, \gls{T1C}, \gls{T2}, \gls{PD}, \gls{FLAIR}, \gls{DWI}, \gls{DSC}, and derived images were identified.
 The different types of derived images were combined into a single category, as the derivation of these images is often inconsistent among scanners and vendors, and thus these images need to be rederived from the raw data (e.g.\ the original \gls{DWI} or \gls{DSC} \gls{scan}).
 
@@ -243,7 +265,7 @@ An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest
 
 \subsubsection{\gls{NTTS}}
 
-In order to evaluate the results of the algorithm on non-\gls{tumor} brain imaging, we used the \gls{ADNI} \gls{ds} (\url{adni.loni.usc.edu}).
+In order to evaluate the results of the algorithm on non-\gls{tumor} brain imaging, we used the \acrfull{ADNI} \gls{ds} (\url{adni.loni.usc.edu}).
 The \gls{ADNI} was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD\@.
 The primary goal of \gls{ADNI} has been to test whether serial magnetic resonance imaging, positron emission tomography, other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of mild cognitive impairment and early Alzheimer's disease.
 For up-to-date information, see \url{adni-info.org}.
@@ -317,9 +339,9 @@ This step was skipped for the \gls{USIGT} and \gls{BITE} \glspl{ds}, as these we
 In the next step, the number of dimensions of each \gls{scan} was automatically determined.
 Although most \glspl{scan} were 3-dimensional, some \glspl{scan} happened to be 4-dimensional.
 This was the case for some \gls{DWI} \glspl{scan}, which consisted of multiple b-values and potentially b-vectors, and for some \gls{DSC} \glspl{scan}, which contained multiple time points.
-If a \gls{scan} was 4-dimensional, the first (3D) element of the sequence was extracted and was subsequently used instead of the full 4-dimensional \gls{scan}.
+If a \gls{scan} was 4-dimensional, the first (3-dimensional) element of the sequence was extracted and was subsequently used instead of the full 4-dimensional \gls{scan}.
 This extraction was done to make sure that the \gls{CNN} would also recognize \glspl{type} that generally contain repeats in situations where this was not the case.
-For example, this could be the case when the different b-values of a \gls{DWI} \gls{scan} were stored as multiple, separate (3D) \glspl{scan} instead of a single (4D) \gls{scan}.
+For example, this could be the case when the different b-values of a \gls{DWI} \gls{scan} were stored as multiple, separate (3-dimensional) \glspl{scan} instead of a single (4-dimensional) \gls{scan}.
 Since the information that a \gls{scan} is 4-dimensional can aid the algorithm in recognizing the \gls{type}, a \say{4D} label was attached to each \gls{scan}.
 This 4D label was set to 1 if the \gls{scan} was 4-dimensional, and to 0 if it was not.
 
@@ -342,7 +364,7 @@ This architecture was inspired by the VGG network \autocite{simonyan2014very}.
 The network was implemented using TensorFlow 1.12.3 \autocite{abadi2016tensorflow}.
 The cross-entropy between the predicted and ground truth labels was used as a loss function.
 Weights were initialized using Glorot Uniform initialization \autocite{glorot2010understanding}.
-We used Adam as an optimizer \autocite{kingma2014adam}, which started with a learning rate of \num{0.001} $\beta_1 = 0.9$, and $\beta_2=0.999$, as these were proposed as reasonable default values \autocite{kingma2014adam}.
+We used Adam as an optimizer \autocite{kingma2014adam}, which started with a learning rate of \num{0.001}, $\beta_1 = 0.9$, and $\beta_2=0.999$, as these were proposed as reasonable default values \autocite{kingma2014adam}.
 The learning rate was automatically adjusted based on the training loss; if the training loss did not decrease during \num{3} epochs, the learning rate was decreased by a factor \num{10}, with a minimum learning rate of \num{1e-7}.
 The network could train for a maximum of \num{100} epochs, and the network automatically stopped training when the loss did not decrease during \num{6} epochs.
 We used a batch size of \num{32}.
@@ -350,9 +372,9 @@ We arrived at this \gls{CNN} design and these settings by testing multiple diffe
 Details about the optimization of the settings are presented in \cref{sec:experiments}, \cref{fig:brain_tumor_experiment}, and \cref{app:crossval}.
 
 During the training of the network, all \glspl{slice} were inputted to the \gls{CNN} as individual \glspl{sample}, and no information about the (possible) relation between different \glspl{slice} was provided.
-After training the network, the \gls{type} of a \gls{scan} was predicted by passing all \num{25} \glspl{slice} of the \gls{scan} through the \gls{CNN} and then combining these individual \gls{slice} predictions using a majority vote.
+After training the network, the \gls{type} of a \gls{scan} was predicted by passing all \num{25} \glspl{slice} of the \gls{scan} through the \gls{CNN} and then combining these individual \gls{slice} predictions using a majority vote, as seen in \cref{fig:DDS_pipeline}.
 
-\begin{figure}
+\begin{figure}[htbp]
 \centering
 
 \resizebox{\textwidth}{!}{
@@ -448,7 +470,7 @@ Saliency maps were generated for all \glspl{slice} of the \glspl{scan} of the ex
 Additional saliency maps were generated for 20 \glspl{sample} of each \gls{type} that were randomly selected from the test sets of Experiment I and Experiment II\@.
 The saliency maps for the \glspl{sample} from Experiment I were generated using the \gls{CNN} trained in Experiment I, and for the \glspl{sample} from Experiment II the \gls{CNN} trained in Experiment II was used.
 By generating saliency maps for multiple \glspl{sample}, we could show the behavior of our algorithm for different \gls{scan} appearances.
-Some of these \glspl{sample} contained \glspl{tumor}, contained imaging artifacts or had a low image quality.
+Some of these \glspl{sample} contained \glspl{tumor}, contained imaging artifacts, or had a low image quality.
 Thus, these saliency maps also showed the robustness of our algorithm to unusual \gls{scan} appearance.
 To gain some insight into the behavior of each convolutional layer we determined the feature maps of each convolutional layer.
 We calculated the feature maps for the \gls{T1} \gls{slice} shown in \cref{fig:seq_examples} by passing it through the network and determining the output of each filter after each convolutional layer.
@@ -459,7 +481,7 @@ We calculated the feature maps for the \gls{T1} \gls{slice} shown in \cref{fig:s
 We compared the performance of \gls{HC} and \gls{DDS} using the data from Experiment I, since the data in Experiment II did not include all \glspl{type}.
 When using \gls{HC}, only the \glspl{scan} which were available in \gls{DICOM} format could be processed.
 This meant that the \glspl{scan} from the \gls{USIGT} \gls{ds} were removed from the \gls{BTtrain}, and the \glspl{scan} from the \gls{BITE} \gls{ds} were removed from the \gls{BTtest}, as these were not available in \gls{DICOM} format.
-Thus,  86 \glspl{scan} (43 \gls{T1C} and 43 \gls{FLAIR}) were removed from the \gls{BTtrain} and 27 \glspl{scan} (all \gls{T1C}) were removed from the \gls{BTtest}, reducing the train set to 10979 \glspl{scan} and the test set to 2342 \glspl{scan}.
+Thus,  86 \glspl{scan} (43 \gls{T1C} and 43 \gls{FLAIR}) were removed from the \gls{BTtrain} and 27 \glspl{scan} (all \gls{T1C}) were removed from the \gls{BTtest}, reducing the train set to \num{10979} \glspl{scan} and the test set to \num{2342} \glspl{scan}.
 
 To construct our heuristic, we first extracted all the relevant \gls{DICOM} tags from the \glspl{scan} in the \gls{BTtrain}, see \cref{tab:heuditags}.
 \cref{tab:heuditags} also shows the number of unique occurrences for text-based tags and the distribution of the numerical tags in the \gls{BTtrain}.
@@ -474,7 +496,7 @@ To compare the performance of \gls{HC} with the performance of \gls{DDS} the ove
  \centering
   \begin{tabular}{L{5cm} l l l}
       \toprule
-      \textbf{Tag description} & \textbf{Tag number}\\
+      \textbf{Tag description} & \textbf{Tag number} & \textbf{Distribution}\\
       \midrule
       Image type & 0008,0008 & \num{72} unique instances\\
       Study description	 & 0008,1030 & \num{435} unique instances\\
@@ -485,11 +507,11 @@ To compare the performance of \gls{HC} with the performance of \gls{DDS} the ove
       Number of columns in image & 0028,0011 & Range: \numrange{128}{1152}\\
       \bottomrule
   \end{tabular}
-  \caption{DICOM tag numbers and descriptions of the DICOM tags extracted for the \acrlong{HC} heuristic. For text-based tags the number of unique instances is shown and for numerical-based tags the distribution is shown, based on the \glspl{scan} in the \gls{BTtrain}}\label{tab:heuditags}
+  \caption{Descriptions and tag numbers of the DICOM tags extracted for the \acrlong{HC} heuristic. For text-based tags the number of unique instances is shown and for numerical-based tags the distribution is shown, based on the \glspl{scan} in the \gls{BTtrain}}\label{tab:heuditags}
 \end{table}
 
 
-\begin{sidewaysfigure}
+\begin{sidewaysfigure}[htbp]
 \centering
 
 \resizebox{0.9\textwidth}{!}{
@@ -509,7 +531,7 @@ In this experiment our method achieved an overall accuracy of \per{98.7}.
 
 The highest per-class accuracy was achieved for the \gls{PD} and \gls{DSC} \glspl{scan} (\per{100.0} for both), whereas the \gls{FLAIR} \glspl{scan} had the lowest accuracy (\per{93.0}).
 The confusion matrices show that most of the incorrectly predicted \gls{FLAIR} \glspl{scan} were classified as \gls{T1} \glspl{scan} (see  \cref{app:confusionmatrices}).
-\cref{app:sliceresults} shows the performance of our method on a per-\gls{slice} basis before the majority vote has taken place to determine the \gls{scan} \gls{class}, which shows that the per-\gls{slice} accuracy is lower than the per-\gls{scan} accuracy.
+\cref{app:sliceresults} shows the performance of our method on a per-\gls{slice} basis before the majority vote has taken place to determine the \gls{scan} \gls{type}, which shows that the per-\gls{slice} accuracy is lower than the per-\gls{scan} accuracy.
 This is not surprising since there are \glspl{slice} in a \gls{scan} from which it is almost impossible to determine the \gls{type} even for a human (for example, the most superior and inferior \glspl{slice}).
 
 
@@ -564,7 +586,7 @@ Interpreting the deeper convolutional layers gets harder as the feature maps of 
 \end{table}
 
 
-\begin{figure}
+\begin{figure}[htbp]
     \centering
 
     \setlength{\figexamplewidth}{0.22\textwidth}
@@ -619,7 +641,7 @@ Interpreting the deeper convolutional layers gets harder as the feature maps of 
 The top-level rules of the  derived heuristic for \gls{HC} were mainly based on the series description, with additional lower-level rules based on the echo time, image type, and the derived status of the \gls{scan}.
 The overall accuracy obtained within the \gls{BTtrain} after several iterations of improving the heuristic was \per{91.0}.
 The overall accuracy in the \gls{BTtest} was \per{72.0}.
-The results for each \gls{class} can be found in \cref{tab:heudiresults}, along with a comparison to the accuracy of the \gls{CNN} evaluated on the \gls{BTtest}.
+The results for each \gls{class} can be found in \cref{tab:heudiresults}, along with a comparison with the accuracy of the \gls{CNN} evaluated on the \gls{BTtest}.
 For the evaluation of the \gls{CNN}'s performance, we included the same \glspl{scan} as present in the test set for \gls{HC} (i.e.\ those which were available in \gls{DICOM} format).
 Although a slightly different \gls{ds} was used for this test set, the results of the \gls{CNN} in \cref{tab:seqacc} and \cref{tab:heudiresults} appear to be the same.
 This can be explained by the fact that only \gls{T1C} \glspl{scan} were removed from the test set, thus for all other \glspl{class} the accuracy remained the same.
@@ -647,7 +669,7 @@ These results show that \gls{DDS} outperformed \gls{HC} both in terms of the ove
   Derived   & 0.948 & 0.994\\
   \bottomrule
   \end{tabular}
-  \caption{Accuracy of \acrlong{HC} on the \gls{BTtest}. Results of \gls{DDS} on this test set are also given, where the \glspl{scan} which were not available in the \gls{DICOM} format were excluded from the test set}\label{tab:heudiresults}
+  \caption{Accuracy of \acrlong{HC} on the \gls{BTtest}. Results of \gls{DDS} on this test set are also given, where the \glspl{scan} which were not available in \gls{DICOM} format were excluded from the test set}\label{tab:heudiresults}
 
 \end{table}
 
@@ -682,7 +704,7 @@ Almost all of the misclassified \gls{T2} \glspl{scan} were hippocampus \glspl{sc
 The misclassification of these \glspl{scan} can be explained by their limited field of view.
 Since the \gls{CNN} did not see any such \glspl{scan} in the training set, as all \glspl{scan} in the training set covered the full brain, it is not surprising that our method failed in these cases.
 The saliency maps in \cref{fig:FLAIR_comparison} show that the \gls{CNN} had difficulty focusing on the relevant parts of the \gls{slice}.
-For example, for the \gls{FLAIR} \glspl{slice} in \cref{fig:FLAIRCam} and \cref{fig:IvyGAP_FLAIR_saliency} it can be seen that the \gls{CNN} focused mainly on the ventricles, whereas in \cref{fig:RIDER_FLAIR_saliency} there was more focus on the edge of the brain, similar to \gls{T1} \gls{slice} in \cref{fig:T1Cam}.
+For example, for the \gls{FLAIR} \glspl{slice} in \cref{fig:FLAIRCam} and \cref{fig:IvyGAP_FLAIR_saliency} it can be seen that the \gls{CNN} focused mainly on the ventricles, whereas in \cref{fig:RIDER_FLAIR_saliency} there was more focus on the edge of the brain, similar to the \gls{T1} \gls{slice} in \cref{fig:T1Cam}.
 Although we did not achieve a perfect prediction accuracy, it is unlikely that any \gls{scan} sorting method ever will, due to the large heterogeneity in \gls{scan} appearance and \gls{scan} metadata.
 While not perfect, our method does have a very high performance overall and the comparison with manual sorting shows that it considerably reduces the time required to sort a \gls{ds}.
 
@@ -693,7 +715,7 @@ We corrected the ground truth label for \glspl{scan} that were incorrectly annot
 The labels of around \per{0.1} of the \glspl{scan} in the \gls{ds} were corrected in this way.
 Although it is possible that there were still some incorrectly annotated \glspl{scan}, based on these findings we expect this fraction to be very small.
 
-\begin{figure}
+\begin{figure}[htbp]
 \centering
     \begin{subfigure}[t]{0.25\textwidth}
         \centering
@@ -751,15 +773,15 @@ Furthermore, because a 2D \gls{CNN} typically requires less memory than a 3D \gl
 
 Our method achieved a better overall accuracy and per-class accuracy than \gls{HC}.
 The results obtained using \gls{HC} show the difficulty of creating a method based on \gls{DICOM} tags that generalizes well to other \glspl{ds}.
-Even within one dataset, it can be difficult to create a heuristic that correctly maps the \gls{scan} metadata to the \gls{type}; for example \cref{tab:heuditags}, shows that 1215 different series descriptions are used just for the eight \glspl{type} considered in this research.
+Even within one dataset, it can be difficult to create a heuristic that correctly maps the \gls{scan} metadata to the \gls{type}; for example \cref{tab:heuditags} shows that \num{1215} different series descriptions are used just for the eight \glspl{type} considered in this research.
 \gls{HC} has particular difficulty in identifying \glspl{scan} that have similar metadata but have different \glspl{type}.
 For example, this is reflected in the results for the \gls{T1} and \gls{T1C} \glspl{scan}.
-These \glspl{scan} usually have similar scan settings and series descriptions, making it hard to determine whether a \gls{scan} is obtained pre- or post-contrast administration.
+These \glspl{scan} usually have similar scan settings and series descriptions, making it hard to determine whether a \gls{scan} is obtained before or after contrast administration.
 The same difficulty plays a role for \gls{T2} and \gls{PD} \glspl{scan}, which are often acquired at the same time in a combined imaging sequence and thus have the same series description.
 In our timing results (\cref{app:timing}), it was faster to sort the \gls{ds} by hand than to use \gls{HC}.
 This was caused by \gls{HC} often misclassifying \gls{FLAIR} and \gls{T1C} \glspl{scan} as a different \gls{type}, and thus a lot of manual time was needed to correct these mistakes.
 
-A method that, similar to ours, classifies the \gls{type} based on the visual appearance of the \gls{scan} was proposed by~\autocite{remedios2018classifying} called $\Phi$-net.
+A method that, similar to ours, classifies the \gls{type} based on the visual appearance of the \gls{scan}, called $\Phi$-net, was proposed by \citeauthorref{remedios2018classifying}.
 Their method can identify \gls{T1}, \gls{T1C}, \gls{T2}, and pre-contrast and post-contrast FLAIR \glspl{scan}.
 \citeauthorref{remedios2018classifying} do this using a cascaded \gls{CNN} approach where a first \gls{CNN} is used to classify a \gls{scan} as T1-weighted, T2-weighted, or FLAIR\@.
 Two other \glspl{CNN} are then used to classify a \gls{scan} as pre-contrast or post-contrast, one \gls{CNN} for the T1-weighted \glspl{scan} and one \gls{CNN} for the FLAIR \glspl{scan}.
@@ -794,17 +816,35 @@ Using the code and the trained models, one can run the \gls{DDS} pipeline and st
 We think that \gls{type} recognition is an essential step in any data curation pipeline used in medical imaging.
 With this method, and by making our code and trained models available, we can automate this step in the pipeline and make working with large, heterogeneous \glspl{ds} easier, faster, and more accessible.
 
+\section*{Acknowledgements}
+
+Sebastian van der Voort acknowledges funding by the Dutch Cancer Society (KWF project number EMCR 2015-7859).
+
+We would like to thank Nvidia for providing the GPUs used in this research.
+
+This work was carried out on the Dutch national e-infrastructure with the support of SURF Cooperative.
+
+The results published here are in part based upon data generated by the TCGA Research Network: \url{http://cancergenome.nih.gov/}.
+
+Data used in this publication were generated by the National Cancer Institute Clinical Proteomic Tumor Analysis Consortium (CPTAC).
+
+Data collection and sharing for this project was funded by the ADNI (National Institutes of Health Grant U01 AG024904) and DOD ADNI (Department of Defense award number W81XWH-12-2-0012).
+ADNI is funded by the National Institute on Aging, the National Institute of Biomedical Imaging and Bioengineering, and through generous contributions from the following: AbbVie, Alzheimer's Association; Alzheimer's Drug Discovery Foundation; Araclon Biotech; BioClinica, Inc.; Biogen; Bristol-Myers Squibb Company; CereSpir, Inc.; Cogstate; Eisai Inc.; Elan Pharmaceuticals, Inc.; Eli Lilly and Company; EuroImmun; F. Hoffmann-La Roche Ltd and its affiliated company Genentech, Inc.; Fujirebio; GE Healthcare; IXICO Ltd.; Janssen Alzheimer Immunotherapy Research \& Development, LLC.; Johnson \& Johnson Pharmaceutical Research \& Development LLC.; Lumosity; Lundbeck; Merck \& Co., Inc.; Meso Scale Diagnostics, LLC.; NeuroRx Research; Neurotrack Technologies; Novartis Pharmaceuticals Corporation; Pfizer Inc.; Piramal Imaging; Servier; Takeda Pharmaceutical Company; and Transition Therapeutics. The Canadian Institutes of Health Research is providing funds to support ADNI clinical sites in Canada. Private sector contributions are facilitated by the Foundation for the National Institutes of Health (www.fnih.org). The grantee organization is the Northern California Institute for Research and Education, and the study is coordinated by the Alzheimer's Therapeutic Research Institute at the University of Southern California.
+ADNI data are disseminated by the Laboratory for Neuro Imaging at the University of Southern California.
+
+
+
 \clearpage
 \begin{subappendices}
 \section{Model parameter selection}\label{app:crossval}
 
-To determine the optimal model parameters (i.e.\ the \gls{CNN} architecture, pre-processing settings and optimizer settings) of the \gls{CNN} used in the \gls{DDS} pipeline, we evaluated the performance of different model parameters on the \gls{BTtrain}, the train set from Experiment I.
+To determine the optimal model parameters (i.e.\ the \gls{CNN} architecture, pre-processing settings, and optimizer settings) of the \gls{CNN} used in the \gls{DDS} pipeline, we evaluated the performance of different model parameters on the \gls{BTtrain}, the train set from Experiment I.
 Before carrying out the experiments, the \gls{BTtrain} was partitioned into a train set and validation set.
-\per{85} of the \glspl{scan} was used as a train set and \per{15} of the \glspl{scan} was used as a validation set.
+\per{85} of the \glspl{scan} were used as a train set and \per{15} of the \glspl{scan} were used as a validation set.
 Only one such split was made since training and validating the network for multiple splits would be too time-consuming.
-During the splitting, all \glspl{slice} of a \gls{scan} where either all in the train set or all in the validation set to prevent data leakage between the train set and validation set.
+During the splitting, all \glspl{slice} of a \gls{scan} were either all in the train set or all in the validation set to prevent data leakage between the train set and validation set.
 
-We compared five different \gls{CNN} architectures: the architecture proposed in this paper, Alexnet \autocite{krizhevsky2012imagenet}, ResNet18 \autocite{he2016deep}, DenseNet121 \autocite{huang2017densely} and VGG19 \autocite{simonyan2014very}.
+We compared five different \gls{CNN} architectures: the architecture proposed in this paper, Alexnet \autocite{krizhevsky2012imagenet}, ResNet18 \autocite{he2016deep}, DenseNet121 \autocite{huang2017densely}, and VGG19 \autocite{simonyan2014very}.
 For all networks, the same pre-processing approach as described in \cref{sec:preprocessing} was used, with the optimizer settings as described in \cref{sec:network}.
 The only difference was that the learning rate reduction was based on the validation loss instead of the training loss.
 For the VGG19 model, the initial learning rate was lowered to \num{0.0001}, as the model would otherwise get stuck in a poor minimum early in the training stage.
@@ -824,12 +864,12 @@ We also trained two 3D models to compare their performance with the 2D models.
 In the case of the 3D models, most of the pre-processing steps were kept the same, apart from the \gls{slice} extraction.
 Instead of extracting \num{25} \glspl{slice}, 3D patches with a size of $90\times90\times15$ voxels were extracted.
 A maximum of \num{10} patches per \gls{scan} were extracted, in such a way that they covered as much of the (geometrical) center of the \gls{scan} as possible to ensure that the patches contained brain and not just background.
-We trained a 3D ResNet18 and a 3D DenseNet121; the learning curves can be seen in \cref{fig:DenseNet3D} and \cref{fig:ResNet3D}.
-These 3D architectures achieved a lower validation accuracy than their 2D counterparts, \num{0.87} versus \num{0.98} for the DenseNet model and \num{0.83} versus \num{0.97} for the ResNet model.
+We trained a 3D DenseNet121 and a 3D ResNet18; the learning curves can be seen in \cref{fig:DenseNet3D} and \cref{fig:ResNet3D}.
+These 3D architectures achieved a lower validation accuracy than their 2D counterparts: \num{0.87} versus \num{0.98} for the DenseNet model and \num{0.83} versus \num{0.97} for the ResNet model.
 These results justified our choice for a 2D model, which not only achieved a higher accuracy but was also less computationally intensive.
 
 
-\begin{sidewaysfigure}
+\begin{sidewaysfigure}[htbp]
 \centering
 
 \newlength{\modelplotwidth}
@@ -879,7 +919,7 @@ These results justified our choice for a 2D model, which not only achieved a hig
 \caption{Learning curves of the different network architectures tested in the model parameter selection}\label{fig:modellearningcurves}
 \end{sidewaysfigure}
 
-\begin{table}[H]
+\begin{table}[htbp]
  \centering
   \begin{tabular}{L{2.5cm}S[table-format=1.3]S[table-format=1.3]S[table-format=2.1]}
       \toprule
@@ -894,7 +934,7 @@ These results justified our choice for a 2D model, which not only achieved a hig
     3D ResNet18 & 1.000 & 0.832 & 27.7\\
   \bottomrule
   \end{tabular}
-  \caption{Overall training accuracy, overall validation accuracy, and the time it took to train each network for the different network architectures test in the model parameter selection.
+  \caption{Overall training accuracy, overall validation accuracy, and the time it took to train each network for the different network architectures tested in the model parameter selection.
   A train/validation split of the \gls{BTtrain} was used to determine the performance}\label{tab:modelaccuracies}
 
 \end{table}
@@ -986,37 +1026,16 @@ These results are obtained by comparing the predicted \gls{class} of a \gls{slic
 
 \end{table}
 
-\clearpage
-\section{Time comparison between \glsfmtlong{DDS}, \glsfmtlong{HC} and manual sorting}\label{app:timing}
-
-We estimated the potential time that can be saved by using \gls{DDS} to sort a \gls{ds} instead of doing so by hand or using \gls{HC}.
-We did so by assuming the hypothetical situation where one has an automated tool that requires the \gls{T1C} and \gls{FLAIR} \glspl{scan} as inputs, and we compared the time needed to find the \gls{T1C} and \gls{FLAIR} \glspl{scan} for all \glspl{sub} and \glspl{ses} in the \gls{BTtest}.
-The manual sorting was simulated by iterating over all \glspl{scan} in a \gls{ses} in random order until either the \gls{T1C} and \gls{FLAIR} \glspl{scan} were found or until there were no more \glspl{scan} to check.
-The sorting of the \gls{ds} using \gls{HC} or \gls{DDS} was simulated by first iterating over all \glspl{scan} that were predicted as a \gls{T1C} or \gls{FLAIR} by these methods, and checking whether that prediction was correct.
-If the predicted \gls{type} was incorrect, the same approach as for the manual sorting was followed to find the correct \glspl{scan}.
-We assumed that, on average, a human required \num{25} seconds per \gls{scan} to visually identify the correct \gls{type}.
-By multiplying this time per \gls{scan} with the total number of \glspl{scan} that were iterated over, we obtained an estimate for the total time taken by each method to find the \gls{T1C} and \gls{FLAIR} \glspl{scan}.
-We used the \gls{BTtest} to evaluate the timing results, since \gls{HC} was only optimized for the \gls{BTset}.
-
-\subsection{Results}
-The time required to identify the \gls{T1C} and \gls{FLAIR} \gls{scan} for each \gls{ses} in the \gls{BTtest} by hand was estimated to be \num{29.0} hours.
-The estimated time required to check and correct the automated \gls{type} recognition by \gls{HC} was \num{35.7} hours, which excludes the time required to construct the heuristic.
-If the automated \gls{type} recognition was done by \gls{DDS} instead, we estimated that \num{12.3} hours of manual time were required.
-The time required to run the \gls{DDS} pipeline on the \gls{ds} was \num{61.5} minutes using an Intel Xeon Processor E5--2690 v3 for pre-processing and post-processing, and an Nvidia Tesla K40m GPU to classify the \glspl{sample} using the \gls{CNN}.
-If the \glspl{scan} identified by \gls{DDS} were used without a manual check, in which case the total sorting time was only \num{61.5} minutes, \num{527} \glspl{scan} would have been correctly identified.
-Four \glspl{scan} were incorrectly identified as a \gls{T1C} or \gls{FLAIR} \gls{scan}, for one \gls{ses} the \gls{T1C} would not have been found, and for \num{8} \glspl{ses} the \gls{FLAIR} would not have been found.
-
-It should be noted that with the automated methods (\gls{DDS} and \gls{HC}), one gets a fully sorted \gls{ds}, whereas the sorting by hand still requires the sorting of the \glspl{scan} that were not yet identified.
 
 \clearpage
 
-\section{Saliency map for full \glsfmtlong{scan}}\label{app:saliency}
+\section{Saliency maps for full \glsfmtlong{scan}}\label{app:saliency}
 
 \cref{fig:saliency_lower_slices} and \cref{fig:saliency_upper_slices} show the saliency maps for all \num{25} \glspl{slice} from the \glspl{scan} of the example \gls{sub} from \cref{fig:seq_examples}.
 The \gls{CNN} seems to focus on the same features as in \cref{fig:seq_gradcam}, mostly on the ventricles and on the \gls{CSF} at the edges of the brain.
 In the superior \glspl{slice} of the \gls{scan}, it can be seen that the presence of a \gls{tumor} does not disrupt the \gls{CNN}.
 Although it looks at the edge of the \gls{tumor}, it does not put a lot of focus on the \gls{tumor} itself.
-For the most superior \glspl{slice} of \gls{T1}, \gls{T1C} and \gls{T2} it can be seen that when the brain is no longer present in the \gls{slice} the \gls{CNN} loses it focus and seems to look randomly throughout the \gls{slice}.
+For the most superior \glspl{slice} of \gls{T1}, \gls{T1C}, and \gls{T2} it can be seen that when the brain is no longer present in the \gls{slice} the \gls{CNN} loses it focus and seems to look randomly throughout the \gls{slice}.
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{Figures/Appendix/attention_overview_slices_0_12.pdf}
@@ -1038,9 +1057,9 @@ For the most superior \glspl{slice} of \gls{T1}, \gls{T1C} and \gls{T2} it can b
 To show the robustness of our method to differences in \gls{scan} appearance, as well as to imaging artifacts, we have randomly selected \num{20} \glspl{slice} of each \gls{type} from the \gls{BTtest}.
 All of these \glspl{slice} were then passed through the \gls{CNN}, and we determined the saliency maps along with the predicted \gls{class} of each \gls{slice}.
 This is the prediction based on the \gls{slice} itself, and thus before the majority vote.
-The saliency maps and predicted \glspl{type} are shown in \cref{fig:random_1} and \cref{fig:random_2}.
+The saliency maps and predicted \glspl{type} are shown in \cref{fig:random_1,fig:random_2}.
 We have highlighted \glspl{slice} that contain imaging artifacts (\textcolor{red}{$\dagger$}), have a poor image quality (\textcolor{green}{$\dagger$}), and \glspl{sub} with a large head tilt  (\textcolor{cyan}{$\dagger$}).
-These saliency maps show that the \gls{CNN} is quite robust to the presence of a \gls{tumor}, the presence of imaging artifacts, or poor image quality, in most cases the \gls{CNN} still predicts the correct \gls{type}.
+These saliency maps show that the \gls{CNN} is quite robust to the presence of a \gls{tumor}, the presence of imaging artifacts, or poor image quality; in most cases the \gls{CNN} still predicts the correct \gls{type}.
 
 
 \begin{figure}[ht]
@@ -1063,7 +1082,7 @@ These saliency maps show that the \gls{CNN} is quite robust to the presence of a
 \subsection{Random samples from \gls{NTTS}}
 The same approach as in \cref{app:randomtumorsample} has been applied to show the saliency maps from random samples of the \gls{NTTS}.
 In this case, the saliency maps were derived using the trained model from Experiment II instead of Experiment I.
-Once again the saliency maps and the predicted \gls{type} are shown in \cref{fig:random_adni_1} and \cref{fig:random_adni_2}.
+The saliency maps and the predicted \gls{type} are shown in \cref{fig:random_adni_1,fig:random_adni_2}.
 We have highlighted \glspl{slice} that contain imaging artifacts, including hippocampus \glspl{scan} with a limited field of view, (\textcolor{red}{$\dagger$}), have a poor image quality (\textcolor{green}{$\dagger$}), and \glspl{sub} with a large head tilt (\textcolor{cyan}{$\dagger$}).
 
 
@@ -1113,7 +1132,7 @@ Although the \gls{CNN} misclassified the \gls{T1} and \gls{DSC} \glspl{slice} in
 
 \section{Feature map visualizations}\label{app:filtervis}
 
-\cref{fig:filter_result_T1_1} through \cref{fig:filter_result_T1_6} show the feature maps of all filters of each convolutional layer for the \gls{T1} \gls{slice} shown in \cref{fig:seq_examples}.
+\cref{fig:filter_result_T1_1,fig:filter_result_T1_2,fig:filter_result_T1_3,fig:filter_result_T1_4,fig:filter_result_T1_5,fig:filter_result_T1_6} show the feature maps of all filters of each convolutional layer for the \gls{T1} \gls{slice} shown in \cref{fig:seq_examples}.
 It can be seen that some filters mainly identify the skull (for example, filter 1 from convolutional layer 1), whereas other filters seem to focus on specific structure (for example, filter 4 from convolutional layer 1, which seems to identify gray matter).
 
 \foreach \layer in {1, 2, 3, 4, 5, 6}
@@ -1122,9 +1141,33 @@ It can be seen that some filters mainly identify the skull (for example, filter 
         \centering
         \includegraphics[width=\textwidth]{Figures/Appendix/Filters/T1_conv2d_\layer.pdf}
         \caption{Feature map visualizations of the trained \acrshort{CNN} from Experiment I. These visualization were obtained by passing a \gls{T1}~\gls{slice} through the network, and showing the results directly after convolutional layer \layer.
-        The \gls{slice} is the same as the one shown in \cref{fig:seq_examples}}\label{fig:filter_result_T1_\layer}
+        The \gls{slice} is the same as the one shown in \cref{fig:T1}}\label{fig:filter_result_T1_\layer}
 
     \end{figure}
 }
+
+\clearpage
+
+\section{Time comparison between \glsfmtlong{DDS}, \glsfmtlong{HC} and manual sorting}\label{app:timing}
+
+We estimated the potential time that can be saved by using \gls{DDS} to sort a \gls{ds} instead of doing so by hand or using \gls{HC}.
+We did so by assuming the hypothetical situation where one has an automated tool that requires the \gls{T1C} and \gls{FLAIR} \glspl{scan} as inputs, and we compared the time needed to find the \gls{T1C} and \gls{FLAIR} \glspl{scan} for all \glspl{sub} and \glspl{ses} in the \gls{BTtest}.
+The manual sorting was simulated by iterating over all \glspl{scan} in a \gls{ses} in random order until either the \gls{T1C} and \gls{FLAIR} \glspl{scan} were found or until there were no more \glspl{scan} to check.
+The sorting of the \gls{ds} using \gls{HC} or \gls{DDS} was simulated by first iterating over all \glspl{scan} that were predicted as a \gls{T1C} or \gls{FLAIR} by these methods, and checking whether that prediction was correct.
+If the predicted \gls{type} was incorrect, the same approach as for the manual sorting was followed to find the correct \glspl{scan}.
+We assumed that, on average, a human required \num{25} seconds per \gls{scan} to visually identify the correct \gls{type}.
+By multiplying this time per \gls{scan} with the total number of \glspl{scan} that were iterated over, we obtained an estimate for the total time taken by each method to find the \gls{T1C} and \gls{FLAIR} \glspl{scan}.
+We used the \gls{BTtest} to evaluate the timing results, since \gls{HC} was only optimized for the \gls{BTset}.
+
+\subsection{Results}
+The time required to identify the \gls{T1C} and \gls{FLAIR} \gls{scan} for each \gls{ses} in the \gls{BTtest} by hand was estimated to be \num{29.0} hours.
+The estimated time required to check and correct the automated \gls{type} recognition by \gls{HC} was \num{35.7} hours, which excludes the time required to construct the heuristic.
+If the automated \gls{type} recognition was done by \gls{DDS} instead, we estimated that \num{12.3} hours of manual time were required.
+The time required to run the \gls{DDS} pipeline on the \gls{ds} was \num{61.5} minutes using an Intel Xeon Processor E5--2690 v3 for pre-processing and post-processing, and an Nvidia Tesla K40m GPU to classify the \glspl{sample} using the \gls{CNN}.
+If the \glspl{scan} identified by \gls{DDS} were used without a manual check, in which case the total sorting time was only \num{61.5} minutes, \num{527} \glspl{scan} would have been correctly identified.
+Four \glspl{scan} would have been incorrectly identified as a \gls{T1C} or \gls{FLAIR} \gls{scan}, for one \gls{ses} the \gls{T1C} \gls{scan} would not have been found, and for eight \glspl{ses} the \gls{FLAIR} \gls{scan} would not have been found.
+
+It should be noted that with the automated methods (\gls{DDS} and \gls{HC}), one gets a fully sorted \gls{ds}, whereas the sorting by hand still requires the sorting of the \glspl{scan} that were not yet identified.
+
 
 \end{subappendices}

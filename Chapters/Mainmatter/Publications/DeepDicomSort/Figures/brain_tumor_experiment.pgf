@@ -21,61 +21,61 @@
 
     \node [collection_block] (BTumorP) {\textbf{\gls{BTP}}
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=20 \\
-    \Glspl{scan}: \>160\\
+    \Glspl{sub}: \hspace{3em}\=\num{20} \\
+    \Glspl{scan}: \>\num{160}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 1
+    \Glspl{site}: \> \num{1}
     \end{tabbing}
     };
 
     \node[collection_block, right = 0.5cm of BTumorP] (IvyGAP) {\textbf{\gls{IVY}}\\
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=39 \\
-    \Glspl{scan}: \>4250\\
+    \Glspl{sub}: \hspace{3em}\=\num{39} \\
+    \Glspl{scan}: \>\num{4250}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 1
+    \Glspl{site}: \> \num{1}
     \end{tabbing}
     };
 
     \node[collection_block, below = 0.5cm of BTumorP] (LGG1p19q) {\textbf{\gls{LGG1p19q}}
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=159 \\
-    \Glspl{scan}: \>330\\
+    \Glspl{sub}: \hspace{3em}\=\num{159} \\
+    \Glspl{scan}: \>\num{330}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 1
+    \Glspl{site}: \> \num{1}
     \end{tabbing}
     };
 
     \node[collection_block, below = 0.5cm of IvyGAP] (TCGA-GBM) {\textbf{\gls{TCGAGBM}}
     \begin{tabbing}
     \Glspl{sub}: \hspace{3em}\=259\\
-    \Glspl{scan}: \>4232\\
+    \Glspl{scan}: \>\num{4232}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 8
+    \Glspl{site}: \> \num{8}
     \end{tabbing}
     };
 
     \node[collection_block, below = 0.5cm of LGG1p19q] (TCGA-LGG) {\textbf{\gls{TCGALGG}}
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=199\\
-    \Glspl{scan}: \>2007\\
+    \Glspl{sub}: \hspace{3em}\=\num{199}\\
+    \Glspl{scan}: \>\num{2007}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 5
+    \Glspl{site}: \> \num{5}
     \end{tabbing}
     };
 
     \node[collection_block, below = 0.5cm of TCGA-GBM] (USIGT) {\textbf{\gls{USIGT}}
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=43\\
-    \Glspl{scan}: \>86\\
+    \Glspl{sub}: \hspace{3em}\=\num{43}\\
+    \Glspl{scan}: \>\num{86}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 1
+    \Glspl{site}: \> \num{1}
     \end{tabbing}
     };
 
@@ -84,12 +84,12 @@
 
     \node[collection_block, below=1.5cm of brain_train_mid_LGG](TRAIN) {\textbf{\Gls{BTtrain}}
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=719\\
-    \Glspl{scan}: \>11065\\
-    \Glspl{slice}: \>276625\\
+    \Glspl{sub}: \hspace{3em}\=\num{719}\\
+    \Glspl{scan}: \>\num{11065}\\
+    \Glspl{slice}: \>\num{276625}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 15
+    \Glspl{site}: \> \num{15}
     \end{tabbing}
     };
 
@@ -106,16 +106,16 @@
 
     \node[small_collection_block, below = 1cm of val_split_train_position] (parameters_train_col) {\textbf{Train set}
     \begin{tabbing}
-        \Glspl{scan}: \=9405\\
-        \Glspl{slice}: \>235125
+        \Glspl{scan}: \=\num{9405}\\
+        \Glspl{slice}: \>\num{235125}
     \end{tabbing}
     };
 
 
     \node[small_collection_block, below = 1cm of val_split_test_position] (parameters_val_col) {\textbf{Validation set}
     \begin{tabbing}
-        \Glspl{scan}: \=1660\\
-        \Glspl{slice}: \>41500
+        \Glspl{scan}: \=\num{1660}\\
+        \Glspl{slice}: \>\num{41500}
     \end{tabbing}
     };
 
@@ -158,7 +158,7 @@
 
     \node[bounding_box, fit=(val_split) (val_training) (parameter_selection)] (parameter_optimization) {};
 
-    \node[box_label, above right = 0cm and 2cm of parameter_optimization.north, anchor=south] (hp_text) {Model parameters selection};
+    \node[box_label, above right = 0cm and 2cm of parameter_optimization.north, anchor=south] (hp_text) {Model parameter selection};
 
     %%%%%%%%%%%%%%%%%%%%%%%%
     % Train the final CNN
@@ -193,12 +193,12 @@
     \node[collection_block, above = 1cm of test_CNN] (TEST) {
         \textbf{\Gls{BTtest}}
         \begin{tabbing}
-        \Glspl{sub}: \hspace{3em}\=192\\
-        \Glspl{scan}: \>2369\\
-        \Glspl{slice}: \>59225\\
+        \Glspl{sub}: \hspace{3em}\=\num{192}\\
+        \Glspl{scan}: \>\num{2369}\\
+        \Glspl{slice}: \>\num{59225}\\
         % Scanner models:\>XX
         % Scanner manufacturers: \> XX
-        \Glspl{site}: \> 8
+        \Glspl{site}: \> \num{8}
         \end{tabbing}
     };
 
@@ -208,11 +208,11 @@
     \node[collection_block, left=0.25cm of BTTS_align] (BITE) {
         \textbf{\gls{BITE}}
         \begin{tabbing}
-        \Glspl{sub}: \hspace{3em}\=14\\
-        \Glspl{scan}: \>27\\
+        \Glspl{sub}: \hspace{3em}\=\num{14}\\
+        \Glspl{scan}: \>\num{27}\\
         % Scanner models:\>XX
         % Scanner manufacturers: \> XX
-        \Glspl{site}: \> 1
+        \Glspl{site}: \> \num{1}
         \end{tabbing}
     };
 
@@ -220,22 +220,22 @@
     \node[collection_block, below = 0.5cm of BITE] (REMBRANDT) {
         \textbf{\gls{REMBRANDT}}
         \begin{tabbing}
-        \Glspl{sub}: \hspace{3em}\=130\\
-        \Glspl{scan}: \>1491\\
+        \Glspl{sub}: \hspace{3em}\=\num{130}\\
+        \Glspl{scan}: \>\num{1491}\\
         % Scanner models:\>XX
         % Scanner manufacturers: \> XX
-        \Glspl{site}: \> 2
+        \Glspl{site}: \> \num{2}
         \end{tabbing}
     };
 
     \node[collection_block, right = 0.5cm of REMBRANDT] (RIDERNEURO) {
         \textbf{\gls{RIDER}}
         \begin{tabbing}
-        \Glspl{sub}: \hspace{3em}\=19\\
-        \Glspl{scan}: \>102\\
+        \Glspl{sub}: \hspace{3em}\=\num{19}\\
+        \Glspl{scan}: \>\num{102}\\
         % Scanner models:\>XX
         % Scanner manufacturers: \> XX
-        \Glspl{site}: \> 1
+        \Glspl{site}: \> \num{1}
         \end{tabbing}
     };
 
@@ -243,11 +243,11 @@
     \node[collection_block, right = 0.5cm of BITE] (CPTAC-GBM) {
         \textbf{\gls{CPTAC}}
         \begin{tabbing}
-        \Glspl{sub}: \hspace{3em}\=29\\
-        \Glspl{scan}: \>749\\
+        \Glspl{sub}: \hspace{3em}\=\num{29}\\
+        \Glspl{scan}: \>\num{749}\\
         % Scanner models:\>XX
         % Scanner manufacturers: \> XX
-        \Glspl{site}: \> 4
+        \Glspl{site}: \> \num{4}
         \end{tabbing}
     };
 
@@ -255,7 +255,6 @@
 
 
     \node[bounding_box, fit=(CPTAC-GBM) (BITE) (REMBRANDT) (RIDERNEURO)] (BTTestS) {};
-
 
 
 

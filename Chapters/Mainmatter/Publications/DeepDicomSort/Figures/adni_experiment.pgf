@@ -23,12 +23,12 @@ very thick, fill=color5, fill opacity=0.3, text opacity=1,
     \node[collection_block, above=2cm of algorithm_train] (brain_set) {
     \textbf{\Gls{BTset}}
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=911\\
-    \Glspl{scan}: \>13434\\
+    \Glspl{sub}: \hspace{3em}\=\num{911}\\
+    \Glspl{scan}: \>\num{13434}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{slice}: \> 335850\\
-    \Glspl{site}: \> 23
+    \Glspl{slice}: \> \num{335850}\\
+    \Glspl{site}: \> \num{23}
     \end{tabbing}
     };
 
@@ -36,22 +36,22 @@ very thick, fill=color5, fill opacity=0.3, text opacity=1,
     \node[collection_block, above left = 2cm and 0.25cm of brain_set.north west, anchor=south] (TRAIN) {
     \textbf{\Gls{BTtrain}}
     \begin{tabbing}
-    \Glspl{sub}: \hspace{3em}\=719\\
-    \Glspl{scan}: \>11065\\
+    \Glspl{sub}: \hspace{3em}\=\num{719}\\
+    \Glspl{scan}: \>\num{11065}\\
     % Scanner models:\>XX
     % Scanner manufacturers: \> XX
-    \Glspl{site}: \> 15
+    \Glspl{site}: \> \num{15}
     \end{tabbing}
     };
 
     \node[collection_block, right = 0.5cm of TRAIN] (TEST) {
         \textbf{\Gls{BTtest}}
         \begin{tabbing}
-        \Glspl{sub}: \hspace{3em}\=192\\
-        \Glspl{scan}: \>2369\\
+        \Glspl{sub}: \hspace{3em}\=\num{192}\\
+        \Glspl{scan}: \>\num{2369}\\
         % Scanner models:\>XX
         % Scanner manufacturers: \> XX
-        \Glspl{site}: \> 8
+        \Glspl{site}: \> \num{8}
         \end{tabbing}
     };
 
@@ -71,12 +71,12 @@ very thick, fill=color5, fill opacity=0.3, text opacity=1,
     \node[collection_block, above=2cm of algorithm_eval] (ADNI) {
         \textbf{\Gls{NTTS}}
         \begin{tabbing}
-        \Glspl{sub}: \hspace{3em}\=1318\\
-        \Glspl{scan}: \>7227\\
-        \Glspl{slice}: \>180675\\
+        \Glspl{sub}: \hspace{3em}\=\num{1318}\\
+        \Glspl{scan}: \>\num{7227}\\
+        \Glspl{slice}: \>\num{180675}\\
         % Scanner models:\>24
         % Scanner manufacturers: \> 4
-        \Glspl{site}: \> 67
+        \Glspl{site}: \> \num{67}
         \end{tabbing}
 
     };

@@ -96,11 +96,16 @@
 \section*{Appendix}
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
+%Also change the names from sections and subsections
+\crefalias{section}{appendix}
+\crefalias{subsection}{appendix}
 }
 
 \AtEndEnvironment{subappendices}{%
 \counterwithout{figure}{section}
 \counterwithout{table}{section}
+\crefalias{section}{section}
+\crefalias{subsection}{subsection}
 }
 
 

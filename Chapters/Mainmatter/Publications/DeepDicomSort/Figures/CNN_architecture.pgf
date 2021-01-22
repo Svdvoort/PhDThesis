@@ -90,7 +90,7 @@
                                                                  kernel size Y by Y};
     % \node(equal_sign) [title_label, above = 0.2cm of conv_layer] {=};
 
-    \draw [decorate, decoration={brace,amplitude=20pt, mirror}] (conv_layer.north west) -- (prelu.south west);
+    \draw [decorate, decoration={brace,amplitude=20pt, mirror}, line width=5pt] (conv_layer.north west) -- (prelu.south west);
 
     % Legend
     \node(activation_explanation) [activation_block, above = 1.5cm of conv_block_expansion] {Activation layer};
