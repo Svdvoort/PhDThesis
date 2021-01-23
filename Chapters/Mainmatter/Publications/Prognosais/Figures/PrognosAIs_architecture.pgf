@@ -1,0 +1,597 @@
+% \documentclass[border=8pt, multi, tikz]{standalone}
+% %\usepackage{blocks}
+% \usepackage{import}
+% \usetikzlibrary{quotes,arrows.meta}
+% \usetikzlibrary{positioning}
+
+% \usepackage{xcolor}
+% \usetikzlibrary{calc}
+% \usetikzlibrary{positioning}
+
+
+% https://coolors.co/a35c00-9966cc-c40000-68a691-08b2e3
+
+% \def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+% \defConvReluColor{rgb:yellow,5;red,5;white,5}
+% \def\PoolColor{rgb:red,1;black,0.3}
+% \def\UnpoolColor{rgb:blue,2;green,1;black,0.3}
+% \def\DropoutColor{rgb:blue,5;red,2.5;white,5}
+% \def\BatchColor{rgb:blue,5;red,5;white,4}
+% \def\BatchColor{rgb:yellow,5;red,2.5;white,5}
+% \def\BatchColor{rgb:magenta,5;black,7}
+\def\InputColor{rgb:black,0.5}
+\newcommand{\midarrow}{\tikz \draw[-Stealth,line width =0.55cm,draw=ConnectColor] (0,0) -- ++(3.75,0);}
+\tikzstyle{connection}=[every node/.style={sloped,allow upside down},draw=ConnectColor,opacity=1, line width=0.45cm]
+
+\newcommand{\midpoolarrow}{\tikz \draw[-Stealth,line width =0.55cm,draw=GlobPoolColor] (-0.3,0) -- ++(0.3,0);}
+\tikzstyle{globalpool}=[every node/.style={sloped,allow upside down},draw=GlobPoolColor,opacity=0.65, line width=0.45cm]
+
+
+% \newcommand{\copymidarrow}{\tikz \draw[-Stealth,line width =0.4cm,draw={rgb:blue,4;red,1;green,1;black,3}] (-0.3,0) -- ++(0.3,0);}
+\tikzset{
+  font={\fontsize{24pt}{16}\selectfont}}
+
+% \begin{document}
+\begin{tikzpicture}
+% \tikzstyle{copyconnection}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7]
+
+\xdef\initheight{30}
+\xdef\initdepth{0}
+\xdef\initwidth{9}
+\xdef\initconvwidth{9}
+\xdef\fillopacity{0.6}
+\xdef\depthonefactor{1}
+\xdef\depthtwofactor{1}
+\xdef\depththreefactor{1}
+\xdef\depthfourfactor{1}
+\xdef\fontscale{3.5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Draw Encoder
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Input
+% \pic[shift={(0, 0, 0)}] at (0,0,0) {Box={name=input,%
+%         fill=InputColor,height=\initheight,width={\initwidth},depth=\initdepth,
+%         xlabel={{"Input",}}, opacity=\fillopacity}};
+
+% \node (input) [scale=\fontscale, align=center] at (0,0,0) {\Huge \bfseries Input\\Pre-contrast T1w\\Post-contrast T1w\\T2w\\T2w-FLAIR};
+\node (input) at (0, 0,0) [scale=0.45] {\includegraphics{T1_preprocessed.png}};
+\node [below = -4cm of input, scale=0.45] (T1GD_input) {\includegraphics{T1GD_preprocessed.png}};
+\node [below = -4cm of T1GD_input, scale=0.45] (T2_input) {\includegraphics{T2_preprocessed.png}};
+\node [below = -4cm of T2_input, scale=0.45] (FLAIR_input) {\includegraphics{FLAIR_preprocessed.png}};
+% \node (label_mask_text) [shift={(13, 8, 0)}, scale=\fontscale] at (mask_conv-east) {\Huge \bfseries Segmentation};
+
+
+\pic[shift={(3,0,0)}] at (input.east) {Box={name=conv3d,%
+        xlabel={{"32",}},fill=ConvColor, opacity=\fillopacity, text opacity=1,
+        height=\initheight,width={\initconvwidth},depth=\initdepth}};
+
+\pic[shift={(0,0,0)}] at (conv3d-east) {Box={name=dropout,%
+        fill=DropoutColor,%
+        height=\initheight,width={\initwidth},depth=\initdepth, opacity=\fillopacity}};
+
+
+
+\pic[shift={(0,-15,0)}] at (dropout-east) {Box={name=conv3d_1,%
+        xlabel={{"32",}},fill=InputColor,%
+        height=\initheight,width={\initconvwidth},depth=\initdepth,opacity=\fillopacity}};
+
+
+
+% \coordinate (text_depth) at ($(conv3d-farnorthwest)!0.5!(conv3d_1-farnortheast)$);
+% \node at (text_depth) [anchor=south,scale=\fontscale] {\huge \bfseries 145x182x152};
+
+%%%%%%%%%%%%
+% Depth 1
+%%%%%%%%%%%%
+
+\pic[shift={(0,0,0)}] at (conv3d_1-east) {Box={name=sync_batch_normalization,%
+        fill=BatchColor,%
+        height=\initheight/\depthonefactor,width={\initwidth},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization-east) {Box={name=conv3d_2_3,%
+     xlabel={{"64","64"}},fill=color0,%
+     height=\initheight/\depthonefactor,width={\initconvwidth*\depthonefactor, \initconvwidth*\depthonefactor},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_2_3-east) {Box={name=dropout_1,%
+fill=DropoutColor,%
+height=\initheight/\depthonefactor,width={\initwidth},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,-10,0)}] at (dropout_1-east) {Box={name=max_pooling3d,%
+fill=PoolColor,%
+height=\initheight/\depthonefactor,width={\initwidth},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+% \coordinate (text_depth_1) at ($(sync_batch_normalization-farnorthwest)!0.5!(max_pooling3d-farnortheast)$);
+% \node at (text_depth_1) [anchor=south,scale=\fontscale] {\huge \bfseries 49x61x51};
+
+
+%%%%%%%%%%%%
+% Depth 2
+%%%%%%%%%%%%
+
+\pic[shift={(0,0,0)}] at (max_pooling3d-east) {Box={name=sync_batch_normalization_1,%
+        fill=BatchColor,%
+        height=\initheight/\depthtwofactor,width={\initwidth},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization_1-east) {Box={name=conv3d_4_5,%
+     xlabel={{"128","128"}},fill=ConvColor,%
+     height=\initheight/\depthtwofactor,width={\initconvwidth*\depthtwofactor, \initconvwidth*\depthtwofactor},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_4_5-east) {Box={name=dropout_2,%
+fill=DropoutColor,%
+height=\initheight/\depthtwofactor,width={\initwidth},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+\pic[shift={(0,-10,0)}] at (dropout_2-east) {Box={name=max_pooling3d_1,%
+fill=PoolColor,%
+height=\initheight/\depthtwofactor,width={\initwidth},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+% \coordinate (text_depth_2) at ($(sync_batch_normalization_1-farnorthwest)!0.5!(max_pooling3d_1-farnortheast)$);
+% \node at (text_depth_2) [anchor=south,scale=\fontscale] {\huge \bfseries 25x31x26};
+%%%%%%%%%%%%
+% Depth 3
+%%%%%%%%%%%%
+
+\pic[shift={(0,0,0)}] at (max_pooling3d_1-east) {Box={name=sync_batch_normalization_2,%
+        fill=BatchColor,%
+        height=\initheight/\depththreefactor,width={\initwidth},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization_2-east) {Box={name=conv3d_6_7,%
+     xlabel={{"256","256"}},fill=ConvColor,
+     height=\initheight/\depththreefactor,width={\initconvwidth*\depththreefactor, \initconvwidth*\depththreefactor},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_6_7-east) {Box={name=dropout_3,%
+fill=DropoutColor,%
+height=\initheight/\depththreefactor,width={\initwidth},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,-10,0)}] at (dropout_3-east) {Box={name=max_pooling3d_2,%
+fill=PoolColor,%
+height=\initheight/\depththreefactor,width={\initwidth},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+% \coordinate (text_depth_3) at ($(sync_batch_normalization_2-farnorthwest)!0.5!(max_pooling3d_2-farnortheast)$);
+% \node at (text_depth_3) [anchor=south,scale=\fontscale] {\huge \bfseries 13x16x13};
+
+
+%%%%%%%%%%%%
+% Depth 4
+%%%%%%%%%%%%
+
+\pic[shift={(0,0,0)}] at (max_pooling3d_2-east) {Box={name=sync_batch_normalization_3,%
+        fill=BatchColor,%
+        height=\initheight/\depthfourfactor,width={\initwidth},depth=\initdepth/\depthfourfactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization_3-east) {Box={name=conv3d_8_9,%
+     xlabel={{"512","512"}},fill=ConvColor,%
+     height=\initheight/\depthfourfactor,width={\initconvwidth*\depthfourfactor, \initconvwidth*\depthfourfactor},depth=\initdepth/\depthfourfactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_8_9-east) {Box={name=dropout_4,%
+fill=DropoutColor,%
+height=\initheight/\depthfourfactor,width={\initwidth},depth=\initdepth/\depthfourfactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (dropout_4-east) {Box={name=sync_batch_normalization_4,%
+        fill=BatchColor,%
+        height=\initheight/\depthfourfactor,width={\initwidth},depth=\initdepth/\depthfourfactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization_4-east) {Box={name=up_sampling3d,%
+        fill=UpPoolColor, xlabel={{"256",}},
+        height=\initheight/\depthfourfactor,width={\initconvwidth*\depththreefactor},depth=\initdepth/\depthfourfactor,opacity=\fillopacity}};
+
+\coordinate (text_depth_4) at ($(sync_batch_normalization_3-farnorthwest)!0.5!(up_sampling3d-farnortheast)$);
+\node at (text_depth_4) [anchor=south,scale=\fontscale] {\huge \bfseries 7x8x7};
+
+%%%%%%%%%%%%
+% Depth -3
+%%%%%%%%%%%%
+
+\pic[shift={(0,10,0)}] at (up_sampling3d-east) {Box={name=concatenate,%
+        fill=ConcatColor,
+        height=\initheight/\depththreefactor,width={\initconvwidth*\depthfourfactor},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (concatenate-east) {Box={name=conv3d_11_12,%
+        xlabel={{"256","256"}},fill=ConvColor,
+        height=\initheight/\depththreefactor,width={\initconvwidth*\depththreefactor, \initconvwidth*\depththreefactor},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_11_12-east) {Box={name=dropout_5,%
+fill=DropoutColor,%
+height=\initheight/\depththreefactor,width={\initwidth},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (dropout_5-east) {Box={name=sync_batch_normalization_5,%
+        fill=BatchColor,%
+        height=\initheight/\depththreefactor,width={\initwidth},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization_5-east) {Box={name=up_sampling3d_1,%
+        fill=UpPoolColor, xlabel={{"128",}},%
+        height=\initheight/\depththreefactor,width={\initconvwidth*\depthtwofactor},depth=\initdepth/\depththreefactor,opacity=\fillopacity}};
+
+
+% \coordinate (text_depth_5) at ($(concatenate-farnorthwest)!0.5!(up_sampling3d_1-farnortheast)$);
+% \node at (text_depth_5) [anchor=south,scale=\fontscale] {\huge \bfseries 13x16x13};
+
+%%%%%%%%%%%%
+% Depth -2
+%%%%%%%%%%%%
+
+
+\pic[shift={(0,10,0)}] at (up_sampling3d_1-east) {Box={name=concatenate_1,%
+fill=ConcatColor,
+height=\initheight/\depthtwofactor,width={\initconvwidth*\depththreefactor},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (concatenate_1-east) {Box={name=conv3d_14_15,%
+        xlabel={{"128",}},fill=ConvColor,
+        height=\initheight/\depthtwofactor,width={\initconvwidth*\depthtwofactor, \initconvwidth*\depthtwofactor},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_14_15-east) {Box={name=dropout_6,%
+fill=DropoutColor,%
+height=\initheight/\depthtwofactor,width={\initwidth},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (dropout_6-east) {Box={name=sync_batch_normalization_6,%
+        fill=BatchColor,%
+        height=\initheight/\depthtwofactor,width={\initwidth},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization_6-east) {Box={name=up_sampling3d_2,%
+        fill=UpPoolColor, xlabel={{"64",}},%
+        height=\initheight/\depthtwofactor,width={\initconvwidth*\depthtwofactor},depth=\initdepth/\depthtwofactor,opacity=\fillopacity}};
+
+% \coordinate (text_depth_6) at ($(concatenate_1-farnorthwest)!0.5!(up_sampling3d_2-farnortheast)$);
+% \node at (text_depth_6) [anchor=south,scale=\fontscale] {\huge \bfseries 25x31x26};
+
+
+%%%%%%%%%%%%
+% Depth -1
+%%%%%%%%%%%%
+
+
+\pic[shift={(0,10,0)}] at (up_sampling3d_2-east) {Box={name=concatenate_2,%
+fill=ConcatColor,
+height=\initheight/\depthonefactor,width={\initconvwidth*\depthtwofactor},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (concatenate_2-east) {Box={name=conv3d_17_18,%
+        xlabel={{"64","64"}},fill=ConvColor,
+        height=\initheight/\depthonefactor,width={\initconvwidth*\depthonefactor, \initconvwidth*\depthonefactor},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_17_18-east) {Box={name=dropout_7,%
+fill=DropoutColor,%
+height=\initheight/\depthonefactor,width={\initwidth},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (dropout_7-east) {Box={name=sync_batch_normalization_7,%
+        fill=BatchColor,%
+        height=\initheight/\depthonefactor,width={\initwidth},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (sync_batch_normalization_7-east) {Box={name=conv3d_transpose,%
+        fill=InputColor, xlabel={{"32",}},
+        height=\initheight/\depthonefactor,width={\initconvwidth},depth=\initdepth/\depthonefactor,opacity=\fillopacity}};
+
+% \coordinate (text_depth_7) at ($(concatenate_2-farnorthwest)!0.5!(conv3d_transpose-farnortheast)$);
+% \node at (text_depth_7) [anchor=south,scale=\fontscale] {\huge \bfseries 49x61x51};
+
+
+%%%%%%%%%%%%
+% Depth 0
+%%%%%%%%%%%%
+
+
+\pic[shift={(0,15,0)}] at (conv3d_transpose-east) {Box={name=concatenate_3,%
+fill=ConcatColor,
+height=\initheight,width={\initconvwidth*\depthonefactor},depth=\initdepth,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (concatenate_3-east) {Box={name=conv3d_19_20,%
+        xlabel={{"32","32"}},fill=ConvColor,%
+        height=\initheight,width={\initconvwidth, \initconvwidth},depth=\initdepth,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (conv3d_19_20-east) {Box={name=dropout_8,%
+fill=DropoutColor,%
+height=\initheight,width={\initwidth},depth=\initdepth,opacity=\fillopacity}};
+
+\pic[shift={(0,0,0)}] at (dropout_8-east) {Box={name=sync_batch_normalization_8,%
+        fill=BatchColor,%
+        height=\initheight,width={\initwidth},depth=\initdepth,opacity=\fillopacity}};
+
+\pic[shift={(3,0,0)}] at (sync_batch_normalization_8-east) {Box={name=mask_conv,%
+        fill=ConvReluColor,xlabel={{"2",}},%
+        height=\initheight,width={\initwidth},depth=\initdepth,opacity=\fillopacity}};
+
+
+\node (label_mask) [shift={(7, 0, 0)}, scale=\fontscale] at (mask_conv-east) {};
+
+\node (label_mask_text) [shift={(13, 8, 0)}, scale=\fontscale] at (mask_conv-east) {\Huge \bfseries Segmentation};
+
+\node (T1_with_mask) [below = 1cm of label_mask_text, scale=0.5] {\includegraphics[clip,trim={1cm 0.2cm 1cm 0cm}]{T1_with_mask.png}};
+\node (T1GD_with_mask) [below = -5.1cm of T1_with_mask, scale=0.5] {\includegraphics[clip,trim={1cm 0.2cm 1cm 0cm}]{T1GD_with_mask.png}};
+\node (T2_with_mask) [below = -5.1cm of T1GD_with_mask, scale=0.5] {\includegraphics[clip,trim={1cm 0.2cm 1cm 0cm}]{T2_with_mask.png}};
+\node (FLAIR_with_mask) [below = -5.1cm of T2_with_mask, scale=0.53] {\includegraphics[clip,trim={1cm 0.2cm 1cm 0cm}]{FLAIR_with_mask.png}};
+
+\node (input_text) [scale=\fontscale] at (label_mask_text -| input) {\Huge \bfseries Input};
+
+% \draw (input.north) -- ++(150,0,0);
+% \draw (input.south) -- ++(150,0,0);
+% \draw (T1GD_input.north) -- ++(150,0,0);
+% \draw (T1GD_input.south) -- ++(150,0,0);
+% \draw (T2_input.north) -- ++(150,0,0);
+% \draw (FLAIR_input.north) -- ++(150,0,0);
+% \draw (FLAIR_input.south) -- ++(150,0,0);
+
+
+% %\draw [connection]  (out-east)   -- node {\midarrow} ++(2,0,0);
+% \coordinate (text_depth_8) at ($(concatenate_3-farnorthwest)!0.5!(sync_batch_normalization_8-farnortheast)$);
+% \node at (text_depth_8) [anchor=south,scale=\fontscale] {\huge \bfseries 145x182x152};
+
+%%%%%%%%
+%% DEPTH LEVEL TEXTS
+%%%%
+\coordinate (text_depth) at ($(dropout-farnorthwest)!0.5!(concatenate_3-farnortheast)$);
+\node at (text_depth_4 |- dropout-farnorthwest) [anchor=south,scale=\fontscale] {\huge \bfseries 145x182x152};
+
+
+\coordinate (text_depth_1) at ($(sync_batch_normalization-farnorthwest)!0.5!(concatenate_2-farnortheast)$);
+\node at (text_depth_4 |- sync_batch_normalization-farnorthwest) [anchor=south,scale=\fontscale] {\huge \bfseries 49x61x51};
+
+\coordinate (text_depth_2) at ($(sync_batch_normalization_1-farnorthwest)!0.5!(up_sampling3d_2-farnortheast)$);
+\node at (text_depth_4 |- sync_batch_normalization_1-farnorthwest)  [anchor=south,scale=\fontscale] {\huge \bfseries 25x31x26};
+
+\coordinate (text_depth_2) at ($(sync_batch_normalization_2-farnorthwest)!0.5!(up_sampling3d_1-farnortheast)$);
+\node at (text_depth_4 |- sync_batch_normalization_2-farnorthwest) [anchor=south,scale=\fontscale] {\huge \bfseries 13x16x13};
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Genetic features
+%%%%%%%%%%%%%%%%%
+
+\coordinate (genetic) at (dropout_4-south|-up_sampling3d-south);
+% \node at ([shift={(0,-50,0)}] genetic) {TEST TEST};
+
+\pic[shift={(-15,-20,0)}] at (dropout_4-south) {Box={name=concatenate_genetics,%
+fill=ConcatColor, xlabel={{"1472",}},
+height=\initheight/1.5,width={150},depth=0,opacity=\fillopacity}};
+
+
+\pic[shift={(6,0,0)}] at (concatenate_genetics-east) {Box={name=dropout_9,%
+fill=DropoutColor,%
+height=\initheight/1.5, width={\initwidth},depth=0,opacity=\fillopacity}};
+
+\pic[shift={(7, 7, 0)}] at (dropout_9-east) {Box={name=IDH_dense,%
+fill=DenseColor, xlabel={{"512",}},
+height=\initheight/1.5,width={\initwidth},depth=0,opacity=\fillopacity}};
+
+\pic[shift={(6, 0, 0)}] at (IDH_dense-east) {Box={name=IDH_output,%
+fill=DenseSoftMaxColor, xlabel={{"2",}},
+height=\initheight/1.5,width={\initwidth},depth=0,opacity=\fillopacity}};
+
+\node (label_IDH) [shift={(0, 0, 0)}, scale=\fontscale,anchor=west] at (IDH_output-east -| label_mask.west) {\Huge \bfseries IDH};
+
+
+\pic[shift={(7, 0, 0)}] at (dropout_9-east) {Box={name=dense_1p19q,%
+fill=DenseColor, xlabel={{"512",}},
+height=\initheight/1.5,width={\initwidth},depth=0,opacity=\fillopacity}};
+
+\pic[shift={(6, 0, 0)}] at (dense_1p19q-east) {Box={name=output_1p19q,%
+fill=DenseSoftMaxColor, xlabel={{"2",}},
+height=\initheight/1.5,width={\initwidth},depth=0,opacity=\fillopacity}};
+
+\node (label_1p19q) [shift={(0, 0, 0)}, scale=\fontscale,anchor=west] at (output_1p19q-east -| label_mask.west) {\Huge \bfseries 1p/19q};
+
+\pic[shift={(7, -7, 0)}] at (dropout_9-east) {Box={name=dense_grade,%
+fill=DenseColor, xlabel={{"512",}},
+height=\initheight/1.5,width={\initwidth},depth=0,opacity=\fillopacity}};
+
+\pic[shift={(6, 0, 0)}] at (dense_grade-east) {Box={name=output_grade,%
+fill=DenseSoftMaxColor, xlabel={{"3",}},
+height=\initheight/1.5,width={\initwidth},depth=0,opacity=\fillopacity}};
+
+\node (label_grade) [shift={(0, 0, 0)}, scale=\fontscale,anchor=west] at (output_grade-east -| label_mask.west) {\Huge \bfseries Grade};
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%% DOWNSAMPLE PATHS
+%%%%%%%%%%%
+
+% \path (conv3d_1-sourth) -- (sync_batch_normalization-lcp|-conv3d_1-cp) coordinate[pos=0.5] (crp1-mid) ;
+% \draw[connection](conv3d_1-ocp)--(crp1-mid)--node{\midarrow}(sync_batch_normalization-lcp-|crp1-mid)--(sync_batch_normalization-cp);
+\draw[connection] (dropout-ocp) -- (dropout-ocp -| conv3d_1-north) -- node{\midarrow}(conv3d_1-north);
+
+\draw[connection] (dropout_1-ocp) -- (dropout_1-ocp -| max_pooling3d-north) -- node{\midarrow}(max_pooling3d-north);
+
+\draw[connection] (dropout_2-ocp) -- (dropout_2-ocp -| max_pooling3d_1-north) -- node{\midarrow}(max_pooling3d_1-north);
+
+\draw[connection] (dropout_3-ocp) -- (dropout_3-ocp -| max_pooling3d_2-north) -- node{\midarrow}(max_pooling3d_2-north);
+
+% \draw[connection] (max_pooling3d_1-ocp) -- (max_pooling3d_1-ocp -| sync_batch_normalization_2-north) -- node{\midarrow}(sync_batch_normalization_2-north);
+
+% \draw[connection] (max_pooling3d_2-ocp) -- (max_pooling3d_2-ocp -| sync_batch_normalization_3-north) -- node{\midarrow}(sync_batch_normalization_3-north);
+
+% \path (max_pooling3d-ocp) -- (sync_batch_normalization_1-lcp|-max_pooling3d-cp) coordinate[pos=0.5] (crp2-mid) ;
+% \draw[connection](max_pooling3d-ocp)--(crp2-mid)--node{\midarrow}(sync_batch_normalization_1-lcp-|crp2-mid)--(sync_batch_normalization_1-cp);
+
+% \path (max_pooling3d_1-ocp) -- (sync_batch_normalization_2-lcp|-max_pooling3d_1-cp) coordinate[pos=0.5] (crp3-mid) ;
+% \draw[connection](max_pooling3d_1-ocp)--(crp3-mid)--node{\midarrow}(sync_batch_normalization_2-lcp-|crp3-mid)--(sync_batch_normalization_2-cp);
+
+% \path (max_pooling3d_2-ocp) -- (sync_batch_normalization_3-lcp|-max_pooling3d_2-cp) coordinate[pos=0.5] (crp4-mid) ;
+% \draw[connection](max_pooling3d_2-ocp)--(crp4-mid)--node{\midarrow}(sync_batch_normalization_3-lcp-|crp4-mid)--(sync_batch_normalization_3-cp);
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%% UPSAMPLE PATHS
+%%%%%%%%%%%%%%%%%
+
+\draw[connection] (up_sampling3d-north) --  node{\midarrow}(up_sampling3d-north |- concatenate-bcp) --(concatenate-bcp);
+
+\draw[connection] (up_sampling3d_1-north) --  node{\midarrow}(up_sampling3d_1-north |- concatenate_1-bcp) --(concatenate_1-bcp);
+
+\draw[connection] (up_sampling3d_2-north) --  node{\midarrow}(up_sampling3d_2-north |- concatenate_2-bcp) --(concatenate_2-bcp);
+
+\draw[connection] (conv3d_transpose-north) --  node{\midarrow}(conv3d_transpose-north |- concatenate_3-bcp) --(concatenate_3-bcp);
+
+% \path (up_sampling3d-ocp) -- (concatenate-bcp|-up_sampling3d-cp) coordinate[pos=0.5] (upsample1-mid) ;
+% \draw[connection](up_sampling3d-ocp)--(upsample1-mid)--node{\midarrow}(concatenate-bcp-|upsample1-mid)--(concatenate-bcp);
+
+
+% \path (up_sampling3d_1-ocp) -- (concatenate_1-bcp|-up_sampling3d_1-cp) coordinate[pos=0.5] (upsample2-mid) ;
+% \draw[connection](up_sampling3d_1-ocp)--(upsample2-mid)--node{\midarrow}(concatenate_1-bcp-|upsample2-mid)--(concatenate_1-bcp);
+
+
+% \path (up_sampling3d_2-ocp) -- (concatenate_2-bcp|-up_sampling3d_2-cp) coordinate[pos=0.5] (upsample3-mid) ;
+% \draw[connection](up_sampling3d_2-ocp)--(upsample3-mid)--node{\midarrow}(concatenate_2-bcp-|upsample3-mid)--(concatenate_2-bcp);
+
+
+% \path (conv3d_transpose-ocp) -- (concatenate_3-bcp|-conv3d_transpose-cp) coordinate[pos=0.5] (upsample4-mid) ;
+% \draw[connection](conv3d_transpose-ocp)--(upsample4-mid)--node{\midarrow}(concatenate_3-bcp-|upsample4-mid)--(concatenate_3-bcp);
+
+%%%%%%%%%%%%%%
+%%%% DIRECT PATHS
+%%%%%%%%%%%%%
+\draw[connection](input.east)--node{\midarrow}(conv3d-west);
+\draw[connection](dropout-ocp)--node{\midarrow}(concatenate_3-cp);
+\draw[connection](dropout_1-ocp)--node{\midarrow}(concatenate_2-cp);
+\draw[connection](dropout_2-ocp)--node{\midarrow}(concatenate_1-cp);
+\draw[connection](dropout_3-ocp)--node{\midarrow}(concatenate-cp);
+
+\draw[connection](sync_batch_normalization_8-east) -- node{\midarrow}(mask_conv-west);
+\draw[connection](mask_conv-east) -- node{\midarrow}(label_mask.west);
+
+%%%%%%%%%%%%%%
+%% Genetic paths
+%%%%%%%%%%
+
+\coordinate (above_genetics) at ([yshift=250] concatenate_genetics-nearnorthmid);
+
+% \path (dropout-nearsouthmid) -- (dropout-nearsouthmid |-concatenate_genetics-nearnorthmid) coordinate[pos=0.9] (maxpool1) ;
+\draw[globalpool, rounded corners=25mm] (dropout-nearsouthmid) -- node{\midpoolarrow}([yshift=-20cm] dropout-nearsouthmid |- dropout_1-nearsouthmid) --(dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_1-nearsouthmid) -- node{\midpoolarrow}([yshift=-12cm] dropout_1-nearsouthmid |- dropout_2-nearsouthmid) --(dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_2-nearsouthmid) -- node{\midpoolarrow}([yshift=-6cm] dropout_2-nearsouthmid |- dropout_3-nearsouthmid) -- (dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_3-nearsouthmid) -- node{\midpoolarrow}([yshift=-2cm] dropout_3-nearsouthmid |- dropout_4-nearsouthmid) -- (dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_4-nearsouthmid) -- node{\midpoolarrow}(dropout_4-nearsouthmid |- above_genetics) -- (dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_5-nearsouthmid) -- node{\midpoolarrow}([yshift=-2cm] dropout_5-nearsouthmid |- dropout_4-nearsouthmid) -- (dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_6-nearsouthmid) -- node{\midpoolarrow}([yshift=-6cm] dropout_6-nearsouthmid |- dropout_3-nearsouthmid) -- (dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_7-nearsouthmid) -- node{\midpoolarrow}([yshift=-12cm] dropout_7-nearsouthmid |- dropout_2-nearsouthmid) --(dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+\draw[globalpool, rounded corners=25mm] (dropout_8-nearsouthmid) -- node{\midpoolarrow}([yshift=-20cm] dropout_8-nearsouthmid |- dropout_1-nearsouthmid) --(dropout_4-nearsouthmid |- above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+
+% % \draw[connection] (dropout_1-nearsouthmid) -- node{\midarrow}(concatenate_genetics-north);
+% \draw[globalpool] (dropout_5-nearsouthmid) -- node{\midpoolarrow}(dropout_5-nearsouthmid |- above_genetics) -- (above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+% \draw[globalpool] (dropout_6-nearsouthmid) -- node{\midpoolarrow}(dropout_6-nearsouthmid |- above_genetics) -- (above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+% \draw[globalpool] (dropout_7-nearsouthmid) -- node{\midpoolarrow}(dropout_7-nearsouthmid |- above_genetics) -- (above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+% \draw[globalpool] (dropout_8-nearsouthmid) -- node{\midpoolarrow}(dropout_8-nearsouthmid |- above_genetics) -- (above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+% \coordinate (global_8) at ([shift={(-2,0,0)}] dropout_6-northeast -| concatenate_3-west);
+
+% \draw[globalpool] (dropout_8-nearsouthmid) -- node{\midpoolarrow}(dropout_6-northeast -| dropout_8-nearsouthmid) -- (global_8) -- node{\midpoolarrow}(global_8 |- above_genetics) -- (above_genetics); % -- node{\midpoolarrow}(dropout_8-nearsouthmid |- above_genetics) -- (above_genetics) -- node{\midpoolarrow}(concatenate_genetics-nearnorthmid);
+
+\draw[connection] (dropout_9-east) -- node{\midarrow}(dense_1p19q-west);
+\draw[connection] (dense_1p19q-east) -- node{\midarrow}(output_1p19q-west);
+\draw[connection] (output_1p19q-east) -- node{\midarrow}(label_1p19q.west);
+
+\draw[connection] (dropout_9-north) -- (dropout_9-north |- IDH_dense-west) -- node{\midarrow}(IDH_dense-west);
+\draw[connection] (IDH_dense-east) -- node{\midarrow}(IDH_output-west);
+\draw[connection] (IDH_output-east) -- node{\midarrow}(label_IDH.west);
+
+\draw[connection] (dropout_9-south) -- (dropout_9-south |- dense_grade-west) -- node{\midarrow}(dense_grade-west);
+\draw[connection] (dense_grade-east) -- node{\midarrow}(output_grade-west);
+\draw[connection] (output_grade-east) -- node{\midarrow}(label_grade.west);
+
+% \draw[connection] (concatenate_genetics-ocp) -- node{\midarrow} (dropout_9-farwest |- concatenate_genetics-ocp);
+\draw[connection] (concatenate_genetics-east) -- node{\midarrow}(dropout_9-west);
+%%%%%%%%%%%%%%%%%%%%
+%%%%% LEGEND
+%%%%%%%%%%%%%%%
+
+\coordinate (legend) at (conv3d-south|-concatenate_genetics-south);
+% \node at (text_depth) [anchor=south] {\huge \bfseries 145x182x152};
+
+
+\pic[shift={(0,-15,0)}] at (legend) {Box={name=batch_legend,%
+fill=BatchColor, xlabel={{"Batch normalization",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+
+\pic[shift={(23,0,0)}] at (batch_legend-east) {Box={name=concat_legend,%
+fill=ConcatColor, xlabel={{"Concatenation",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+
+
+\pic[shift={(23,0,0)}] at (concat_legend-east) {Box={name=conv_legend,%
+fill=ConvColor, xlabel={{"Convolution \& ReLU",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+\node at (conv_legend-nearsouthmid) [shift={(0,-3.5, 0)},scale=2.6] {\Huge \bfseries 3x3x3};
+
+\pic[shift={(23,0,0)}] at (conv_legend-east) {Box={name=convsoftmax_legend,%
+fill=ConvReluColor, xlabel={{"Convolution \& Softmax",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+\node at (convsoftmax_legend-nearsouthmid) [shift={(0,-3.5, 0)},scale=2.6] {\Huge \bfseries 1x1x1};
+
+\pic[shift={(-2.5,-10,0)}] at (batch_legend-south) {Box={name=transconv_legend,%
+fill=InputColor, xlabel={{"(De)convolution \& ReLU",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+\node at (transconv_legend-nearsouthmid) [shift={(0,-3.5, 0)},scale=2.6] {\Huge \bfseries 9x9x9};
+\node at (transconv_legend-nearsouthmid) [shift={(0,-5.5, 0)},scale=2.6] {\Huge \bfseries stride 3x3x3};
+
+
+\pic[shift={(23,0,0)}] at (transconv_legend-east) {Box={name=dense_legend,%
+fill=DenseColor, xlabel={{"Dense \& ReLU",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+
+\pic[shift={(23,0,0)}] at (dense_legend-east) {Box={name=densesoftmax_legend,%
+fill=DenseSoftMaxColor, xlabel={{"Dense \& Softmax",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+
+
+\pic[shift={(23,0,0)}] at (densesoftmax_legend-east) {Box={name=dropout_legend,%
+fill=DropoutColor, xlabel={{"Dropout",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+
+\pic[shift={(-2.5,-10,0)}] at (transconv_legend-south) {Box={name=pool_legend,%
+fill=PoolColor, xlabel={{"Max pooling",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+\node at (pool_legend-nearsouthmid) [shift={(0,-3.5, 0)},scale=2.6] {\Huge \bfseries 2x2x2};
+
+\pic[shift={(23,0,0)}] at (pool_legend-east) {Box={name=upconv_legend,%
+fill=UpPoolColor, xlabel={{"Up-convolution \& ReLU",}},
+height=10,width={25},depth=0,opacity=\fillopacity}};
+
+\node at (upconv_legend-nearsouthmid) [shift={(0,-3.5, 0)},scale=2.6] {\Huge \bfseries 2x2x2};
+
+\coordinate (globalpool_legend) at ([shift={(23,0,0)}] upconv_legend-east);
+\newcommand{\midpoollegendarrow}{\tikz \draw[-Stealth,line width =0.7cm,draw=GlobPoolColor] (-0.3,0) -- ++(0.3,0);}
+\draw[globalpool, line width=0.7cm] (globalpool_legend) -- node{\midpoollegendarrow} ([xshift=5cm]  globalpool_legend);
+
+\node at (globalpool_legend) [shift={(2,-2, 0)},scale=2.6] {\Huge \bfseries Global max};
+\node at (globalpool_legend) [shift={(2,-4, 0)},scale=2.6] {\Huge \bfseries pooling};
+
+
+
+
+% \draw [connection]  (p2-east)    -- node {\midarrow} (cr3-west);
+% \draw [connection]  (p3-east)    -- node {\midarrow} (cr4-west);
+% \draw [connection]  (p4-east)    -- node {\midarrow} (cr5-west);
+% \draw [connection]  (cr5-east)   -- node {\midarrow} (up4-west);
+% \draw [connection]  (ucr4a-east) -- node {\midarrow} (up3-west);
+% \draw [connection]  (ucr3a-east) -- node {\midarrow} (up2-west);
+% \draw [connection]  (ucr2a-east) -- node {\midarrow} (up1-west);
+% \draw [connection]  (ucr1a-east) -- node {\midarrow} (out-west);
+% %\draw [connection]  (out-east)   -- node {\midarrow} ++(2,0,0);
+
+% \path (cr4-southeast) -- (cr4-northeast) coordinate[pos=1.25] (cr4-top) ;
+% \path (cr3-southeast) -- (cr3-northeast) coordinate[pos=1.25] (cr3-top) ;
+% \path (cr2-southeast) -- (cr2-northeast) coordinate[pos=1.25] (cr2-top) ;
+% \path (cr1-southeast) -- (cr1-northeast) coordinate[pos=1.25] (cr1-top) ;
+
+% \path (cat4-south)  -- (cat4-north)  coordinate[pos=1.25] (cat4-top) ;
+% \path (cat3-south)  -- (cat3-north)  coordinate[pos=1.25] (cat3-top) ;
+% \path (cat2-south)  -- (cat2-north)  coordinate[pos=1.25] (cat2-top)  ;
+% \path (cat1-south)  -- (cat1-north)  coordinate[pos=1.25] (cat1-top)  ;
+% %
+% \draw [copyconnection]  (cr4-northeast)
+% -- node {\copymidarrow}(cr4-top)
+% -- node {\copymidarrow}(cat4-top)
+% -- node {\copymidarrow} (cat4-north);
+% %
+% \draw [copyconnection]  (cr3-northeast)
+% -- node {\copymidarrow}(cr3-top)
+% -- node {\copymidarrow}(cat3-top)
+% -- node {\copymidarrow} (cat3-north);
+% %
+% \draw [copyconnection]  (cr2-northeast)
+% -- node {\copymidarrow}(cr2-top)
+% -- node {\copymidarrow}(cat2-top)
+% -- node {\copymidarrow} (cat2-north);
+% %
+% \draw [copyconnection]  (cr1-northeast)
+% -- node {\copymidarrow}(cr1-top)
+% -- node {\copymidarrow}(cat1-top)
+% -- node {\copymidarrow} (cat1-north);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tikzpicture}
+% \end{document}

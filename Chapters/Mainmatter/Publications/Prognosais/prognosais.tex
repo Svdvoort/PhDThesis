@@ -5,7 +5,7 @@
 \begin{ChapterAbstract}
     Accurate characterization of glioma is crucial for clinical decision making.
     A delineation of the \gls{tumor} is also desirable in the initial decision stages but is a time-consuming task.
-    Leveraging the latest GPU capabilities, we developed a single multi-task convolutional neural network that uses the full 3D, structural, pre-operative \acrshort{MRI} scans to can predict the \acrshort{IDH} mutation status, the 1p/19q co-deletion status, and the grade of a \gls{tumor}, while simultaneously segmenting the \gls{tumor}.
+    Leveraging the latest GPU capabilities, we developed a single multi-task convolutional neural network that uses the full 3D, structural, preoperative \acrshort{MRI} scans to can predict the \acrshort{IDH} mutation status, the 1p/19q co-deletion status, and the grade of a \gls{tumor}, while simultaneously segmenting the \gls{tumor}.
     We trained our method using the largest, most diverse patient cohort to date containing 1508 glioma patients from 16 institutes.
     We tested our method on an independent dataset of 240  patients from 13 different institutes, and achieved an \acrshort{IDH}-\acrshort{AUC} of 0.90, 1p/19q-\acrshort{AUC} of 0.85, grade-\acrshort{AUC} of 0.81, and a mean whole \gls{tumor} DICE score of 0.84.
     Thus, our method non-invasively predicts multiple, clinically relevant parameters and generalizes well to the broader clinical population.
@@ -41,22 +41,21 @@ Our method consists of a single, multi-task \gls{CNN} that can predict the \gls{
 To the best of our knowledge, this is the first method that provides all of this information at the same time, allowing clinical experts to derive the \gls{WHO} category from the individually predicted genetic and histological features, while also allowing them to consider or disregard specific predictions as they deem fit.
 Exploiting the capabilities of the latest GPUs, optimizing our implementation to reduce the memory footprint, and using distributed multi-GPU training, we were able to train a model that uses the full 3D scan as an input.
 We trained our method using the largest, most diverse patient cohort to date, with 1508 patients included from 16 different institutes.
-To ensure the broad applicability of our method, we used minimal inclusion criteria, only requiring the four most commonly used \gls{MRI} sequences: pre- and post-contrast \gls{T1}, \gls{T2}, and \gls{FLAIR} \autocite{thust2018gliomaimaging, fresychlag2018imaging}.
+To ensure the broad applicability of our method, we used minimal inclusion criteria, only requiring the four most commonly used \gls{MRI} sequences: pre-contrast \gls{T1}, \gls{T1C}, \gls{T2}, and \gls{FLAIR} \autocite{thust2018gliomaimaging, fresychlag2018imaging}.
 No constraints were placed on the patients' clinical characteristics, such as the \gls{tumor} grade, or the radiological characteristics of scans, such as the scan quality.
 In this way, our method could capture the heterogeneity that is naturally present in clinical data.
 We tested our method on an independent dataset of 240 patients from 13 different institutes, to evaluate the true generalizability of our method.
 Our results show that we can predict multiple clinical features of glioma from \gls{MRI} scans in a diverse patient population.
 
-\begin{figure}
+\begin{figure}[htbp]
     \includegraphics[width=\textwidth]{Figures/Pipeline.pdf}
     \caption{Overview of our method.
-    Pre-, and post-contrast \gls{T1}, \gls{T2} and \gls{FLAIR} scans are used as an input.
+    \acrshort{T1}, \acrshort{T1C}, \acrshort{T2}, and \acrshort{FLAIR} scans are used as an input.
     The scans are registered to an atlas, bias field corrected, skull stripped, and normalized before being passed through our convolutional neural network.
     One branch of the network segments the \gls{tumor}, while at the same time the features are combined to predict the \acrshort{IDH} status, 1p/19q status, and grade of the \gls{tumor}.
     }\label{fig:pipeline}
-    \end{figure}
+\end{figure}
 
-\newpage
 
 \section{Results}
 \subsection{Patient characteristics}
@@ -66,47 +65,52 @@ The patients in the train set originated from nine different data collections an
 
 \begin{table}[htbp]
 \centering
-\begin{tabular}{l r r C{0.5cm} r r}
+\sisetup{
+    table-number-alignment=center-decimal-marker,
+    table-text-alignment = center,
+    % table-figures-integer = 3,
+    % table-figures-decimal = 1,
+    }
+\begin{tabular}{l S[table-format=4.0] S[table-format=3.1] C{0.5cm} S[table-format=4.0] S[table-format=3.1]}
 \toprule
 &\multicolumn{2}{c}{\textbf{Train set}} && \multicolumn{2}{c}{\textbf{Test set}}\\
+\cmidrule(lr){2-3} \cmidrule(lr){5-6}
 &N&\% && N &\%\\
 \midrule
-Patients & 1508 &  && 240\\
-
-\acrshort{IDH} status \\
+\textbf{Total} & 1508 & 100.0&& 240 & 100.0\\
+\\
+\textbf{\acrshort{IDH} status}\\
 \hspace{1em}Mutated & 226 & 15.0 && 88 &36.7\\
 \hspace{1em}Wildtype & 440 & 29.2 && 129&53.7\\
 \hspace{1em}Unknown & 842 & 55.8 && 23 & 9.6\\
-
-1p/19q co-deletion status\\
+\\
+\textbf{1p/19q co-deletion status}\\
 \hspace{1em}Co-deleted & 103 & 6.8 && 26 & 10.8\\
 \hspace{1em}Intact & 337 & 22.4 &&207 & 86.3\\
 \hspace{1em}Unknown & 1068 & 70.8 && 7 &2.9\\
-
-Grade\\
+\\
+\textbf{Grade}\\
 \hspace{1em}II& 230 & 15.3 && 47 &19.6\\
 \hspace{1em}III& 114 & 7.6 && 59 & 24.6\\
 \hspace{1em}IV& 830 & 55.0 && 132 & 55.0\\
 \hspace{1em}Unknown& 334 & 22.1 && 2 & 0.8\\
-
-\acrshort{WHO} 2016 categorization\\
+\\
+\textbf{\acrshort{WHO} 2016 categorization}\\
 \hspace{1em}Oligodendroglioma & 96 &6.4 && 26 &10.8\\
 \hspace{1em}Astrocytoma, \acrshort{IDH}-wildtype & 31 & 2.1 && 22 & 9.2\\
 \hspace{1em}Astrocytoma, \acrshort{IDH}-mutated & 98 & 6.4 && 57 & 23.7\\
 \hspace{1em}\acrshort{GBM}, \acrshort{IDH}-wildtype & 331 & 21.9 && 106 &44.2\\
 \hspace{1em}\acrshort{GBM}, \acrshort{IDH}-mutated & 16 & 1.1 && 5 & 2.1\\
 \hspace{1em}Unknown & 936 & 62.1 && 24 & 10.0\\
-
-
-Segmentation\\
-\hspace{1em}Manual & 716 & 47.5 && 240 & 100\\
-\hspace{1em}Automatic & 792 & 52.5 && 0 & 0\\
+\\
+\textbf{Segmentation}\\
+\hspace{1em}Manual & 716 & 47.5 && 240 & 100.0\\
+\hspace{1em}Automatic & 792 & 52.5 && 0 & 0.0\\
 
 \bottomrule
 \end{tabular}
-\caption{Patient characteristics for the train set and test set}\label{tab:patient_char}
-
-{\small \raggedright \acrcaption{IDH}, \acrcaption{WHO}, \acrcaption{GBM} \par}
+\caption{Patient characteristics for the train set and test set.
+Abbreviations: \acrcaption{IDH}, \acrcaption{WHO}, \acrcaption{GBM}}\label{tab:patient_char}
 \end{table}
 
 \begin{figure}
@@ -136,43 +140,57 @@ In \cref{app:seg_examples_random} we show five patients that were randomly selec
 
 \begin{table}[htbp]
     \centering
-    \begin{tabular}{llC{1.7cm}C{1.7cm}C{1.7cm}C{1.7cm}}
+    \sisetup{
+    table-number-alignment=center-decimal-marker,
+    table-text-alignment = center,
+    % table-figures-integer = 3,
+    % table-figures-decimal = 1,
+    }
+    \begin{tabular}{L{3.0cm}S[table-format=1.2,table-column-width=1.8cm]S[table-format=1.2,table-column-width=1.8cm]S[table-format=1.2,table-column-width=1.8cm]S[table-format=1.2,table-column-width=1.8cm]}
         \toprule
-        \thead{Patient\\group} & Task &  \acrshort{AUC} & Accuracy & Sensitivity & Specificity \\
+        {\textbf{Prediction task}} &  {\textbf{\acrshort{AUC}}} & {\textbf{Accuracy}} & {\textbf{Sensitivity}} & {\textbf{Specificity}}\\
         \midrule
+        \\
+        \textbf{All patients}\\
+        \cmidrule(lr){1-1}
 
-        All& \acrshort{IDH} & 0.90 & 0.84 & 0.72 & 0.93\\
-        &1p/19q & 0.85 & 0.89 & 0.39 & 0.95\\
-        &Grade (II/III/IV)& 0.81 & 0.71 & N/A & N/A\\
-        &Grade II & 0.91 & 0.86 &  0.75 & 0.89\\
-        &Grade III & 0.69 & 0.75 & 0.17 & 0.94\\
-        &Grade IV & 0.91 & 0.82 & 0.95 & 0.66\\
-        &\acrshort{LGG} vs \acrshort{HGG} & 0.91 & 0.84 & 0.72 & 0.93\\
+        \hspace{1em}\acrshort{IDH} & 0.90 & 0.84 & 0.72 & 0.93\\
+        \hspace{1em}1p/19q & 0.85 & 0.89 & 0.39 & 0.95\\
+        \hspace{1em}Grade (II/III/IV)& 0.81 & 0.71 & {\NA} & {\NA}\\
+        \hspace{1em}Grade II & 0.91 & 0.86 &  0.75 & 0.89\\
+        \hspace{1em}Grade III & 0.69 & 0.75 & 0.17 & 0.94\\
+        \hspace{1em}Grade IV & 0.91 & 0.82 & 0.95 & 0.66\\
+        \hspace{1em}\acrshort{LGG} vs \acrshort{HGG} & 0.91 & 0.84 & 0.72 & 0.93\\
+        \\
+
+        \textbf{\acrshort{LGG} patients}\\
+        \cmidrule(lr){1-1}
+        \hspace{1em}\acrshort{IDH} & 0.81 & 0.74 & 0.73 & 0.77\\
+        \hspace{1em}1p/19q& 0.73 & 0.76 & 0.39 & 0.89\\
 
         \\
-        \acrshort{LGG} & \acrshort{IDH} & 0.81 & 0.74 & 0.73 & 0.77\\
-        &1p/19q& 0.73 & 0.76 & 0.39 & 0.89\\
-
-        \\
-        \acrshort{HGG} & \acrshort{IDH} &  0.64 & 0.94 & 0.40 & 0.96\\
+        \textbf{\acrshort{HGG} patients}\\
+        \cmidrule(lr){1-1}
+        \hspace{1em}\acrshort{IDH} &  0.64 & 0.94 & 0.40 & 0.96\\
         \bottomrule
         \end{tabular}
-        \caption{Evaluation results of the final model on the test set}\label{tab:cnn_results}
-
-        {\small \raggedright Abbreviations: \acrcaption{AUC}, \acrcaption{IDH}, \acrcaption{LGG}, \acrcaption{HGG} \par}
+        \caption{Evaluation results of the final model on the test set.
+        Abbreviations: \acrcaption{AUC}, \acrcaption{IDH}, \acrcaption{LGG}, \acrcaption{HGG}}\label{tab:cnn_results}
 \end{table}
 
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{Figures/ROC.png}
+\resizebox{\textwidth}{!}{\subimport{Figures/}{ROC.pgf}}
+% \includegraphics[width=\textwidth]{Figures/ROC.png}
 \caption{\Acrfull{ROC}-curves of the genetic and histological features, evaluated on the test set. The crosses indicate the location of the decision threshold for the reported accuracy, sensitivity, and specificity}\label{fig:roc_curves}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{Figures/Segmentation_metrics.png}
+    % \includegraphics[width=\textwidth]{Figures/Segmentation_metrics.png}
+    \resizebox{\textwidth}{!}{\subimport{Figures/}{segmentation_metrics.pgf}}
     \caption{DICE scores, Hausdorff distances, and volumetric similarity coefficients for all patients in the test set.
     The DICE score is a measure of the overlap between the ground truth and predicted segmentation (where 1 indicates perfect overlap).
     The Hausdorff distance is a measure of the agreement between the boundaries of the ground truth and predicted segmentation (lower is better).
@@ -182,7 +200,7 @@ In \cref{app:seg_examples_random} we show five patients that were randomly selec
 \subsection{Model interpretability}
 To provide insight into the behavior of our model we created saliency maps, which show which parts of the scans contributed the most to the prediction.
 These saliency maps are shown in \cref{fig:saliency_maps} for two example patients from the test set.
-It can be seen that for the \gls{LGG} the network focused on a bright rim in the \gls{FLAIR} scan, whereas for the \gls{HGG} it focused on the enhancement in the post-contrast \gls{T1} scan.
+It can be seen that for the \gls{LGG} the network focused on a bright rim in the \gls{FLAIR} scan, whereas for the \gls{HGG} it focused on the enhancement in the \gls{T1C} scan.
 To aid further interpretation, we provide visualizations of selected filter outputs in the network in \cref{app:filter_vis}, which also show that the network focuses on the \gls{tumor}, and these filters seem to recognize specific imaging features such as the contrast enhancement and \gls{FLAIR} brightness.
 
 \begin{figure}[htbp]
@@ -193,22 +211,22 @@ To aid further interpretation, we provide visualizations of selected filter outp
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_LGG_T1.png}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\acrshort{T1}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_LGG_T1GD.png}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\acrshort{T1C}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_LGG_T2.png}
-        \caption*{\acrshort{T2}}
+        \caption*{\acrshort{T2}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_LGG_FLAIR.png}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\acrshort{FLAIR}\nopunct}
         \end{subfigure}
         \caption{Saliency maps of a low grade glioma patient (TCGA-DU-6400). This is an \acrshort{IDH}-mutated, 1p/19q co-deleted, grade II \gls{tumor}.
         The network focuses on a rim of brightness in the \gls{FLAIR} scan}\label{fig:saliency_LGG}
@@ -219,25 +237,25 @@ To aid further interpretation, we provide visualizations of selected filter outp
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_HGG_T1.png}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\acrshort{T1}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_HGG_T1GD.png}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\acrshort{T1C}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_HGG_T2.png}
-        \caption*{\acrshort{T2}}
+        \caption*{\acrshort{T2}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/saliency_HGG_FLAIR.png}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\acrshort{FLAIR}\nopunct}
         \end{subfigure}
         \caption{Saliency maps of a high grade glioma patient (TCGA-06-0238). This is an \acrshort{IDH}-wildtype, grade IV \gls{tumor}.
-        The network focuses on enhancing spots around the necrosis on the post-contrast \gls{T1} scan}\label{fig:saliency_HGG}
+        The network focuses on enhancing spots around the necrosis on the \gls{T1C} scan}\label{fig:saliency_HGG}
     \end{subfigure}
 
 \caption{Saliency maps of two patients from the test set, showing areas that are relevant for the prediction}\label{fig:saliency_maps}
@@ -265,7 +283,7 @@ Even though this example scan contained imaging artifacts, our method was able t
 Finally, we considered two examples of scans that were incorrectly predicted by our method, see \cref{fig:wrong_predictions}.
 These two examples were chosen because our network assigned high prediction scores to the wrong classes for these cases.
 \cref{fig:wrong_prediction_LGG} shows an example of a  grade II, \gls{IDH}-mutated, 1p/19q co-deleted glioma that was predicted as grade IV, \gls{IDH}-wildtype by our method.
-Our method's prediction was most likely caused by the hyperintensities in the post-contrast \gls{T1} scan being interpreted as contrast enhancement.
+Our method's prediction was most likely caused by the hyperintensities in the \gls{T1C} scan being interpreted as contrast enhancement.
 Since these hyperintensities are also present in the pre-contrast \gls{T1} scan they are most likely calcifications, and the radiological appearance of this \gls{tumor} is indicative of an oligodendroglioma.
 \cref{fig:wrong_prediction_HGG} shows an example of a grade IV, \gls{IDH}-wildtype glioma that was predicted as a grade III, \gls{IDH}-mutated glioma by our method.
 
@@ -276,22 +294,22 @@ Since these hyperintensities are also present in the pre-contrast \gls{T1} scan 
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-DU-6410_T1.png}
-    \caption*{Pre-contrast \acrshort{T1}}
+    \caption*{\acrshort{T1}\nopunct}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-DU-6410_T1GD.png}
-    \caption*{Post-contrast \acrshort{T1}}
+    \caption*{\acrshort{T1C}\nopunct}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-DU-6410_T2.png}
-    \caption*{\acrshort{T2}}
+    \caption*{\acrshort{T2}\nopunct}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-DU-6410_FLAIR.png}
-    \caption*{\acrshort{FLAIR}}
+    \caption*{\acrshort{FLAIR}\nopunct}
     \end{subfigure}
     \caption{TCGA-DU-6410 from the \acrshort{TCGALGG} collection.
     The ground truth histopathological analysis indicated this glioma was grade II, \gls{IDH}-mutated, 1p/19q co-deleted, but our method predicted it as a grade IV, \gls{IDH}-wildtype}\label{fig:wrong_prediction_LGG}
@@ -302,22 +320,22 @@ Since these hyperintensities are also present in the pre-contrast \gls{T1} scan 
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-76-6664_T1.png}
-    \caption*{Pre-contrast \acrshort{T1}}
+    \caption*{\acrshort{T1}\nopunct}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-76-6664_T1GD.png}
-    \caption*{Post-contrast \acrshort{T1}}
+    \caption*{\acrshort{T1C}\nopunct}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-76-6664_T2.png}
-    \caption*{\gls{T2}}
+    \caption*{\gls{T2}\nopunct}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/TCGA-76-6664_FLAIR.png}
-    \caption*{\acrshort{FLAIR}}
+    \caption*{\acrshort{FLAIR}\nopunct}
     \end{subfigure}
     \caption{TCGA-76-7664 from the TCGA-HGG collection.
     Histopathologically this glioma was grade IV, \gls{IDH}-wildtype, but our method predicted it as grade III, \gls{IDH}-mutated}\label{fig:wrong_prediction_HGG}
@@ -329,7 +347,7 @@ Since these hyperintensities are also present in the pre-contrast \gls{T1} scan 
 \clearpage
 \section{Discussion}
 
-We have developed a method that can predict the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while simultaneously providing the \gls{tumor} segmentation, based on pre-operative \gls{MRI} scans.
+We have developed a method that can predict the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while simultaneously providing the \gls{tumor} segmentation, based on preoperative \gls{MRI} scans.
 For the genetic and histological feature predictions, we achieved an \gls{AUC} of 0.90 for the \gls{IDH} mutation status prediction, an \gls{AUC} of 0.85 for the 1p/19q co-deletion prediction, and an \gls{AUC} of 0.81 for the grade prediction, in the test set.
 
 In an independent test set, which contained data from 13 different institutes, we demonstrated that our method predicts these features with good overall performance; we achieved an \gls{AUC} of 0.90 for the \gls{IDH} mutation status prediction, an \gls{AUC} of 0.85 for the 1p/19q co-deletion prediction, and an \gls{AUC} of 0.81 for the grade prediction, and a mean whole \gls{tumor} DICE score of 0.84.
@@ -345,7 +363,7 @@ Furthermore, by predicting the genetic and histological features individually, i
 
 Some previous studies also used multi-task networks to predict the genetic and histological features of glioma \autocite{tang2020multi, xue2020radiomicsmulti, decuyper2020automated}.
 \citeauthor*{tang2020multi}~\autocite{tang2020multi} used a multi-task network that predicts multiple genetic features, as well as the overall survival of glioblastoma.
-Since their method only works for glioblastoma patients, the \gls{tumor} grade must be known in advance, complicating the use of their method in the pre-operative setting when \gls{tumor} grade is not yet known.
+Since their method only works for glioblastoma patients, the \gls{tumor} grade must be known in advance, complicating the use of their method in the preoperative setting when \gls{tumor} grade is not yet known.
 Furthermore, their method requires a \gls{tumor} segmentation prior to application of their method, which is a time-consuming, expert task.
 In a study by \citeauthor*{xue2020radiomicsmulti}~\autocite{xue2020radiomicsmulti}, a multi-task network was used, with a structure similar to the one proposed in this paper, to segment the \gls{tumor} and predict the grade (\gls{LGG} or \gls{HGG}) and \gls{IDH} mutation status.
 However, they do not predict the 1p/19q co-deletion status needed for the \gls{WHO} 2016 categorization.
@@ -374,7 +392,7 @@ They were not included in this study since \gls{PWI} and, to a lesser extent, \g
 Thus, including these modalities would limit our method's clinical applicability and substantially reduce the number of patients in the train and test set.
 However, \gls{PWI} and \gls{DWI} are increasingly becoming more commonplace, which will allow including these in future research and which might improve performance.
 
-In conclusion, we have developed a non-invasive method that can predict the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while at the same time segmenting the \gls{tumor}, based on pre-operative \gls{MRI} scans with high overall performance.
+In conclusion, we have developed a non-invasive method that can predict the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while at the same time segmenting the \gls{tumor}, based on preoperative \gls{MRI} scans with high overall performance.
 Although the performance of our method might need to be improved before it will find widespread clinical acceptance, we believe that this research is an important step forward in the field of radiomics.
 Predicting multiple clinical features simultaneously steps away from the conventional single-task methods and is more in line with the clinical practice where multiple clinical features are considered simultaneously and may even be related.
 Furthermore, by not limiting the patient population used to develop our method to a selection based on clinical or radiological characteristics, we alleviate the need for a priori (expert) knowledge, which may not always be available.
@@ -396,7 +414,7 @@ From the public datasets, only the \gls{BRATS} dataset and the \gls{BTP} dataset
 Segmentations of the \gls{BRATS} dataset, as provided in the 2019 training and validation set were used.
 For the \gls{BTP} dataset, the segmentations as provided in the \gls{TCIA} data collection were used.
 
-Patients were included if pre-operative pre- and post-contrast \gls{T1}, \gls{T2}, and \gls{FLAIR} scans were available; no further inclusion criteria were set.
+Patients were included if preoperative \gls{T1}, \gls{T1C}, \gls{T2}, and \gls{FLAIR} scans were available; no further inclusion criteria were set.
 For example, patients were not excluded based on the radiological characteristics of the scan, such as low imaging quality or imaging artifacts, or the glioma's clinical characteristics such as the grade.
 If multiple scans of the same contrast type were available in a single scan session (e.g.\ multiple \gls{T2} scans), the scan upon which the segmentation was made was selected.
 If no segmentation was available, or the segmentation was not made based on that scan contrast, the scan with the highest axial resolution was used, where a 3D acquisition was preferred over a 2D acquisition.
@@ -409,9 +427,9 @@ For the \gls{IVY} collection, the genetic and histological data were obtained fr
 As a test set we used the \gls{TCGALGG} and \gls{TCGAGBM} collections from the \gls{TCIA} \autocite{pedano2016radiology, scarpace2016radiology}.
 Genetic and histological labels were obtained from the clinical data available at the \gls{TCIA}.
 Segmentations were used as available from the \gls{TCIA}, based on the 2018 \gls{BRATS} challenge \autocite{bakas2017brats, bakas2017segmentationLGG, bakas2017segmentationHGG}.
-The inclusion criteria for the patients included in the \gls{BRATS} challenge were the same as our inclusion criteria: the presence of a pre-operative pre- and post-contrast \gls{T1}, \gls{T2}, and \gls{FLAIR} scan.
+The inclusion criteria for the patients included in the \gls{BRATS} challenge were the same as our inclusion criteria: the presence of a preoperative \gls{T1}, \gls{T1C}, \gls{T2}, and \gls{FLAIR} scan.
 Thus, patients from the \gls{TCGALGG} and \gls{TCGAGBM} were included  if a segmentation from the \gls{BRATS} challenge was available.
-However, for three patients, we found that although they did have manual segmentations, they did not meet our inclusion requirements: TCGA-08-0509 and TCGA-08-0510 from \gls{TCGAGBM} because they did not have a pre-contrast \gls{T1} scan and TCGA-FG-7634 from \gls{TCGALGG} because there was no post-contrast \gls{T1} scan.
+However, for three patients, we found that although they did have manual segmentations, they did not meet our inclusion requirements: TCGA-08-0509 and TCGA-08-0510 from \gls{TCGAGBM} because they did not have a pre-contrast \gls{T1} scan and TCGA-FG-7634 from \gls{TCGALGG} because there was no \gls{T1C} scan.
 
 \subsection{Automatic segmentation in the train set}
 
@@ -427,7 +445,7 @@ This process was repeated until an acceptable segmentation was available for all
 For all datasets, except for the \gls{BRATS} dataset for which the scans were already provided in \acrshort{NIFTI} format, the scans were converted from DICOM format to \acrshort{NIFTI} format using dcm2niix version v1.0.20190410 \autocite{li2016dcmniix}.
 We then registered all scans to the MNI152 \gls{T1} and \gls{T2} atlases, version ICBM 2009a, which had a resolution of 1x1x1 mm$^3$ and a size of 197x233x189 voxels \autocite{fonov2011unbiased, fonov2009unbiased}.
 The scans were affinely registered using Elastix 5.0 \autocite{klein2010elastix, shamonin2014fast}.
-The pre- and post-contrast \gls{T1} scans were registered to the \gls{T1} atlas; the \gls{T2} and \gls{FLAIR} scans were registered to the \gls{T2} atlas.
+The \gls{T1} and \gls{T1C} scans were registered to the \gls{T1} atlas; the \gls{T2} and \gls{FLAIR} scans were registered to the \gls{T2} atlas.
 When a manual segmentation was available for patients from the in-house datasets, the registration parameters that resulted from registering the scan used during the segmentation were used to transform the segmentation to the atlas.
 In the case of the public datasets, we used the registration parameters of the \gls{FLAIR} scans to transform the segmentations.
 
@@ -458,7 +476,8 @@ $l2$ kernel regularization was used in all convolutional layers, except for the 
 In total this model contained 27,042,473 trainable an 2,944 non-trainable parameters.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{Figures/PrognosAIs_architecture.pdf}
+    \resizebox{\textwidth}{!}{\subimport{Figures/}{PrognosAIs_architecture.pgf}}
+% \includegraphics[width=\textwidth]{Figures/PrognosAIs_architecture.pdf}
 \caption{Overview of the PrognosAIs Structure-Net (PS-Net) architecture used for our model. The numbers below the different layers indicate the number of filters, dense units or features at that layer.
 We have also indicated the feature map size at the different depths of the network}\label{fig:psnet_architecture}
 \end{figure}
@@ -604,7 +623,7 @@ Thus, although our method wrongly predicted the \gls{WHO} 2016 subtype, it might
              &   \multicolumn{3}{c}{\textbf{Predicted}} \\
      &       &   Grade II &   Grade III & Grade IV              \\
      \cline{2-5}
- \multirow{3}{*}{\rotatebox[origin=c]{90}{\textbf{Actual}}}
+ \multirow{3}{*}{\rotatebox[origin=c]{90}{\textbf{Actual}\hspace{5pt}}}
      & Grade II   & 35   & 6 & 6                \\
      & Grade III    & 19 & 10 & 30                \\
      & Grade IV    & 2    & 5 & 125                \\
@@ -626,7 +645,7 @@ Thus, although our method wrongly predicted the \gls{WHO} 2016 subtype, it might
               &   \multicolumn{6}{c}{\textbf{Predicted}} \\
       &       &   \rotatebox{-45}{Oligodendroglioma} & \rotatebox{-45}{\shortstack{\acrshort{IDH}-mutated\\astrocytoma}} & \rotatebox{-45}{\shortstack{\acrshort{IDH}-wildtype\\astrocytoma}}  &  \rotatebox{-45}{\shortstack{\acrshort{IDH}-mutated\\glioblastoma}} & \rotatebox{-45}{\shortstack{\acrshort{IDH}-wildtype\\glioblastoma}} \rotatebox{-45}{Other}              \\
       \cline{2-8}
-  \multirow{5}{*}{\rotatebox[origin=c]{90}{\textbf{Actual}\hphantom{aaaa}}}
+  \multirow{5}{*}{\rotatebox[origin=c]{90}{\textbf{Actual}\hspace{65pt}}}
       & Oligodendroglioma    & 10    & 8 & 1 & 0 & 7 &0                \\[2ex]
       & \shortstack{\acrshort{IDH}-mutated\\astrocytoma}    & 6 & 34 & 4 & 3 & 10 &0                \\[2ex]
       & \shortstack{\acrshort{IDH}-wildtype\\astrocytoma}   & 1   & 2 & 3 & 2 & 13 & 1                \\[2ex]
@@ -636,12 +655,12 @@ Thus, although our method wrongly predicted the \gls{WHO} 2016 subtype, it might
       \end{tabular}
       \caption{Confusion matrix of the \acrshort{WHO} 2016 predictions.
       The 'other' category indicates patients that were predicted as a non-existing \acrshort{WHO} 2016 subtype, for example \acrshort{IDH}-wildtype, 1p/19q co-deleted \glspl{tumor}.
-       Only one patient (TCGA-HT-A5RC) was predicted as a non-existing category. It was predicted as an \acrshort{IDH}-wildtype, 1p/19q co-deleted, grade IV \gls{tumor}}\label{tab:conf_who}
-      {\small \raggedright Oligodendroglioma are \acrshort{IDH}-mutated, 1p/19q co-deleted, grade II/III gioma.\\
-      \acrshort{IDH}-mutated astrocytoma are \acrshort{IDH}-mutated, 1p/19q intact, grade II/III glioma.\\
-      \acrshort{IDH}-wildtype astrocytoma are \acrshort{IDH}-wildtype, 1p/19q intact, grade II/III glioma.\\
-      \acrshort{IDH}-mutated glioblastoma are \acrshort{IDH}-mutated, grade IV glioma.\\
-      \acrshort{IDH}-wildtype glioblastoma are \acrshort{IDH}-wildtype, grade IV glioma.  \par}
+      Only one patient (TCGA-HT-A5RC) was predicted as a non-existing category. It was predicted as an \acrshort{IDH}-wildtype, 1p/19q co-deleted, grade IV \gls{tumor}.
+      Oligodendroglioma are \acrshort{IDH}-mutated, 1p/19q co-deleted, grade II/III glioma.
+      \acrshort{IDH}-mutated astrocytoma are \acrshort{IDH}-mutated, 1p/19q intact, grade II/III glioma.
+      \acrshort{IDH}-wildtype astrocytoma are \acrshort{IDH}-wildtype, 1p/19q intact, grade II/III glioma.
+      \acrshort{IDH}-mutated glioblastoma are \acrshort{IDH}-mutated, grade IV glioma.
+      \acrshort{IDH}-wildtype glioblastoma are \acrshort{IDH}-wildtype, grade IV glioma}\label{tab:conf_who}
   \end{table}
    }
 
@@ -661,59 +680,66 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
 
 
 \begin{table}[htbp]
-\begin{tabular}{lC{2cm}C{2cm}C{2cm}}
+\sisetup{
+    table-number-alignment=center-decimal-marker,
+    table-text-alignment = center,
+    % table-figures-integer = 3,
+    % table-figures-decimal = 1,
+    }
+\begin{tabular}{L{2.8cm}S[table-format=1.2]S[table-format=2.1]S[table-format=1.2]}
     \toprule
-    Patient & DICE & \acrshort{HD} (mm)& \acrshort{VSC}\\
+    \textbf{Patient} & {\textbf{DICE}} & {\textbf{\acrshort{HD}}}& {\textbf{\acrshort{VSC}}}\\
     \midrule
-    \acrshort{TCGALGG}\\
-    \cmidrule(lr){1-1}
-    TCGA-DU-7301 & 0.89 & 10.3 & 0.95\\
-    TCGA-FG-5964 & 0.80 & \hphantom{0}5.8 & 0.82\\
-    TCGA-FG-A713 & 0.73 & \hphantom{0}7.8 & 0.88\\
-    TCGA-HT-7475 & 0.87 & 14.9 & 0.90\\
-    TCGA-HT-8106 & 0.88 & 11.2 & 0.99\\
     \\
-    \acrshort{TCGAGBM}\\
+    \textbf{\acrshort{TCGALGG}}\\
     \cmidrule(lr){1-1}
-    TCGA-02-0037 & 0.82 & 22.6 & 0.99\\
-    TCGA-08-0353 & 0.91 & 13.0 & 0.98\\
-    TCGA-12-1094 & 0.90 & \hphantom{0}7.3 & 0.93\\
-    TCGA-14-3477 & 0.90 & 16.5 & 0.99\\
-    TCGA-19-5951 & 0.73 & 19.7 & 0.73\\
+    \hspace{1em}TCGA-DU-7301 & 0.89 & 10.3 & 0.95\\
+    \hspace{1em}TCGA-FG-5964 & 0.80 & 5.8 & 0.82\\
+    \hspace{1em}TCGA-FG-A713 & 0.73 & 7.8 & 0.88\\
+    \hspace{1em}TCGA-HT-7475 & 0.87 & 14.9 & 0.90\\
+    \hspace{1em}TCGA-HT-8106 & 0.88 & 11.2 & 0.99\\
+    \\
+    \textbf{\acrshort{TCGAGBM}}\\
+    \cmidrule(lr){1-1}
+    \hspace{1em}TCGA-02-0037 & 0.82 & 22.6 & 0.99\\
+    \hspace{1em}TCGA-08-0353 & 0.91 & 13.0 & 0.98\\
+    \hspace{1em}TCGA-12-1094 & 0.90 & 7.3 & 0.93\\
+    \hspace{1em}TCGA-14-3477 & 0.90 & 16.5 & 0.99\\
+    \hspace{1em}TCGA-19-5951 & 0.73 & 19.7 & 0.73\\
     \bottomrule
 \end{tabular}
-\caption{The DICE score, \acrfull{HD}, and \acrfull{VSC} for the randomly selected patients from the \acrshort{TCGALGG} and \acrshort{TCGAGBM} data collections}\label{tab:seg_metrics_example_patients}
+\caption{The DICE score, \acrfull{HD} (in \si{\milli\metre}), and \acrfull{VSC} for the randomly selected patients from the \acrshort{TCGALGG} and \acrshort{TCGAGBM} data collections}\label{tab:seg_metrics_example_patients}
 \end{table}
 
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/T1_TCGA-DU-7301.png}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1C}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/T1GD_TCGA-DU-7301.png}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{\acrshort{T2}}
+        \caption*{\normalfont \textbf{\acrshort{T2}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/T2_TCGA-DU-7301.png}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\normalfont \textbf{\acrshort{FLAIR}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/FLAIR_TCGA-DU-7301.png}
         \end{subfigure}
         \caption{Patient TCGA-DU-7301 from the \acrshort{TCGALGG} data collection}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -734,7 +760,7 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
         \caption{Patient TCGA-FG-5964 from the \acrshort{TCGALGG} data collection}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -755,7 +781,7 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
         \caption{Patient TCGA-FG-A713 from the \acrshort{TCGALGG} data collection}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -776,7 +802,7 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
         \caption{Patient TCGA-HT-7475 from the \acrshort{TCGALGG} data collection}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -802,32 +828,32 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/T1_TCGA-02-0037.png}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1C}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/T1GD_TCGA-02-0037.png}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{\acrshort{T2}}
+        \caption*{\normalfont \textbf{\acrshort{T2}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/T2_TCGA-02-0037.png}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\normalfont \textbf{\acrshort{FLAIR}}\nopunct}
         \includegraphics[width=\textwidth, clip, trim=2.5cm 0.5cm 2.5cm 0.5cm]{Figures/Random_segs/FLAIR_TCGA-02-0037.png}
         \end{subfigure}
         \caption{Patient TCGA-02-0037 from the \acrshort{TCGAGBM} data collection}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -848,7 +874,7 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
         \caption{Patient TCGA-08-0353 from the \acrshort{TCGAGBM} data collection}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -869,7 +895,7 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
         \caption{Patient TCGA-12-1094 from the \acrshort{TCGAGBM} data collection}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -890,7 +916,7 @@ Despite the registrations issues that can be seen for the \gls{T2} scan in \cref
         \caption{Patient TCGA-14-3477 from the \acrshort{TCGAGBM} data collection}\label{fig:hgg_example_tcga143477}
     \end{subfigure}
     % \vskip\baselineskip
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.8\textwidth}
         \centering
         \hfill
         \begin{subfigure}[b]{0.215\textwidth}
@@ -939,32 +965,32 @@ The different parts of the \gls{tumor} from the scans can also be seen, such as 
 For the grade IV glioma in \cref{fig:filter_hgg_deep}, some filters, such as filter 26, also seem to focus on the necrotic part of the \gls{tumor}.
 
 \begin{figure}
-    \begin{subfigure}[b]{0.88\textwidth}
+    \centering
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
-        \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_T1.png}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_T1GD.png}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1C}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_T2.png}
-        \caption*{\acrshort{T2}}
+        \caption*{\normalfont \textbf{\acrshort{T2}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_FLAIR.png}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\normalfont \textbf{\acrshort{T2}}\nopunct}
         \end{subfigure}
         \caption{Scans used to derive the convolutional layer filter output visualizations}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.9\textwidth}
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figures/conv_filter_LGG_shallow.pdf}
         \caption{Filter output visualizations}
@@ -974,32 +1000,32 @@ For the grade IV glioma in \cref{fig:filter_hgg_deep}, some filters, such as fil
 \end{figure}
 
 \begin{figure}
-    \begin{subfigure}[b]{0.88\textwidth}
+    \centering
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
-        \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_T1.png}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_T1GD.png}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1C}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_T2.png}
-        \caption*{\acrshort{T2}}
+        \caption*{\normalfont \textbf{\acrshort{T2}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-DU-6400_FLAIR.png}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\normalfont \textbf{\acrshort{FLAIR}}\nopunct}
         \end{subfigure}
         \caption{Scans used to derive the convolutional layer filter output visualizations}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.9\textwidth}
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figures/conv_filter_LGG_deep.pdf}
         \caption{Filter output visualizations}
@@ -1009,31 +1035,31 @@ For the grade IV glioma in \cref{fig:filter_hgg_deep}, some filters, such as fil
 \end{figure}
 
 \begin{figure}
-    \begin{subfigure}[b]{0.88\textwidth}
+    \centering
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
-        \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_T1.png}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_T1GD.png}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1C}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_T2.png}
-        \caption*{\acrshort{T2}}
+        \caption*{\normalfont \textbf{\acrshort{T2}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_FLAIR.png}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\normalfont \textbf{\acrshort{FLAIR}}\nopunct}
         \end{subfigure}
         \caption{Scans used to derive the convolutional layer filter output visualizations}
     \end{subfigure}
-    \begin{subfigure}[b]{0.9\textwidth}
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figures/conv_filter_HGG_shallow.pdf}
         \caption{Filter output visualizations}
@@ -1043,31 +1069,31 @@ For the grade IV glioma in \cref{fig:filter_hgg_deep}, some filters, such as fil
 \end{figure}
 
 \begin{figure}
-    \begin{subfigure}[b]{0.88\textwidth}
+    \centering
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
-        \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_T1.png}
-        \caption*{Pre-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_T1GD.png}
-        \caption*{Post-contrast \acrshort{T1}}
+        \caption*{\normalfont \textbf{\acrshort{T1C}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_T2.png}
-        \caption*{\acrshort{T2}}
+        \caption*{\normalfont \textbf{\acrshort{T2}}\nopunct}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{Figures/TCGA-06-0238_FLAIR.png}
-        \caption*{\acrshort{FLAIR}}
+        \caption*{\normalfont \textbf{\acrshort{FLAIR}}\nopunct}
         \end{subfigure}
         \caption{Scans used to derive the convolutional layer filter output visualizations}
     \end{subfigure}
-    \begin{subfigure}[b]{0.9\textwidth}
+    \begin{subfigure}[b]{0.77\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Figures/conv_filter_HGG_deep.pdf}
         \caption{Filter output visualizations}
@@ -1154,7 +1180,7 @@ In this way, we could counteract the effect of certain outputs having more known
 \centering
 \begin{tabular}{ll}
 \toprule
-Tuning parameter & Tested values\\
+\textbf{Tuning parameter} & \textbf{Tested values}\\
 \midrule
 Dropout rate & 0.15, 0.2, \textbf{0.25}, 0.30, 0.35, 0.40\\
 $l2$-norm & 0.0001, \textbf{0.00001}, 0.000001\\
