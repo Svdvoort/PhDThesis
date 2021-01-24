@@ -205,6 +205,13 @@ labelfont={bf},
 width=0.9\textwidth
 }
 
+% Remove brackets around equation numbers
+\makeatletter
+\renewcommand\tagform@[1]{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\makeatother
+\creflabelformat{equation}{#2\textup{#1}#3}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
