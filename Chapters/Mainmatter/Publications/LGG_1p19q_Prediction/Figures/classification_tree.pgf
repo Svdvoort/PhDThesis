@@ -1,0 +1,34 @@
+
+\colorlet{color_pos}{color2!75!}
+\colorlet{color_neg}{color7!75!}
+
+\begin{tikzpicture}[
+% Label style
+    label distance=3mm,
+    every label/.style={blue},
+% Event style
+    event/.style={rectangle,thick,draw,fill=yellow!20,text width=3.5cm,
+		text centered,font=\LARGE\bfseries\sffamily,anchor=north, minimum height=1.5cm},
+    gprog/.style={rectangle,thick,draw,fill=color_pos,text width=3.5cm,
+		text centered,font=\LARGE\bfseries\sffamily,anchor=north, minimum height=1.5cm},
+    bprog/.style={rectangle,thick,draw,fill=color_neg,text width=3.5cm,
+		text centered,font=\LARGE\bfseries\sffamily,anchor=north, minimum height=1.5cm},
+% Children and edges style
+    edge from parent/.style={very thick,draw=black!70},
+    edge from parent path={(\tikzparentnode.south) -- ++(0,-1.05cm)
+			-| (\tikzchildnode.north)},
+    level 1/.style={sibling distance=6cm,level distance=1.4cm,
+			growth parent anchor=south,nodes=event},
+    level 2/.style={sibling distance=4cm},
+    level 3/.style={sibling distance=3cm},
+    level 4/.style={sibling distance=3cm},
+    ]
+
+
+    \node (IDH) [event] {Low Grade Glioma}
+            child{node (1p19qdel) {1p/19q\\ co-deleted}
+                child{node [gprog] (goodprog) {Good prognosis}}}
+            child{node (1p19qnon) {1p/19q\\ intact}
+                child{node [bprog] (badrog) {Bad prognosis}}};
+
+\end{tikzpicture}

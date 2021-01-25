@@ -1,8 +1,8 @@
-\documentclass{standalone}
-\usepackage{tikz}
-\usetikzlibrary{patterns}
-\usetikzlibrary{backgrounds}
-\usetikzlibrary{arrows.meta}
+% \documentclass{standalone}
+% \usepackage{tikz}
+% \usetikzlibrary{patterns}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{arrows.meta}
 \makeatletter
 \newcommand*\chset{\pgfqkeys{/ch}}
 \chset{name/.initial=chp, total/.initial=4, outer macro/.initial=\outerPoints,
@@ -142,12 +142,12 @@
 % \tikzset{mark=*, mark size=1pt}
 
 
-\begin{document}
+% \begin{document}
 	\def\pointslist{(-2.5,-0.5) (-3.5,0) (-2.5,0.5) (-3,1) (-2,1.5) (-2,3) (-1,2.5) (1,4.5) (2.5,3) (3,-2) (0.5,-1.5) (-2,-2.5) (-1.5,-1) (-2.5,-1.5) (-2.5,-0.5)}
 
 	%% CVAR
 	 \begin{tikzpicture}
-	     \draw[blue]  plot[smooth, tension=.4] coordinates {\pointslist};
+	     \draw[color4]  plot[smooth, tension=.4] coordinates {\pointslist};
 	     \draw (0.5,1) circle (3cm);
 	     \draw[{<[scale=2, length=1.5mm, width=2mm]}-{>[scale=2, length=1.5mm, width=2mm]}, shorten <=3cm, ultra thick](0.5, 1) -- (-3.5, 0);
 	     \draw[{<[scale=2, length=1.5mm, width=2mm]}-{>[scale=2, length=1.5mm, width=2mm]}, shorten <=3cm, ultra thick](0.5, 1) -- (1, 4.5);
@@ -155,7 +155,7 @@
 	     \draw[{<[scale=2, length=1.5mm, width=2mm]}-{>[scale=2, length=1.5mm, width=2mm]}, shorten <=3cm, ultra thick](0.5, 1) -- (-2, -2.5);
 	     \draw[{>[scale=2, length=1.5mm, width=2mm]}-{<[scale=2, length=1.5mm, width=2mm]}, shorten <=2.75cm, shorten >=-0.2cm, ultra thick](0.5, 1) -- (0.5, -1.5);
 	     \draw[{>[scale=2, length=1.5mm, width=2mm]}-{<[scale=2, length=1.5mm, width=2mm]}, shorten <=2.75cm, shorten >=-0.2cm, ultra thick](0.5, 1) -- (-1,2.5);
-	
+
 	 \end{tikzpicture}
 
-\end{document}
+% \end{document}

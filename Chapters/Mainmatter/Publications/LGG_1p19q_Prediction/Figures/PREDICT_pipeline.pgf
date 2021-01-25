@@ -1,47 +1,109 @@
-\begin{tikzpicture}
-    \node[inner sep=0pt] (T1slice) at (0,0)
-    {\includegraphics[scale=0.1]{T1.png}};
-    \node[inner sep=0pt, below of=T1slice,yshift=-2.5cm] (T2slice)
-    {\includegraphics[scale=0.1]{T2.png}};
-    \node[draw=black, fit=(T1slice) (T2slice)](Images) {};
-    \node[above of=Images, yshift=3.4cm, xshift=0cm, text width=4cm, align=center] (imgtext) {\huge Multiparametric \\Imaging};
+\begin{tikzpicture}[text_box/.style={font=\huge\bfseries\sffamily, align=center},
+    sub_text_box/.style={font=\LARGE\bfseries\sffamily, align=center}]
 
 
-    \node[inner sep=0pt, right of=T2slice, xshift=5cm,yshift=3.35cm] (Intens)
-    {\includegraphics[scale=0.1]{intensity_hist.pdf}};
-    \node[above of=Intens,yshift=1.5cm,xshift=1cm]{\Large Intensity};
-    \node[inner sep=0pt, right of=Intens, xshift=4cm, yshift=-0.5cm] (Convexity)
-    % {\centering \subimport{}{Convexity.pgf}};
-    {\includegraphics[scale=0.2]{Convexity.pdf}};
-    \node[inner sep=0pt, below of=Convexity, yshift= -1cm] (CVAR)
-    {\includegraphics[scale=0.2]{CVAR.pdf}};
-    \node[above of=Convexity,yshift=2cm,xshift=-0.75cm](ShapeText){\Large Shape};
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%% Inputs scans
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node at (0,0) [text_box] (imgtext) {Multiparametric \\imaging};
+    \node[inner sep=0pt,below = 1cm of imgtext] (T1slice) at (0,-1) {\includegraphics[scale=0.15]{T1_transparent.png}};
+    \node[inner sep=0pt, below = 2cm of T1slice] (T2slice) {\includegraphics[scale=0.15]{T2_transparent.png}};
 
-    \node[inner sep=0pt, below of=Intens, xshift=1.3cm, yshift= -3cm] (LBP_small)
-    {\includegraphics[scale=0.27]{LBP_color.eps}};
-    \node[above of=LBP_small, yshift=1cm, xshift=0cm] (LBPtext) {\Large Local binary patterns};
+    % Text
+    % \node[text_box, above = -0.5cm of T1slice, yshift=1.5cm, xshift=0cm] (imgtext) {Multiparametric \\imaging};
+
+    % Container
 
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%% Feature extraction
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \node[inner sep=0pt, right = 2cm of T2slice, yshift=7cm] (Intens) {\includegraphics[scale=0.1]{intensity_hist.pdf}};
+    % \node[inner sep=0pt, right = 1.5cm of Intens, yshift=1cm] (Convexity) {\includegraphics[scale=0.15]{Convexity.png}};
+    \node[inner sep=0pt, right = 1.5cm of Intens, yshift=0cm] (Convexity) {\resizebox{2.5cm}{!}{\subimport{}{convexity.pgf}}};
+    \node[inner sep=0pt, below = 0.5cm of Convexity] (CVAR) {\resizebox{2.5cm}{!}{\subimport{}{cvar.pgf}}};
+    \node[inner sep=0pt, below = 4cm of Intens, xshift=2cm] (LBP_small){\includegraphics[scale=0.09]{LBP.png}};
 
-    \node[draw=black, fit=(Intens) (ShapeText) (LBP_small)](Features) {};
-    \node[above of=Features, yshift=3.95cm] {\huge Image features};
+    % Text
+    \node[sub_text_box, above of=Intens,yshift=1.5cm,xshift=0cm](IntenseText){Intensity};
+    \node[sub_text_box] at (IntenseText -| Convexity)(ShapeText){Shape};
+    \node[sub_text_box, above of=LBP_small, yshift=1.75cm, xshift=0cm] (LBPtext) {Local binary patterns};
 
-    \node[inner sep=0pt, right of=Features, xshift=7cm,yshift=0cm] (SVM)
-    {\centering \subimport{}{SVM.pgf}};
-    \node[draw=black, fit=(SVM)](Classifiers) {};
+    % Containers
+    \begin{scope}[on background layer]
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(Intens) (IntenseText) (CVAR.south -| Intens), fill=SegmentationSectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (IntensityFeature) {};
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(ShapeText) (Convexity) (CVAR.south), fill=SegmentationSectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (ShapeFeatures) {};
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(LBPtext) (LBP_small), fill=SegmentationSectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (LBPfeatures) {};
+    \end{scope}
 
-    \node[above of=Classifiers, yshift=3cm, text width=6cm, align=center] {\huge Machine learning};
-
-    \node[inner sep=0pt, right of=Classifiers, xshift=6cm,yshift=2.35cm] (survival)
-    {\includegraphics[scale=0.33, clip, trim={0cm 0cm 1cm 0cm}]{ROC.eps}};
-    \node[inner sep=0pt, below of=survival, xshift=0.3cm, yshift=-3cm] (classification)
-    {\includegraphics[scale=0.55,clip,trim={3cm 18cm 8cm 0cm}]{Classification_tree.pdf}};
+    % \coordinate (mid_IDH) at ($(IDH_1)!0.5!(IDH_2)$);
 
 
-    \node[draw=black, fit=(survival) (classification)](Prediction) {};
-    \node[above of=Prediction, yshift=4.5cm] {\huge Prediction};
+    \coordinate (mid_intensity_shape) at ($(IntensityFeature.west)!0.5!(ShapeFeatures.east)$);
 
-    \filldraw[gray] (Images.north east) -- (Features.west) -- (Images.south east);
-    \filldraw[gray] (Features.north east) -- (Classifiers.west) -- (Features.south east);
-    \filldraw[gray] (Classifiers.north east) -- (Prediction.west) -- (Classifiers.south east);
+    \node [text_box, anchor=north]  at (imgtext.north -| mid_intensity_shape) (feature_textbox) {Image features};
+
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%5
+    %%% SVM
+    %%%%%%%%%%%%%%
+    \node[inner sep=0pt, right = 1.8cm of CVAR, yshift=-1.5cm] (SVM){\centering \subimport{}{SVM.pgf}};
+    \node [text_box, anchor=north] at (imgtext.north -| SVM) (svm_textbox) {Machine learning};
+
+
+    %%%%%%%%% Prediction
+
+    \node[inner sep=0pt, right = 2.4 cm of SVM, yshift=4cm] (survival) {\centering \subimport{}{ROC_for_pipeline.pgf}};
+    % \node[inner sep=0pt, below = of survival, xshift=0.3cm] (classification)  {\includegraphics[scale=0.55,clip,trim={3cm 18cm 8cm 0cm}]{Classification_tree.pdf}};
+    \node[inner sep=0pt, below = of survival, xshift=0.3cm] (classification)  {\centering \resizebox{8cm}{!}{\subimport{}{classification_tree.pgf}}};
+    \node [text_box, anchor=north] at (imgtext.north -| survival) (predictin_textbox) {Prediction};
+
+
+    %%%%%%%%%%%%%%%%%%%5
+    %% Background layers
+    %%%%%%%%%%%%
+
+
+    % Features
+    \begin{scope}[on background layer]
+        \node[fit margins={top=0pt, bottom=5pt}, fit=(IntensityFeature) (ShapeFeatures) (LBPfeatures) (feature_textbox), fill=SectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (Features) {};
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(Intens) (IntenseText) (CVAR.south -| Intens), fill=SegmentationSectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (IntensityFeature) {};
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(ShapeText) (Convexity) (CVAR.south), fill=SegmentationSectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (ShapeFeatures) {};
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(LBPtext) (LBP_small), fill=SegmentationSectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (LBPfeatures) {};
+    \end{scope}
+
+    % Prediction
+    \begin{scope}[on background layer]
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(survival) (predictin_textbox) (classification) (Features.south -| survival),  fill=SectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (prediction_box) {};
+    \end{scope}
+
+    % SVM
+    \begin{scope}[on background layer]
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(SVM) (svm_textbox) (Features.south -| SVM), fill=SectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (machine_learning_box) {};
+    \end{scope}
+
+
+    %scans
+
+    \begin{scope}[on background layer]
+        \node[fit margins={top=0pt, bottom=0pt}, fit=(T1slice) (T2slice) (imgtext) (Features.south -| imgtext), fill=SectionColor, rounded corners=5mm, blur shadow={shadow blur steps=10,shadow blur extra rounding=1.3pt, shadow blur radius=5pt, shadow xshift=0.05cm, shadow yshift=-0.1cm}] (Images) {};
+    \end{scope}
+
+    %%%% Connections
+    \draw [-, SectionColor, line width=100pt] ([xshift=-0.5cm] Images.east |- Features.west) -- ([xshift=0.1cm] Features.west);
+
+    \draw [-, SectionColor, line width=100pt] ([xshift=-0.02cm] Features.east |- machine_learning_box.west) -- ([xshift=0.1cm] machine_learning_box.west);
+
+    \draw [-, SectionColor, line width=100pt] ([xshift=-0.02cm] machine_learning_box.east |- prediction_box.west) -- ([xshift=0.1cm] prediction_box.west);
+
+
+    % \node[above of=Prediction, yshift=4.5cm] {\huge Prediction};
+    % \node[draw=black, fit=(survival) (classification)](Prediction) {};
+
+    % \filldraw[gray] (Images.north east) -- (Features.west) -- (Images.south east);
+    % \filldraw[gray] (Features.north east) -- (Classifiers.west) -- (Features.south east);
+    % \filldraw[gray] (Classifiers.north east) -- (Prediction.west) -- (Classifiers.south east);
 \end{tikzpicture}
+

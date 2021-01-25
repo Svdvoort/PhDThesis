@@ -1,3 +1,8 @@
+% \documentclass{standalone}
+% \usepackage{tikz}
+% \usetikzlibrary{patterns}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{arrows.meta}
 \makeatletter
 \newcommand*\chset{\pgfqkeys{/ch}}
 \chset{name/.initial=chp, total/.initial=4, outer macro/.initial=\outerPoints,
@@ -134,19 +139,24 @@
 \def\CH@testforfirst#1#2#3#4#5\CH@stop#6#7{\ifnum#1=#6 \edef#7{#5}\fi}
 
 \makeatother
+% \tikzset{mark=*, mark size=1pt}
 
-\def\pointslist{(-2.5,-0.5) (-3.5,0) (-2.5,0.5) (-3,1) (-2,1.5) (-2,3) (-1,2.5) (1,4.5) (2.5,3) (3,-2) (0.5,-1.5) (-2,-2.5) (-1.5,-1) (-2.5,-1.5) (-2.5,-0.5)}
+
+% \begin{document}
+	\def\pointslist{(-2.5,-0.5) (-3.5,0) (-2.5,0.5) (-3,1) (-2,1.5) (-2,3) (-1,2.5) (1,4.5) (2.5,3) (3,-2) (0.5,-1.5) (-2,-2.5) (-1.5,-1) (-2.5,-1.5) (-2.5,-0.5)}
 
 
-% Convexity
- \begin{tikzpicture}
-     \draw [blue] plot[smooth, tension=.4] coordinates {\pointslist};
-     \CH[coordinates={(-2.5,-0.5), (-3.5,0), (-2.5,0.5), (-3,1), (-2,1.5), (-2,3), (-1,2.5), (1,4.5), (2.5,3), (3,-2), (0.5,-1.5), (-2,-2.5), (-1.5,-1), (-2.5,-1.5), (-2.5,-0.5))}]
-     \draw [black] plot[samples at=\outerPoints,smooth, tension=0.8] (ConvexHullPoint-\x) --cycle;
-   %   \node at (5,-5) {$\frac{a}{b}$};
+	% Convexity
+	 \begin{tikzpicture}
+	     \draw [color4, line width=0.3cm] plot[smooth, tension=.4] coordinates {\pointslist};
+	     \CH[coordinates={(-2.5,-0.5), (-3.5,0), (-2.5,0.5), (-3,1), (-2,1.5), (-2,3), (-1,2.5), (1,4.5), (2.5,3), (3,-2), (0.5,-1.5), (-2,-2.5), (-1.5,-1), (-2.5,-1.5), (-2.5,-0.5))}]
+		 \draw [black, line width=0.3cm] plot[samples at=\outerPoints,smooth, tension=0.8] (ConvexHullPoint-\x) --cycle;
+		 \draw [color4, line width=0.3cm] plot[smooth, tension=.4] coordinates {\pointslist};
+	   %   \node at (5,-5) {$\frac{a}{b}$};
 
-    %\draw[double, line width = 1mm, -{>[scale=0.5]}] (4,1) -- (4.7,1);
-    %\draw [red] (5, 1) -- (6, 1);
-    %\node at (6.1, 1) {/};
-    %\draw [black!60!green] (6.2, 1) -- (7.2, 1);
- \end{tikzpicture}
+	    %\draw[double, line width = 1mm, -{>[scale=0.5]}] (4,1) -- (4.7,1);
+	    %\draw [red] (5, 1) -- (6, 1);
+	    %\node at (6.1, 1) {/};
+	    %\draw [black!60!green] (6.2, 1) -- (7.2, 1);
+	 \end{tikzpicture}
+% \end{document}

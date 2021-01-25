@@ -101,43 +101,6 @@ All \glspl{tumor} were semiautomatically segmented by M. Smits on the \cgls{T2} 
 Because the \cgls{T1C} and \cgls{T2} images were already coregistered in this study, the segmentation could be directly used for the \cgls{T1C} images without the need for registration.
 Brain masks were made using FSL's BET tool, with the same settings as for the \cgls{EMC}/\cgls{HMC} dataset.
 
-% \begin{table}
-% \centering
-% \setlength{\tabcolsep}{2.4pt}
-% \begin{tabular}{L{2.5cm} R{1.1cm} R{1.1cm} R{1.1cm} R{1.1cm} R{1.1cm} R{1.1cm} R{1.1cm} R{1.1cm}}
-%     \toprule
-%     & \multicolumn{4}{c}{\thead{\acrshort{EMC}/\acrshort{HMC} (Training set)}} & \multicolumn{4}{c}{\thead{\acrshort{TCIA} (Validation set)}}\\
-%     \cmidrule(l){2-5} \cmidrule(l){6-9}
-%     \textbf{\acrshort{MRI} setting} & \multicolumn{2}{c}{\thead{\acrshort{T1C}}} & \multicolumn{2}{c}{\thead{\acrshort{T2}}} & \multicolumn{2}{c}{\thead{\acrshort{T1C}}} & \multicolumn{2}{c}{\thead{\acrshort{T2}}}\\
-%     \midrule
-%     \multicolumn{9}{l}{\textbf{Voxel spacing (mm)}}\\
-%     & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}}\\
-%     \cmidrule(l{15pt}){2-2} \cmidrule(l{15pt}){3-3} \cmidrule(l{15pt}){4-4} \cmidrule(l{15pt}){5-5} \cmidrule(l{15pt}){6-6} \cmidrule(l{15pt}){7-7} \cmidrule(l{15pt}){8-8} \cmidrule(l{15pt}){9-9}
-%     \hspace{1em}Axial &\num{0.9}\hphantom{1} & \num{7.2} & \num{1.0} & \num{7.2} & \num{1.0} & \num{5.0} & \num{2.0} &\num{5.0}\\
-%     \hspace{1em}Sagittal& \num{0.38} & \num{1.13} & \num{0.23} & \num{1.02} & \num{0.47} & \num{1.1} & \num{0.43} & \num{1.1}\\
-%     \hspace{1em}Coronal & \num{0.38} & \num{1.13} & \num{0.23} & \num{1.02} & \num{0.47} & \num{1.1} &\num{0.43} &\num{1.1}\\
-%     \addlinespace
-%     \multicolumn{9}{l}{\textbf{Matrix size (number of voxels)}}\\
-%     & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}}\\
-%     \cmidrule(l{15pt}){2-2} \cmidrule(l{15pt}){3-3} \cmidrule(l{15pt}){4-4} \cmidrule(l{15pt}){5-5} \cmidrule(l{15pt}){6-6} \cmidrule(l{15pt}){7-7} \cmidrule(l{15pt}){8-8} \cmidrule(l{15pt}){9-9}
-%     \hspace{1em}Axial&\num{19} & \num{248} & \num{19} & \num{304} & \num{20} & \num{196} & \num{20} & \num{84}\\
-%     \hspace{1em}Sagittal& \num{256} & \num{1024} & \num{256} & \num{1024} & \num{256} & \num{512} & \num{256} & \num{512}\\
-%     \hspace{1em}Coronal& \num{176} & \num{307} & \num{224} & \num{1024} & \num{256} & \num{512} & \num{256} & \num{512}\\
-%     \addlinespace
-%     \multicolumn{9}{l}{\textbf{Pulse sequence parameters (ms)}}\\
-%     & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}} & {\textit{Min}} & {\textit{Max}}\\
-%     \cmidrule(l{15pt}){2-2} \cmidrule(l{15pt}){3-3} \cmidrule(l{15pt}){4-4} \cmidrule(l{15pt}){5-5} \cmidrule(l{15pt}){6-6} \cmidrule(l{15pt}){7-7} \cmidrule(l{15pt}){8-8} \cmidrule(l{15pt}){9-9}
-%     \hspace{1em}Echo time & \num{1.7} & \num{20} & \num{79.2} & \num{379} & \num{2.6} & \num{21} & \num{12.3} & \num{108.3}\\
-%     \hspace{1em}Repetition time & \num{3.8} & \num{1940} & \num{2000} & \num{13468} & \num{8.2} & \num{983.3} & \num{2033.3} & \num{8116.6}\\
-%     \addlinespace
-%     \multicolumn{9}{l}{\textbf{Scanner settings}}\\
-%     \multicolumn{2}{l}{\hspace{1em}Field strength (T)} & \multicolumn{2}{c}{\numlist{0.5;1.5;3.0}} & & & \multicolumn{2}{c}{\numlist{1.5;3.0}}\\
-%     \hspace{1em}2D scans (\#)& \multicolumn{2}{c}{\num{147}} & \multicolumn{2}{c}{\num{264}} &\multicolumn{2}{c}{\num{33}} & \multicolumn{2}{c}{\num{129}}\\
-%     \hspace{1em}3D scans (\#)& \multicolumn{2}{c}{\num{137}} & \multicolumn{2}{c}{\num{20}} &\multicolumn{2}{c}{\num{96}} & \multicolumn{2}{c}{\num{0}}\\
-%     \bottomrule
-% \end{tabular}
-% \caption{Overview of the \acrshort{MRI} settings from the \acrshort{EMC}/\acrshort{HMC} and \acrshort{TCIA} datasets}\label{tab:LGG_1p19q_MRI_settings}
-% \end{table}
 
 
 \begin{table}
