@@ -126,7 +126,7 @@
     %%%%%%%%%%%%%%%%%%%%%%%%
 
     \node[collection_block, above = of test_run] (TEST) {
-        \textbf{Brain tumor test set}\\
+        \textbf{\acrshort{BTtest}}\\
         \textbf{(\gls{HC} version)}
         \begin{tabbing}
         Subjects: \hspace{3em}\=\num{178}\\
