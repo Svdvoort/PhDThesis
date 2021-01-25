@@ -20,10 +20,10 @@
 % \def\BatchColor{rgb:yellow,5;red,2.5;white,5}
 % \def\BatchColor{rgb:magenta,5;black,7}
 \def\InputColor{rgb:black,0.5}
-\newcommand{\midarrow}{\tikz \draw[-Stealth,line width =0.55cm,draw=ConnectColor] (0,0) -- ++(3.75,0);}
+\newcommand{\midarrow}{\tikz \draw[-Stealth,line width =0.45cm,draw=ConnectColor] (0,0) -- ++(3.75,0);}
 \tikzstyle{connection}=[every node/.style={sloped,allow upside down},draw=ConnectColor,opacity=1, line width=0.45cm]
 
-\newcommand{\midpoolarrow}{\tikz \draw[-Stealth,line width =0.55cm,draw=GlobPoolColor] (-0.3,0) -- ++(0.3,0);}
+\newcommand{\midpoolarrow}{\tikz \draw[-Stealth,line width =0.45cm,draw=GlobPoolColor] (-0.3,0) -- ++(0.3,0);}
 \tikzstyle{globalpool}=[every node/.style={sloped,allow upside down},draw=GlobPoolColor,opacity=0.65, line width=0.45cm]
 
 
