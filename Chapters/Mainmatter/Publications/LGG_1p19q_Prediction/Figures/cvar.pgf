@@ -147,14 +147,15 @@
 
 	%% CVAR
 	 \begin{tikzpicture}
-	     \draw[color4]  plot[smooth, tension=.4] coordinates {\pointslist};
-	     \draw (0.5,1) circle (3cm);
-	     \draw[{<[scale=2, length=1.5mm, width=2mm]}-{>[scale=2, length=1.5mm, width=2mm]}, shorten <=3cm, ultra thick](0.5, 1) -- (-3.5, 0);
-	     \draw[{<[scale=2, length=1.5mm, width=2mm]}-{>[scale=2, length=1.5mm, width=2mm]}, shorten <=3cm, ultra thick](0.5, 1) -- (1, 4.5);
-	     \draw[{<[scale=2, length=1.5mm, width=2mm]}-{>[scale=2, length=1.5mm, width=2mm]}, shorten <=3cm, ultra thick](0.5, 1) -- (3, -2);
-	     \draw[{<[scale=2, length=1.5mm, width=2mm]}-{>[scale=2, length=1.5mm, width=2mm]}, shorten <=3cm, ultra thick](0.5, 1) -- (-2, -2.5);
-	     \draw[{>[scale=2, length=1.5mm, width=2mm]}-{<[scale=2, length=1.5mm, width=2mm]}, shorten <=2.75cm, shorten >=-0.2cm, ultra thick](0.5, 1) -- (0.5, -1.5);
-	     \draw[{>[scale=2, length=1.5mm, width=2mm]}-{<[scale=2, length=1.5mm, width=2mm]}, shorten <=2.75cm, shorten >=-0.2cm, ultra thick](0.5, 1) -- (-1,2.5);
+	     \draw[color4, line width=0.3cm]  plot[smooth, tension=.4] coordinates {\pointslist};
+		 \draw[black, line width=0.3cm] (0.5,1) circle (3cm);
+		 \draw[color4, line width=0.3cm]  plot[smooth, tension=.4] coordinates {\pointslist};
+	     \draw[{<[scale=2, length=1.5mm, width=3mm]}-{>[scale=2, length=1.5mm, width=3mm]}, line width=0.15cm,red, shorten <=3cm, ](0.5, 1) -- (-3.5, 0);
+	     \draw[{<[scale=2, length=1.5mm, width=3mm]}-{>[scale=2, length=1.5mm, width=3mm]}, line width=0.15cm,red,  shorten <=3cm](0.5, 1) -- (1, 4.5);
+	     \draw[{<[scale=2, length=1.5mm, width=3mm]}-{>[scale=2, length=1.5mm, width=3mm]}, line width=0.15cm,red,  shorten <=3cm](0.5, 1) -- (3, -2);
+	     \draw[{<[scale=2, length=1.5mm, width=3mm]}-{>[scale=2, length=1.5mm, width=3mm]}, line width=0.15cm,red,  shorten <=3cm](0.5, 1) -- (-2, -2.5);
+	     \draw[{>[scale=2, length=1.5mm, width=3mm]}-{<[scale=2, length=1.5mm, width=3mm]}, line width=0.15cm,red,  shorten <=2.75cm, shorten >=-0.2cm](0.5, 1) -- (0.5, -1.5);
+		 \draw[{>[scale=2, length=1.5mm, width=3mm]}-{<[scale=2, length=1.5mm, width=3mm]}, line width=0.15cm,red,  shorten <=2.75cm, shorten >=-0.2cm](0.5, 1) -- (-1,2.5);
 
 	 \end{tikzpicture}
 

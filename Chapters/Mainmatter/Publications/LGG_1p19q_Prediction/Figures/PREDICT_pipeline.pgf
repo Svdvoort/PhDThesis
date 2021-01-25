@@ -49,13 +49,13 @@
     %%%%%%%%%%%%%%%%%%%%%%%%5
     %%% SVM
     %%%%%%%%%%%%%%
-    \node[inner sep=0pt, right = 1.8cm of CVAR, yshift=-1.5cm] (SVM){\centering \subimport{}{SVM.pgf}};
+    \node[inner sep=0pt, right = 1.8cm of CVAR, yshift=-.5cm] (SVM){\centering \subimport{}{SVM.pgf}};
     \node [text_box, anchor=north] at (imgtext.north -| SVM) (svm_textbox) {Machine learning};
 
 
     %%%%%%%%% Prediction
 
-    \node[inner sep=0pt, right = 2.4 cm of SVM, yshift=4cm] (survival) {\centering \subimport{}{ROC_for_pipeline.pgf}};
+    \node[inner sep=0pt, right = 2.4 cm of SVM, yshift=3cm] (survival) {\centering \subimport{}{ROC_for_pipeline.pgf}};
     % \node[inner sep=0pt, below = of survival, xshift=0.3cm] (classification)  {\includegraphics[scale=0.55,clip,trim={3cm 18cm 8cm 0cm}]{Classification_tree.pdf}};
     \node[inner sep=0pt, below = of survival, xshift=0.3cm] (classification)  {\centering \resizebox{8cm}{!}{\subimport{}{classification_tree.pgf}}};
     \node [text_box, anchor=north] at (imgtext.north -| survival) (predictin_textbox) {Prediction};
