@@ -18,7 +18,7 @@
     The algorithm had a higher predictive performance than the average of the neurosurgeons (\cgls{AUC} \num{0.52}) but lower than that of the neuroradiologists (\cgls{AUC} of \num{0.81}).
     There was a wide variability between clinical experts (\cgls{AUC} \numrange{0.45}{0.83}).
 
-    \textbf{Conclusions:} Our results suggest that our algorithm can noninvasively predict the \acl{1p19qstat} of presumed \cgls{LGG} with a performance that on average outperformed the oncological neurosurgeons.
+    \textbf{Conclusions:} Our results suggest that our algorithm can noninvasively predict the \acl{1p19qstat} of presumed \cgls{LGG} with a performance that was, on average, better than the performance of the oncological neurosurgeons.
     Evaluation on an independent dataset indicates that our algorithm is robust and generalizable.
 
     \publishedas{vandervoort2019predictingcodeletion}
@@ -68,7 +68,7 @@ All \glspl{tumor} were subclassified on the basis of the \cgls{WHO} 2016 criteri
 
 \subsubsection{Imaging acquisition and postprocessing}
 
-\cgls{MR} images were used that were acquired in the routine diagnostic process.
+To train our algorithm, we used \cgls{MR} images that were acquired in the routine diagnostic process.
 \cgls{T1C} and \cgls{T2} \cgls{MRI} sequences were used for the algorithm.
 In many, but not all, patients, \cgls{FLAIR} imaging was also available.
 As images were acquired at multiple of sites, the imaging data were heterogeneous with a wide range of acquisition settings in voxel spacing, matrix size, echo time, repetition time, number of slices, slice thickness, and field strengths on scanners from three different manufacturers (General Electric, Philips, and Siemens).
@@ -140,7 +140,7 @@ Brain masks were made using FSL's BET tool, with the same settings as for the \c
 
 \subsection{Classification algorithm}
 
-To predict the \acl{1p19qstat} of the \glspl{tumor} based on \cgls{MRI} features, the PREDICT toolbox was used.
+We used the PREDICT toolbox to predict the \acl{1p19qstat} of the \glspl{tumor} based on \cgls{MRI} features.
 This toolbox was used to extract a total of 78 image features (such as image intensity, \gls{tumor} texture, \gls{tumor} shape, and \gls{tumor} location) from the \cgls{T1C} and \cgls{T2} \cgls{MR} images.
 These features, as well as the age and sex of the patient, were then used to train a \cgls{SVM}, resulting in a total of 80 features.
 All parameter optimization and classifier training was performed on the \cgls{EMC}/\cgls{HMC} training set using 100 iterations of stratified random-split cross-validation, with \per{80} of the dataset used for training and \per{20} used for validation.
@@ -174,9 +174,9 @@ This was achieved by counting the number of times the algorithm correctly predic
 We also evaluated the performance of the algorithm when the \cgls{EMC}/\cgls{HMC} and \cgls{TCIA} dataset were mixed instead of used as a separate train and validation set to evaluate the effect of adding additional training data.
 \subsection{Prediction of \acl{1p19qstat} by clinical experts}
 
-To compare the results of the algorithm with expert performance, the \acl{1p19qstat} of the \cgls{TCIA} \glspl{tumor} was also predicted by two neurosurgeons and two neuroradiologists from the Erasmus MC Brain Tumor Centre.
-They were presented with the \cgls{T1C} and \cgls{T2} images side by side for each patient as well as the sex and age to ensure that the algorithm and the raters had access to the same information.
-For each \gls{tumor}, the raters were then asked to choose whether they thought it was \acl{1p19qcodel} or \acl{1p19qint} to provide a confidence score ranging from 1 to 5 (1 indicating very unsure and 5 indicating very sure).
+To compare the results of the algorithm with the performance of clinical experts, the \acl{1p19qstat} of the \cgls{TCIA} \glspl{tumor} was also predicted by two neurosurgeons and two neuroradiologists from the Erasmus MC Brain Tumor Centre.
+They were presented with the \cgls{T1C} and \cgls{T2} images side by side for each patient, as well as the sex and age to ensure that the algorithm and the raters had access to the same information.
+For each \gls{tumor}, the raters were then asked to choose whether they thought it was \acl{1p19qcodel} or \acl{1p19qint} and to provide a confidence score ranging from 1 to 5 (1 indicating very unsure and 5 indicating very sure).
 This confidence score was then turned into a prediction \say{score} by dividing it by 5 and multiplying it by 1 if the predicted label was \acl{1p19qcodel} or by -1 if the predicted label was \acl{1p19qint}.
 In this way, an \cgls{AUC} could be determined for the manual classification.
 The accuracy, sensitivity, and specificity were determined in the same way as for the algorithm.
@@ -355,7 +355,7 @@ The algorithm identified a typical \acl{1p19qcodel} glioma as a frontal, heterog
          \centering
          \includegraphics[width=0.475\textwidth]{Figures/LGG_104_codeleted_example_T1.png}
          \includegraphics[width=0.475\textwidth]{Figures/LGG_104_codeleted_example_T2.png}
-         \caption{A \acl{1p19qcodel} glioma (oligodendroglioma), correctly predicted by the algorithm. The glioma is frontally located, nonenhancing on the \cgls{T1C} \cgls{MR} image, and shows a heterogeneous signal intensity with indistinct border on the \cgls{T2} \cgls{MR} image}\label{fig:LGG_1p19q_example_codeleted}
+         \caption{A \acl{1p19qcodel} glioma (oligodendroglioma), correctly predicted by the algorithm. The glioma is frontally located, nonenhancing on the \cgls{T1C} \cgls{MR} image (left), and shows a heterogeneous signal intensity with indistinct border on the \cgls{T2} \cgls{MR} image (right)}\label{fig:LGG_1p19q_example_codeleted}
      \end{subfigure}
 
 
@@ -363,7 +363,7 @@ The algorithm identified a typical \acl{1p19qcodel} glioma as a frontal, heterog
          \centering
          \includegraphics[width=0.475\textwidth]{Figures/LGG_625_intact_example_T1.png}
          \includegraphics[width=0.475\textwidth]{Figures/LGG_625_intact_example_T2.png}
-         \caption{A \acl{1p19qint} glioma (astrocytoma), correctly predicted by the algorithm. The glioma is parietally located, nonenhancing on the \cgls{T1C} \cgls{MR} image and shows a homogeneous signal intensity with sharply demarcated border on the \cgls{T2} \cgls{MR} image}\label{fig:LGG_1p19q_example_intact}
+         \caption{A \acl{1p19qint} glioma (astrocytoma), correctly predicted by the algorithm. The glioma is parietally located, nonenhancing on the \cgls{T1C} \cgls{MR} image (left) and shows a homogeneous signal intensity with sharply demarcated border on the \cgls{T2} \cgls{MR} image (right)}\label{fig:LGG_1p19q_example_intact}
      \end{subfigure}
 
         \caption{\acrshort{T1C} and \acrshort{T2} \acrshort{MR} images of a patient with a \acl{1p19qcodel} glioma \refsubfigure{fig:LGG_1p19q_example_codeleted} and a patient with a \acl{1p19qint} glioma \refsubfigure{fig:LGG_1p19q_example_intact}}\label{fig:LGG_1p19q_Examples}
@@ -388,7 +388,7 @@ Furthermore, we were also able to show which image features were important in th
 
 Although other studies did already investigate the noninvasive prediction of the molecular subtype of \cgls{LGG}, these often focused on \cgls{IDH} mutations only and did not consider the \acl{1p19qstat} \autocite{li2017deep, ren2019noninvasive, yu2017noninvasive}.
 In comparison with studies that did look at the \acl{1p19qstat}, we used a larger cohort and an external validation dataset \autocite{akkus2017predicting, chang2018deep, han2018non, park2018prediction, shofty2018mri}, which makes our results more robust and generalizable, respectively.
-Although one study by \citeauthorref{lu2018machine} did use an independent dataset, this study used only 5 patients to externally validate the \acl{1p19qstat} predictive performance of the algorithm, which severely limits the reliability of its predictive performance.
+Although one study by \citeauthorref{lu2018machine} did use an independent dataset, this study considered only 5 patients to externally validate the \acl{1p19qstat} predictive performance of the algorithm, which severely limits the reliability of its predictive performance.
 In addition, that specific study retrospectively selected patients with histopathologically defined \cgls{LGG} only, which represents the diagnosis-treatment workflow in clinical practice less accurately.
 The starting point of decision making on the optimal treatment strategy for \cgls{LGG} is the initial diagnosis on first \cgls{MRI}, when a non-contrast-enhancing space occupying lesion is seen, at which point knowledge on the histopathologic grade is not yet available.
 
@@ -413,7 +413,7 @@ Second, the \cgls{IDH} mutation status was undetermined in all of the \cgls{TCIA
 Because molecular subclassification according to the \cgls{WHO} 2016 guidelines is based on both the \acl{1p19qstat} and \cgls{IDH} mutation status, it is important to predict both.
 Therefore, for our future work, we are expanding our database with more patients in whom the \gls{tumor} \cgls{IDH} status is known to eventually be able to predict all clinically relevant subtypes of presumed \cgls{LGG}.
 
-There was an imbalance between the \cgls{EMC}/\cgls{HMC} dataset and the \cgls{TCIA} dataset in terms of the number of co-deleted and intact cases.
+Lastly, there was an imbalance between the \cgls{EMC}/\cgls{HMC} dataset and the \cgls{TCIA} dataset in terms of the number of co-deleted and intact cases.
 Despite this imbalance, our algorithm still shows similar performance between the cross-validation result of the \cgls{EMC}/\cgls{HMC} dataset and the performance on the \cgls{TCIA} validation dataset.
 
 In conclusion, our results suggest that our algorithm can noninvasively predict the \acl{1p19qstat} of presumed \cgls{LGG} with a performance that in general outperforms oncological neurosurgeons.
@@ -440,7 +440,7 @@ The computed transform was used to map the \cgls{FLAIR} segmentation to the \cgl
 Then, the \cgls{T2} scans were registered to the \cgls{T1C} scans.
 The computed transformation was used to transform the segmentation from the \cgls{T2} scan to the \cgls{T1C} scan.
 This method was applied to both the segmentations originally done on the \cgls{T2} scans, and the ones that were registered to the \cgls{T2} scan from the \cgls{FLAIR}.
-All segmentations and registrations were checked by M.S., and manual adjustments of the segmentations were made by F.I. if necessary.
+All segmentations and registrations were checked by M. Smits, and manual adjustments of the segmentations were made by F.I. if necessary.
 
 The next step of the pre-processing was to obtain the brain masks, which were created by FSL BET with a setting of 0.5 \autocite{smith2002fast}.
 The brain masks were used to normalize the scans.
@@ -461,7 +461,7 @@ The anterior/posterior, left/right, and inferior/superior coordinate of the vect
 Shape features were derived from the segmentation on the \cgls{T2} image.
 Shape features consisted of the compactness, convexity, circular variance (cvar), elliptical variance (evar), ratio of principal axes (prax), radial distance, roughness, and solidity \autocite{peura1997efficiency, xu2012comprehensive}.
 All of these features were calculated on a per-slice basis (only for slices that contained \gls{tumor}), after which the mean and standard deviation of the features over the slices were included as features in the algorithm, resulting in 16 features.
-The volume was also taking as a 3D shape feature, resulting in 17 shape features.
+The volume was also taken as a 3D shape feature, resulting in 17 shape features.
 
 Image intensity was described using 11 features: energy, kurtosis, maximum, mean, median, minimum, peak (the bin in the intensity histogram which had the highest occurrence) of the intensity, range from the 2nd to 98th percentile, skewness, standard deviation, and the range from the 25th to 75th percentile (the quartile range).
 The energy was defined as: $E = \sum \left( {\left( I + \min(I)\right)}^2\right)$, where $I$ is the image intensity.
@@ -559,7 +559,7 @@ The polynomial kernel was defined as:
 \cgls{SVM} were constructed with a maximum of \num{1e7} iterations.
 The hyperparameters of the \cgls{SVM} were optimized using a 5-fold cross-validation where \per{20} of the training dataset was used as an internal validation set.
 A random search of \num{50000} iterations was used to find the optimal hyperparameters.
-This optimization search for the optimal $C$, the regularization parameter of the \cgls{SVM}, as well as three parameters of the polynomial kernel: $\gamma$, which defines how much each sample is weighted, $C_0$, a trade-off between high-order and low-order terms, and $P$, the order of the polynomial kernel.
+This optimization searched for the optimal $C$, the regularization parameter of the \cgls{SVM}, as well as three parameters of the polynomial kernel: $\gamma$, which defines how much each sample is weighted, $C_0$, a trade-off between high-order and low-order terms, and $P$, the order of the polynomial kernel.
 
 The distributions for the parameters are presented in \cref{tab:LGG_1p19q_svm_parameters}.
 
@@ -671,7 +671,7 @@ The results are shown in \cref{tab:LGG_1p19q_mixed_results}.
 \end{table}
 
 The results for the combined \cgls{EMC}/\cgls{HMC} and \cgls{TCIA} dataset show a slight improvement over the cross-validation on the \cgls{EMC}/\cgls{HMC} dataset alone but they are still within the confidence interval of the \cgls{EMC}/\cgls{HMC} dataset results, except for the precision.
-This shows that although there is a slight improvement, our algorithm is already quite robust and adding more data (from a different source) does not lead to a large increase in performance.
+This shows that, although there is a slight improvement, our algorithm is already quite robust and adding more data (from a different source) does not lead to a large increase in performance.
 
 
 \end{subappendices}
