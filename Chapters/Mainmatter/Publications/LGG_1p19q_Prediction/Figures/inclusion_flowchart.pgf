@@ -10,7 +10,7 @@
     text width=18em, text ragged, minimum height=4em, inner sep=6pt},
     block_test/.style ={rectangle, draw=black, thick, fill=white,
     text width=10em, text ragged, minimum height=4em, inner sep=6pt},
-      line/.style ={draw, thick, -latex', shorten >=0pt}]
+      line/.style ={draw, ultra thick, -latex', shorten >=0pt}]
 
      \node [block_left] (identified) {%
      \begin{tabbing}
@@ -24,10 +24,10 @@
      \begin{tabbing}
       \textbf{140} \=Patients excluded\\
       \\
-      \textbf{22} \>1p/19q co-deletion status unknown\\
-      \textbf{46} \>No pre-operative \gls{T1C} or \gls{T2} scan\\
       \textbf{58} \>Enhancement\\
-      \textbf{14} \>Insufficient imaging quality\\
+      \textbf{46} \>No preoperative \gls{T1C} or \gls{T2} scan\\
+      \textbf{22} \>1p/19q co-deletion status unknown\\
+      \textbf{14} \>Insufficient image quality\\
     \end{tabbing}
      };
 
@@ -60,7 +60,7 @@
        \end{tabbing}
     };
 
-    \node[draw,inner sep=2mm, dashed, label=below:External validation,fit=(test_included) (test_excluded) (test_screened)] {};
+    \node[draw,inner sep=2mm, dashed, label=below:\textbf{External validation},fit=(test_included) (test_excluded) (test_screened)] {};
 
     \node[block_center, below=1cm of ml_algorithm] (metrics) {\textbf{Outcome: predictive performance}\\
     Accuracy, AUC, Sensitivity, Specificity};

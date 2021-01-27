@@ -139,6 +139,32 @@ axis equal image
 --(axis cs:0,0)
 --cycle;
 
+
+\addplot [line width=2pt, color_sur1]
+table {%
+0 0
+0.0909091234207153 0.282352924346924
+0.113636374473572 0.282352924346924
+0.181818246841431 0.352941155433655
+0.181818246841431 0.376470565795898
+0.454545497894287 0.51764702796936
+0.454545497894287 0.529411792755127
+1 1
+};
+\addlegendentry{\eqmakebox[m1][l]{Neurosurgeon 1} (AUC=0.58)}
+% \addlegendentry{Neurosurgeon 1\hphantom{3em}(AUC=0.58)}
+\addplot [line width=2pt, color_sur2]
+table {%
+0 0
+0.0454545021057129 0.0235294103622437
+0.272727251052856 0.235294103622437
+0.431818246841431 0.399999976158142
+0.545454502105713 0.458823561668396
+0.704545497894287 0.552941203117371
+0.818181753158569 0.799999952316284
+1 0.988235235214233
+};
+\addlegendentry{\eqmakebox[m1][l]{Neurosurgeon 2} (AUC=0.45)}
 \addplot [line width=2pt, color_rad1]
 table {%
 0 0
@@ -167,31 +193,6 @@ table {%
 };
 \addlegendentry{\eqmakebox[m1][l]{Neuroradiologist 2} (AUC=0.79)}
 % \addlegendentry{Neuroradiologist 2\hphantom{1em}(AUC=0.79)}
-\addplot [line width=2pt, color_sur1]
-table {%
-0 0
-0.0909091234207153 0.282352924346924
-0.113636374473572 0.282352924346924
-0.181818246841431 0.352941155433655
-0.181818246841431 0.376470565795898
-0.454545497894287 0.51764702796936
-0.454545497894287 0.529411792755127
-1 1
-};
-\addlegendentry{\eqmakebox[m1][l]{Neurosurgeon 1} (AUC=0.58)}
-% \addlegendentry{Neurosurgeon 1\hphantom{3em}(AUC=0.58)}
-\addplot [line width=2pt, color_sur2]
-table {%
-0 0
-0.0454545021057129 0.0235294103622437
-0.272727251052856 0.235294103622437
-0.431818246841431 0.399999976158142
-0.545454502105713 0.458823561668396
-0.704545497894287 0.552941203117371
-0.818181753158569 0.799999952316284
-1 0.988235235214233
-};
-\addlegendentry{\eqmakebox[m1][l]{Neurosurgeon 2} (AUC=0.45)}
 % \addlegendentry{Neurosurgeon 2\hspace{1em}(AUC=0.45)}
 \addplot [line width=2pt, color_alg]
 table {%
@@ -244,7 +245,7 @@ table {%
 0.979591846466064 1
 1 1
 };
-\addlegendentry{\eqmakebox[m1][l]{Algorithm} (AUC=0.73)}
+\addlegendentry{\eqmakebox[m1][l]{Algorithm} (AUC=0.72)}
 % \addlegendentry{Algorithm                (AUC=0.73)}
 \addplot [line width=1pt, color_alg, forget plot]
 table {%
