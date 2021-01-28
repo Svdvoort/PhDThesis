@@ -5,7 +5,7 @@
 \end{ChapterAbstractNoTitle}
 
 In de afgelopen jaren hebben automatische beeldanalyse methodes en machine learning een grote impact gehad op onderzoek op het gebied van biomedische beeld\-analyse.
-Tegelijkertijd heeft onderzoek naar gliomen verschillende genetische eigenschappen onthuld die bepalend zijn voor de agressiviteit van tumoren.
+Tegelijkertijd heeft onderzoek naar gliomen verschillende genetische eigenschappen aangetoond die bepalend zijn voor de agressiviteit van tumoren.
 Door deze ontwikkelingen is \say{radiomics} erg populair geworden.
 Radiomics methodes extraheren beeldeigenschappen uit biomedische beelden en correleren deze eigenschappen met de klinische karakteristieken van een tumor.
 In dit proefschrift combineer ik de meest recente inzichten vanuit klinisch en radiomics onderzoek en pas ik deze inzichten toe op de automatische beeldanalyse van magnetic resonance imaging (MRI) scans van gliomen.
@@ -16,9 +16,9 @@ In dit hoofdstuk leg ik de relatie tussen de genetische eigenschappen en de agre
 Verder bespreek ik de rol die deze genetische eigenschappen spelen bij beslissingen binnen het behandeltraject van gliomen.
 Ook introduceer ik de huidige rol van biomedische beeldvorming bij de klinische behandeling van gliomen.
 
-In \textbf{Hoofdstuk~\ref{chap:radiomics}} geef ik een algemene introductie over automatische beeldanalyse methodes en machine learning methodes.
+In \textbf{Hoofdstuk~\ref{chap:radiomics}} geef ik een algemene introductie van automatische beeldanalyse methodes en machine learning methodes.
 Ik leg onder andere de methodologie achter verschillende machine learning technieken uit, en bediscussieer het belang van een goed uitgevoerde radiomics studie en de mogelijke valkuilen bij het opzetten van een dergelijke studie.
-Dit hoofdstuk refereert ook aan een aantal infrastructuur middelen die onderzoekers kunnen gebruiken om radiomics experimenten op een effici{\"e}nte manier uit te voeren.
+Dit hoofdstuk refereert ook aan een aantal infrastructuurmiddelen die onderzoekers kunnen gebruiken om radiomics experimenten op een effici{\"e}nte manier uit te voeren.
 
 In \textbf{Hoofdstuk~\ref{chap:LGGLocation}} gebruik ik MRI data van 224 pati{\"e}nten met een  laaggradig glioom (LGG) om te onderzoeken of er een relatie bestaat tussen de locatie en genetische eigenschappen van een tumor.
 Als een dergelijke relatie bestaat kunnen deze locatie-eigenschappen in een klinische omgeving worden gebruikt als een eerste indicatie voor de genetische eigenschappen van een glioom.
@@ -38,7 +38,7 @@ Ik heb data van 284 pati{\"e}nten gebruikt om deze methode te ontwikkelen, vervo
 Deze methode kon de 1p/19q co-deletie status succesvol voorspellen en was beter dan de voorspelling van twee van de vier klinische experts.
 Verdere analyse liet zien dat de radiomics methode haar voorspelling voornamelijk baseerde op beeldeigenschappen die al eerder in de literatuur aan de 1p/19q status gerelateerd waren.
 
-De resultaten uit \textbf{Hoofdstuk~\ref{chap:LGG1p19q}} tonen het belang van een grote, diverse dataset voor de ontwikkeling van een radiomics methode aan.
+De resultaten uit \textbf{Hoofdstuk~\ref{chap:LGG1p19q}} tonen het belang aan van een grote, diverse dataset voor de ontwikkeling van een radiomics methode.
 Echter, klinische datasets die gebruikt worden in radiomics onderzoek zijn initieel vaak ongestructureerd, wat het gebruik van deze datasets bemoeilijkt.
 Daarom heb ik in \textbf{Hoofdstuk~\ref{chap:DDS}} een methode ontwikkeld die het gebruik van ongestructureerde, grootschalige datasets van biomedische beelden vergemakkelijkt.
 Deze methode is gebaseerd op een convolutioneel neuraal netwerk (CNN) en deze methode kan het type van  MRI hersenscans voorspellen.
@@ -50,14 +50,14 @@ Mijn methode kon het type van de scan nagenoeg perfect voorspellen bij zowel de 
 De methode uit \textbf{Hoofdstuk~\ref{chap:DDS}} heb ik gebruikt om de tot op heden grootste en meeste diverse MRI dataset van pati{\"e}nten met een glioom samen te stellen.
 Deze dataset is openbaar beschikbaar gemaakt, en de dataset staat beschreven in \textbf{Hoofdstuk~\ref{chap:EGD}}.
 De dataset bestaat uit MRI scans, genetische en histologische eigenschappen, en een aflijning van de tumor voor 774 pati{\"e}nten met een glioom.
-Doordat deze dataset openbaar beschikbaar is, kan deze worden gebruikt voor de ontwikkeling en validatie van nieuwe radiomics en automatische segmentatie methodes.
+Doordat deze dataset openbaar beschikbaar is, kan deze worden gebruikt voor de ontwikkeling en validatie van nieuwe radiomics en automatische segmentatiemethodes.
 
 De dataset uit \textbf{Hoofdstuk~\ref{chap:EGD}}  heb ik vervolgens in \textbf{Hoofdstuk~\ref{chap:prognosais}} gebruikt om een methode te ontwikkelen die de tumor kan aflijnen en tegelijkertijd de IDH-status, 1p/19q co-deletie status, en graad van de tumor kan voorspellen.
 Door al deze genetische en histologische eigenschappen van de tumor te voorspellen, kan de tumor worden gecategoriseerd op basis van de aanbevelingen van de World Health Organization (WHO) uit 2016.
 Deze methode is gebaseerd op een bestaande CNN architectuur, die ik heb aangepast zodat het mogelijk was om de verschillende genetische en histologische eigenschappen gelijktijdig te voorspellen.
-Door het model te optimaliseren was ik in staat om de volledige 3D MRI scan te gebruiken als een invoer voor het netwerk, ondanks de beperkingen van de technische systemen.
+Door het model te optimaliseren was ik in staat om de volledige 3D MRI scan te gebruiken als een invoer voor het netwerk, ondanks de technische beperkingen.
 Ik heb een dataset van 1.508 glioom pati{\"e}nten gebruikt om deze methode te trainen en heb de methode vervolgens getest op een onafhankelijke dataset van 240 pati{\"e}nten.
-De methode behaalde een goede nauwkeurigheid voor het voorspellen van de verschillende eigenschappen, wat de potentie laat zien van het gebruik van {\'e}{\'e}n enkele methode voor meerdere voorspellingen.
+De methode behaalde een goede nauwkeurigheid voor het voorspellen van de verschillende eigenschappen, wat de potentie om {\'e}{\'e}n enkele methode te gebruiken voor meerdere voorspellingen laat zien.
 
 Tot slot bediscussieer ik in \textbf{Hoofdstuk~\ref{chap:discussion}} de bijdragen die dit proefschrift heeft geleverd aan het verbeteren van de beeldanalyse van gliomen.
 Alhoewel er nog een aantal hindernissen genomen dienen te worden voordat automatische beeldanalyse gemeengoed zullen zijn in de klinische praktijk, is het duidelijk dat deze methodes significant kunnen bijdragen aan het verbeteren van de diagnose en behandeling van gliomen.
