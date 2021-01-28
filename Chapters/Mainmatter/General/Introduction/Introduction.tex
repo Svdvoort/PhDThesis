@@ -10,18 +10,18 @@ Shocked and a bit worried by this news, Sora went into the MRI scanner, which he
 At the same time Sora was getting out of the scanner, his scans were being analyzed by a computer that could pick up on details of the scan invisible to the human eye.
 The computer used these scan details to determine several \gls{tumor} characteristics related to the aggressiveness of the \gls{tumor}.
 A couple of minutes later, Sora walked back into the office of Egwene, who had already looked at the scans and the \gls{tumor} characteristics provided by the computer.
-Based on Egwene's experience with these \glspl{tumor} and the information provided by the computer, she could comfort Sora and tell him that the \gls{tumor} did not seem to be very aggressive.
+Based on Egwene's experience with these \glspl{tumor} and the information provided by the computer, she could comfort Sora and tell him that the \gls{tumor} did not appear to be very aggressive.
 Together they discussed possible treatment options and the best course of action from here on out.
 By analyzing the scan using a computer directly after the scan was made, Sora could go home without worrying about the results of his scan, and Egwene could rest assured knowing that she could optimally tailor the treatment to Sora's specific situation.
 \end{ChapterAbstractNoTitle}
 
 Although the above story is currently (unfortunately) still fictional, research in medical imaging has rapidly evolved over the last couple of years, bringing the existence of such automated analysis systems closer to reality than ever before.
 However, there is still a gap to bridge before they can find their way into the clinic.
-Therefore, in this thesis, I focus on automated systems that analyze \acrshort{MRI} scans of glioma patients and provide clinicians with additional information earlier in the clinical decision making process, enabling them to provide care that is more personalized to each patient.
+Therefore, in this thesis, I focus on automated systems that analyze \acrshort{MRI} scans of glioma patients and provide clinicians with additional information earlier in the clinical decision making process, enabling them to provide care that is more tailored to each patient.
 
 \section{Glioma}
 
-When cells reproduce, genetic mutations can occur that result in the cells starting to grow uncontrollably.
+When cells reproduce, genetic mutations can occur that result in the uncontrollable growth of the cells.
 This uncontrollable growth of new cells is commonly known as cancer.
 When the cancerous cells lump together, the single mass that they form is called a \gls{tumor}.
 \Glspl{tumor} can originate from and occur almost everywhere in the human body, and the location where the \gls{tumor} occurs is not always the same as the location from which the cancerous cells originate.
@@ -39,8 +39,7 @@ Therefore, it is important to categorize \gls{glioma} in a clinically relevant w
 
 \section{Categorization of glioma}
 Historically \glspl{glioma} were categorized based solely on their histopathological appearance, that is, the appearance of the \gls{tumor} cells under a microscope.
-Up to 2016, the \gls{WHO} recognized four different types of \gls{glioma}: \gls{astro}, \gls{oliastro}, \gls{oli}, and \gls{GBM} (since 2016 known as just \gls{glioblastoma})\footnote{For readers unfamiliar with the newly introduced terms, a glossary is available on page~\pageref{glossary} as a reference.}.
-This classification depended on the type of \glspl{gcell} that were visible in the \gls{tumor} tissue \autocite{louis2007who}.
+Up to 2016, the \gls{WHO} recognized four different types of \gls{glioma} based on the type of \gls{gcell} visible in the \gls{tumor} tissue: \gls{astro}, \gls{oliastro}, \gls{oli}, and \gls{GBM} (since 2016 known as just \gls{glioblastoma})\footnote{For readers unfamiliar with the newly introduced terms, a glossary is available on page~\pageref{glossary} as a reference.} \autocite{louis2007who}.
 Classifying \gls{glioma} based on their \gls{gcell} type is often called typing.
 In addition to \gls{glioma} typing, \glspl{tumor} were assigned a grade to indicate their aggressiveness; this process is referred to as grading.
 The grade was either II, III, or IV, with a grade IV \gls{glioma} being the most aggressive.
@@ -66,7 +65,7 @@ An overview of the \gls{WHO} 2016 guidelines and their relation to the previous 
 \end{figure}
 
 In the updated guidelines, \gls{glioma} typing has become less relevant.
-The histopathology now only needs to distinguish (what where historically) \gls{astro} and \gls{oli} (\gls{LGG}) on the one hand and \gls{glioblastoma} (\gls{HGG}) on the other hand.
+The histopathology now only needs to distinguish (what were historically) \gls{astro} and \gls{oli} (\gls{LGG}) on the one hand and \gls{glioblastoma} (\gls{HGG}) on the other hand.
 with the introduction of the 2016 guidelines, the definition of \gls{LGG} and \gls{HGG} also changed; grade III \gls{glioma} are now often considered \gls{LGG} instead of \gls{HGG}.
 However, this categorization is still a topic of debate and guidelines are continuously updated as new evidence on better categorizations becomes available \autocite{lous2020impactnow}.
 In this thesis, grade II and III \gls{glioma} are considered \gls{LGG} and grade IV \gls{glioma} are considered \gls{HGG}, in accordance with \gls{WHO} 2016 guidelines.
@@ -110,7 +109,7 @@ In the case of a biopsy, a small part of the \gls{tumor} is removed for analysis
 Thus, biopsies are not part of the treatment but are merely used to decide on further treatment options.
 Resection is part of the treatment process and involves surgically removing as much of the \gls{tumor} as possible.
 Part of the removed \gls{tumor} can then be used for the genetic and histopathological analysis to decide on follow-up treatments, such as chemotherapy and radiotherapy.
-Taking a biopsy or resecting the \gls{tumor} requires intrusive surgery, which not only puts an extra burden on the healthcare system but also comes with risks for the patient \autocite{chen2009biopsy}.
+Taking a biopsy or resecting the \gls{tumor} requires intrusive surgery, which not only puts an extra burden on the healthcare system but also comes with a risk for the patient \autocite{chen2009biopsy}.
 Therefore, it would be beneficial if the genetic features of a \gls{glioma} can be determined without the need for a biopsy in cases where the sole purpose of the biopsy is to obtain tissue to assist in clinical decision making.
 
 A non-invasive method to determine the genetic features of the \gls{tumor} not only obviates the need for an intrusive surgical operation, but it can also provide relevant information earlier in the treatment process, which can aid in the clinical decision making.
@@ -120,7 +119,9 @@ Since \acrlong{MRI} is already part of the standard clinical pathway for glioma 
 \section{MRI analysis of glioma}
 
 \Acrfull{MRI} is an imaging technique that uses the magnetic properties of protons, one of three elementary particles that form an atom, to create an image.
-Although protons appear in all atoms, hydrogen atoms are of particular interest because a water molecule contains two hydrogen atoms and since the majority of the human body consists of water, hydrogen atoms (and thus protons) are abundant in the human body, especially in soft tissue.
+Although protons appear in all atoms, hydrogen atoms are of particular interest.
+Water molecules contain two hydrogen atoms and since the majority of the human body consists of water, hydrogen atoms (and thus protons) are abundant in the human body, especially in soft tissue.
+This abundance of hydrogen atoms makes them an ideal candidate to use for imaging.
 Furthermore, hydrogen atoms consist of a single proton, simplifying their magnetic properties and thus making them easier to use in the imaging process.
 An \gls{MRI} scanner manipulates the protons to form an image and can even manipulate them in different ways to obtain different imaging contrasts.
 An example of an \gls{MRI} scanner is shown in \cref{fig:intro_MR_machine}.
@@ -166,7 +167,7 @@ Therefore, \gls{MRI} is part of the standard-of-care for brain \gls{tumor} diagn
 
     \caption{Examples of \acrshort{MRI} scans with different contrasts, the red arrows point to the \gls{tumor}.
     On some scans (\textbf{\protect\subref{fig:intro_T1}}, \textbf{\protect\subref{fig:intro_T1GD}}) the \gls{tumor} appears darker than the surrounding healthy tissue, whereas on others (\textbf{\protect\subref{fig:intro_FLAIR}}, \textbf{\protect\subref{fig:intro_T2}}) it appears as a bright lump.
-     The different imaging contrasts provide clinically relevant information of the glioma; for example, the fact that scan \textbf{\protect\subref{fig:intro_T1GD}} shows a bright ring around a dark center suggests that this is a glioblastoma}\label{fig:intro_MR_example}
+     The different imaging contrasts provide clinically relevant information of the glioma; for example, the fact that scan (\textbf{\protect\subref{fig:intro_T1GD}}) shows a bright ring around a dark center suggests that this is a glioblastoma}\label{fig:intro_MR_example}
 \end{figure}
 
 \gls{MRI} scans are already routinely being used to get a first indication of the aggressiveness of the \gls{tumor}, mainly for \gls{tumor} grading \autocite{upadhyay2011MRIevaluation}.
@@ -188,9 +189,10 @@ This leads to imaging markers that are, similar to the typing and grading that w
 Thus, although some promising imaging markers have been found, there is a need for new imaging markers and new methods that can include more information from the \gls{MRI} scan, are more objective, more consistent and, most importantly, do not put an additional burden on clinicians.
 
 This need for new imaging markers has caused a rise in popularity of automated analysis methods, most notably machine learning methods.
-Machine learning methods can be used to relate scan characteristics of a patient with a clinical outcome, where the clinical outcome of interest can range from the prediction of the genetic features, a field which is commonly known as radiomics \autocite{lambin2012radiomics}, to the automatic outlining of a \gls{tumor} on a scan.
+Machine learning methods can be used to relate the scan characteristics of a patient with a clinical outcome, where the clinical outcome of interest can range from the prediction of the genetic features, a field which is commonly known as radiomics \autocite{lambin2012radiomics}, to the automatic outlining of a \gls{tumor} on a scan.
 \cref{fig:intro_example_ml} shows an example machine learning pipeline.
-The main advantage of machine learning methods is that they do not require that the relationship between the imaging marker and the clinical outcome is known, instead these methods can learn this relationship by themselves.
+The main advantage of machine learning methods is that they do not require that the relationship between the imaging marker and the clinical outcome is known.
+Instead these methods can learn this relationship by themselves.
 Thus, they can be very versatile tools which can be used with known imaging markers, in which case they can find new relationships with the clinical outcome.
 They can also be used in cases where no known imaging markers exist, in this case the scans themselves can directly be used as an input, allowing the algorithm to find new imaging markers by itself.
 This second approach, where the algorithm figures out the imaging markers by itself, is a subfield of machine learning called deep learning.
