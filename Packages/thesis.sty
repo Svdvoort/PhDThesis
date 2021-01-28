@@ -124,11 +124,14 @@ sortcites=true]{biblatex}
 \let\theglossary\relax
 \let\endtheglossary\relax
 
-\usepackage[acronym,toc,section=chapter]{glossaries}
+\usepackage[acronym,toc,section=chapter,nonumberlist]{glossaries}
+\newglossary[flg]{fake}{fls}{flo}{Fake Entries}
 \usepackage{glossaries-extra}
 \setabbreviationstyle[acronym]{long-short}
 % \renewcommand{\glossarypreamble}{\label{glossary}}
 \setglossarypreamble[main]{\label{glossary}}
+% For things that should not be printed
+
 \makeglossaries
 % \glsenableentrycount
 
