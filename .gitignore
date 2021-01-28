@@ -251,3 +251,7 @@ temp_manuscript.tex
 
 # Ignore temporary figure folder
 ./Temp_figures/
+
+# Glossary files
+*.flg
+*.flo
