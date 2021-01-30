@@ -175,6 +175,15 @@
 % We do not want the day in the date of a publication
 \AtEveryBibitem{\clearfield{day}}
 
+% For some journal we don't have pages but article numbers
+% Fix that here
+
+\NewBibliographyString{artno}
+\DefineBibliographyStrings{english}{artno = {art\adddotspace no\adddot}}
+
+\DeclareFieldFormat[article,periodical]{eid}{\bibstring{artno}\addabbrvspace #1}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % OTHER
