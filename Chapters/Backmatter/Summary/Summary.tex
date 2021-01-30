@@ -38,8 +38,8 @@ The results from \textbf{\cref{chap:LGG1p19q}} showed the importance of using a 
 However, the clinical datasets that are used in radiomics research are often unstructured, complicating the automatic processing of the data.
 Therefore, in \textbf{\cref{chap:DDS}}, I proposed a method that solves the problem of using unstructured, large-scale biomedical imaging data.
 This method, based on a convolutional neural network, can  predict the type of brain \gls{MRI} scans and can automatically sort the data based on the predicted type, providing a tremendous speed-up compared to the manual sorting of these datasets.
-The method was trained using 11,065 \gls{MRI} scans of 719 glioma patients and tested on 2,369 scans of 192 glioma patients.
-It was also tested on 7,227 scans of 1,318 Alzheimer's patients, to show the generalizability of our method to \gls{MRI} scans that do not contain brain \glspl{tumor}.
+The method was trained using \num{11065} \gls{MRI} scans of 719 glioma patients and tested on \num{2360} scans of 192 glioma patients.
+It was also tested on \num{7227} scans of \num{1318} Alzheimer's patients, to show the generalizability of our method to \gls{MRI} scans that do not contain brain \glspl{tumor}.
 Our method was able to predict the type of the scan with near-perfect accuracy in both the glioma patients and the Alzheimer's patients.
 
 I used the method developed in \textbf{\cref{chap:DDS}} to create the largest, most diverse glioma \gls{MRI} dataset to date.
@@ -48,11 +48,11 @@ The dataset contains imaging data, genetic and histological features, and \gls{t
 The public availability of this data allows for the development and validation of new radiomics and automated segmentation methods.
 
 The dataset described in \textbf{\cref{chap:EGD}}, along with other publicly available data, was used in \textbf{\cref{chap:prognosais}} to develop a method that can simultaneously segment glioma and predict their \gls{IDH}-status, 1p/19q-status, and grade using pre-operative \gls{MRI} scans.
-By predicting these genetic and histological features, a \gls{tumor} can be categorised according to the \gls{WHO} 2016 guidelines.
+By predicting these genetic and histological features, a \gls{tumor} can be categorized according to the \gls{WHO} 2016 guidelines.
 This method was based on an existing convolutional neural network architecture, which was altered to enable the multiple, simultaneous predictions.
-By optimising the model I was able to use the full 3D \gls{MRI} scan as an input, despite the limited computational resources available to train the model.
+By optimizing the model I was able to use the full 3D \gls{MRI} scan as an input, despite the limited computational resources available to train the model.
 Furthermore, this method was designed to work on all types of glioma, regardless of their clinical characteristics or visual appearance.
-This method was developed using a dataset of 1,508 glioma patients and tested on an independent dataset of 240 patients.
+This method was developed using a dataset of \num{1508} glioma patients and tested on an independent dataset of \num{240} patients.
 The method achieved good performance for all of the different tasks, demonstrating the possibilities of using a single method for multiple tasks.
 
 Finally, in \textbf{\cref{chap:discussion}}, I discuss the contributions of this thesis towards the improvement of image analysis of glioma.
