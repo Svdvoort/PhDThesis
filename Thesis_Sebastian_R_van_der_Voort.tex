@@ -28,6 +28,8 @@
 
 
 \begin{document}
+% We use uppercase Roman for the first few pages
+\pagenumbering{Roman}
 
 \begingroup
 \let\cleardoublepage\clearpage
@@ -120,6 +122,7 @@
 \clearemptydoublepage
 
 % Bibliography
+\newrefcontext[sorting=none]
 \printbibliography[heading=bibintoc]
 
 \end{document}
