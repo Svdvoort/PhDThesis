@@ -126,6 +126,8 @@ maxbibnames=10]{biblatex}
 \let\endtheglossary\relax
 
 \usepackage[acronym,toc,section=chapter,nonumberlist]{glossaries}
+% make glossaries non-clickable
+\glsdisablehyper
 \newglossary[flg]{fake}{fls}{flo}{Fake Entries}
 \usepackage{glossaries-extra}
 \setabbreviationstyle[acronym]{long-short}
