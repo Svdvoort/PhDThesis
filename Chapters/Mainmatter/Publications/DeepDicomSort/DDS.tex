@@ -65,7 +65,7 @@ In this way, our method can assist with properly organizing a \gls{ds}, which ma
 \section{Introduction}
 
 With the rising popularity of machine learning, deep learning, and automatic pipelines in the medical imaging field, the demand for large \glspl{ds} is increasing.
-To satisfy this hunger for data, the amount of imaging data collected at healthcare institutes keeps growing, as is the amount of data that is shared in public repositories \autocite{greenspan2016deep, lundervold2019overview}.
+To satisfy this hunger for data, the amount of imaging data collected at healthcare institutes keeps growing, as is the amount of data that is shared in public repositories \autocite{greenspan2016guest, lundervold2019overview}.
 However, this increase in available data also means that proper data curation, the management of data throughout its life cycle, is needed to keep the data manageable and workable \autocite{prevedello2019challenges, vanooijen2019quality}.
 One essential data curation step is organizing a \gls{ds} such that it can easily be used and reused.
 Properly organizing the \gls{ds} maximizes the shareability and preserves the full integrity of the \gls{ds}, ensuring repeatability of an experiment and reuse of the \gls{ds} in other experiments.
@@ -84,7 +84,7 @@ As a result, the sorting is frequently done manually, by looking at each \gls{sc
 This manual labeling can be a very time-consuming task, which hampers scientific progress; thus, it is highly desirable to automate this step of the data curation pipeline.
 Similar arguments concerning the complexity of medical imaging data and the importance of data structuring also motivated the creation of the \gls{BIDS} standard \autocite{gorgolewski2016brain}.
 
-Previous research has focused on modality recognition \autocite{dimitrovski2015improved,yu2015modality,arias2016medical}, as well as on distinguishing different modalities of \gls{MRI} \glspl{scan} \autocite{srinivas2014medical,remedios2018classifying}.
+Previous research has focused on modality recognition \autocite{dimitrovski2015improved,arias2016medical}, as well as on distinguishing different modalities of \gls{MRI} \glspl{scan} \autocite{srinivas2014medical,remedios2018classifying}.
 Only one of these studies predicted of the \gls{type} of \gls{MRI} \glspl{scan}, where four \glspl{type} were considered:\gls{T1}, \gls{T1C}, fluid-attenuated inversion recovery (FLAIR), and \gls{T2} \glspl{scan} \autocite{remedios2018classifying}.
 However, with the increasing popularity of multi-parametric \gls{MRI} in machine learning algorithms and automatic pipelines \autocite{li2017deep,akkus2017predicting,nie20163d,pereira2015deep}, the need to recognize more \glspl{type} is arising.
 

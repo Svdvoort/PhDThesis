@@ -40,7 +40,7 @@ In the clinic these localization features can be used to get a prediction of the
 These results show the importance of researching these relatively simple imaging markers, as they can (in the short term) be the most impactful.
 
 The radiomics approaches in \cref{chap:LGG1p19q,chap:prognosais} achieved promising results and constitute an important step in bringing radiomics methods closer to the clinic.
-In both cases an independent test set was used to validate the performance of the radiomics approach, something that, although strongly recommended, is still not commonplace in (glioma) radiomics research \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
+In both cases an independent test set was used to validate the performance of the radiomics approach, something that, although strongly recommended, is still not commonplace in (glioma) radiomics research \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applications}.
 By validating the methods on an independent test set, the measured performance is a better representation of the expected clinical performance, making the clinical acceptance of these algorithms more likely.
 
 In \cref{chap:LGG1p19q}, there was a focus on the explainability of the algorithm; by showing the relative feature importance and examples of what the algorithm considered the most representative patient of each class, we were able to provide some insight into the method.
@@ -48,7 +48,7 @@ Furthermore, the feature importance and representative examples matched with ima
 This helps with the acceptance of this method in clinical practice, as the method is no longer a complete black box, increasing the trust in the validity of the algorithm.
 
 The scan sorting method presented in \cref{chap:DDS} was developed with a research application in mind.
-At the moment, the method is already finding its way into research as it is being used to reduce the time needed to prepare new datasets for research on automated analysis methods \autocite{garderen2020automaticanalysis}.
+At the moment, the method is already finding its way into research as it is being used to reduce the time needed to prepare new datasets for research on automated analysis methods \autocite{garderen2020mgmt}.
 Although the clinical impact may currently be limited, since clinical applicability was not the goal of this study, the introduction of automated methods in the clinic might change this.
 These automated methods make us of specific scan types, and our method can be used as the first step in such an automated pipeline to identify the required scan types without the need for human interaction.
 
@@ -102,7 +102,7 @@ Often, these are disease characteristics that are currently obtained through som
 The promise of radiomics is to provide the same information without such an invasive procedure.
 For example, the methods developed in \cref{chap:LGG1p19q,chap:prognosais} can be used to predict the histological and genetic features of glioma preoperatively.
 However, even if this information is available preoperatively, this might not change the clinical workflow.
-For example, in most cases, when a glioma is discovered, it will be resected as part of the standard clinical workflow, regardless of the genetic or histological features of the \gls{tumor} \autocite{welle2017gliomaguidelines,stupp2014hggguidelines}.
+For example, in most cases, when a glioma is discovered, it will be resected as part of the standard clinical workflow, regardless of the genetic or histological features of the \gls{tumor} \autocite{welle2017EANO,stupp2014hggguidelines}.
 In this case, the radiomics method provides no benefit to the patient, as the clinical workflow is not affected by the radiomics method's predictions.
 Moreover, the genetic and histological features can be determined from the resected tissue using the current gold standard methods.
 What then is the role of radiomics methods in the clinical workflow, and what is the added value of radiomics?
@@ -149,7 +149,7 @@ Thus it is impossible to directly compare performance of the ground truth method
 Although this problem cannot directly be solved, it is essential to keep in mind when evaluating the performance results of radiomics methods.
 
 Another key factor is the proper validation of radiomics methods.
-Proper validation requires the use of independent, clinically representative datasets to evaluate the performance of a method \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
+Proper validation requires the use of independent, clinically representative datasets to evaluate the performance of a method \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applications}.
 Currently, external validation sets are only used in a minority of the studies, and as a result, the reported performance is most likely a too optimistic representation of the actual clinical performance.
 This was also seen in \cref{chap:LGG1p19q}, where the results of mixing the train and test datasets were consistently better than the results evaluated on the independent test set.
 Furthermore, different algorithms are often validated on different datasets, which makes it difficult to objectively compare the performance of different methods.
@@ -287,7 +287,7 @@ For the clinical features, new insights into the genetics that play a role in sp
 When new imaging sequences are developed, sufficient data first needs to be collected such that methods can be trained using this new data.
 However, previously treated patients cannot be scanned again, as the \gls{tumor} has often already been removed.
 To minimize the amount of data needed to train methods using these new imaging sequences, future studies could use transfer learning.
-Transfer learning takes an already trained algorithm and uses the knowledge contained in that algorithm to make the training of a new algorithm on slightly different, but related, data easier \autocite{shin2016transfer}.
+Transfer learning takes an already trained algorithm and uses the knowledge contained in that algorithm to make the training of a new algorithm on slightly different, but related, data easier \autocite{shin2016deep}.
 In this way, a smaller dataset can be used to train the algorithm, reducing the time needed to collect the new data.
 
 In case of new insights into clinical features that play a role in glioma, the situation is both more complicated and easier at the same time.
@@ -340,7 +340,7 @@ The quantitative nature of the scans makes the development of new imaging biomar
 However, quantitative \gls{MRI} sequences are still mainly a research application, not yet ingrained in the clinical routine.
 
 Imaging sequences that measure physiological properties have also been developed, such as \gls{DWI} and \gls{PWI} sequences.
-It has been shown that adding these sequences in radiomics methods provides additional information and leads to a better performance \autocite{park2020radiomicsdwi,kim2020radiomicsdwi}.
+It has been shown that adding these sequences in radiomics methods provides additional information and leads to a better performance \autocite{park2020radiomicspwi,kim2020diffusion}.
 Furthermore, the tissue properties derived from these scans are also (in principle) quantitative.
 In recent years these sequences have become more standard in clinical practice, and sufficiently large databases are now available to use for the training of new methods.
 More recent imaging sequences such as \gls{CEST} provide additional physiological data not present in \gls{PWI} and \gls{DWI}, however they are far from common in clinical practice.

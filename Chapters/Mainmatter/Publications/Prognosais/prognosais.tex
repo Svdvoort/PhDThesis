@@ -30,7 +30,7 @@ Therefore, there has been an increasing interest in complementary non-invasive a
 
 \Gls{MRI} has been proposed as a possible candidate because of its non-invasive nature and its current place in routine clinical care \autocite{chaddad2019radiomicsglioblastoma}.
 Research has shown that certain \gls{MRI} features, such as a heterogeneous \gls{tumor} appearance, correlate with the genetic and histological features of glioma \autocite{smits2016imaging, delfanti2017imagingcorrelates}.
-This notion has popularized, in addition to already popular applications such as \gls{tumor} segmentation, the use of machine learning methods for the prediction of genetic and histological features, known as radiomics \autocite{gore2020review, aerts2014radiomics, chichate2020review}.
+This notion has popularized, in addition to already popular applications such as \gls{tumor} segmentation, the use of machine learning methods for the prediction of genetic and histological features, known as radiomics \autocite{gore2020review, aerts2014decoding, chichate2020review}.
 Although a plethora of such methods now exist, they have found little translation to the clinic \autocite{gore2020review}.
 
 An often discussed challenge for the adoption of machine learning methods in clinical practice is the lack of standardization, resulting in heterogeneity of patient populations, imaging protocols, and scan quality \autocite{gillies2016radiomics, thrall2018AIradiology}.
@@ -361,7 +361,7 @@ Using the latest GPU capabilities we were able to train a large model, which use
 Furthermore, by using the largest, most diverse patient cohort to date we were able to make our method robust to the heterogeneity that is naturally present in clinical imaging data, such that it generalizes for broad application in clinical practice.
 
 By using a multi-task network, our method could learn the context between different features.
-For example, \gls{IDH}-wildtype and 1p/19q co-deletion are mutually exclusive \autocite{labussi2018idh}.
+For example, \gls{IDH}-wildtype and 1p/19q co-deletion are mutually exclusive \autocite{labussi20101p19qcodeletedIDH}.
 If two separate methods had been used, one to predict the \gls{IDH} status and one to predict the 1p/19q co-deletion status, an \gls{IDH}-wildtype glioma might be predicted to be 1p/19q co-deleted, which does not stroke with the clinical reality.
 Since our method learns both of these genetic features simultaneously, it correctly learned not to predict 1p/19q co-deletion in \glspl{tumor} that were \gls{IDH}-wildtype; there was only one patient for whom our algorithm predicted a \gls{tumor} to be both \gls{IDH}-wildtype and 1p/19q co-deleted.
 Furthermore, by predicting the genetic and histological features individually, instead of only predicting the \gls{WHO} 2016 subtype, it is possible to adopt updated guidelines such as cIMPACT-NOW, future-proofing our method \autocite{lous2020impactnow}.
@@ -375,7 +375,7 @@ However, they do not predict the 1p/19q co-deletion status needed for the \gls{W
 Lastly, \citeauthorref{decuyper2020automated} used a multi-task network that predicts the \gls{IDH} mutation and 1p/19q co-deletion status, and the \gls{tumor} grade (\gls{LGG} or \gls{HGG}).
 Their method requires a \gls{tumor} segmentation as input, which they obtain from a U-Net that is applied earlier in their pipeline; thus, their method requires two networks instead of the single network we use in our method.
 These differences aside, the most important limitation of each of these studies is the lack of an independent test set for evaluating their results.
-It is now considered essential that an independent test set is used, to prevent an overly optimistic estimate of a method's performance \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applicationsradiomics}.
+It is now considered essential that an independent test set is used, to prevent an overly optimistic estimate of a method's performance \autocite{gillies2016radiomics, rizzo2018radiomics, lohmann2020radiomics, yip2016applications}.
 Thus, our study improves on this previous work by providing a single network that combines the different tasks, being trained on a more extensive and diverse dataset, not requiring a \gls{tumor} segmentation as an input, providing all information needed for the \gls{WHO} 2016 subtyping, and, crucially, by being evaluated in an independent test set.
 
 An important genetic feature that is not predicted by our method is the \gls{MGMT} methylation status.
@@ -447,7 +447,7 @@ The network was then trained again, using this increased dataset, and was applie
 This process was repeated until an acceptable segmentation was available for all patients, which constituted our final, complete train set.
 
 \subsection{Pre-processing}
-For all datasets, except for the \gls{BRATS} dataset for which the scans were already provided in \acrshort{NIFTI} format, the scans were converted from DICOM format to \acrshort{NIFTI} format using dcm2niix version v1.0.20190410 \autocite{li2016dcmniix}.
+For all datasets, except for the \gls{BRATS} dataset for which the scans were already provided in \acrshort{NIFTI} format, the scans were converted from DICOM format to \acrshort{NIFTI} format using dcm2niix version v1.0.20190410 \autocite{li2016first}.
 We then registered all scans to the MNI152 \gls{T1} and \gls{T2} atlases, version ICBM 2009a Nonlinear Symmetric, which had a resolution of 1x1x1 mm$^3$ and a size of 197x233x189 voxels \autocite{fonov2011unbiased, fonov2009unbiased}.
 The scans were affinely registered using Elastix 5.0.0 \autocite{klein2010elastix, shamonin2014fast}.
 The \gls{T1} and \gls{T1C} scans were registered to the \gls{T1} atlas; the \gls{T2} and \gls{FLAIR} scans were registered to the \gls{T2} atlas.
@@ -489,7 +489,7 @@ We have also indicated the feature map size at the different depths of the netwo
 
 \subsection{Model training}
 
-Training of the model was done on eight NVidia RTX2080Ti's with 11GB of memory, using TensorFlow 2.2.0 \autocite{tensorflow2015whitepaper}.
+Training of the model was done on eight NVidia RTX2080Ti's with 11GB of memory, using TensorFlow 2.2.0 \autocite{abadi2016tensorflow}.
 To be able to use the full 3D scan as input to the network, without running into memory issues, we had to optimize the memory efficiency of the model training.
 Most importantly, we used mixed-precision training, which means that most of the variables of the model (such as the weights) were stored in float16, which requires half the memory of float32, which is typically used to store these variables \autocite{das2018mixed}.
 Only the last softmax activation layers of each output were stored as float32.
@@ -537,7 +537,7 @@ If a segmentation contained multiple unconnected components, we only retained th
 \subsection{Model evaluation}
 
 The performance of the final trained model was evaluated on the independent test set, comparing the predicted labels with the ground truth labels.
-For the genetic and histological features, we evaluated the \gls{AUC}, the accuracy, the sensitivity, and the specificity using scikit-learn version 0.23.1, for details see \cref{app:metric_defs} \autocite{pedregosa2011scikitlearn}.
+For the genetic and histological features, we evaluated the \gls{AUC}, the accuracy, the sensitivity, and the specificity using scikit-learn version 0.23.1, for details see \cref{app:metric_defs} \autocite{pedregosa2011scikit}.
 We evaluated these metrics on the full test set and in subcategories relevant to the \gls{WHO} 2016 guidelines.
 We evaluated the \gls{IDH} performance separately in the \gls{LGG} (grade II/III) and \gls{HGG} (grade IV) subgroups, the 1p/19q performance in \gls{LGG}, and we also evaluated the performance of distinguishing between \gls{LGG} and \gls{HGG} instead of predicting the individual grades.
 

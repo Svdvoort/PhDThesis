@@ -183,6 +183,53 @@
 
 \DeclareFieldFormat[article,periodical]{eid}{\bibstring{artno}\addabbrvspace #1}
 
+% For PMID articles
+
+% \DeclareDatamodelFields[type=field,datatype=verbatim]{pmid}
+% \DeclareDatamodelEntryfields{pmid}
+% \DeclareDatamodelFields[type=field,datatype=verbatim]{pmcid}
+% \DeclareDatamodelEntryfields{pmcid}
+\DeclareFieldFormat{eprint:pmcid}{%
+  PMCID\addcolon\space
+  \ifhyperref
+    {\href{https://pubmed.ncbi.nlm.nih.gov/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}}
+\DeclareFieldAlias{eprint:PMC}{eprint:pmcid}
+\DeclareFieldAlias{eprint:PMCID}{eprint:pmcid}
+\DeclareFieldAlias{eprint:pmc}{eprint:pmcid}
+\DeclareFieldAlias{pmcid}{eprint:pmcid}
+\DeclareFieldAlias{pmid}{eprint:pubmed}
+
+% In unpublished also print arxiv
+\DeclareBibliographyDriver{unpublished}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \printfield{howpublished}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{location+date}%
+%  \newunit\newblock% DELETED
+%  \iftoggle{bbx:url}% DELETED
+%    {\usebibmacro{url+urldate}}% DELETED
+%    {}% DELETED
+  \newunit\newblock% NEW
+  \usebibmacro{doi+eprint+url}% NEW
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
