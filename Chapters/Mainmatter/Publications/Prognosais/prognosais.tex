@@ -467,7 +467,7 @@ The four scans, ground truth labels, and segmentation of each patient were then 
 
 \subsection{Model}\label{sec:model}
 
-We based the architecture of our model on the U-Net architecture, with some adaptations made to allow for a full 3D input and the auxiliary tasks \autocite{ronneberger2015unet}.
+We based the architecture of our model on the U-Net architecture, with some adaptations made to allow for a full 3D input and the auxiliary tasks \autocite{ronneberger2015u}.
 Our network architecture, which we have named PrognosAIs Structure-Net, or PS-Net for short, can be seen in \cref{fig:psnet_architecture}.
 
 To use the full 3D scan as an input to the network, we replaced the first pooling layer that is usually present in the U-Net with a strided convolution, with a kernel size of 9x9x9 and a stride of 3x3x3.
