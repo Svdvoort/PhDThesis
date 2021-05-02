@@ -62,6 +62,35 @@ december
 \fi
 }
 
+
+\newcommand*{\getenglishmonth}[1]{
+\ifcase#1\or
+Januari
+\or
+Februari
+\or
+March
+\or
+April
+\or
+May
+\or
+June
+\or
+July
+\or
+August
+\or
+September
+\or
+October
+\or
+November
+\or
+December
+\fi
+}
+
 \newcommand*{\getdutchday}[1]{
 \ifcase#1
 Maandag
@@ -79,6 +108,25 @@ Zaterdag
 Zondag
 \fi
 }
+
+\newcommand*{\getenglishday}[1]{
+\ifcase#1
+Monday
+\or
+Tuesday
+\or
+Wednesday
+\or
+Thursday
+\or
+Friday
+\or
+Saturday
+\or
+Sunday
+\fi
+}
+
 
 
 \renewcommand*{\maketitle}{
@@ -124,26 +172,50 @@ Zondag
 
 
     \vspace{3em}
+    \ifcase\@language
     {\Large
     ter verkrijging van de graad van doctor aan de\\
     Erasmus Universiteit Rotterdam\\
     op gezeg van de \\
     rector magnificus\par
     }
+    \or
+    {\Large
+    to obtain the degree of Doctor from the\\
+    Erasmus University Rotterdam\\
+    by command of the\\
+    rector magnificus\par
+    }
+    \fi
     \vspace{1.5em}
     {\Large{\@rectormagnificus}\par}
     \vspace{1.5em}
+    \ifcase\@language
     {\Large
     en volgens besluit van het College voor Promoties.\\
+    \vspace{1.5em}
     De openbare verdediging zal plaatsvinden op\\
-
     \getdutchday{\DTMfetchdow{defensedate}}\DTMfetchday{defensedate}\getdutchmonth{\DTMfetchmonth{defensedate}}\DTMfetchyear{defensedate} om {\@defensehour}.{\@defenseminute} uur\par
     }
-    \vfill
+    \or
+    {\Large
+    and in accordance with the decision of the Doctorate Board.\\
+    \vspace{1.5em}
+    The public defence shall be held on\\
+    \getenglishday{\DTMfetchdow{defensedate}}\DTMfetchday{defensedate}\getenglishmonth{\DTMfetchmonth{defensedate}}\DTMfetchyear{defensedate} at {\@defensehour}.{\@defenseminute} hrs\par
+    }
+    \vspace{1.5em}
+    \ifcase\@language
     {\Large door\par}
+    \or
+    {\Large by\par}
+    \fi
     \vspace{1.5em}
     {\Large\textbf{\@author}\par}
+    \ifcase\@language
     {\large{geboren te \@birthcity, \@birthcountry}}
+    \or
+    {\large{born in \@birthcity, \@birthcountry}}
     \vspace{6em}
 \end{titlingpage}}
 
@@ -169,11 +241,16 @@ No part of this thesis may be reproduced, stored in a retrieval system, or trans
 \newcommand*{\makecommitteepage}{
 \begin{titlingpage}
 \raggedright
-{\large\textbf{PROMOTIECOMMISSIE}\par}
+\ifcase\@language
+{\large\textbf{Promotiecommissie}\par}
+\or
+{\large\textbf{Doctoral Committee}\par}
+\fi
 \vspace{1em}
+\ifcase\@language
 {
 \begin{tabbing}
-\=\textbf{Promotoren}\hspace{3em}\=\@firstpromoter\\
+\=\textbf{Promotoren}\hspace{5em}\=\@firstpromoter\\
 \ifx \@secondpromoter \undefined
 \else
 \>\>\@secondpromoter\\
@@ -227,4 +304,62 @@ No part of this thesis may be reproduced, stored in a retrieval system, or trans
 \fi
 
 \end{tabbing}}
+\or
+{
+\begin{tabbing}
+\=\textbf{Promotors}\hspace{5em}\=\@firstpromoter\\
+\ifx \@secondpromoter \undefined
+\else
+\>\>\@secondpromoter\\
+\fi
+\ifx \@thirdpromoter \undefined
+\else
+\>\>\@thirdpromoter\\
+\fi
+\ifx \@fourthpromoter \undefined
+\else
+\>\>\@fourthpromoter\\
+\fi
+\\
+
+\ifx \@firstothermember \undefined
+\else
+\>\textbf{Other members} \>\@firstothermember\\
+\fi
+\ifx \@secondothermember \undefined
+\else
+\>\>\@secondothermember\\
+\fi
+\ifx \@thirdothermember \undefined
+\else
+\>\>\@thirdothermember\\
+\fi
+\ifx \@fourthothermember \undefined
+\else
+\>\>\@fourthothermember\\
+\fi
+\ifx \@firstothermember \undefined
+\else
+\\
+\fi
+
+\ifx \@firstcopromoter \undefined
+\else
+\>\textbf{Copromotor} \>\@firstcopromoter\\
+\fi
+\ifx \@secondcopromoter \undefined
+\else
+\>\>\@secondcopromoter\\
+\fi
+\ifx \@thirdcopromoter \undefined
+\else
+\>\>\@thirdcopromoter\\
+\fi
+\ifx \@fourthcopromoter \undefined
+\else
+\>\>\@fourthcopromoter\\
+\fi
+
+\end{tabbing}}
+\fi
 \end{titlingpage}}
