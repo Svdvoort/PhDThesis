@@ -92,7 +92,7 @@ December
 }
 
 \newcommand*{\getdutchday}[1]{
-\ifcase#1
+\ifcase#1\or
 Maandag
 \or
 Dinsdag
@@ -110,7 +110,7 @@ Zondag
 }
 
 \newcommand*{\getenglishday}[1]{
-\ifcase#1
+\ifcase#1\or
 Monday
 \or
 Tuesday
@@ -204,6 +204,7 @@ Sunday
     The public defence shall be held on\\
     \getenglishday{\DTMfetchdow{defensedate}}\DTMfetchday{defensedate}\getenglishmonth{\DTMfetchmonth{defensedate}}\DTMfetchyear{defensedate} at {\@defensehour}.{\@defenseminute} hrs\par
     }
+    \fi
     \vspace{1.5em}
     \ifcase\@language
     {\Large door\par}
@@ -216,6 +217,7 @@ Sunday
     {\large{geboren te \@birthcity, \@birthcountry}}
     \or
     {\large{born in \@birthcity, \@birthcountry}}
+    \fi
     % \vspace{6em}
     \vfill
 
