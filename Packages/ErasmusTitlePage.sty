@@ -227,10 +227,19 @@ Sunday
 \newcommand*{\makecopyrightpage}{
 \begin{titlingpage}
 \raggedright
-\vfill
-% \textbf{Acknowledgements}:\par
-\textbf{ISBN}: \@isbn \par
-\vfill
+\vspace*{\fill}
+\textbf{Acknowledgements}:\\
+This research was funded by the Dutch Cancer Society (KWF project number EMCR 2015-7859).\\
+\vspace{0.5em}
+For financial support for the publication of this thesis the following organizations are gratefully acknowledged: the department of Radiology and Nuclear Medicine of Erasmus MC.
+\vspace{0.75em}
+\begin{tabbing}
+\=\textbf{ISBN}:\hspace{4em}\= \@isbn\\
+\>\textbf{Cover}: \> \dots\\
+\>\textbf{Layout}: \> \dots\\
+\>\textbf{Printing}: \> \dots\\
+\end{tabbing}
+\vspace{0.25em}
 \textbf{\copyright~\@author, \DTMfetchyear{defensedate}}\par
 Except for the following chapters:\\
 Chapter 2: \copyright~Elsevier Inc., 2020\\
@@ -238,9 +247,8 @@ Chapter 3: \copyright~Oxford University Press, 2019\\
 Chapter 5: \copyright~American Association for Cancer Research, 2019\\
 Chapter 6: \copyright~Springer Nature, 2020\\
 Chapter 7: \copyright~Elsevier Inc., 2021\\
-
-All rights reserved\\
-No part of this thesis may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without written permission from the author or, when appropiate, from the publisher.
+\vspace{0.1em}
+All rights reserved. No part of this thesis may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without written permission from the author or, when appropiate, from the publisher.
 \end{titlingpage}
 }
 
