@@ -69,11 +69,12 @@
 \if@mainmatter
     % This is for chapter layout in mainmatter
     \Huge #1
+    \thispagestyle{epigraph}
 \else
     % This is for chapter layout in front and back matter
     \Huge\bfseries #1
+    \thispagestyle{empty}
 \fi
-\thispagestyle{epigraph}
 }
 [
 \if@mainmatter
