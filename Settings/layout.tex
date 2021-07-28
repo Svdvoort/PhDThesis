@@ -43,50 +43,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
-
-
-\newcommand\chapquote[2]{%
-  \titleformat{\chapter}[display]
-  {
-  \if@mainmatter
-      % This is for chapter layout in mainmatter
-      \vfill
-  \fi
-  }
-  {
-  \if@mainmatter
-      % This is for chapter layout in mainmatter
-      \LARGE\MakeUppercase{\chaptertitlename}~\thechapter
-  \fi
-  }
-  {
-  \if@mainmatter
-      % This is for chapter layout in mainmatter
-      5pt
-  \else
-      % This is for chapter layout in front and back matter
-      1pt
-  \fi
-  }
-  {
-  \if@mainmatter
-      % This is for chapter layout in mainmatter
-      \Huge #1
-      \vskip2em
-      {\normalsize\parbox[t]{10cm}{\normalfont\itshape\quote{#2}}}
-  \else
-      % This is for chapter layout in front and back matter
-      \Huge\bfseries #1
-  \fi
-  }
-  [
-  \if@mainmatter
-      % This is for chapter layout in mainmatter
-      \vfill\newpage
-  \fi
-  ]
-}
-
 \titleformat{\chapter}[display]
 {
 \if@mainmatter
@@ -117,6 +73,7 @@
     % This is for chapter layout in front and back matter
     \Huge\bfseries #1
 \fi
+\thispagestyle{epigraph}
 }
 [
 \if@mainmatter
@@ -125,7 +82,11 @@
 \fi
 ]
 \makeatother
-\assignpagestyle{\chapter}{empty}
+
+% Settings for epigraphs (quotes at beginning of chapters)
+\epigraphfontsize{\small\itshape}
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
