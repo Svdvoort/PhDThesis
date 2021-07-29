@@ -311,16 +311,28 @@ The authors would like to thank Claudine Nogarede-Bloemendaal for assistance wit
         \centering
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_all_T1/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_all_T1/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/heatmaps_all_T1/slice-68.png}
+            \fi
             \caption{\acrshort{T1C} heatmap, all patients}\label{fig:HGG_loc_T1_heatmap_all}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_all_T2/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_all_T2/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/heatmaps_all_T2/slice-68.png}
+            \fi
             \caption{\acrshort{T2}/\acrshort{FLAIR} heatmap, all patients}\label{fig:HGG_loc_T2_heatmap_all}
         \end{subfigure}
-        \caption{Animated scroll-through of location heatmaps of the \glspl{tumor} for all patients}\label{fig:HGG_local_heatmaps_full_all}
+        \ifdigital
+            \caption{Animated scroll-through of location heatmaps of the \glspl{tumor} for all patients}\label{fig:HGG_local_heatmaps_full_all}
+        \else
+            \caption{Single slice of location heatmaps of the \glspl{tumor} for all patients. Animated scroll-throughs are available in the digital version of this thesis}\label{fig:HGG_local_heatmaps_full_all}
+        \fi
     \end{figure}
 
     \newpage
@@ -330,28 +342,49 @@ The authors would like to thank Claudine Nogarede-Bloemendaal for assistance wit
         \centering
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_methylated_T1/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_methylated_T1/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/heatmaps_methylated_T1/slice-68.png}
+            \fi
             \caption{\acrshort{T1C} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T1_heatmap_methylated}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_methylated_T2/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_methylated_T2/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/heatmaps_methylated_T2/slice-68.png}
+            \fi
             \caption{\acrshort{T2}/\acrshort{FLAIR} heatmap, \gls{MGMT} methylated patients}\label{fig:HGG_loc_T2_heatmap_methylated}
         \end{subfigure}
 
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_unmethylated_T1/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_unmethylated_T1/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/heatmaps_unmethylated_T1/slice-68.png}
+            \fi
             \caption{\acrshort{T1C} heatmap, \acrshort{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_heatmap_unmethylated}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_unmethylated_T2/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/heatmaps_unmethylated_T2/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/heatmaps_unmethylated_T2/slice-68.png}
+            \fi
             \caption{\acrshort{T2}/\acrshort{FLAIR} heatmap, \acrshort{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_heatmap_unmethylated}
         \end{subfigure}
-        \caption{Animated scroll-through of location heatmaps of the \glspl{tumor} for the MGMT methylated and MGMT unmethylated subgroups}\label{fig:HGG_local_heatmaps_subgroups}
+        \ifdigital
+            \caption{Animated scroll-through of location heatmaps of the \glspl{tumor} for the MGMT methylated and MGMT unmethylated subgroups}\label{fig:HGG_local_heatmaps_subgroups}
+        \else
+            \caption{Single slice of location heatmaps of the \glspl{tumor} for the MGMT methylated and MGMT unmethylated subgroups. Animated scroll-throughs are available in the digital version of this thesis}\label{fig:HGG_local_heatmaps_subgroups}
+        \fi
+
     \end{figure}
 
 
@@ -361,18 +394,29 @@ The authors would like to thank Claudine Nogarede-Bloemendaal for assistance wit
     \centering
     \begin{subfigure}[t]{0.4\textwidth}
         \centering
-        \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/frequency_maps_T1/slice-}{0}{149}
+        \ifdigital
+            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/frequency_maps_T1/slice-}{0}{149}
+        \else
+            \includegraphics[width=\textwidth]{Figures/Animation/frequency_maps_T1/slice-68.png}
+        \fi
         \caption{\gls{T1C} frequency difference map}\label{fig:HGG_loc_T1_freq_dif_gif}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.4\textwidth}
         \centering
-        \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/frequency_maps_T2/slice-}{0}{149}
+        \ifdigital
+            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/frequency_maps_T2/slice-}{0}{149}
+        \else
+            \includegraphics[width=\textwidth]{Figures/Animation/frequency_maps_T2/slice-68.png}
+        \fi
         \caption{\gls{T2}/\gls{FLAIR} frequency difference map}\label{fig:HGG_loc_T2_freq_dif_gif}
     \end{subfigure}
-    \caption{Animated scroll-through of the frequency difference maps between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{GBM}}\label{fig:HGG_loc_freq_map_full}
+    \ifdigital
+        \caption{Animated scroll-through of the frequency difference maps between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{GBM}}\label{fig:HGG_loc_freq_map_full}
+    \else
+        \caption{Single slice of the frequency difference maps between \gls{MGMT} methylated and \gls{MGMT} unmethylated \gls{GBM}. Animated scroll-throughs are available in the digital version of this thesis}\label{fig:HGG_loc_freq_map_full}
+    \fi
     \end{figure}
-
 
     \newpage
     \section{P-value maps}
@@ -380,28 +424,49 @@ The authors would like to thank Claudine Nogarede-Bloemendaal for assistance wit
         \centering
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T1_methylated/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T1_methylated/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/p_value_T1_methylated/slice-68.png}
+            \fi
             \caption{\acrshort{T1C} p-value map, \acrshort{MGMT} methylated patients}\label{fig:HGG_loc_T1_p_value_map_methylated}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T2_methylated/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T2_methylated/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/p_value_T2_methylated/slice-68.png}
+            \fi
             \caption{\acrshort{T2}/\acrshort{FLAIR} p-value map, \acrshort{MGMT} methylated patients}\label{fig:HGG_loc_T2_p_value_map_methylated}
         \end{subfigure}
 
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T1_unmethylated/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T1_unmethylated/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/p_value_T1_unmethylated/slice-68.png}
+            \fi
             \caption{\acrshort{T1C} p-value map, \acrshort{MGMT} unmethylated patients}\label{fig:HGG_loc_T1_p_value_map_unmethylated}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{0.4\textwidth}
             \centering
-            \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T2_unmethylated/slice-}{0}{149}
+            \ifdigital
+                \animategraphics[controls,width=\textwidth,palindrome]{10}{Figures/Animation/p_value_T2_unmethylated/slice-}{0}{149}
+            \else
+                \includegraphics[width=\textwidth]{Figures/Animation/p_value_T2_unmethylated/slice-68.png}
+            \fi
             \caption{\acrshort{T2}/\acrshort{FLAIR} p-value map, \acrshort{MGMT} unmethylated patients}\label{fig:HGG_loc_T2_p_value_map_unmethylated}
         \end{subfigure}
-        \caption{Animated scroll-through of the p-value maps of the \glspl{tumor}}\label{fig:HGG_loc_p_value_map_full}
+        \ifdigital
+            \caption{Animated scroll-through of the p-value maps of the \glspl{tumor}}\label{fig:HGG_loc_p_value_map_full}
+        \else
+            \caption{Single slice of the p-value maps of the \glspl{tumor}. Animated scroll-throughs are available in the digital version of this thesis}\label{fig:HGG_loc_p_value_map_full}
+        \fi
+
     \end{figure}
 \end{subappendices}
 
