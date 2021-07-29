@@ -30,6 +30,12 @@
 
 
 \begin{document}
+% Switch here between digital and printed compilation
+% Compile digital version (with animation)
+\digitaltrue
+% Compile printed version (without animations)
+% \digitalfalse
+
 % We use uppercase Roman for the first few pages
 \pagenumbering{Roman}
 
@@ -39,6 +45,7 @@
 \makecopyrightpage
 % These will be included once the date and committee is known
 % But you can give it a try for yourself!
+\pdfbookmark[0]{Title Page}{titlepage}
 \makethesispage
 \makecommitteepage
 \endgroup
@@ -46,6 +53,7 @@
 
 % Quote at start of thesis
 \thispagestyle{empty}
+\pdfbookmark[0]{Dedication}{Dedication}
 \vspace*{\fill}
 \begin{quote}
 \centering
@@ -56,6 +64,7 @@
 \clearemptydoublepage
 
 \frontmatter
+\pdfbookmark[0]{Table of Contents}{toc}
 \tableofcontents*
 % \cleardoublepage
 
