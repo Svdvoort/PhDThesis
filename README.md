@@ -40,6 +40,8 @@ The chapter ["Topographical Mapping of 436 Newly Diagnosed IDH Wildtype Glioblas
 
 The chapter ["DeepDicomSort: An Automatic Sorting Algorithm for Brain Magnetic Resonance Imaging Data"](https://link.springer.com/article/10.1007%2Fs12021-020-09475-7) is distributed under the terms of the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)
 
+The chapter ["The Erasmus Glioma Database (EGD): structural MRI scans, WHO 2016 subtypes, and segmentations of 774 patients with glioma"](https://doi.org/10.1016/j.dib.2021.107191) is distributed under the terms of the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)
+
 ## Work in progress
 
 This thesis is currently a work in progress, and thus will be updated over time.
