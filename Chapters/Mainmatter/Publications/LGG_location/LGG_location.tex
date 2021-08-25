@@ -1,7 +1,7 @@
 % !TEX root = ../../../../temp_manuscript.tex
 
 \epigraphhead[450]{\epigraph{\say{We keep moving forward, opening new doors, and doing new things, because we're curious and curiosity keeps leading us down new paths.}}{--- \textup{Walt Disney}}}
-\chapter[Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups][LGG WHO 2016 subgroup localization]{Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups}\label{chap:LGGLocation}
+\chapter[Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups][Spatial distribution of WHO 2016 glioma subgroups]{Differences in spatial distribution between WHO 2016 low-grade glioma molecular subgroups}\label{chap:LGGLocation}
 
 \begin{ChapterAbstract}
     \textbf{Background:} Several studies reported a correlation between anatomic location and genetic background of \cglspl{LGG}.
@@ -26,7 +26,7 @@
     \cgls{WHO} \gls{LGG} subgroups show differences in spatial distribution.
     Our data may contribute to presurgical clinical decision-making in \cgls{LGG} patients.
 
-    \publishedas{wijnenga2019differencesLGG}
+    \publishedas[True]{wijnenga2019differencesLGG}
 \end{ChapterAbstract}
 
 \section{Introduction}
@@ -67,7 +67,7 @@ With this tool, a three-dimensional (3D) \cgls{VOI} can be created by manually s
 We used the \cgls{FLAIR} sequence when available (3D where possible); otherwise, the conventional \cgls{T2} sequence was used for segmentation.
 All \gls{tumor}-related \cgls{FLAIR} and \cgls{T2} signal abnormalities were included in the segmentation.
 The \cgls{FLAIR} and \cgls{T2} scans of all patients were affinely registered (preserving parallel lines and planes) to the \cgls{MNI} \cgls{ICBM} 152 nonlinear \cgls{T2} atlas version 2009a nonlinear symmetric \autocite{fonov2011unbiased, fonov2009unbiased} and the 3D \cglspl{VOI} were transformed accordingly for further analysis.
-We registered all \cgls{MRI} scans using an automated algorithm based on maximization of mutual information \autocite{klein2009adaptive}, as implemented in the open-source SimpleElastix software (version 9dfa8cb) \autocite{marstal2016simpleelastix}
+We registered all \cgls{MRI} scans using an automated algorithm based on maximization of mutual information \autocite{klein2009adaptive}, as implemented in the open-source SimpleElastix software (version 9dfa8cb) \autocite{marstal2016simpleelastix}.
 All registrations were manually checked to assure proper alignment with the atlas, and adjusted where necessary.
 
 \subsection{DNA extraction and \acrlong{NGS}}
@@ -104,7 +104,7 @@ In a subsequent analysis, we assessed the statistical significance of location d
 
 Our initial cohort consisted of \num{246} patients with confirmed \cgls{LGG}, for which \cgls{FFPE} material and \cgls{MRI} scans were available.
 Twenty-two patients were excluded: \num{16} due to sequencing failure, \num{2} due to a preoperative contrast enhancement suggestive of \gls{glioblastoma}, and another 4 due to insufficient image quality.
-Of the remaining \num{224} patients, \num{110} were \cgls{IDH}-mutated \glspl{astro}, \num{92} were \glspl{oli}, and 22 were \cgls{IDH}-wildtype \glspl{astro}.
+Of the remaining \num{224} patients, \num{92} were \glspl{oli}, \num{110} were \cgls{IDH}-mutated \glspl{astro}, and 22 were \cgls{IDH}-wildtype \glspl{astro}.
 Clinical characteristics of this cohort were consistent with \cgls{LGG} patient characteristics known from the literature and are shown in \cref{tab:LGG_location_characteristics}.
 
 \subimport{Tables/}{clinical_characteristics.tex}
@@ -127,21 +127,21 @@ With \cgls{IDH}-wildtype \glspl{astro} as reference category, our analysis indic
         \resizebox{\textwidth}{!}{
             \subimport{Figures/}{heatmap_1p19q_codel.pgf}
         }
-        \caption{\Gls{oli}, IDH mutated 1p/19q co-deleted (\numbersamples{=92})}\label{fig:LGG_location_heatmap_IDH_mut_1p19q_codel}
+        \caption{\Gls{oli}, IDH-mutated 1p/19q co-deleted (\numbersamples{=92})}\label{fig:LGG_location_heatmap_IDH_mut_1p19q_codel}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
         \centering
         \resizebox{\textwidth}{!}{
             \subimport{Figures/}{heatmap_IDH_mut_1p19q_intact.pgf}
         }
-        \caption{\Gls{astro}, IDH mutated (\numbersamples{=110})}\label{fig:LGG_location_heatmap_IDH_mut_1p19q_intact}
+        \caption{\Gls{astro}, IDH-mutated (\numbersamples{=110})}\label{fig:LGG_location_heatmap_IDH_mut_1p19q_intact}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
         \centering
         \resizebox{\textwidth}{!}{
             \subimport{Figures/}{heatmap_IDH_wt_1p19q_intact.pgf}
         }
-        \caption{\Gls{astro}, IDH wildtype (\numbersamples{=22})}\label{fig:LGG_location_heatmap_IDH_intact_1p19q_intact}
+        \caption{\Gls{astro}, IDH-wildtype (\numbersamples{=22})}\label{fig:LGG_location_heatmap_IDH_intact_1p19q_intact}
     \end{subfigure}
     \caption{Spatial distribution heatmaps of \acrshort{WHO} 2016 glioma subgroups. The color of a voxel corresponds with the number of \glspl{tumor} localized at that location, ranging from dark purple (low number) to bright orange (high number). The color bars on the right indicate the frequencies corresponding with the color per voxel;
     \refsubfigure{fig:LGG_location_heatmap_IDH_mut_1p19q_codel} location distribution of \gls{oli} shows most are located in the frontal lobes.
@@ -167,7 +167,7 @@ With \cgls{IDH}-wildtype \glspl{astro} as reference category, our analysis indic
     \caption{Differences in location distribution between \cgls{IDH}-wildtype and mutated \acrlongpl{LGG}. Voxel-color indicates corrected p-value with color bar for scale}\label{fig:LGG_location_P_values}
 \end{figure}
 
-Direct comparison between \cgls{IDH}-mutated \glspl{astro} and \glspl{oli} showed a small area in the left frontal cortex where \glspl{oli} occurred significantly more frequently (P \num{< 0.05}), and a small region in the right temporal lobe where \cgls{IDH}-mutated \glspl{astro} (\cref{fig:LGG_location_oligo_astro_p_value}) occurred more frequently.
+Direct comparison between \cgls{IDH}-mutated \glspl{astro} and \glspl{oli} showed a small area in the left frontal cortex where \glspl{oli} occurred significantly more frequently (p \num{< 0.05}), and a small region in the right temporal lobe where \cgls{IDH}-mutated \glspl{astro} (\cref{fig:LGG_location_oligo_astro_p_value}) occurred more frequently.
 However, in a subsequent 3-group comparison, including \cgls{IDH}-wildtype \glspl{astro}, there were no locations of significant differences for \cgls{IDH}-mutated \glspl{astro} or \glspl{oli} individually, only for \cgls{IDH}-wildtype \glspl{astro} individually.
 
 \begin{figure}[htbp]
