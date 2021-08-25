@@ -28,12 +28,12 @@
     \coordinate (oliastro_oli_mid) at ($(oliastro)!0.85!(oligo)$);
 
     % These are for LGG
-    \node [text_block] at (IDH -| astro_oli_mid) (IDH_mut) {IDH mutated};
-    \node [text_block] at (IDH -| oliastro_oli_mid) (IDH_wt) {IDH wildtype};
+    \node [text_block] at (IDH -| astro_oli_mid) (IDH_mut) {IDH-mutated};
+    \node [text_block] at (IDH -| oliastro_oli_mid) (IDH_wt) {IDH-wildtype};
 
     % These are for HGG
-    \node [text_block] at ([xshift=0.3cm] gbm.west |- IDH) (GBM_idh_mut) {IDH mutated};
-    \node [text_block] at ([xshift=-0.3cm] gbm.east |- IDH) (GBM_idh_wt) {IDH wildtype};
+    \node [text_block] at ([xshift=0.3cm] gbm.west |- IDH) (GBM_idh_mut) {IDH-mutated};
+    \node [text_block] at ([xshift=-0.3cm] gbm.east |- IDH) (GBM_idh_wt) {IDH-wildtype};
 
     %%%%%%%%%%%%%%%%%%
     % Make text labels for 1p19q status
@@ -46,13 +46,13 @@
     % Make text labels for final WHO 2016 categories
 
     % LGG
-    \node [text_block, text width = 5.5cm] at (category -| 1p19q_del) (oligo_1p19q) {Oligodendroglioma\\IDH mutated\\1p/19q co-deleted};
-    \node [text_block, text width = 5.5cm] at (category -| 1p19q_intact) (astro_IDH) {Diffuse\\astrocytoma\\IDH mutatated};
+    \node [text_block, text width = 5.5cm] at (category -| 1p19q_del) (oligo_1p19q) {Oligodendroglioma\\IDH-mutated\\1p/19q co-deleted};
+    \node [text_block, text width = 5.5cm] at (category -| 1p19q_intact) (astro_IDH) {Diffuse\\astrocytoma\\IDH-mutated};
     \node [text_block, text width = 4cm] at (category -| IDH_wt) (astro_IDH_wt) {Diffuse astrocytoma\\IDH wildtype};
 
     % HGG
-    \node [text_block, text width = 4cm] at (category -| GBM_idh_wt) (gbm_wt_category) {Glioblastoma\\IDH wildtype};
-    \node [text_block, text width = 4cm] at (category -| GBM_idh_mut) (gbm_mut_category) {Glioblastoma\\IDH mutated};
+    \node [text_block, text width = 4cm] at (category -| GBM_idh_wt) (gbm_wt_category) {Glioblastoma\\IDH-wildtype};
+    \node [text_block, text width = 4cm] at (category -| GBM_idh_mut) (gbm_mut_category) {Glioblastoma\\IDH-mutated};
 
     %%%%%%%%%%%%%%%%%%
     % Text labels for grade
