@@ -76,7 +76,7 @@
       \textit{\textbf{Train set}}\\
       \=\textbf{6}\=\textbf{7}\=\textbf{3}\hspace{1em}\=No preoperative \\
                    \>\>\>\> pre-, or post-contrast \acrshort{T1},\\
-                   \>\>\>\> \acrshort{T2} or \acrshort{FLAIR}\\
+                   \>\>\>\> \acrshort{T2}, or \acrshort{FLAIR}\\
       \\
       \>\textbf{425}\>\>\>Erasmus MC\\
       \>\textbf{212}\>\>\>\acrlong{HMC}\\
@@ -91,9 +91,9 @@
       \textit{\textbf{Test set}}\\
       \>\textbf{221}\>\>\>No preoperative \\
                    \>\>\>\> pre-, or post-contrast \acrshort{T1},\\
-                   \>\>\>\> \acrshort{T2} or \acrshort{FLAIR}\\
+                   \>\>\>\> \acrshort{T2}, or \acrshort{FLAIR}\\
       \\
-      \>\textbf{92}\>\>\>\acrshort{TCGALGG}\\
+      \>\>\textbf{92}\>\>\acrshort{TCGALGG}\\
       \>\textbf{129}\>\>\>\acrshort{TCGAGBM}\\
 
     \end{tabbing}

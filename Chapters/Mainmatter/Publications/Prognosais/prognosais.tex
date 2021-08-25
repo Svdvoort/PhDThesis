@@ -13,7 +13,7 @@
     We tested our method on an independent dataset of 240  patients from 13 different institutes.
     Our method achieved an \acrshort{AUC} of 0.90 for the \acrshort{IDH} mutation prediction, an \acrshort{AUC} of 0.85 for the 1p/19q co-deletion prediction, an \acrshort{AUC} of 0.81 for the grade prediction, and a mean whole \gls{tumor} DICE score of 0.84.
     Thus, our method non-invasively predicts multiple, clinically relevant parameters and generalizes well to the broader clinical population.
-    \publishedas{voortunpublishedsubtyping}
+    \publishedas[True]{voortunpublishedsubtyping}
 \end{ChapterAbstract}
 
 \glsunset{TCGALGG}
@@ -24,7 +24,7 @@
 
 \section{Introduction}
 Glioma is the most common primary brain \gls{tumor} and is one of the deadliest forms of cancer \autocite{office2019cancer}.
-Differences in survival and treatment response of glioma are attributed to their genetic and histological features, specifically the \gls{IDH} mutation status, the 1p/19q co-deletion, status and the \gls{tumor} grade \autocite{dubbink2015molecular, eckel2015gliomagroups}.
+Differences in survival and treatment response of glioma are attributed to their genetic and histological features, specifically the \gls{IDH} mutation status, the 1p/19q co-deletion status, and the \gls{tumor} grade \autocite{dubbink2015molecular, eckel2015gliomagroups}.
 Therefore, in 2016 the \gls{WHO} updated its brain \gls{tumor} classification, categorizing glioma based on these genetic and histological features \autocite{louis20162016}.
 In current clinical practice, these features are determined from \gls{tumor} tissue.
 While this is not an issue in patients in whom the \gls{tumor} can be resected, this is problematic when resection can not safely be performed.
@@ -41,7 +41,7 @@ Since machine learning methods are prone to overfitting, this heterogeneity ques
 Furthermore, it has been noted that most current research concerns narrow task-specific methods that lack the context between different related tasks, which might restrict the performance of these methods \autocite{hosny2018AI}.
 
 An important technical limitation when using deep learning methods is the limited GPU memory, which restricts the size of models that can be trained \autocite{kopuklu2019cnn}.
-This is a problem especially for clinical data, which is often 3D, requiring even more memory than the commonly used 2D networks.
+This is a problem especially for medical imaging data, which is often 3D, requiring even more memory than the commonly used 2D networks.
 This further limits the size of these models resulting in shallower models, which are based on patches of a scan rather than the full 3D scan, which limits the amount of context these methods can extract from the scans.
 
 Here, we present a new method that addresses the above problems.
@@ -321,7 +321,7 @@ Since these hyperintensities are also present in the pre-contrast \gls{T1} scan 
     \caption*{\acrshort{FLAIR}\nopunct}
     \end{subfigure}
     \caption{TCGA-DU-6410 from the \acrshort{TCGALGG} collection.
-    The ground truth histopathological analysis indicated this glioma was \gls{IDH}-mutated, 1p/19q co-deleted, grade II, but our method predicted it as a \gls{IDH}-wildtype, 1p/19q intact, grade IV}\label{fig:wrong_prediction_LGG}
+    The ground truth histopathological analysis indicated this glioma was \gls{IDH}-mutated, 1p/19q co-deleted, grade II, but our method predicted it as \gls{IDH}-wildtype, 1p/19q intact, grade IV}\label{fig:wrong_prediction_LGG}
 \end{subfigure}
 \vskip\baselineskip
 \begin{subfigure}[b]\textwidth
@@ -359,7 +359,7 @@ Since these hyperintensities are also present in the pre-contrast \gls{T1} scan 
 We have developed a method that can, based on preoperative \gls{MRI} scans, predict the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade of glioma, while simultaneously providing the \gls{tumor} segmentation.
 
 In an independent test set, which contained data from 13 different institutes, we demonstrated that our method predicts these features with good overall performance; we achieved an \gls{AUC} of 0.90 for the \gls{IDH} mutation status prediction, an \gls{AUC} of 0.85 for the 1p/19q co-deletion prediction, and an \gls{AUC} of 0.81 for the grade prediction, and a mean whole \gls{tumor} DICE score of 0.84.
-This performance on unseen data that was only used during the final evaluation of the algorithm, and that was purposefully not used to guide any decisions regarding the method design, shows the true generalizability of our method.
+This performance on unseen data, that was only used during the final evaluation of the algorithm and that was purposefully not used to guide any decisions regarding the method design, shows the true generalizability of our method.
 Using the latest GPU capabilities we were able to train a large model, which uses the full 3D scan as input.
 Furthermore, by using the largest, most diverse patient cohort to date we were able to make our method robust to the heterogeneity that is naturally present in clinical imaging data, such that it generalizes for broad application in clinical practice.
 
@@ -444,7 +444,7 @@ However, for three patients, we found that although they did have manual segment
 To present our method with a large diversity in scans, we wanted to include as many patients in the train set as possible from the different datasets.
 Therefore, we performed automatic segmentation in patients that did not have manual segmentations.
 To this end, we used an initial version of our network (presented in \cref{sec:model}), without the additional layers that were needed for the prediction of the genetic and histological features.
-This network was initially trained using all patients in the train set for whom a manual segmentation was available, and this trained network was then applied to all patients for which a manual segmentation was not available.
+This network was initially trained using all patients in the train set for whom a manual segmentation was available, and this trained network was then applied to all patients for whom a manual segmentation was not available.
 The resulting automatic segmentations were inspected, and if their quality was acceptable, they were added to the train set.
 The network was then trained again, using this increased dataset, and was applied to scans that did not yet have a segmentation of acceptable quality.
 This process was repeated until an acceptable segmentation was available for all patients, which constituted our final, complete train set.
@@ -473,7 +473,7 @@ The four scans, ground truth labels, and segmentation of each patient were then 
 We based the architecture of our model on the U-Net architecture, with some adaptations made to allow for a full 3D input and the auxiliary tasks \autocite{ronneberger2015u}.
 Our network architecture, which we have named PrognosAIs Structure-Net, or PS-Net for short, can be seen in \cref{fig:psnet_architecture}.
 
-To use the full 3D scan as an input to the network, we replaced the first pooling layer that is usually present in the U-Net with a strided convolution, with a kernel size of $9\times9\times9$ and a stride of $3\times3times3$.
+To use the full 3D scan as an input to the network, we replaced the first pooling layer that is usually present in the U-Net with a strided convolution, with a kernel size of $9\times9\times9$ and a stride of $3\times3\times3$.
 In the upsampling branch of the network, the last up-convolution is replaced by a deconvolution, with the same kernel size and stride.
 
 At each depth of the network, we have added global max-pooling layers directly after the dropout layer, to obtain imaging features that can be used to predict the genetic and histological features.
@@ -558,7 +558,8 @@ Another way to gain insight into the network's behavior is to visualize the filt
 We visualized the filter outputs of the last convolutional layers in the downsample and upsample path at the first depth (at an image size of $49\times61\times51$) of our network.
 These filter outputs were visualized by passing a sample through the network and showing the convolutional layers' outputs, replacing the ReLU activation with linear activations.
 
-\subsection{Data availability}
+
+\subsection*{Data availability}
 An overview of the patients included from the public datasets used in the training and testing of the algorithm, and their ground truth label is available in \cref{app:open_gt}.
 The data from the public datasets are available in \gls{TCIA} under the following DOIs:
 
@@ -569,15 +570,22 @@ The data from the public datasets are available in \gls{TCIA} under the followin
     \item \gls{BTP}: \href{https://dx.doi.org/10.7937/K9/TCIA.2018.15quzvnb}{\texttt{10.7937/K9/TCIA.2018.15quzvnb}}
     \item \gls{TCGALGG}: \href{https://dx.doi.org/10.7937/K9/TCIA.2016.L4LTD3TK}{\texttt{10.7937/K9/TCIA.2016.L4LTD3TK}}
     \item \gls{TCGAGBM}: \href{https://dx.doi.org/10.7937/K9/TCIA.2016.RNYFUYE9}{\texttt{10.7937/K9/TCIA.2016.RNYFUYE9}}
-
 \end{itemize}
 
-Data from the \gls{BRATS} are available at \url{http://braintumorsegmentation.org}.
-Part of the data from the in-house dataset from the Erasmus MC will be made publicly available in the near future as the \acrfull{EGD}.
+The segmentations for the public datasets from the \gls{TCIA} are available under the following DOIs:
+
+\begin{itemize}
+    \item \gls{BTP}: \href{https://dx.doi.org/10.7937/K9/TCIA.2018.15quzvnb}{\texttt{10.7937/10.7937/K9/TCIA.2018.15quzvnb}}
+    \item \gls{TCGALGG}: \href{https://dx.doi.org/10.7937/K9/TCIA.2017.GJQ7R0EF}{\texttt{10.7937/K9/TCIA.2017.GJQ7R0EF}}
+    \item \gls{TCGAGBM}: \href{https://dx.doi.org/10.7937/K9/TCIA.2017.KLXWJJ1Q}{\texttt{10.7937/K9/TCIA.2017.KLXWJJ1Q}}
+\end{itemize}
+
+Data from the \gls{BRATS} are available at \url{http://braintumorsegmentation.org/}.
+Data of 774 patients from the Erasmus MC dataset are available at \url{https://xnat.bmia.nl/REST/projects/egd}, and is described in a separate data publication \autocite{voortunpublisedEGD}.
 Data from the other in-house datasets are not publicly available due to participant privacy and consent.
 
 \subsection{Code availability}
-The code used in this paper is available on GitHub under an Apache 2 license at \url{https://github.com/Svdvoort/PrognosAIs_glioma}\footnote{This repository is currently closed and will be made available upon publication of the manuscript}.
+The code used in this paper is available on GitHub under an Apache 2 license at \url{https://github.com/Svdvoort/PrognosAIs_glioma}.
 This code includes the full pipeline from registration of the patients to the final post-processing of the predictions.
 The trained model is also available on GitHub, along with code to apply it to new patients.
 
@@ -728,7 +736,7 @@ Thus, although our method wrongly predicted the \gls{WHO} 2016 subtype, it might
 
 \section{Segmentation examples}\label{app:seg_examples_random}
 To demonstrate the automatic segmentations made by our method, we randomly selected five patients from both the \gls{TCGALGG} and the \gls{TCGAGBM} dataset.
-The scans and segmentations of the five patients from the \gls{TCGALGG} dataset are shown in \cref{fig:seg_examples_LGG}, the scans and segmentations of the five patients from the  and the \gls{TCGAGBM} dataset are shown in \cref{fig:seg_examples_HGG}.
+The scans and segmentations of the five patients from the \gls{TCGALGG} dataset are shown in \cref{fig:seg_examples_LGG}, the scans and segmentations of the five patients from the \gls{TCGAGBM} dataset are shown in \cref{fig:seg_examples_HGG}.
 The DICE score, Hausdorff distance, and volumetric similarity coefficient for these patients are given in \cref{tab:seg_metrics_example_patients}.
 The method seems to mostly focus on the hyperintensities of the \gls{FLAIR} scan.
 Despite the registrations issues that can be seen for the \gls{T2} scan in \cref{fig:hgg_example_tcga143477} the \gls{tumor} was still properly segmented, demonstrating the robustness of our method.
@@ -1235,7 +1243,7 @@ The overall \gls{AUC} for the grade was a multi-class \gls{AUC} determined in a 
 A multi-class accuracy was used to determine the overall accuracy for the grade predictions \autocite{tharwat2018metrics}.
 
 
-To evaluate the performance of the automated segmentation, we  evaluated the DICE score, the Hausdorff distance and the volumetric similarity coefficient.
+To evaluate the performance of the automated segmentation, we  evaluated the DICE score, the Hausdorff distance, and the volumetric similarity coefficient.
 The DICE score is a measure of overlap between two segmentations, where a value of 1 indicates perfect overlap.
 The Hausdorff distance is a measure of the closeness of the borders of the segmentations, where a lower value is better.
 The volumetric similarity coefficient is a measure of the agreement between the volumes of two segmentations, without taking account the actual location of the \gls{tumor}, where a value of 1 indicates perfect agreement.
