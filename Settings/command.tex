@@ -22,10 +22,13 @@
   \endgroup
 }
 
-\newcommand{\publishedas}[1]{
+\newcommand{\publishedas}[2][False]{
 \begin{refsection}[mypublications]
-\noindent
-\blfootnote{\fullcite[Based on: ][]{#1}}
+\noindent\blfootnote{\fullcite[Based on: ][]{#2}
+\ifthenelse { \equal {#1} {True} }  %if short caption not specified, use long caption (no slant)
+{\\\\ * Contributed equally}   % if #1 == blank
+{}   % else (not blank)
+}
 \end{refsection}
 }
 
