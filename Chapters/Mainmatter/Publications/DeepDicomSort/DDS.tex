@@ -74,7 +74,7 @@ One essential data curation step is organizing a \gls{ds} such that it can easil
 Properly organizing the \gls{ds} maximizes the shareability and preserves the full integrity of the \gls{ds}, ensuring repeatability of an experiment and reuse of the \gls{ds} in other experiments.
 
 Unfortunately, the organization of medical imaging data is not standardized, and the format in which a \gls{ds} is provided often differs between sources \autocite{lambin2017radiomics, vanooijen2019quality}.
-Efforts such as the \gls{BIDS} \autocite{gorgolewski2016brain} propose a standardized data structure, to which some public data repositories adhere (e.g.\ OpenNeuro \autocite{gorgolewski2017openneuro}, \gls{ABIDE} \autocite{dimartino2017enhancing} and \gls{OASIS} \autocite{lamontagne2018oasis}).
+Efforts such as the \gls{BIDS} \autocite{gorgolewski2016brain} propose a standardized data structure, to which some public data repositories adhere (e.g.\ OpenNeuro \autocite{gorgolewski2017openneuro}, \gls{ABIDE} \autocite{dimartino2017enhancing}, and \gls{OASIS} \autocite{lamontagne2018oasis}).
 However, other repositories do not conform to this standard (e.g.\ \gls{TCIA} \autocite{clark2013cancer}, \gls{ADNI}, and \gls{PPMI} \autocite{marek2018parkinson}).
 Furthermore, similar to some prospectively collected research data, retrospectively collected data from clinical practice usually do not follow a standardized format either \autocite{vanooijen2019quality}.
 Thus, the challenge of structuring a \gls{ds}, either into a \gls{BIDS} compliant \gls{ds} or a different format, remains.
@@ -107,7 +107,7 @@ We differ from the \gls{BIDS} terminology regarding two terms: \gls{scan} and \g
 \Gls{type} is referred to as modality in \gls{BIDS}, but to avoid confusion with the more common use of modality to indicate different types of equipment (e.g.\ \gls{MRI} and \gls{CT}), we instead use \gls{type}.
 \Gls{scan} is used instead of \say{data acquisition} or \say{run} as used in \gls{BIDS}, to be more in line with common terminology and to avoid confusion with other types of data acquisition.
 We define a structured \gls{ds} as a \gls{ds} where all the data for the different \glspl{sub} and \glspl{scan} is provided in the same way.
-For example, a folder structure with a folder for each \gls{sub}, \gls{ses} and \gls{scan} with a consistent naming format for the different folders and \glspl{type}.
+For example, a folder structure with a folder for each \gls{sub}, \gls{ses}, and \gls{scan}, with a consistent naming format for the different folders and \glspl{type}.
 A standardized \gls{ds} is a \gls{ds} where the data has been structured according to a specific, public standard, for example \gls{BIDS}.
 
 
@@ -136,7 +136,7 @@ A standardized \gls{ds} is a \gls{ds} where the data has been structured accordi
   \\
   \Gls{class} & \NA & An output category of the \gls{CNN}\\
   \\
-  \acrshort{DICOM} & \acrshort{DICOM} & A data format used to store medical imaging data. In addition to the imaging data, \acrshort{DICOM} files can also store metadata about the scanner equipment, the specific imaging protocol and clinical information\\
+  \acrshort{DICOM} & \acrshort{DICOM} & A data format used to store medical imaging data. In addition to the imaging data, \acrshort{DICOM} files can also store metadata about the scanner equipment, the specific imaging protocol, and clinical information\\
   \\
   \acrshort{NIFTI} & \acrshort{NIFTI} & A data format used to store (neuro) medical imaging data\\
   \bottomrule
@@ -164,7 +164,7 @@ Thus, all \glspl{scan} of a \gls{sub} were either all in the \gls{BTtrain} or al
 In this way, a good performance of our method on the test set could not be the result of the algorithm having learned features that are specific to a particular \gls{site} or scanner.
 
 The \gls{BTtrain} contained \num{11065} \glspl{scan} of \num{1347} different \glspl{ses} from \num{719} \glspl{sub}.
-These \glspl{scan} were included from the \gls{BTP} \autocite{schmainda2018radiology}, \gls{IVY} \autocite{nameeta2016radiology}, \gls{LGG1p19q} \autocite{bradley2017radiology,akkus2017predicting}, \gls{TCGAGBM} \autocite{scarpace2016radiology} and \gls{TCGALGG} \autocite{pedano2016radiology} collections from \gls{TCIA} \autocite{clark2013cancer}.
+These \glspl{scan} were included from the \gls{BTP} \autocite{schmainda2018radiology}, \gls{IVY} \autocite{nameeta2016radiology}, \gls{LGG1p19q} \autocite{bradley2017radiology,akkus2017predicting}, \gls{TCGAGBM} \autocite{scarpace2016radiology}, and \gls{TCGALGG} \autocite{pedano2016radiology} collections from \gls{TCIA} \autocite{clark2013cancer}.
 Two \glspl{ds} from \gls{USIGT} \autocite{fyllingen2016glioblastoma,xiao2017retrospective} were also included in the \gls{BTtrain}.
 In total, the data originated from \num{17} different \glspl{site}, and the \glspl{scan} were acquired on at least \num{29} different scanner models from \num{4} different vendors (GE, Hitachi, Philips, and Siemens).
 
@@ -268,10 +268,10 @@ An example of the eight \glspl{type} for a single \gls{sub} from the \gls{BTtest
 
 \subsubsection{\gls{NTTS}}
 
-In order to evaluate the results of the algorithm on non-\gls{tumor} brain imaging, we used the \acrfull{ADNI} \gls{ds} (\url{adni.loni.usc.edu}).
+In order to evaluate the results of the algorithm on non-\gls{tumor} brain imaging, we used the \acrfull{ADNI} \gls{ds} (\url{https://adni.loni.usc.edu}).
 The \gls{ADNI} was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD\@.
 The primary goal of \gls{ADNI} has been to test whether serial magnetic resonance imaging, positron emission tomography, other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of mild cognitive impairment and early Alzheimer's disease.
-For up-to-date information, see \url{adni-info.org}.
+For up-to-date information, see \url{https://adni-info.org}.
 
 We used the baseline and screening data of \num{1318} \glspl{sub}, resulting in \num{7227} \glspl{scan}.
 These \glspl{scan} originated from \num{67} different \glspl{site} and were acquired on \num{23} different scanner models from \num{3} different vendors (GE, Philips, and Siemens).
@@ -713,7 +713,7 @@ While not perfect, our method does have a very high performance overall and the 
 
 The \gls{CNN} was trained and evaluated by using the ground truth labels, which were obtained by manually going through the dataset and annotating each \gls{scan} according to the perceived \gls{type}.
 It is possible that the \gls{type} was incorrectly annotated for some of the \glspl{scan}.
-To limit this possibility we took a second look at \glspl{scan} where there was a mismatch between the prediction from \gls{DDS} and the ground truth label, both for train \glspl{ds} and test \glspl{ds}.
+To limit this possibility we took a second look at \glspl{scan} where there was a mismatch between the prediction from \gls{DDS} and the ground truth label, both for the train \glspl{ds} and the test \glspl{ds}.
 We corrected the ground truth label for \glspl{scan} that were incorrectly annotated and these corrected labels were used for the experiments presented in this paper.
 The labels of around \per{0.1} of the \glspl{scan} in the \gls{ds} were corrected in this way.
 Although it is possible that there were still some incorrectly annotated \glspl{scan}, based on these findings we expect this fraction to be very small.
@@ -832,7 +832,7 @@ The results published here are in part based upon data generated by the TCGA Res
 Data used in this publication were generated by the National Cancer Institute Clinical Proteomic Tumor Analysis Consortium (CPTAC).
 
 Data collection and sharing for this project was funded by the ADNI (National Institutes of Health Grant U01 AG024904) and DOD ADNI (Department of Defense award number W81XWH-12-2-0012).
-ADNI is funded by the National Institute on Aging, the National Institute of Biomedical Imaging and Bioengineering, and through generous contributions from the following: AbbVie, Alzheimer's Association; Alzheimer's Drug Discovery Foundation; Araclon Biotech; BioClinica, Inc.; Biogen; Bristol-Myers Squibb Company; CereSpir, Inc.; Cogstate; Eisai Inc.; Elan Pharmaceuticals, Inc.; Eli Lilly and Company; EuroImmun; F. Hoffmann-La Roche Ltd and its affiliated company Genentech, Inc.; Fujirebio; GE Healthcare; IXICO Ltd.; Janssen Alzheimer Immunotherapy Research \& Development, LLC.; Johnson \& Johnson Pharmaceutical Research \& Development LLC.; Lumosity; Lundbeck; Merck \& Co., Inc.; Meso Scale Diagnostics, LLC.; NeuroRx Research; Neurotrack Technologies; Novartis Pharmaceuticals Corporation; Pfizer Inc.; Piramal Imaging; Servier; Takeda Pharmaceutical Company; and Transition Therapeutics. The Canadian Institutes of Health Research is providing funds to support ADNI clinical sites in Canada. Private sector contributions are facilitated by the Foundation for the National Institutes of Health (www.fnih.org). The grantee organization is the Northern California Institute for Research and Education, and the study is coordinated by the Alzheimer's Therapeutic Research Institute at the University of Southern California.
+ADNI is funded by the National Institute on Aging, the National Institute of Biomedical Imaging and Bioengineering, and through generous contributions from the following: AbbVie, Alzheimer's Association; Alzheimer's Drug Discovery Foundation; Araclon Biotech; BioClinica, Inc.; Biogen; Bristol-Myers Squibb Company; CereSpir, Inc.; Cogstate; Eisai Inc.; Elan Pharmaceuticals, Inc.; Eli Lilly and Company; EuroImmun; F. Hoffmann-La Roche Ltd and its affiliated company Genentech, Inc.; Fujirebio; GE Healthcare; IXICO Ltd.; Janssen Alzheimer Immunotherapy Research \& Development, LLC.; Johnson \& Johnson Pharmaceutical Research \& Development LLC.; Lumosity; Lundbeck; Merck \& Co., Inc.; Meso Scale Diagnostics, LLC.; NeuroRx Research; Neurotrack Technologies; Novartis Pharmaceuticals Corporation; Pfizer Inc.; Piramal Imaging; Servier; Takeda Pharmaceutical Company; and Transition Therapeutics. The Canadian Institutes of Health Research is providing funds to support ADNI clinical sites in Canada. Private sector contributions are facilitated by the Foundation for the National Institutes of Health (\url{https://fnih.org}). The grantee organization is the Northern California Institute for Research and Education, and the study is coordinated by the Alzheimer's Therapeutic Research Institute at the University of Southern California.
 ADNI data are disseminated by the Laboratory for Neuro Imaging at the University of Southern California.
 
 
@@ -848,7 +848,7 @@ Only one such split was made since training and validating the network for multi
 During the splitting, all \glspl{slice} of a \gls{scan} were either all in the train set or all in the validation set to prevent data leakage between the train set and validation set.
 
 We compared five different \gls{CNN} architectures: the architecture proposed in this paper, Alexnet \autocite{krizhevsky2012imagenet}, ResNet18 \autocite{he2016deep}, DenseNet121 \autocite{huang2017densely}, and VGG19 \autocite{simonyan2014very}.
-For all networks, the same pre-processing approach as described in \cref{sec:preprocessing} was used, with the optimizer settings as described in \cref{sec:network}.
+For all networks, the same pre-processing approach and optimizer settings as described in \cref{sec:preprocessing} were used.
 The only difference was that the learning rate reduction was based on the validation loss instead of the training loss.
 For the VGG19 model, the initial learning rate was lowered to \num{0.0001}, as the model would otherwise get stuck in a poor minimum early in the training stage.
 Different pre-processing settings (e.g.\ different normalization settings) and model settings (e.g.\ learning rate) were tested.
@@ -1151,7 +1151,7 @@ It can be seen that some filters mainly identify the skull (for example, filter 
 
 \clearpage
 
-\section[Time comparison]{Time comparison between \glsfmtlong{DDS}, \glsfmtlong{HC} and manual sorting}\label{app:timing}
+\section[Time comparison]{Time comparison between \glsfmtlong{DDS}, \glsfmtlong{HC}, and manual sorting}\label{app:timing}
 
 We estimated the potential time that can be saved by using \gls{DDS} to sort a \gls{ds} instead of doing so by hand or using \gls{HC}.
 We did so by assuming the hypothetical situation where one has an automated tool that requires the \gls{T1C} and \gls{FLAIR} \glspl{scan} as inputs, and we compared the time needed to find the \gls{T1C} and \gls{FLAIR} \glspl{scan} for all \glspl{sub} and \glspl{ses} in the \gls{BTtest}.
