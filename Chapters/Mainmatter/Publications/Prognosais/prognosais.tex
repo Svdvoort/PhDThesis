@@ -140,7 +140,11 @@ The full results are shown in \cref{tab:cnn_results}, with the corresponding \gl
 This shows that we achieved an \gls{IDH}-\gls{AUC} of 0.81 in \gls{LGG} (grade II/III), an \gls{IDH}-\gls{AUC} of 0.64 in \gls{HGG} (grade IV), and a 1p/19q-\gls{AUC} of 0.73 in \gls{LGG}.
 When only predicting \gls{LGG} vs. \gls{HGG} instead of predicting the individual grades, we achieved an \gls{AUC} of 0.91.
 In \cref{app:confusion_matrix} we provide confusion matrices for the \gls{IDH} mutation status, 1p/19q co-deletion status, and grade predictions, as well as a confusion matrix for the final \gls{WHO} 2016 subtype, which shows that only one patient was predicted as a non-existing \gls{WHO} 2016 subtype.
+\ifdigital
 In  \cref{app:individual_pred} we provide the individual predictions and ground truth labels for all patients in the test set to allow for the calculation of additional metrics.
+\else
+On the GitHub repository we also provide the individual predictions and ground truth labels for all patients in the test set to allow for the calculation of additional metrics.\footnote{\url{https://github.com/Svdvoort/PrognosAIs_glioma}}
+\fi
 
 For the automatic segmentation, we achieved a mean DICE score of 0.84, a mean Hausdorff distance of 18.9 mm, and a mean volumetric similarity coefficient of 0.90.
 \cref{fig:segmentation_results} shows boxplots of the DICE scores, Hausdorff distances, and volumetric similarity coefficients for the different patients in the test set.
@@ -560,7 +564,11 @@ These filter outputs were visualized by passing a sample through the network and
 
 
 \subsection*{Data availability}
+\ifdigital
 An overview of the patients included from the public datasets used in the training and testing of the algorithm, and their ground truth label is available in \cref{app:open_gt}.
+\else
+An overview of the patients included from the public datasets used in the training and testing of the algorithm, and their ground truth label is available on the GitHub repository: \url{https://github.com/Svdvoort/PrognosAIs_glioma}.
+\fi
 The data from the public datasets are available in \gls{TCIA} under the following DOIs:
 
 \begin{itemize}
@@ -727,12 +735,16 @@ Thus, although our method wrongly predicted the \gls{WHO} 2016 subtype, it might
 
 \clearpage
 
+\ifdigital
 \IfFileExists{/home/sebastian/Repos/PhDThesis/Chapters/Mainmatter/Publications/Prognosais/Appendices/test_predictions.csv}{
 \section{Prediction results in the test set}\label{app:individual_pred}
 \underline{\textattachfile[color=0 0 0.54,mimetype=text/csv]{/home/sebastian/Repos/PhDThesis/Chapters/Mainmatter/Publications/Prognosais/Appendices/test_predictions.csv}{Supplementary file}}
 }{}
-
 \clearpage
+\else
+\fi
+
+
 
 \section{Segmentation examples}\label{app:seg_examples_random}
 To demonstrate the automatic segmentations made by our method, we randomly selected five patients from both the \gls{TCGALGG} and the \gls{TCGAGBM} dataset.
@@ -1249,11 +1261,14 @@ The Hausdorff distance is a measure of the closeness of the borders of the segme
 The volumetric similarity coefficient is a measure of the agreement between the volumes of two segmentations, without taking account the actual location of the \gls{tumor}, where a value of 1 indicates perfect agreement.
 See \citeauthorref{taha2015metrics} for the definitions of these metrics.
 
+\ifdigital
 \newpage
 
 \IfFileExists{/home/sebastian/Repos/PhDThesis/Chapters/Mainmatter/Publications/Prognosais/Appendices/test_predictions.csv}{
 \section[Ground truth labels]{Ground truth labels of patients included from public datasets}\label{app:open_gt}
 \underline{\textattachfile[color=0 0 0.54,mimetype=text/csv]{/home/sebastian/Repos/PhDThesis/Chapters/Mainmatter/Publications/Prognosais/Appendices/included_patient_labels.csv}{Supplementary file}}
 }{}
+\else
+\fi
 
 \end{subappendices}
