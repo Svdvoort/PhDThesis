@@ -180,6 +180,9 @@
 % We do not want the day in the date of a publication
 \AtEveryBibitem{\clearfield{day}}
 
+% We also do not want the arxiv category to be printed
+\AtEveryBibitem{\clearfield{eprintclass}}
+
 % For some journal we don't have pages but article numbers
 % Fix that here
 
@@ -188,6 +191,20 @@
 
 \DeclareFieldFormat[article,periodical]{eid}{\bibstring{artno}\addabbrvspace #1}
 
+\NewBibliographyString{abstractno}
+\DefineBibliographyStrings{english}{abstractno = {abstract no\adddot}}
+
+\DeclareFieldFormat[inproceedings]{eid}{\bibstring{abstractno}\addabbrvspace #1}
+
+
+% This is to specify abstract numbers in cases they don't have a direct reference
+\renewbibmacro*{chapter+pages}{%
+  \printfield{chapter}%
+  \setunit{\bibpagespunct}%
+  \printfield{pages}%
+  \setunit{\bibpagespunct}%
+  \printfield{eid}
+  \newunit}
 % For PMID articles
 
 % \DeclareDatamodelFields[type=field,datatype=verbatim]{pmid}
@@ -233,6 +250,8 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \usebibmacro{finentry}}
+
+
 
 
 
