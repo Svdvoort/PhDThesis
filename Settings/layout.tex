@@ -202,7 +202,17 @@
 
 % Some page numbers have letters in them, we need to add them to numchars
 % in order to get biblatex to print 'p.' or 'pp.' before
-\DeclareNumChars{Se}
+\DeclareNumChars{SeE}
+
+% We only want the ISBN if there is no DOI
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+     \map{
+        \step[fieldsource=doi,final]
+        \step[fieldset=isbn,null]
+        }
+      }
+}
 
 
 
@@ -230,6 +240,14 @@
 \DeclareFieldAlias{eprint:pmc}{eprint:pmcid}
 \DeclareFieldAlias{pmcid}{eprint:pmcid}
 \DeclareFieldAlias{pmid}{eprint:pubmed}
+
+\DeclareFieldFormat{eprint:acm}{%
+  ACM\space DOI\addcolon\space
+  \ifhyperref
+    {\href{https://dl.acm.org/doi/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}}
+
+
 
 % In unpublished also print arxiv
 \DeclareBibliographyDriver{unpublished}{%
