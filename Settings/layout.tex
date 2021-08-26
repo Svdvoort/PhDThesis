@@ -196,6 +196,15 @@
 
 \DeclareFieldFormat[inproceedings]{eid}{\bibstring{abstractno}\addabbrvspace #1}
 
+% In proceedings, the series we use for things like abstract books, but not nice to print'ser' before
+% This removes that
+\DeclareFieldFormat[inproceedings]{series}{#1}
+
+% Some page numbers have letters in them, we need to add them to numchars
+% in order to get biblatex to print 'p.' or 'pp.' before
+\DeclareNumChars{Se}
+
+
 
 % This is to specify abstract numbers in cases they don't have a direct reference
 \renewbibmacro*{chapter+pages}{%
