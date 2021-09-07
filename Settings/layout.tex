@@ -53,7 +53,7 @@
 {
 \if@mainmatter
     % This is for chapter layout in mainmatter
-    \LARGE\MakeUppercase{\chaptertitlename}~\thechapter
+    % \LARGE\MakeUppercase{\chaptertitlename}~\thechapter
 \fi
 }
 {
@@ -69,7 +69,7 @@
 \if@mainmatter
     % This is for chapter layout in mainmatter
     \Huge #1
-    \thispagestyle{epigraph}
+    % \thispagestyle{epigraph}
 \else
     % This is for chapter layout in front and back matter
     \Huge\bfseries #1
@@ -79,7 +79,8 @@
 [
 \if@mainmatter
     % This is for chapter layout in mainmatter
-    \vfill\newpage
+    \vfill
+    % \newpage
 \fi
 ]
 \makeatother
