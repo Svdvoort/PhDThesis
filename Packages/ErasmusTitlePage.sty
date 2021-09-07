@@ -149,6 +149,7 @@ Sunday
 
 \newcommand*{\makethesispage}{
 \begin{titlingpage}
+    \setcounter{page}{3}
     \centering
     {\HUGE\textbf{\@title}\par}
     \ifx \@subtitle \undefined
@@ -226,6 +227,7 @@ Sunday
 
 \newcommand*{\makecopyrightpage}{
 \begin{titlingpage}
+\setcounter{page}{2}
 \small
 \raggedright
 \vspace*{\fill}
@@ -259,6 +261,7 @@ All rights reserved. No part of this thesis may be reproduced, stored in a retri
 
 \newcommand*{\makecommitteepage}{
 \begin{titlingpage}
+\setcounter{page}{4}
 \raggedright
 \ifcase\@language
 {\large\textbf{Promotiecommissie}\par}
