@@ -245,6 +245,8 @@ TSWLatexianTemp*
 *.pdf
 # But not in the Figures subfolders
 !**/Figures/**/*.pdf
+# And also not the title page figure
+!**/Title_page.pdf
 
 # Also ignore the tex document used for testing
 temp_manuscript.tex
